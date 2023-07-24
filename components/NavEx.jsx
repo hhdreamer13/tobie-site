@@ -7,17 +7,17 @@ const NavEx = () => {
   const [bgImage, setBgImage] = useState("");
 
   const items = [
-    { title: "Item 01", src: "/photos/01.png" },
-    { title: "Item 02", src: "/photos/02.png" },
-    { title: "Item 03", src: "/photos/03.png" },
-    { title: "Item 04", src: "/photos/04.jpg" },
-    { title: "Item 05", src: "/photos/05.jpg" },
-    { title: "Item 06", src: "/photos/06.jpg" },
-    { title: "Item 07", src: "/photos/07.jpg" },
+    { title: "Item 01", src: "/photos/01.webp" },
+    { title: "Item 02", src: "/photos/02.webp" },
+    { title: "Item 03", src: "/photos/03.webp" },
+    { title: "Item 04", src: "/photos/04.webp" },
+    { title: "Item 05", src: "/photos/05.webp" },
+    { title: "Item 06", src: "/photos/06.webp" },
+    { title: "Item 07", src: "/photos/07.webp" },
   ];
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-cover ">
+    <div className="w-full h-screen bg-slate-950 flex justify-center items-center bg-cover ">
       <AnimatePresence>
         {bgImage && (
           <motion.div
@@ -41,7 +41,7 @@ const NavEx = () => {
             onMouseEnter={() => setBgImage(item.src)}
             onMouseLeave={() => setBgImage("")}
           >
-            <p className="opacity-0 duration-500 text-slate-950 group-hover:opacity-100 group-hover:-translate-y-8">
+            <p className="opacity-0 duration-500 text-slate-100 group-hover:opacity-100 group-hover:-translate-y-8">
               {item.title}
             </p>
             <div className="relative w-12 h-full rounded-xl overflow-hidden duration-500 group-hover:-translate-y-8">
