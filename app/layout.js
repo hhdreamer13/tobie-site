@@ -1,15 +1,10 @@
 import "@/styles/globals.css";
+import Navbar from "@/components/Navbar";
 import { Inter } from "next/font/google";
 import { Caveat } from "next/font/google";
-import { Indie_Flower } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 const caveat = Caveat({ subsets: ["latin"] });
-const indieFlower = Indie_Flower({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata = {
   title: "Les Amis de Tobie",
@@ -18,8 +13,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
-      <body className={caveat.className}>{children}</body>
+    <html lang="fr">
+      <body className={caveat.className + " flex flex-col h-screen"}>
+        <Navbar />
+        <main className="flex flex-grow justify-center items-center">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
