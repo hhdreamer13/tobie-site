@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NavEx = () => {
   const [bgImage, setBgImage] = useState("");
@@ -16,14 +17,22 @@ const NavEx = () => {
   ];
 
   return (
-    <div className="w-full h-screen flex justify-center items-center transition-all duration-1000">
-      <div
-        className="absolute w-full h-screen bg-cover transition-opacity duration-1000"
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          opacity: bgImage ? 0.5 : 0,
-        }}
-      />
+    <div className="w-full h-screen flex justify-center items-center bg-cover ">
+      <AnimatePresence>
+        {bgImage && (
+          <motion.div
+            key={bgImage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute w-full h-screen bg-cover filter"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          >
+            <div className="absolute w-full h-screen bg-black blur-sm bg-opacity-50"></div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="w-96 h-[450px] flex justify-between drop-shadow-lg">
         {items.map((item, index) => (
           <div
@@ -39,9 +48,8 @@ const NavEx = () => {
               <Image
                 src={item.src}
                 alt={item.title}
-                objectFit="cover"
-                layout="fill"
                 fill="true"
+                className="object-cover"
               />
             </div>
             <div className="w-4 h-4 opacity-0 duration-700 group-hover:opacity-100 group-hover:-translate-y-8">
