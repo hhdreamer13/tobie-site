@@ -33,7 +33,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className="md:hidden">
+      <div className="hidden">
         <div className="pt-4">
           {navItems.map((item, index) => (
             <Link key={index} href={item.href} className="block py-1">

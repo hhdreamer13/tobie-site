@@ -64,7 +64,7 @@ const NavEx = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-slate-950 flex flex-col justify-center items-center bg-cover">
+    <div className="w-full md:min-h-screen min-h-[100dvh] bg-slate-950 flex flex-col justify-center items-center bg-cover">
       {/* Background Placeholder */}
       <AnimatePresence>
         {bgImage && (
@@ -77,7 +77,7 @@ const NavEx = () => {
             className="absolute w-full h-screen bg-cover"
             style={{ backgroundImage: `url(${bgImage})` }}
           >
-            <div className="absolute w-full h-screen bg-black bg-opacity-60"></div>
+            <div className="absolute w-full md:min-h-screen min-h-[100dvh] bg-black bg-opacity-60"></div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -112,6 +112,7 @@ const NavEx = () => {
                   src={item.src}
                   alt={item.title}
                   fill="true"
+                  // sizes="100vw"
                   className="object-cover"
                 />
               </div>
