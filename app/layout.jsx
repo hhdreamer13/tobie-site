@@ -11,13 +11,14 @@ export const metadata = {
   description: "Site officiel des amis de Tobie.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, modal }) {
   return (
     <html lang="fr">
       <body className={caveat.className + " flex flex-col min-h-screen"}>
         <Navbar />
         <main className="flex flex-grow justify-center items-center">
           {children}
+          {modal}
         </main>
       </body>
     </html>

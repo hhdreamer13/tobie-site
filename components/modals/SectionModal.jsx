@@ -1,5 +1,5 @@
 import { useCallback, useRef, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 const fadeInOut = {
@@ -57,7 +57,7 @@ const SectionModal = ({ children, isOpen, setIsOpen }) => {
   }, [onKeyDown]);
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
           key="modal"

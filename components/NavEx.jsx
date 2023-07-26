@@ -35,7 +35,7 @@ const NavEx = () => {
               backgroundImage: `url(${sections[currentSection].imageSrc})`,
             }}
           >
-            <div className="absolute w-full min-h-screen bg-black bg-opacity-50"></div>
+            <div className="absolute w-full min-h-screen bg-black bg-opacity-60"></div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -57,7 +57,7 @@ const NavEx = () => {
         <div className="relative flex justify-center items-center gap-6 text-slate-300 transition-all">
           <button
             onClick={() => changeSection(-1)}
-            className="px-6 py-1 border border-slate-300 rounded-full duration-300 backdrop-blur-md hover:scale-105"
+            className="px-6 py-1 border border-neutral-500 rounded-full duration-300 backdrop-blur-md hover:scale-105"
           >
             <Image
               src="/assets/left.svg"
@@ -79,7 +79,7 @@ const NavEx = () => {
           </div>
           <button
             onClick={() => changeSection(1)}
-            className="px-6 py-1 border border-slate-300 rounded-full duration-300 backdrop-blur-md hover:scale-105"
+            className="px-6 py-1 border border-neutral-500 rounded-full duration-300 backdrop-blur-md hover:scale-105"
           >
             <Image
               src="/assets/right.svg"

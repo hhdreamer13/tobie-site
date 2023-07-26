@@ -1,4 +1,6 @@
+import slugify from "@/utils/slugify";
 import Image from "next/image";
+import Link from "next/link";
 
 const ImageBar = ({ section, index, currentSection, handleMouseEnter }) => {
   return (
@@ -14,17 +16,22 @@ const ImageBar = ({ section, index, currentSection, handleMouseEnter }) => {
       >
         {section.title}
       </p>
+
       <div
         className={`relative w-9 md:w-11 h-full rounded-xl overflow-hidden duration-500 drop-shadow-md ${
           currentSection === index ? "-translate-y-8" : ""
         }`}
       >
-        <Image
-          src={section.imageSrc}
-          alt={section.title}
-          fill="true"
-          className="object-cover"
-        />
+        <Link href={`/sections/${slugify(section.title)}`}>
+          <Image
+            src={section.imageSrc}
+            alt={section.title}
+            fill="true"
+            priority={true}
+            sizes="100vh"
+            className="object-cover"
+          />
+        </Link>
       </div>
       <div
         className={`w-5 h-5 opacity-0 duration-700 ${
