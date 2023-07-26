@@ -2,10 +2,13 @@ import Link from "next/link";
 
 const Navbar = () => {
   const navItems = [
-    { href: "/a-propos", name: "À propos" },
-    { href: "/episodes", name: "Épisodes" },
-    { href: "/galerie", name: "Galerie" },
-    { href: "/connexion", name: "Connexion" },
+    // { href: "/", name: "Actualité" },
+    // { href: "/", name: "Ateliers" },
+    // { href: "/", name: "Cartographie" },
+    // { href: "/", name: "Histoires" },
+    // { href: "/", name: "Téléchargement" },
+    // { href: "/", name: "Jeu" },
+    // { href: "/", name: "À propos" },
   ];
 
   return (
@@ -13,7 +16,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between text-slate-50">
         <div className="flex items-center gap-2">
           <Link href="/" className="font-mottona text-4xl">
-            Tobie
+            Les Amis de Tobie
           </Link>
         </div>
 

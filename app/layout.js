@@ -14,11 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body
-        className={
-          caveat.className + " flex flex-col md:min-h-screen min-h-[100dvh]"
-        }
-      >
+      <body className={caveat.className + " flex flex-col min-h-screen"}>
         <Navbar />
         <main className="flex flex-grow justify-center items-center">
           {children}
