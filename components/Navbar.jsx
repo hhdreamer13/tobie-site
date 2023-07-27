@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between text-slate-50">
         <div className="flex items-center gap-2">
           <Link href="/" className="font-mottona text-4xl">
-            Les Amis de Tobie
+            Tobie
           </Link>
         </div>
 

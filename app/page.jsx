@@ -1,4 +1,5 @@
 import NavEx from "@/components/NavEx";
+import Expand from "@/components/playground/Expand2";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
         Les Amis de Tobie
       </h1> */}
       <NavEx />
+      {/* <Expand /> */}
     </div>
   );
 }
