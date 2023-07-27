@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import sections from "@/utils/sections";
 
 const NavEx = () => {
   const [currentSection, setCurrentSection] = useState(-1);
-
-  const [expandedSection, setExpandedSection] = useState(-1);
-  const [expandedZIndex, setExpandedZIndex] = useState(-1);
-  const [collapsingZIndex, setCollapsingZIndex] = useState(-1);
+  const [expanded, setExpanded] = useState({});
+  const [zIndices, setZIndices] = useState({});
 
   const changeSection = (delta) => {
     const newSection =
@@ -22,20 +20,41 @@ const NavEx = () => {
     setCurrentSection(index);
   };
 
+  useEffect(() => {
+    const initialState = sections.reduce((obj, section, index) => {
+      const key = `img${index}`;
+      obj[key] = false;
+      return obj;
+    }, {});
+    setExpanded(initialState);
+    setZIndices(initialState);
+  }, []);
+
   const handleClick = (sectionId) => {
-    if (sectionId !== expandedSection) {
-      setExpandedSection(sectionId);
-      setExpandedZIndex(sectionId);
+    const isExpanding = !expanded[sectionId];
+
+    setExpanded({
+      ...expanded,
+      [sectionId]: isExpanding,
+    });
+
+    if (isExpanding) {
+      setZIndices({
+        ...zIndices,
+        [sectionId]: 1,
+      });
     } else {
-      // If the clicked section is currently expanded, start its collapse
-      setExpandedSection(-1);
-      setCollapsingZIndex(sectionId);
       setTimeout(() => {
-        // Once the collapse animation is done, reset its z-index
-        setCollapsingZIndex(-1);
-      }, 1000); // duration of the collapse animation
+        setZIndices({
+          ...zIndices,
+          [sectionId]: 0,
+        });
+      }, 1000);
     }
   };
+
+  console.log("zIndices", zIndices);
+  console.log("expanded", expanded);
 
   const centerPosition = 50 - (sections.length - 1) * 5; // Subtracting (number of images - 1) * 5 to calculate the center
 
@@ -49,7 +68,9 @@ const NavEx = () => {
             initial={{ opacity: 0, filter: "blur(0px)" }}
             animate={{
               opacity: 1,
-              filter: expandedSection !== -1 ? "blur(10px)" : "blur(0px)",
+              filter: Object.values(expanded).some(Boolean)
+                ? "blur(10px)"
+                : "blur(0px)",
             }}
             exit={{ opacity: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7 }}
@@ -74,11 +95,10 @@ const NavEx = () => {
               <div key={index} className="">
                 <motion.p
                   animate={{
-                    opacity:
-                      isSelected && section.id !== expandedSection ? 1 : 0,
+                    opacity: isSelected && !expanded[section.id] ? 1 : 0,
                     y: isSelected ? "-30%" : "70%",
                   }}
-                  transition={{ duration: 1.1, ease: "backInOut" }}
+                  transition={{ duration: 1, ease: "backInOut" }}
                   className="absolute text-center text-slate-100"
                   style={{
                     width: "100px",
@@ -90,39 +110,36 @@ const NavEx = () => {
                 </motion.p>
                 <motion.div
                   key={section.id}
-                  className="absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2"
+                  className={`absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2`}
                   layout
                   initial={false}
                   animate={
-                    expandedSection === section.id
+                    expanded[section.id]
                       ? {
-                          width: 600,
+                          width: 700,
                           height: 500,
                           top: "50%",
                           left: "50%",
-                          borderColor: "#fff",
+                          borderWidth: 2,
                         }
                       : {
                           width: 40,
                           height: 380,
-                          top: isSelected ? "43%" : "50%",
+                          top: isSelected ? "45%" : "50%",
                           left: `${position}%`,
-                          borderColor: "rgba(255, 255, 255, 0)",
+                          borderWidth: isSelected ? 0.1 : 0,
                         }
                   }
                   transition={{
                     duration: 1,
                     ease: "backInOut",
-                    borderColor: { duration: 1, ease: "anticipate" },
+                    borderWidth: { duration: 0.2, ease: "anticipate" },
                   }}
                   style={{
                     // borderRadius: "10px",
                     objectFit: "cover",
-                    zIndex:
-                      section.id === expandedZIndex ||
-                      section.id === collapsingZIndex
-                        ? 1
-                        : 0,
+                    zIndex: zIndices[section.id],
+                    borderWidth: 0,
                   }}
                   onClick={() => handleClick(section.id)}
                   onMouseEnter={() => handleMouseEnter(index)}
@@ -135,53 +152,14 @@ const NavEx = () => {
                     sizes="100vh"
                     className="object-cover"
                   />
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={
-                      expandedSection === section.id
-                        ? {
-                            opacity: 1,
-                            transition: {
-                              duration: 1,
-                              delay: 0.8,
-                              ease: "easeInOut",
-                            },
-                          }
-                        : {
-                            opacity: 0,
-                            transition: {
-                              duration: 0.4,
-                              delay: 0,
-                              ease: "easeInOut",
-                            },
-                          }
-                    }
-                    className="w-full h-full flex flex-col justify-end items-center gap-6"
-                  >
-                    <Image
-                      src="/assets/circle.svg"
-                      className="relative w-6 h-6 transition-transform drop-shadow-md hover:scale-125 hover:-rotate-90 cursor-pointer"
-                      width={100}
-                      height={100}
-                      alt="circle"
-                    />
-
-                    <div className="p-5 w-2/4 bg-slate-950 text-center text-slate-50 drop-shadow-md bg-opacity-50 rounded-t-xl pointer-events-none">
-                      <h2 className="font-bold text-3xl">{section.title}</h2>
-                      <p className="text-xl text-justify">
-                        {section.description}
-                      </p>
-                    </div>
-                  </motion.div>
                 </motion.div>
                 <motion.div
                   animate={{
-                    opacity:
-                      isSelected && section.id !== expandedSection ? 1 : 0,
-                    y: isSelected ? "-130%" : "0%",
+                    opacity: isSelected && !expanded[section.id] ? 1 : 0,
+                    y: isSelected ? "-100%" : "0%",
                   }}
                   transition={{ duration: 1.3, ease: "backInOut" }}
-                  className="absolute bottom-9"
+                  className="absolute text-center bottom-8 text-slate-100"
                   style={{
                     width: "20px",
                     left: `calc(${position}% - 10px)`,
@@ -204,7 +182,7 @@ const NavEx = () => {
           className="relative flex justify-center items-center gap-6 text-slate-300"
           initial={{ opacity: 0 }}
           animate={{
-            opacity: expandedSection !== -1 ? 0 : 1,
+            opacity: Object.values(expanded).some(Boolean) ? 0 : 1,
           }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
