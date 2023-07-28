@@ -13,7 +13,10 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        mottona: ["mottona", "cursive"],
+        caveat: ["var(--font-caveat)"],
+        nunito: ["var(--font-nunito)"],
+        mottona: ["var(--font-mottona)"],
+        newspaper: ["var(--font-newspaper)"],
       },
     },
   },

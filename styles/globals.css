@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "mottona";
-  src: url("/fonts/mottona.otf");
-  font-display: swap;
+body {
+  @apply font-caveat;
+}
+h2 {
+  @apply font-newspaper;
 }
