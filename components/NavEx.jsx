@@ -100,7 +100,7 @@ const NavEx = () => {
                           height: 500,
                           top: "50%",
                           left: "50%",
-                          borderColor: "#fff",
+                          borderColor: "#000",
                         }
                       : {
                           width: 40,
@@ -136,39 +136,68 @@ const NavEx = () => {
                     className="object-cover"
                   />
                   <motion.div
-                    initial={{ opacity: 0 }}
+                    initial={{ opacity: 0, y: "10%" }} // Starts from 100% below its parent (out of view)
                     animate={
                       expandedSection === section.id
                         ? {
                             opacity: 1,
+                            y: "0%", // Returns to its original position
                             transition: {
                               duration: 1,
-                              delay: 0.8,
-                              ease: "easeInOut",
+                              delay: 0.6,
+                              ease: "backInOut",
                             },
                           }
                         : {
                             opacity: 0,
+                            y: "10%", // Moves 100% below its parent (out of view)
                             transition: {
-                              duration: 0.4,
+                              duration: 0.8,
                               delay: 0,
-                              ease: "easeInOut",
+                              ease: "backInOut",
                             },
                           }
                     }
                     className="w-full h-full flex flex-col justify-end items-center gap-6"
                   >
-                    <Image
-                      src="/assets/circle.svg"
-                      className="relative w-6 h-6 transition-transform drop-shadow-md hover:scale-125 hover:-rotate-90 cursor-pointer"
-                      width={100}
-                      height={100}
-                      alt="circle"
-                    />
-
-                    <div className="p-5 w-2/4 bg-slate-950 text-center text-slate-50 drop-shadow-md bg-opacity-50 rounded-t-xl pointer-events-none">
+                    <motion.button
+                      className={`group flex justify-center items-center w-12 h-12 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce ${
+                        expandedSection === section.id
+                          ? "pointer-events-auto"
+                          : "pointer-events-none"
+                      }`}
+                      initial={{ opacity: 0 }}
+                      animate={
+                        expandedSection === section.id
+                          ? {
+                              opacity: 1,
+                              transition: {
+                                duration: 1,
+                                delay: 1.3,
+                                ease: "backInOut",
+                              },
+                            }
+                          : {
+                              opacity: 0,
+                              transition: {
+                                duration: 0.8,
+                                delay: 0,
+                                ease: "backInOut",
+                              },
+                            }
+                      }
+                    >
+                      <Image
+                        src="/assets/circle.svg"
+                        className="relative w-6 h-6 transition-transform drop-shadow-md group-hover:scale-125 group-hover:-rotate-90 group-focus:scale-110"
+                        width={100}
+                        height={100}
+                        alt="circle"
+                      />
+                    </motion.button>
+                    <div className="p-5 w-80 bg-slate-950 text-center text-slate-50 drop-shadow-md bg-opacity-50 rounded-t-2xl pointer-events-none">
                       <h2 className="font-bold text-3xl">{section.title}</h2>
-                      <p className="text-xl text-justify">
+                      <p className="text-lg text-justify mt-2">
                         {section.description}
                       </p>
                     </div>
