@@ -28,7 +28,7 @@ export default function SectionPage() {
             sizes="100vh"
             className="object-cover"
           />
-          <div className="p-5 w-full text-center flex items-center justify-center drop-shadow-none text-slate-950 dark:text-slate-100 h-32  bg-gradient-to-t from-slate-50 dark:from-slate-950">
+          <div className="p-5 w-full text-center flex items-center justify-center drop-shadow-none text-main h-32 bg-gradient-to-t from-slate-50 dark:from-slate-950">
             <h2 className="text-xl sm:text-2xl uppercase drop-shadow-md">
               {section.title}
             </h2>

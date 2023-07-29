@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -21,5 +23,32 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    plugin(function ({ addUtilities, theme, addBase }) {
+      // <-- add "theme" and "addBase" to this line
+      addBase({
+        ":root": {
+          "--color-base": theme("colors.gray.800"), // light theme colors
+          "--bg-base": theme("colors.gray.100"), // light theme colors
+        },
+        ".dark": {
+          // <-- use '.dark' instead of '[data-theme="dark"]'
+          "--color-base": theme("colors.gray.100"), // dark theme colors
+          "--bg-base": theme("colors.gray.800"), // dark theme colors
+        },
+      });
+      addUtilities(
+        {
+          ".text-main": {
+            color: "var(--color-base)",
+          },
+          ".bg-main": {
+            backgroundColor: "var(--bg-base)",
+          },
+        },
+        ["dark"],
+      );
+    }),
+  ],
 };
