@@ -7,7 +7,7 @@ const useDeviceType = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 768); // Adjust the threshold as needed
+      setIsDesktop(window.innerWidth > 600);
     };
 
     handleResize();

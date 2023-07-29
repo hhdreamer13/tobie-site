@@ -12,7 +12,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-transparent px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-10 bg-transparent px-6 py-4 bg-cover h-32">
       <div className="flex items-center justify-between text-slate-50">
         <div className="flex items-center gap-2">
           <Link href="/" className="font-mottona text-4xl">
@@ -29,8 +29,8 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center -2">
-          <Link href="/connexion" className="">
-            Connexion
+          <Link href="/" className="">
+            Menu
           </Link>
         </div>
       </div>
