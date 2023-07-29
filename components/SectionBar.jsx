@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import slugify from "@/utils/slugify";
 import Link from "next/link";
 
 const SectionBar = ({
@@ -59,6 +58,7 @@ const SectionBar = ({
                 borderColor: "rgba(255, 255, 255, 0)",
               }
         }
+        exit={{ y: -100, opacity: 0 }}
         transition={{
           duration: 1,
           ease: "backInOut",
@@ -154,7 +154,7 @@ const SectionBar = ({
           </motion.button>
 
           {/* Circle Button */}
-          <Link href={`sections/${slugify(section.title)}`}>
+          <Link href={section.url}>
             <motion.button
               className={`group flex justify-center items-center w-12 h-12 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce ${
                 expandedSection === section.id
@@ -193,7 +193,7 @@ const SectionBar = ({
           </Link>
 
           {/* Inner Text */}
-          <div className="p-5 w-full text-center text-slate-100 drop-shadow-md bg-opacity-50 pointer-events-none bg-gradient-to-t from-slate-950">
+          <div className="p-5 w-full text-center text-slate-950 dark:text-slate-100 drop-shadow-md bg-opacity-50 pointer-events-none bg-gradient-to-t from-slate-50 dark:from-slate-950">
             <h2 className="text-xl sm:text-2xl uppercase">{section.title}</h2>
             <p className="mt-5 mb-2 w-full sm:w-3/5 mx-auto text-sm font-nunito">
               {section.description}
@@ -215,7 +215,7 @@ const SectionBar = ({
           opacity: "0",
         }}
       >
-        <Link href={`sections/${slugify(section.title)}`}>
+        <Link href={section.url}>
           <Image
             className="hover:-rotate-90 transition"
             src="/assets/circle.svg"

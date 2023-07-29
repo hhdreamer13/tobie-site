@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
 import { Caveat } from "next/font/google";
 import { Nunito_Sans } from "next/font/google";
+import Providers from "./providers";
 
 const caveatFont = Caveat({
   subsets: ["latin"],
@@ -35,16 +36,17 @@ export const metadata = {
 
 export default function RootLayout({ children, modal }) {
   return (
-    <html
-      lang="fr"
-      className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable}`}
-    >
-      <body className={"flex flex-col min-h-screen"}>
-        <Navbar />
-        <main className="flex flex-grow justify-center items-center">
-          {children}
-          {modal}
-        </main>
+    <html lang="fr" className="light" style={{ colorScheme: "light" }}>
+      <body
+        className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable} " flex flex-col min-h-screen"`}
+      >
+        <Providers>
+          <Navbar />
+          <main className="flex flex-grow justify-center items-center">
+            {children}
+            {modal}
+          </main>
+        </Providers>
       </body>
     </html>
   );

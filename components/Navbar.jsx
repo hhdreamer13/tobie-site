@@ -1,3 +1,4 @@
+import ThemeButton from "./common/ThemeButton";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -29,9 +30,10 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center -2">
-          <Link href="/" className="">
+          {/* <Link href="/" className="">
             Menu
-          </Link>
+          </Link> */}
+          <ThemeButton />
         </div>
       </div>
 
