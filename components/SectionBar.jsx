@@ -146,7 +146,7 @@ const SectionBar = ({
           >
             <Image
               className="relative w-6 h-6 sm:w-8 sm:h-8 transition-transform drop-shadow-md hover:-rotate-90 focus:scale-110"
-              src="/assets/close8.svg"
+              src="/assets/close.svg"
               width={100}
               height={100}
               alt="circle"
