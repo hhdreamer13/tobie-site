@@ -10,7 +10,9 @@ const SectionBarControl = ({
   return (
     <>
       <motion.div
-        className="relative flex justify-center items-center gap-6 text-slate-300"
+        className={`relative flex justify-center items-center gap-6 text-slate-300 ${
+          expandedSection !== -1 ? "pointer-events-none" : "pointer-events-auto"
+        }`}
         initial={{ opacity: 0 }}
         animate={{
           opacity: expandedSection !== -1 ? 0 : 1,

@@ -20,9 +20,13 @@ const useSection = (sections) => {
     if (sectionId !== expandedSection) {
       setExpandedSection(sectionId);
       setExpandedZIndex(sectionId);
-    } else {
+    }
+  };
+
+  const handleClose = () => {
+    if (expandedSection !== -1) {
       setExpandedSection(-1);
-      setCollapsingZIndex(sectionId);
+      setCollapsingZIndex(expandedSection);
     }
   };
 
@@ -35,6 +39,7 @@ const useSection = (sections) => {
     changeSection,
     handleMouseEnter,
     handleClick,
+    handleClose,
   };
 };
 

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import slugify from "@/utils/slugify";
 
 const SectionBar = ({
   index,
@@ -8,6 +10,7 @@ const SectionBar = ({
   isSelected,
   position,
   handleClick,
+  handleClose,
   expandedSection,
   handleMouseEnter,
   setCollapsingZIndex,
@@ -16,6 +19,7 @@ const SectionBar = ({
 }) => {
   return (
     <>
+      {/* Section Title */}
       <motion.p
         className="absolute text-center text-slate-100"
         animate={{
@@ -31,6 +35,8 @@ const SectionBar = ({
       >
         {section.title}
       </motion.p>
+
+      {/* Section Card */}
       <motion.div
         className="absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2"
         key={section.id}
@@ -40,7 +46,7 @@ const SectionBar = ({
           expandedSection === section.id
             ? {
                 width: isDesktop ? 600 : 300,
-                height: isDesktop ? 500 : 250,
+                height: isDesktop ? 500 : 400,
                 top: "50%",
                 left: "50%",
                 borderColor: "#020617",
@@ -64,7 +70,6 @@ const SectionBar = ({
           }
         }}
         style={{
-          // borderRadius: "10px",
           objectFit: "cover",
           zIndex:
             section.id === expandedZIndex || section.id === collapsingZIndex
@@ -74,6 +79,7 @@ const SectionBar = ({
         onClick={() => handleClick(section.id)}
         onMouseEnter={() => handleMouseEnter(index)}
       >
+        {/* Section Image */}
         <Image
           src={section.imageSrc}
           alt={section.title}
@@ -82,6 +88,8 @@ const SectionBar = ({
           sizes="100vh"
           className="object-cover"
         />
+
+        {/* Inner Section */}
         <motion.div
           className="w-full h-auto sm:h-full flex flex-col-reverse sm:flex-col justify-start sm:justify-end items-center gap-6"
           initial={{ opacity: 0, y: "10%" }}
@@ -107,6 +115,45 @@ const SectionBar = ({
                 }
           }
         >
+          {/* Close Button */}
+          <motion.button
+            className={`absolute flex justify-center items-center top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 m-2 z-20 ${
+              expandedSection === section.id
+                ? "pointer-events-auto"
+                : "pointer-events-none"
+            }`}
+            initial={{ opacity: 0 }}
+            animate={
+              expandedSection === section.id
+                ? {
+                    opacity: 1,
+                    transition: {
+                      duration: 1,
+                      delay: 1.3,
+                      ease: "backInOut",
+                    },
+                  }
+                : {
+                    opacity: 0,
+                    transition: {
+                      duration: 0.8,
+                      delay: 0,
+                      ease: "backInOut",
+                    },
+                  }
+            }
+            onClick={handleClose}
+          >
+            <Image
+              className="relative w-6 h-6 sm:w-8 sm:h-8 transition-transform drop-shadow-md hover:-rotate-90 focus:scale-110"
+              src="/assets/close8.svg"
+              width={100}
+              height={100}
+              alt="circle"
+            />
+          </motion.button>
+
+          {/* Circle Button */}
           <motion.button
             className={`group flex justify-center items-center w-12 h-12 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce ${
               expandedSection === section.id
@@ -134,22 +181,26 @@ const SectionBar = ({
                   }
             }
           >
-            <Image
-              className="relative w-6 h-6 transition-transform drop-shadow-md group-hover:scale-125 group-hover:-rotate-90 group-focus:scale-110"
-              src="/assets/circle.svg"
-              width={100}
-              height={100}
-              alt="circle"
-            />
+            <Link href={`sections/${slugify(section.title)}`}>
+              <Image
+                className="relative w-6 h-6 transition-transform drop-shadow-md group-hover:scale-125 group-hover:-rotate-90 group-focus:scale-110"
+                src="/assets/circle.svg"
+                width={100}
+                height={100}
+                alt="circle"
+              />
+            </Link>
           </motion.button>
+          {/* Inner Text */}
           <div className="p-5 w-full text-center text-slate-100 drop-shadow-md bg-opacity-50 pointer-events-none bg-gradient-to-b sm:bg-gradient-to-t from-slate-950">
-            <h2 className="text-2xl uppercase">{section.title}</h2>
-            <p className="mt-5 mb-2 w-3/5 mx-auto text-sm font-nunito">
+            <h2 className="text-xl sm:text-2xl uppercase">{section.title}</h2>
+            <p className="mt-5 mb-2 w-full sm:w-3/5 mx-auto text-sm font-nunito">
               {section.description}
             </p>
           </div>
         </motion.div>
       </motion.div>
+      {/* Outer Bottom Circle */}
       <motion.div
         className="absolute bottom-9"
         animate={{

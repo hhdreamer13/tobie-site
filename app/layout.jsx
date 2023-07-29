@@ -13,7 +13,7 @@ const caveatFont = Caveat({
 const nunitoFont = Nunito_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-nunito",
+  variable: "--font-nunito-sans",
 });
 
 const mottonaFont = localFont({

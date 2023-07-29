@@ -24,6 +24,7 @@ const NavEx = () => {
     changeSection,
     handleMouseEnter,
     handleClick,
+    handleClose,
   } = useSection(sections);
 
   // Calculate the center of the parent div to distribute the bars
@@ -69,6 +70,7 @@ const NavEx = () => {
                 isSelected={isSelected}
                 position={position}
                 handleClick={handleClick}
+                handleClose={handleClose}
                 expandedSection={expandedSection}
                 handleMouseEnter={handleMouseEnter}
                 setCollapsingZIndex={setCollapsingZIndex}
