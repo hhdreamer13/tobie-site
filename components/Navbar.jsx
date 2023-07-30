@@ -3,20 +3,17 @@ import Link from "next/link";
 
 const Navbar = () => {
   const navItems = [
-    // { href: "/", name: "Actualité" },
-    // { href: "/", name: "Ateliers" },
-    // { href: "/", name: "Cartographie" },
-    // { href: "/", name: "Histoires" },
-    // { href: "/", name: "Téléchargement" },
-    // { href: "/", name: "Jeu" },
-    // { href: "/", name: "À propos" },
+    // { href: "/", name: "" },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-10 bg-transparent px-6 py-4 bg-cover h-32">
       <div className="flex items-center justify-between text-slate-50">
         <div className="flex items-center gap-2">
-          <Link href="/" className="font-mottona text-4xl">
+          <Link
+            href="/"
+            className="font-mottona text-4xl text-slate-50 drop-shadow-md"
+          >
             Tobie
           </Link>
         </div>

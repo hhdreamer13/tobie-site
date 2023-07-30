@@ -7,9 +7,12 @@ import SectionBarControl from "./SectionBarControl";
 import useSection from "@/hooks/useSection";
 import useDeviceType from "@/hooks/useDeviceType";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 const NavEx = () => {
   const isDesktop = useDeviceType();
+  const { theme } = useTheme();
+
   const [positionValues, setPositionValues] = useState({
     INITIAL_CENTER_POSITION: null,
     SECTION_OFFSET: null,
@@ -46,7 +49,7 @@ const NavEx = () => {
 
   if (!positionValues.centerPosition)
     return (
-      <div className="bg-slate-950 w-full h-screen text-slate-50 text-4xl flex justify-center items-center">
+      <div className="bg-main text-main w-full h-screen text-4xl flex justify-center items-center">
         <h2>Loading...</h2>{" "}
       </div>
     ); // or return a loading spinner
@@ -57,7 +60,7 @@ const NavEx = () => {
       <AnimatePresence>
         {currentSection !== -1 && (
           <motion.div
-            key={sections[currentSection].imageSrc}
+            key={sections[currentSection].id}
             initial={{ opacity: 0, filter: "blur(0px)" }}
             animate={{
               opacity: 1,
@@ -67,10 +70,14 @@ const NavEx = () => {
             transition={{ duration: 0.7 }}
             className={`absolute w-full min-h-screen bg-cover`}
             style={{
-              backgroundImage: `url(${sections[currentSection].imageSrc})`,
+              backgroundImage: `url(${
+                theme === "dark"
+                  ? sections[currentSection].imageSrcNuit
+                  : sections[currentSection].imageSrcJour
+              })`,
             }}
           >
-            <div className="absolute w-full min-h-screen bg-black bg-opacity-60"></div>
+            <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -87,6 +94,7 @@ const NavEx = () => {
               <SectionBar
                 key={index}
                 index={index}
+                theme={theme}
                 section={section}
                 isDesktop={isDesktop}
                 isSelected={isSelected}

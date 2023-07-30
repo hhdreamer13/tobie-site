@@ -2,12 +2,13 @@
 import sections from "@/utils/sections";
 import slugify from "@/utils/slugify";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function SectionPage() {
+  const { theme } = useTheme();
   const pathname = usePathname();
-
   const section = sections.find((s) => slugify(s.url) === pathname);
 
   return (
@@ -21,7 +22,7 @@ export default function SectionPage() {
           transition={{ duration: 1 }}
         >
           <Image
-            src={section.imageSrc}
+            src={theme === "dark" ? section.imageSrcNuit : section.imageSrcJour}
             alt={section.title}
             fill="true"
             priority={true}
