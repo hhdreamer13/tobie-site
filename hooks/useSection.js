@@ -1,10 +1,13 @@
 import { useState } from "react";
+import useDeviceType from "@/hooks/useDeviceType";
 
 const useSection = (sections) => {
   const [currentSection, setCurrentSection] = useState(-1);
   const [expandedSection, setExpandedSection] = useState(-1);
   const [expandedZIndex, setExpandedZIndex] = useState(-1);
   const [collapsingZIndex, setCollapsingZIndex] = useState(-1);
+
+  const isDektop = useDeviceType();
 
   const changeSection = (delta) => {
     const newSection =
@@ -13,7 +16,9 @@ const useSection = (sections) => {
   };
 
   const handleMouseEnter = (index) => {
-    setCurrentSection(index);
+    if (isDektop) {
+      setCurrentSection(index);
+    }
   };
 
   const handleClick = (sectionId) => {
