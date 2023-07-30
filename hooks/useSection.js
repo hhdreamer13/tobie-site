@@ -22,13 +22,12 @@ const useSection = (sections) => {
   };
 
   const handleClick = (sectionId) => {
-    if (!isDektop) {
-      setCurrentSection(sectionId);
-    }
-
     if (sectionId !== expandedSection) {
       setExpandedSection(sectionId);
       setExpandedZIndex(sectionId);
+      setCurrentSection(
+        sections.findIndex((section) => section.id === sectionId),
+      );
     }
   };
 
