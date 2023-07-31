@@ -4,8 +4,8 @@ const sections = [
     title: "Actualité",
     description:
       "Découvrez les dernières aventures passionnantes de Tobie et ses amis !",
-    imageSrcJour: "/photos/light/01.webp",
-    imageSrcNuit: "/photos/dark/01.webp",
+    imageSrcJour: "/photos/light/08.webp",
+    imageSrcNuit: "/photos/dark/08.webp",
     url: "/sections/actualite",
   },
   {

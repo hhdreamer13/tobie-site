@@ -7,15 +7,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-transparent px-6 py-4 bg-cover h-32">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent px-6 py-4 bg-cover h-32">
       <div className="flex items-center justify-between text-slate-50">
-        <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            className="font-mottona text-4xl text-slate-50 drop-shadow-md"
-          >
-            Tobie
-          </Link>
+        <div className="font-mottona m-0 sm:m-1 text-4xl sm:text-5xl drop-shadow-sm">
+          <Link href="/">Tobie</Link>
         </div>
 
         <div className="hidden md:flex items-center gap-10">

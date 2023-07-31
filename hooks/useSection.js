@@ -4,8 +4,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 const useSection = (sections) => {
   const [currentSection, setCurrentSection] = useState(-1);
   const [expandedSection, setExpandedSection] = useState(-1);
-  const [expandedZIndex, setExpandedZIndex] = useState(-1);
-  const [collapsingZIndex, setCollapsingZIndex] = useState(-1);
+  const [collapsingSection, setCollapsingSection] = useState(-1);
 
   const isDektop = useDeviceType();
 
@@ -24,7 +23,6 @@ const useSection = (sections) => {
   const handleClick = (sectionId) => {
     if (sectionId !== expandedSection) {
       setExpandedSection(sectionId);
-      setExpandedZIndex(sectionId);
       setCurrentSection(
         sections.findIndex((section) => section.id === sectionId),
       );
@@ -34,16 +32,15 @@ const useSection = (sections) => {
   const handleClose = () => {
     if (expandedSection !== -1) {
       setExpandedSection(-1);
-      setCollapsingZIndex(expandedSection);
+      setCollapsingSection(expandedSection);
     }
   };
 
   return {
     currentSection,
     expandedSection,
-    expandedZIndex,
-    collapsingZIndex,
-    setCollapsingZIndex,
+    collapsingSection,
+    setCollapsingSection,
     changeSection,
     handleMouseEnter,
     handleClick,

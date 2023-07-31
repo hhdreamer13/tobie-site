@@ -29,22 +29,22 @@ module.exports = {
       // <-- add "theme" and "addBase" to this line
       addBase({
         ":root": {
-          "--color-base": theme("colors.gray.800"), // light theme colors
-          "--bg-base": theme("colors.gray.100"), // light theme colors
+          "--color-main": theme("colors.slate.950"), // light theme colors
+          "--bg-main": theme("colors.slate.50"), // light theme colors
         },
         ".dark": {
           // <-- use '.dark' instead of '[data-theme="dark"]'
-          "--color-base": theme("colors.gray.100"), // dark theme colors
-          "--bg-base": theme("colors.gray.800"), // dark theme colors
+          "--color-main": theme("colors.slate.50"), // dark theme colors
+          "--bg-main": theme("colors.slate.950"), // dark theme colors
         },
       });
       addUtilities(
         {
           ".text-main": {
-            color: "var(--color-base)",
+            color: "var(--color-main)",
           },
           ".bg-main": {
-            backgroundColor: "var(--bg-base)",
+            backgroundColor: "var(--bg-main)",
           },
         },
         ["dark"],

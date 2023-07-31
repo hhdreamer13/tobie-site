@@ -38,9 +38,8 @@ const NavEx = () => {
   const {
     currentSection,
     expandedSection,
-    expandedZIndex,
-    collapsingZIndex,
-    setCollapsingZIndex,
+    collapsingSection,
+    setCollapsingSection,
     changeSection,
     handleMouseEnter,
     handleClick,
@@ -103,9 +102,8 @@ const NavEx = () => {
                 handleClose={handleClose}
                 expandedSection={expandedSection}
                 handleMouseEnter={handleMouseEnter}
-                setCollapsingZIndex={setCollapsingZIndex}
-                expandedZIndex={expandedZIndex}
-                collapsingZIndex={collapsingZIndex}
+                collapsingSection={collapsingSection}
+                setCollapsingSection={setCollapsingSection}
               />
             );
           })}
