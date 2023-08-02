@@ -10,7 +10,7 @@ export default function SectionPage() {
       </div>
       <div className="flex justify-center items-center w-full h-full gap-8">
         <div></div>
-        <div className="w-3/5 h-[500px] rounded-2xl overflow-hidden shadow-xl">
+        <div className="w-4/5 sm:w-3/5 h-[500px] rounded-2xl overflow-hidden shadow-xl">
           <MapComponent />
         </div>
       </div>

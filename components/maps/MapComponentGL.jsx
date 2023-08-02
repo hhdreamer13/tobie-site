@@ -10,6 +10,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 const mapStyles = {
   day: "mapbox://styles/hhdreamer/clksqezx100ir01pe0obtccfg",
+  day2: "mapbox://styles/hhdreamer/clktutpw600v301phdu4n75uo",
   night: "mapbox://styles/hhdreamer/clkst1qrj00de01o89qihel0x",
   default: "mapbox://styles/mapbox/streets-v12",
 };
@@ -43,7 +44,7 @@ export default function MapComponent() {
 
   useEffect(() => {
     if (!mapContainer.current) return; // if mapContainer is not defined, return
-    const mapStyle = theme === "light" ? mapStyles.day : mapStyles.night;
+    const mapStyle = theme === "light" ? mapStyles.day2 : mapStyles.night;
 
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
