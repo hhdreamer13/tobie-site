@@ -9,6 +9,7 @@ const Providers = ({ children }) => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
   if (!isMounted) {
     return (
       <div className="bg-slate-950 w-full h-screen text-slate-50 text-4xl flex justify-center items-center">

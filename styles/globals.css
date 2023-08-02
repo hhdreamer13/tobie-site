@@ -8,3 +8,18 @@ body {
 h2 {
   @apply font-newspaper;
 }
+
+.mapboxgl-popup {
+  opacity: 0;
+  animation: fadeInPopup 0.5s forwards;
+}
+
+.mapboxgl-popup-close-button {
+  @apply px-2 py-1;
+}
+
+@keyframes fadeInPopup {
+  to {
+    opacity: 1;
+  }
+}

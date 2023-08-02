@@ -1,5 +1,6 @@
 import SectionHeader from "@/components/common/SectionHeader";
 // import MapComponent from "@/components/maps/MapComponent";
+import MapComponent from "@/components/maps/MapComponentGL";
 
 export default function SectionPage() {
   return (
@@ -7,7 +8,9 @@ export default function SectionPage() {
       <div className="z-10">
         <SectionHeader />
       </div>
-      <div className="w-96 h-96">{/* <MapComponent /> */}</div>
+      <div className="w-3/5 h-96">
+        <MapComponent />
+      </div>
     </div>
   );
 }
