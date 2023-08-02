@@ -12,7 +12,7 @@ const CustomMarker = ({ location, children, isMapLoaded }) => {
     if (!isMapLoaded) return; // <-- Check isMapLoaded before adding the marker
 
     const markerIcon =
-      theme === "dark" ? "/day-marker.webp" : "/night-marker.webp";
+      theme === "dark" ? "/elisha-marker.webp" : "/tobie-marker.webp";
 
     const popup = new mapboxgl.Popup({
       offset: 25,
@@ -22,8 +22,8 @@ const CustomMarker = ({ location, children, isMapLoaded }) => {
     const el = document.createElement("div");
     el.style.backgroundImage = `url(${markerIcon})`;
     el.style.backgroundSize = "contain";
-    el.style.width = "50px";
-    el.style.height = "50px";
+    el.style.width = "70px";
+    el.style.height = "70px";
     el.style.backgroundRepeat = "no-repeat";
     el.style.opacity = "1";
 
