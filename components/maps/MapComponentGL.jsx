@@ -24,15 +24,14 @@ const locations = [
     imageUrl: "/photos/01.webp",
     linkUrl: "https://example.com/location1",
   },
-  {
-    name: "Location 2",
-    latitude: 48.8628631,
-    longitude: 2.4047319,
-    description: "This is a description of location 2.",
-    imageUrl: "/photos/02.webp",
-    linkUrl: "https://example.com/location2",
-  },
-  // more locations...
+  // {
+  //   name: "Location 2",
+  //   latitude: 48.8628631,
+  //   longitude: 2.4047319,
+  //   description: "This is a description of location 2.",
+  //   imageUrl: "/photos/02.webp",
+  //   linkUrl: "https://example.com/location2",
+  // },
 ];
 export default function MapComponent() {
   const mapContainer = useRef(null);
@@ -88,13 +87,13 @@ export default function MapComponent() {
               isMapLoaded={isMapLoaded}
             >
               {`
-    <style>
+        <style>
     
         .mapboxgl-popup-content {
           background-color: var(--bg-main);
           color: var(--color-main);
         }
-    </style>
+        </style>
     <h3>${location.name}</h3>
     <p>${location.description}</p>
     <img src="${location.imageUrl}" alt="${location.name}" />

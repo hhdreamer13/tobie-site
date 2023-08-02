@@ -12,7 +12,7 @@ const CustomMarker = ({ location, children, isMapLoaded }) => {
     if (!isMapLoaded) return; // <-- Check isMapLoaded before adding the marker
 
     const markerIcon =
-      theme === "light" ? "/day-marker.webp" : "/night-marker.webp";
+      theme === "dark" ? "/day-marker.webp" : "/night-marker.webp";
 
     const popup = new mapboxgl.Popup({
       offset: 25,
@@ -38,7 +38,7 @@ const CustomMarker = ({ location, children, isMapLoaded }) => {
       marker.remove();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [map, location, children, isMapLoaded]);
+  }, [location, children, isMapLoaded]);
 
   return null;
 };

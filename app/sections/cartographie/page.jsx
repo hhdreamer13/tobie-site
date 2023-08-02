@@ -8,8 +8,11 @@ export default function SectionPage() {
       <div className="z-10">
         <SectionHeader />
       </div>
-      <div className="w-3/5 h-96">
-        <MapComponent />
+      <div className="flex justify-center items-center w-full h-full gap-8">
+        <div></div>
+        <div className="w-3/5 h-[500px] rounded-2xl overflow-hidden shadow-xl">
+          <MapComponent />
+        </div>
       </div>
     </div>
   );
