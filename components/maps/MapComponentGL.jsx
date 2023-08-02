@@ -98,7 +98,7 @@ export default function MapComponent() {
     <h3>${location.name}</h3>
     <p>${location.description}</p>
     <img src="${location.imageUrl}" alt="${location.name}" />
-    <a href="${location.linkUrl}">Learn more</a>
+    <a href="${location.linkUrl}">En savoir plus</a>
   `}
             </CustomMarker>
           ))}
