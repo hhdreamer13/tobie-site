@@ -1,72 +1,102 @@
 "use client";
-
-import { useState } from "react";
-import Map, {
-  FullscreenControl,
-  NavigationControl,
-  ScaleControl,
-} from "react-map-gl";
+// MapComponent.js
+import { useEffect, useRef, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import MapContext from "./MapContext";
 import CustomMarker from "./CustomMarker";
-import CustomPopup from "./CustomPopup";
+import { useTheme } from "next-themes";
 
-const locations = [
-  // Hardcoded data
-  { name: "Location 1", latitude: 46.603354, longitude: 1.888334 },
-  { name: "Location 2", latitude: 47.603354, longitude: 2.888334 },
-  // more locations
-];
+import "mapbox-gl/dist/mapbox-gl.css";
 
-export default function MapComponent() {
-  console.log("rendering MapComponent");
+const mapStyles = {
+  day: "mapbox://styles/hhdreamer/clktutpw600v301phdu4n75uo",
+  night: "mapbox://styles/hhdreamer/clkst1qrj00de01o89qihel0x",
+  dayOld: "mapbox://styles/hhdreamer/clksqezx100ir01pe0obtccfg",
+  default: "mapbox://styles/mapbox/streets-v12",
+};
 
-  const [selectedMarker, setSelectedMarker] = useState(null);
+const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
+  const mapContainer = useRef(null);
+  const [map, setMap] = useState(null);
+  const [isMapLoaded, setMapLoaded] = useState(false);
+  const [shouldRenderMarkers, setShouldRenderMarkers] = useState(false);
 
-  console.log(selectedMarker);
+  const { theme } = useTheme();
 
-  const [viewState, setViewState] = useState({
-    longitude: 2.401472330093384,
-    latitude: 48.8682746887207,
-    width: "100%",
-    height: "100%",
-    zoom: 10,
-  });
+  useEffect(() => {
+    if (!mapContainer.current) return; // if mapContainer is not defined, return
+    const mapStyle = theme === "light" ? mapStyles.day : mapStyles.night;
 
-  const openPopup = (index) => {
-    setSelectedMarker(index);
-  };
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
-  const closePopup = () => {
-    setSelectedMarker(null);
-  };
+    const initialMap = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: mapStyle,
+      center: [2.320041, 48.8588897],
+      zoom: 10,
+    });
+
+    // set map right away
+    setMap(initialMap);
+
+    initialMap.on("load", () => {
+      setMapLoaded(true); // the map is loaded
+
+      // Add navigation control (the +/- zoom buttons)
+      initialMap.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+      // Add fullscreen control
+      initialMap.addControl(new mapboxgl.FullscreenControl(), "top-left");
+
+      setShouldRenderMarkers(true);
+    });
+
+    return () => {
+      initialMap.remove();
+      setShouldRenderMarkers(false);
+    };
+  }, [theme]);
+
+  useEffect(() => {
+    if (map && selectedLocation) {
+      // Center the map on the selected location
+      map.flyTo({
+        center: [selectedLocation.longitude, selectedLocation.latitude],
+        zoom: 12,
+      });
+    }
+  }, [map, selectedLocation]);
 
   return (
-    <Map
-      {...viewState}
-      onMove={(evt) => setViewState(evt.viewState)}
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
-      mapStyle="mapbox://styles/mapbox/streets-v12"
-      // mapStyle="mapbox://styles/hhdreamer/clkqtn5es006m01o27su6b0wq"
-      // style={{ width: "100%", height: "100%" }}
-    >
-      <FullscreenControl position="top-left" />
-      <NavigationControl position="top-right" />
-      <ScaleControl />
-
-      {locations.map((location, index) => (
-        <CustomMarker
-          key={`marker-${index}`}
-          index={index}
-          location={location}
-          openPopup={openPopup}
-        />
-      ))}
-      {selectedMarker !== null && (
-        <CustomPopup
-          selectedIndex={selectedMarker}
-          location={locations[selectedMarker]}
-          closePopup={closePopup}
-        />
-      )}
-    </Map>
+    <MapContext.Provider value={map}>
+      <div ref={mapContainer} style={{ width: "100%", height: "100%" }}>
+        {isMapLoaded &&
+          shouldRenderMarkers &&
+          locations.map((location) => (
+            <CustomMarker
+              key={location.name}
+              location={location}
+              isMapLoaded={isMapLoaded}
+              isLocationSelected={location === selectedLocation} // Pass whether this location is selected
+              onSelectLocation={() => onSelectLocation(location)} // Pass the function to select this location
+            >
+              {`
+        <style>
+    
+        .mapboxgl-popup-content {
+          background-color: var(--bg-main);
+          color: var(--color-main);
+        }
+        </style>
+    <h3>${location.name}</h3>
+    <p>${location.description}</p>
+    <a href="${location.linkUrl}">En savoir plus</a>
+  `}
+            </CustomMarker>
+          ))}
+      </div>
+    </MapContext.Provider>
   );
-}
+};
+
+export default MapComponent;
