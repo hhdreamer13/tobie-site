@@ -62,7 +62,7 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
       // Center the map on the selected location
       map.flyTo({
         center: [selectedLocation.longitude, selectedLocation.latitude],
-        zoom: 12,
+        zoom: 14,
       });
     }
   }, [map, selectedLocation]);

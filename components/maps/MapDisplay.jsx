@@ -9,8 +9,8 @@ const MapDisplay = ({ locations }) => {
 
   const handleSelectLocation = (location) => {
     setSelectedLocation(location);
-    const element = document.getElementById(location.name);
-    element?.scrollIntoView({ behavior: "smooth" });
+    // const element = document.getElementById(location.name);
+    // element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

@@ -4,10 +4,10 @@ import ScrollIntoView from "react-scroll-into-view";
 const MapMenu = ({ location, isLocationSelected, onSelectLocation }) => {
   return (
     <>
-      <ScrollIntoView selector={`#${location.id}`} alignToTop smooth>
+      <ScrollIntoView selector={`#location-${location.id}`} alignToTop smooth>
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
         <div
-          id={location.id}
+          id={`location-${location.id}`}
           className={`mb-4 bg-main ${
             isLocationSelected ? "grayscale-0" : "grayscale"
           }`}
