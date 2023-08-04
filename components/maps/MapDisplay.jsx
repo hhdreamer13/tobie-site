@@ -9,14 +9,16 @@ const MapDisplay = ({ locations }) => {
 
   const handleSelectLocation = (location) => {
     setSelectedLocation(location);
+    const element = document.getElementById(location.name);
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className="flex flex-col-reverse sm:flex-row justify-center items-start w-full h-full">
       <div className="w-4/5 sm:w-1/5 mb-20 sm:mb-0 h-[500px] mx-auto sm:mx-0 rounded-br-2xl sm:rounded-br-none rounded-bl-2xl rounded-tl-none sm:rounded-tl-2xl border border-slate-600 shadow-lg p-4 overflow-y-scroll">
-        {locations.map((location, index) => (
+        {locations.map((location) => (
           <MapMenu
-            key={index}
+            key={location.id}
             location={location}
             isLocationSelected={location === selectedLocation} // Pass whether this location is selected
             selectedLocation={selectedLocation}
