@@ -20,7 +20,7 @@ const SectionBarControl = ({
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <button
-          className="px-6 py-1 border border-white rounded-full duration-300 hover:scale-105 opacity-50 clickable"
+          className="px-6 py-1 border border-white rounded-full duration-300 hover:scale-105 opacity-50"
           onClick={() => changeSection(-1)}
         >
           <Image
@@ -28,7 +28,7 @@ const SectionBarControl = ({
             width={100}
             height={100}
             alt="circle"
-            className="w-5 h-5 clickable"
+            className="w-5 h-5"
           />
         </button>
         <div className="flex flex-col justify-center items-center w-32 h-14 opacity-80">
@@ -40,11 +40,11 @@ const SectionBarControl = ({
           </p>
         </div>
         <button
-          className="px-6 py-1 border border-white rounded-full duration-300 backdrop-blur-md hover:scale-105 opacity-50 clickable"
+          className="px-6 py-1 border border-white rounded-full duration-300 backdrop-blur-md hover:scale-105 opacity-50"
           onClick={() => changeSection(1)}
         >
           <Image
-            className="w-5 h-5 clickable"
+            className="w-5 h-5"
             src="/assets/right.svg"
             width={100}
             height={100}

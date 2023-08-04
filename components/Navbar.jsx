@@ -11,7 +11,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent px-6 py-4 h-16">
       <div className="flex items-center justify-between text-slate-50">
         <div className="font-mottona m-0 sm:m-1 text-4xl drop-shadow-sm">
-          <Link href="/" className="clickable">Tobie</Link>
+          <Link href="/" className="">
+            Tobie
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-10">
@@ -22,7 +24,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center -2 clickable">
+        <div className="hidden md:flex items-center">
           {/* <Link href="/" className="">
             Menu
           </Link> */}

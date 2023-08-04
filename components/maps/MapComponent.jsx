@@ -1,12 +1,12 @@
 "use client";
-// MapComponent.js
+
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
-import MapContext from "./MapContext";
 import CustomMarker from "./CustomMarker";
 import { useTheme } from "next-themes";
 
 import "mapbox-gl/dist/mapbox-gl.css";
+import "@/styles/mapStyles.css";
 
 const mapStyles = {
   day: "mapbox://styles/hhdreamer/clktutpw600v301phdu4n75uo",
@@ -68,34 +68,28 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
   }, [map, selectedLocation]);
 
   return (
-    <MapContext.Provider value={map}>
-      <div ref={mapContainer} style={{ width: "100%", height: "100%" }}>
-        {isMapLoaded &&
-          shouldRenderMarkers &&
-          locations.map((location) => (
-            <CustomMarker
-              key={location.name}
-              location={location}
-              isMapLoaded={isMapLoaded}
-              isLocationSelected={location === selectedLocation} // Pass whether this location is selected
-              onSelectLocation={() => onSelectLocation(location)} // Pass the function to select this location
-            >
-              {`
-        <style>
-    
-        .mapboxgl-popup-content {
-          background-color: var(--bg-main);
-          color: var(--color-main);
-        }
-        </style>
+    <div ref={mapContainer} style={{ width: "100%", height: "100%" }}>
+      {isMapLoaded &&
+        shouldRenderMarkers &&
+        locations.map((location) => (
+          <CustomMarker
+            key={location.name}
+            map={map}
+            location={location}
+            isMapLoaded={isMapLoaded}
+            isLocationSelected={location === selectedLocation} // Pass whether this location is selected
+            onSelectLocation={() => onSelectLocation(location)} // Pass the function to select this location
+          >
+            {`
+
+
     <h3>${location.name}</h3>
     <p>${location.description}</p>
     <a href="${location.linkUrl}">En savoir plus</a>
   `}
-            </CustomMarker>
-          ))}
-      </div>
-    </MapContext.Provider>
+          </CustomMarker>
+        ))}
+    </div>
   );
 };
 

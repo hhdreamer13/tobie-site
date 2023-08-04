@@ -1,19 +1,17 @@
-import { useEffect, useRef, useContext, useState } from "react";
+import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
-import MapContext from "./MapContext";
 import { useTheme } from "next-themes";
 
 const CustomMarker = ({
-  location,
   children,
+  location,
+  map,
   isMapLoaded,
   isLocationSelected,
   onSelectLocation,
 }) => {
   const markerRef = useRef();
-  const map = useContext(MapContext);
   const { theme } = useTheme();
-  const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
     if (!isMapLoaded) return; // <-- Check isMapLoaded before adding the marker
@@ -46,7 +44,6 @@ const CustomMarker = ({
 
     el.addEventListener("click", function () {
       if (onSelectLocation) onSelectLocation();
-      setPopupOpen(!popupOpen);
     });
 
     markerRef.current = marker;
@@ -60,15 +57,12 @@ const CustomMarker = ({
   useEffect(() => {
     if (markerRef.current) {
       if (isLocationSelected) {
-        // If this marker is selected, open its popup
-        markerRef.current.togglePopup();
-      } else if (popupOpen) {
-        // If this marker is not selected, but its popup is open, close it
-        markerRef.current.togglePopup();
-        setPopupOpen(false);
+        markerRef.current.getPopup().addTo(map);
+      } else {
+        markerRef.current.getPopup().remove();
       }
     }
-  }, [isLocationSelected, popupOpen]);
+  }, [isLocationSelected, map]);
 
   return null;
 };

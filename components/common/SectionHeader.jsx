@@ -11,6 +11,11 @@ const SectionHeader = () => {
   const { theme } = useTheme();
   const pathname = usePathname();
   const section = sections.find((s) => slugify(s.url) === pathname);
+  console.log(section);
+
+  if (!section) {
+    return null;
+  }
 
   return (
     // <motion.div className="flex flex-col mx-auto min-h-screen w-full bg-slate-50 dark:bg-slate-950">

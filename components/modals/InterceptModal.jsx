@@ -22,7 +22,7 @@ const scaleRotate = {
   },
 };
 
-const SectionModal = ({ children, isOpen, setIsOpen }) => {
+const InterceptModal = ({ children, isOpen, setIsOpen }) => {
   const overlay = useRef(null);
   const wrapper = useRef(null);
   const router = useRouter();
@@ -82,4 +82,4 @@ const SectionModal = ({ children, isOpen, setIsOpen }) => {
   );
 };
 
-export default SectionModal;
+export default InterceptModal;

@@ -4,8 +4,8 @@ const sections = [
     title: "Actualité",
     description:
       "Découvrez les dernières aventures passionnantes de Tobie et ses amis !",
-    imageSrcJour: "/photos/light/01.webp",
-    imageSrcNuit: "/photos/dark/01.webp",
+    imageSrcJour: "/photos/light/10.webp",
+    imageSrcNuit: "/photos/dark/10.webp",
     url: "/sections/actualite",
   },
   {
@@ -19,12 +19,12 @@ const sections = [
   },
   {
     id: "3",
-    title: "Cartographie",
+    title: "Carte",
     description:
       "Explorez la magnifique carte du monde de Tobie, remplie de lieux mystérieux à découvrir.",
-    imageSrcJour: "/photos/light/03.webp",
-    imageSrcNuit: "/photos/dark/03.webp",
-    url: "/sections/cartographie",
+    imageSrcJour: "/photos/light/12.webp",
+    imageSrcNuit: "/photos/dark/12.webp",
+    url: "/sections/carte",
   },
   {
     id: "4",
