@@ -6,7 +6,7 @@ export default function SectionPage() {
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">
       <div className="z-10">
-        <SectionHeader />
+        <SectionHeader sectionName="carte" />
       </div>
       <div className="mt-40 mb-10 w-4/5">
         <h2 className="font-nunito font-semibold text-xl">

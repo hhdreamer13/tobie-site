@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import LocationFrame from "@/components/frames/LocationFrame";
+import NewsFrame from "@/components/frames/NewsFrame";
 import InterceptModal from "@/components/modals/InterceptModal";
-import locations from "@/utils/locations";
+import news from "@/utils/news";
 
 export default function SectionModalPage({ params }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +14,11 @@ export default function SectionModalPage({ params }) {
     setIsOpen(true);
   }, [id]);
 
-  const item = locations.find((location) => location.id === parseInt(id));
+  const item = news.find((n) => n.id === parseInt(id));
 
   return (
     <InterceptModal item={item} isOpen={isOpen} setIsOpen={setIsOpen}>
-      <LocationFrame item={item} />
+      <NewsFrame item={item} />
     </InterceptModal>
   );
 }

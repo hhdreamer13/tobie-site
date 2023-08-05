@@ -69,7 +69,7 @@ const SectionBar = ({
             ease:
               expandedSection === section.id || collapsingSection === section.id
                 ? "backInOut"
-                : "anticipate",
+                : "backInOut",
           },
           left: { duration: 1, ease: "backInOut" },
           borderColor: { duration: 1, ease: "anticipate" },

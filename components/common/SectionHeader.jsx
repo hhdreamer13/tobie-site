@@ -1,17 +1,14 @@
 "use client";
 
-import sections from "@/utils/sections";
-import slugify from "@/utils/slugify";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import sections from "@/utils/sections";
+import slugify from "@/utils/slugify";
 
-const SectionHeader = () => {
+const SectionHeader = ({ sectionName }) => {
   const { theme } = useTheme();
-  const pathname = usePathname();
-  const section = sections.find((s) => slugify(s.url) === pathname);
-  console.log(section);
+  const section = sections.find((s) => slugify(s.title) === sectionName);
 
   if (!section) {
     return null;
