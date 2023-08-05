@@ -71,8 +71,8 @@ const NavEx = () => {
             style={{
               backgroundImage: `url(${
                 theme === "dark"
-                  ? sections[currentSection].imageSrcNuit
-                  : sections[currentSection].imageSrcJour
+                  ? sections[currentSection].imageSrcNuit.src
+                  : sections[currentSection].imageSrcJour.src
               })`,
             }}
           >
