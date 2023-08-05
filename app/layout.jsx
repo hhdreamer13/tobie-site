@@ -18,13 +18,13 @@ const nunitoFont = Nunito_Sans({
 });
 
 const mottonaFont = localFont({
-  src: "fonts/mottona.otf",
+  src: "fonts/mottona.woff2",
   display: "swap",
   variable: "--font-mottona",
 });
 
 const newspaperFont = localFont({
-  src: "fonts/OldNewspaperTypes.ttf",
+  src: "fonts/OldNewspaperTypes.woff2",
   display: "swap",
   variable: "--font-newspaper",
 });
