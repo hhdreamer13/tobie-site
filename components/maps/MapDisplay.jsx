@@ -27,7 +27,7 @@ const MapDisplay = ({ locations }) => {
           ))}
         </ul>
       </div>
-      <div className="w-4/5 sm:w-3/5 h-[500px] mx-auto sm:mx-0 rounded-br-none sm:rounded-br-2xl rounded-tr-2xl rounded-tl-2xl sm:rounded-tl-none overflow-hidden shadow-none sm:shadow-xl">
+      <div className="w-4/5 sm:w-3/5 h-[400px] sm:h-[500px] mx-auto sm:mx-0 rounded-br-none sm:rounded-br-2xl rounded-tr-2xl rounded-tl-2xl sm:rounded-tl-none overflow-hidden shadow-none sm:shadow-xl">
         <MapComponent
           locations={locations}
           selectedLocation={selectedLocation}

@@ -1,7 +1,7 @@
 // CustomPopup.js
 import { useEffect, useRef, useContext } from "react";
 import mapboxgl from "mapbox-gl";
-import MapContext from "./MapContext";
+import MapContext from "../MapContext";
 
 const CustomPopup = ({ location, children }) => {
   const popupRef = useRef();
