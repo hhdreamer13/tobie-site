@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import useDeviceType from "@/hooks/useDeviceType";
 
 const useSection = (sections) => {
@@ -6,28 +6,33 @@ const useSection = (sections) => {
   const [expandedSection, setExpandedSection] = useState(-1);
   const [collapsingSection, setCollapsingSection] = useState(-1);
 
-  const isDektop = useDeviceType();
+  const isDesktop = useDeviceType();
 
-  const changeSection = (delta) => {
-    const newSection =
-      (currentSection + delta + sections.length) % sections.length;
-    setCurrentSection(newSection);
-  };
+  const changeSection = (delta) =>
+    setCurrentSection(
+      (currentSection + delta + sections.length) % sections.length,
+    );
 
-  const handleMouseEnter = (index) => {
-    if (isDektop) {
-      setCurrentSection(index);
-    }
-  };
+  const handleMouseEnter = useCallback(
+    (index) => {
+      if (isDesktop && currentSection !== index && collapsingSection === -1) {
+        setCurrentSection(index);
+      }
+    },
+    [isDesktop, currentSection, collapsingSection],
+  );
 
-  const handleClick = (sectionId) => {
-    if (sectionId !== expandedSection) {
-      setExpandedSection(sectionId);
-      setCurrentSection(
-        sections.findIndex((section) => section.id === sectionId),
-      );
-    }
-  };
+  const handleClick = useCallback(
+    (sectionId) => {
+      if (sectionId !== expandedSection && collapsingSection === -1) {
+        setExpandedSection(sectionId);
+        setCurrentSection(
+          sections.findIndex((section) => section.id === sectionId),
+        );
+      }
+    },
+    [expandedSection, sections, collapsingSection],
+  );
 
   const handleClose = () => {
     if (expandedSection !== -1) {

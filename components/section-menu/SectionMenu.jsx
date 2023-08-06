@@ -1,15 +1,15 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import sections from "@/utils/sections";
 import SectionBar from "./SectionBar";
 import SectionBarControl from "./SectionBarControl";
 import useSection from "@/hooks/useSection";
 import useDeviceType from "@/hooks/useDeviceType";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
+import SectionBackground from "./SectionBackground";
 
-const NavEx = () => {
+const SectionMenu = () => {
   const isDesktop = useDeviceType();
   const { theme } = useTheme();
 
@@ -46,57 +46,44 @@ const NavEx = () => {
     handleClose,
   } = useSection(sections);
 
+  const positions = useMemo(
+    () =>
+      sections.map(
+        (_, index) =>
+          positionValues.centerPosition +
+          index * positionValues.SECTION_SPACING,
+      ),
+    [positionValues],
+  );
+
   if (!positionValues.centerPosition)
     return (
       <div className="bg-main text-main w-full h-screen text-4xl flex justify-center items-center">
         <h2>Loading...</h2>{" "}
       </div>
-    ); // or return a loading spinner
+    );
 
   return (
     <div className="w-full bg-slate-950 flex flex-col justify-center items-center bg-cover">
       {/* Background Placeholder */}
-      <AnimatePresence>
-        {currentSection !== -1 && (
-          <motion.div
-            key={sections[currentSection].id}
-            initial={{ opacity: 0, filter: "blur(0px)" }}
-            animate={{
-              opacity: 1,
-              filter: expandedSection !== -1 ? "blur(10px)" : "blur(0px)",
-            }}
-            exit={{ opacity: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.7 }}
-            className={`absolute w-full min-h-screen bg-cover`}
-            style={{
-              backgroundImage: `url(${
-                theme === "dark"
-                  ? sections[currentSection].imageSrcNuit.src
-                  : sections[currentSection].imageSrcJour.src
-              })`,
-            }}
-          >
-            <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <SectionBackground
+        currentSection={currentSection}
+        sections={sections}
+        expandedSection={expandedSection}
+        theme={theme}
+      />
 
       <div className="flex flex-col h-screen justify-center items-center">
         <div className="relative w-[350px] h-[500px] sm:w-[500px]">
           {sections.map((section, index) => {
-            const position =
-              positionValues.centerPosition +
-              index * positionValues.SECTION_SPACING; // Distribute the bars
-            const isSelected = currentSection === index;
+            const position = positions[index];
 
             return (
               <SectionBar
                 key={index}
                 index={index}
-                theme={theme}
                 section={section}
-                isDesktop={isDesktop}
-                isSelected={isSelected}
+                isSelected={currentSection === index}
                 position={position}
                 handleClick={handleClick}
                 handleClose={handleClose}
@@ -119,4 +106,4 @@ const NavEx = () => {
   );
 };
 
-export default NavEx;
+export default SectionMenu;

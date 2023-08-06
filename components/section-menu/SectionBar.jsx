@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import useDeviceType from "@/hooks/useDeviceType";
+import CloseButton from "../common/CloseButton";
+import CircleIconButton from "./CircleIconButton";
+import SectionTitle from "./SectionTitle";
+import { memo } from "react";
 
-const SectionBar = ({
+const SectionBar = memo(function SectionBar({
   index,
   section,
-  theme,
-  isDesktop,
   isSelected,
   position,
   handleClick,
@@ -15,29 +19,34 @@ const SectionBar = ({
   handleMouseEnter,
   collapsingSection,
   setCollapsingSection,
-}) => {
+}) {
+  const isDesktop = useDeviceType();
+  const { theme } = useTheme();
+
+  console.log("rendered");
+
+  // Compute the left position value
+  const computedTextLeft = `calc(${position}% - 50px)`;
+  const computedCircleLeft = `calc(${position}% - 10px)`;
+
+  const zIndexClass =
+    section.id === expandedSection || section.id === collapsingSection
+      ? "z-10"
+      : "z-0";
+
   return (
     <>
       {/* Section Title */}
-      <motion.p
-        className="absolute text-center text-slate-100"
-        animate={{
-          opacity: isSelected && section.id !== expandedSection ? 1 : 0,
-          y: isSelected ? "-30%" : "70%",
-        }}
-        transition={{ duration: 0.8, ease: "backInOut" }}
-        style={{
-          width: "100px",
-          left: `calc(${position}% - 50px)`,
-          opacity: "0",
-        }}
-      >
-        {section.title}
-      </motion.p>
+      <SectionTitle
+        isSelected={isSelected}
+        section={section}
+        expandedSection={expandedSection}
+        computedTextLeft={computedTextLeft}
+      />
 
       {/* Section Card */}
       <motion.div
-        className="absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2"
+        className={`absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2 ${zIndexClass} object-cover`}
         key={section.id}
         initial={false}
         animate={
@@ -65,27 +74,20 @@ const SectionBar = ({
             duration:
               expandedSection === section.id || collapsingSection === section.id
                 ? 1
-                : 0.7,
+                : 0.8,
             ease:
               expandedSection === section.id || collapsingSection === section.id
                 ? "backInOut"
                 : "backInOut",
           },
           left: { duration: 1, ease: "backInOut" },
-          borderColor: { duration: 1, ease: "anticipate" },
-          default: { duration: 1, ease: "backInOut" },
+          // borderColor: { duration: 1, ease: "anticipate" },
+          // default: { duration: 1, ease: "backInOut" },
         }}
         onAnimationComplete={() => {
           if (expandedSection === -1) {
             setCollapsingSection(-1);
           }
-        }}
-        style={{
-          objectFit: "cover",
-          zIndex:
-            section.id === expandedSection || section.id === collapsingSection
-              ? 1
-              : 0,
         }}
         onClick={() => handleClick(section.id)}
         onMouseEnter={() => handleMouseEnter(index)}
@@ -94,16 +96,8 @@ const SectionBar = ({
         <Image
           src={theme === "dark" ? section.imageSrcNuit : section.imageSrcJour}
           alt={section.title}
-          fill="true"
-          priority={true}
-          sizes="100vh"
           className="object-cover"
-          placeholder="blur"
-          blurDataURL={
-            theme === "dark"
-              ? section.imageSrcNuit.blurDataURL
-              : section.imageSrcJour.blurDataURL
-          }
+          fill={true}
         />
 
         {/* Inner Section */}
@@ -133,42 +127,10 @@ const SectionBar = ({
           }
         >
           {/* Close Button */}
-          <motion.button
-            className={`absolute flex justify-center rounded-none sm:rounded-full items-center top-0 right-0 w-8 h-8 sm:w-9 sm:h-9 m-2 z-20 ${
-              expandedSection === section.id
-                ? "pointer-events-auto"
-                : "pointer-events-none"
-            }`}
-            initial={{ opacity: 0 }}
-            animate={
-              expandedSection === section.id
-                ? {
-                    opacity: 1,
-                    transition: {
-                      duration: 1.5,
-                      delay: 1.5,
-                      ease: "backInOut",
-                    },
-                  }
-                : {
-                    opacity: 0,
-                    transition: {
-                      duration: 0.5,
-                      delay: 0,
-                      ease: "backInOut",
-                    },
-                  }
-            }
+          <CloseButton
+            isExpanded={expandedSection === section.id}
             onClick={handleClose}
-          >
-            <Image
-              className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-transform drop-shadow-md hover:-rotate-90 hover:scale-110 focus:scale-105"
-              src="/assets/close.svg"
-              width={100}
-              height={100}
-              alt="circle"
-            />
-          </motion.button>
+          />
 
           {/* Circle Button */}
           <Link
@@ -203,7 +165,7 @@ const SectionBar = ({
               }
             >
               <Image
-                className="relative w-6 h-6 transition-transform drop-shadow-md group-hover:scale-110 group-hover:-rotate-90 group-focus:scale-105"
+                className="relative w-6 h-6 transition-transform group-hover:scale-110 group-hover:-rotate-90 group-focus:scale-105"
                 src="/assets/circle.svg"
                 width={100}
                 height={100}
@@ -213,7 +175,7 @@ const SectionBar = ({
           </Link>
 
           {/* Inner Text */}
-          <div className="p-5 w-full text-center text-slate-950 dark:text-slate-100 drop-shadow-md bg-opacity-50 pointer-events-none bg-gradient-to-t from-slate-50 dark:from-slate-950">
+          <div className="p-5 w-full text-center text-slate-950 dark:text-slate-100 bg-opacity-50 pointer-events-none bg-gradient-to-t from-slate-50 dark:from-slate-950">
             <h2 className="text-xl sm:text-2xl uppercase">{section.title}</h2>
             <p className="mt-5 mb-2 w-full sm:w-3/5 mx-auto text-sm font-nunito">
               {section.description}
@@ -222,33 +184,14 @@ const SectionBar = ({
         </motion.div>
       </motion.div>
       {/* Outer Bottom Circle */}
-      <motion.div
-        className={`absolute bottom-9 ${
-          isSelected ? " pointer-events-auto" : " pointer-events-none"
-        }`}
-        animate={{
-          opacity: isSelected && section.id !== expandedSection ? 1 : 0,
-          y: isSelected ? "-130%" : "0%",
-        }}
-        transition={{ duration: 1, ease: "backInOut" }}
-        style={{
-          width: "20px",
-          left: `calc(${position}% - 10px)`,
-          opacity: "0",
-        }}
-      >
-        <Link href={section.url}>
-          <Image
-            className="hover:-rotate-90 transition"
-            src="/assets/circle.svg"
-            width={100}
-            height={100}
-            alt="circle"
-          />
-        </Link>
-      </motion.div>
+      <CircleIconButton
+        isSelected={isSelected}
+        section={section}
+        expandedSection={expandedSection}
+        computedCircleLeft={computedCircleLeft}
+      />
     </>
   );
-};
+});
 
 export default SectionBar;

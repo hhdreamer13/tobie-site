@@ -13,6 +13,24 @@ import useTextAnimation from "./useTextAnimation";
 import useFormAnimation from "./useFormAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
 
+// import the necessary images for caching
+import group5BushesBottom from "public/leaf/group5-bushes-bottom.webp";
+import group5RockRight from "public/leaf/group5-rock-right.webp";
+import group4BushesLeft from "public/leaf/group4-bushes-left.webp";
+import group4BushesRight from "public/leaf/group4-bushes-right.webp";
+import group3BranchLeft from "public/leaf/group3-branch-left.webp";
+import group3BranchRight from "public/leaf/group3-branch-right.webp";
+import group2LeafBottom from "public/leaf/group2-leaf-bottom.webp";
+import group2LeafLeftBottom from "public/leaf/group2-leaf-left-bottom.webp";
+import group2LeafLeftTop from "public/leaf/group2-leaf-left-top.webp";
+import group2LeafRightTop from "public/leaf/group2-leaf-right-top.webp";
+import group2LeafRight from "public/leaf/group2-leaf-right.webp";
+import group1LeafLeftBottom from "public/leaf/group1-leaf-left-bottom.webp";
+import group1LeafLeftTop from "public/leaf/group1-leaf-left-top.webp";
+import group1LeafRightBottom from "public/leaf/group1-leaf-right-bottom.webp";
+import group1LeafRightTop from "public/leaf/group1-leaf-right-top.webp";
+import bgSecondary from "public/leaf/bg-secondary.webp";
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Mobile browser screen size unchange with scrolling
@@ -94,7 +112,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group5Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group5-bushes-bottom.webp"
+            src={group5BushesBottom}
             alt="Decor Tobie"
             data-group="5"
             data-position="bottom"
@@ -105,7 +123,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group5Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group5-rock-right.webp"
+            src={group5RockRight}
             alt="Decor Tobie"
             data-group="5"
             data-position="right-bottom"
@@ -117,7 +135,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group4Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group4-bushes-left.webp"
+            src={group4BushesLeft}
             alt="Decor Tobie"
             data-group="4"
             data-position="left-bottom"
@@ -128,7 +146,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group4Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group4-bushes-right.webp"
+            src={group4BushesRight}
             alt="Decor Tobie"
             data-group="4"
             data-position="right-bottom"
@@ -140,7 +158,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group3Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group3-branch-left.webp"
+            src={group3BranchLeft}
             alt="Decor Tobie"
             data-group="3"
             data-position="left"
@@ -151,7 +169,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group3Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group3-branch-right.webp"
+            src={group3BranchRight}
             alt="Decor Tobie"
             data-group="3"
             data-position="right-top"
@@ -163,7 +181,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group2-leaf-bottom.webp"
+            src={group2LeafBottom}
             alt="Decor Tobie"
             data-group="2"
             data-position="bottom"
@@ -174,7 +192,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group2-leaf-left-bottom.webp"
+            src={group2LeafLeftBottom}
             alt="Decor Tobie"
             data-group="2"
             data-position="left-bottom"
@@ -185,7 +203,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group2-leaf-left-top.webp"
+            src={group2LeafLeftTop}
             alt="Decor Tobie"
             data-group="2"
             data-position="left-top"
@@ -196,7 +214,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group2-leaf-right-top.webp"
+            src={group2LeafRightTop}
             alt="Decor Tobie"
             data-group="2"
             data-position="right-top"
@@ -207,7 +225,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group2-leaf-right.webp"
+            src={group2LeafRight}
             alt="Decor Tobie"
             data-group="2"
             data-position="right"
@@ -219,7 +237,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group1-leaf-left-bottom.webp"
+            src={group1LeafLeftBottom}
             alt="Decor Tobie"
             data-group="1"
             data-position="left-bottom"
@@ -230,7 +248,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group1-leaf-left-top.webp"
+            src={group1LeafLeftTop}
             alt="Decor Tobie"
             data-group="1"
             data-position="left-top"
@@ -241,7 +259,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group1-leaf-right-bottom.webp"
+            src={group1LeafRightBottom}
             alt="Decor Tobie"
             data-group="1"
             data-position="right-bottom"
@@ -252,7 +270,7 @@ const AboutUs = () => {
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src="/leaf/group1-leaf-right-top.webp"
+            src={group1LeafRightTop}
             alt="Decor Tobie"
             data-group="1"
             data-position="right-top"
@@ -264,7 +282,7 @@ const AboutUs = () => {
             ref={bgSecRef}
             style={{ opacity: 0 }}
             className="fullscreenImage absolute"
-            src="/leaf/bg-secondary.webp"
+            src={bgSecondary}
             alt="background Tobie 2"
           />
           {/* Scroll icon */}
@@ -298,13 +316,25 @@ const AboutUs = () => {
           <section className="fullscreenImage absolute">
             <div
               ref={textRef}
-              className="mx-2 flex h-full flex-col items-center justify-center gap-10 px-2 text-center"
+              className="mx-auto flex h-full w-3/5 flex-col items-center justify-center gap-10 px-2 text-center"
             >
-              <h2 className="font-caveat text-2xl leading-normal text-slate-900 md:text-3xl">
-                Tobie et ses amis sont sur le point d'arriver ! <br />
-                Une aventure incroyable nous attend. <br />
-                Sois parmi les premiers à le savoir.
-              </h2>
+              <h3 className="text-2xl leading-normal text-slate-900 md:text-3xl">
+                L’arbre comme alternative au merchandising de la série
+                d’animation
+              </h3>
+              <p className="text-xl leading-normal text-slate-900 md:text-2xl">
+                Nous le savons, les barrières psychologiques à l'action contre
+                le changement climatique sont puissantes. Nous sommes de plus en
+                plus lucides, documentés, et pourtant toujours aussi
+                impuissants. L'information ne suffit pas, il faut être touchés
+                dans nos émotions pour se sentir concerné. Nous sommes
+                convaincus que les récits inspirants et vraisemblables peuvent
+                transformer l'eco-anxiété en éco-empathie et permettre aux gens
+                de passer à l'action Nous pouvons contribuer, à notre échelle, à
+                limiter la surconsommation et à sensibiliser les générations
+                futures aux merveilles qui garantiront leur survie. C'est le
+                cœur du projet Les amis de Tobie.
+              </p>
             </div>
           </section>
           {/* Form */}
