@@ -1,14 +1,29 @@
+"use client";
+
 import Image from "next/image";
 
-const LocationFrame = ({ item }) => {
+const LocationFrame = ({ item, isOpen, setIsOpen }) => {
   if (!item) {
     return null;
   }
   return (
-    <div className="w-full rounded-2xl p-5 flex flex-col md:flex-row gap-5 justify-start items-center bg-main">
+    <div className="relative w-full h-full rounded-xl p-5 flex flex-col sm:flex-row gap-5 justify-start items-center bg-main">
+      {/* Enlarge Button */}
+      <button
+        className="absolute top-0 right-0"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <Image
+          className="relative w-8 h-8 sm:w-9 sm:h-9"
+          src="/assets/enlarge.svg"
+          width={100}
+          height={100}
+          alt="close"
+        />
+      </button>
       <div className="">
         <Image
-          className="w-full h-full object-cover rounded-t-2xl md:rounded-l-2xl overflow-hidden"
+          className="w-full h-60 object-cover rounded-2xl overflow-hidden"
           alt=""
           src={item.imageSrc}
           height={400}
@@ -16,7 +31,7 @@ const LocationFrame = ({ item }) => {
         />
       </div>
 
-      <div className="w-full md:w-1/2">
+      <div className="w-full sm:w-1/2">
         <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
         <p className="mb-4">{item.description}</p>
 

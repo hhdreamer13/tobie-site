@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const fadeInOut = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
-  exit: { opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
+  visible: { opacity: 1, transition: { duration: 1, ease: "backInOut" } },
+  exit: { opacity: 0, transition: { duration: 0.7, ease: "backInOut" } },
 };
 
 const scaleRotate = {
@@ -13,12 +13,12 @@ const scaleRotate = {
   visible: {
     scale: 1,
     rotate: 0,
-    transition: { duration: 0.5, ease: "backOut" },
+    transition: { duration: 1, ease: "backInOut" },
   },
   exit: {
     scale: 0.1,
     rotate: -180,
-    transition: { duration: 0.5, ease: "backIn" },
+    transition: { duration: 0.7, ease: "backInOut" },
   },
 };
 
@@ -27,13 +27,10 @@ const InterceptModal = ({ children, isOpen, setIsOpen }) => {
   const wrapper = useRef(null);
   const router = useRouter();
 
+  console.log(isOpen);
   const onDismiss = useCallback(() => {
     setIsOpen(false);
-
-    setTimeout(() => {
-      router.back();
-    }, 500);
-  }, [router, setIsOpen]);
+  }, [setIsOpen]);
 
   const onClick = useCallback(
     (e) => {
@@ -51,13 +48,19 @@ const InterceptModal = ({ children, isOpen, setIsOpen }) => {
     [onDismiss],
   );
 
+  const handleExitComplete = useCallback(() => {
+    if (!isOpen) {
+      router.back();
+    }
+  }, [router, isOpen]);
+
   useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [onKeyDown]);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
       {isOpen && (
         <motion.div
           key="modal"

@@ -18,7 +18,7 @@ export default function SectionModalPage({ params }) {
 
   return (
     <InterceptModal item={item} isOpen={isOpen} setIsOpen={setIsOpen}>
-      <NewsFrame item={item} />
+      <NewsFrame item={item} isOpen={isOpen} setIsOpen={setIsOpen} />
     </InterceptModal>
   );
 }

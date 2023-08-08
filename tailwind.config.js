@@ -30,11 +30,11 @@ module.exports = {
       addBase({
         ":root": {
           "--color-main": theme("colors.slate.950"), // light theme colors
-          "--bg-main": theme("colors.slate.50"), // light theme colors
+          "--bg-main": theme("colors.slate.100"), // light theme colors
         },
         ".dark": {
           // <-- use '.dark' instead of '[data-theme="dark"]'
-          "--color-main": theme("colors.slate.50"), // dark theme colors
+          "--color-main": theme("colors.slate.100"), // dark theme colors
           "--bg-main": theme("colors.slate.950"), // dark theme colors
         },
       });

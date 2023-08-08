@@ -10,7 +10,8 @@ import "@/styles/mapStyles.css";
 
 const mapStyles = {
   day: "mapbox://styles/hhdreamer/clktutpw600v301phdu4n75uo",
-  night: "mapbox://styles/hhdreamer/clkst1qrj00de01o89qihel0x",
+  night: "mapbox://styles/hhdreamer/clku183t7000001p8dfio6hq7",
+  nightOld: "mapbox://styles/hhdreamer/clkst1qrj00de01o89qihel0x",
   dayOld: "mapbox://styles/hhdreamer/clksqezx100ir01pe0obtccfg",
   default: "mapbox://styles/mapbox/streets-v12",
 };

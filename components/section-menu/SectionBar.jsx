@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import useDeviceType from "@/hooks/useDeviceType";
-import CloseButton from "../common/CloseButton";
+import CloseButton from "./CloseButton";
 import CircleIconButton from "./CircleIconButton";
 import SectionTitle from "./SectionTitle";
 import { memo } from "react";
