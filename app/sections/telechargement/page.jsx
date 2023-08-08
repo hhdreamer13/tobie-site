@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import SectionHeader from "@/components/common/SectionHeader";
+import DownloadSection from "@/components/downloads/Download";
 
 export default function SectionPage() {
   return (
@@ -14,7 +15,7 @@ export default function SectionPage() {
         <p className="mt-2 font-nunito">C'est la page de téléchargement</p>
       </div>
       <div className="flex justify-center items-start w-full h-full ">
-        {/* <NewsDisplay news={news} /> */}
+        <DownloadSection />
       </div>
     </div>
   );

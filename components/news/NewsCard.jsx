@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import MaximizeIcon from "../common/MaximizeIcon";
 
 const NewsCard = ({ newsItem }) => {
   return (
@@ -16,6 +17,9 @@ const NewsCard = ({ newsItem }) => {
       <div className="group relative dark:bg-opacity-75 p-4 rounded-lg rounded-tl-lg sm:rounded-tl-none shadow-lg flex-auto sm:w-2/3 h-52 mt-16 sm:mt-8">
         <div className="absolute -inset-1 bg-gradient-to-br from-slate-50 dark:from-slate-950 to-teal-100 dark:to-teal-800 rounded-lg blur opacity-25 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
         <div className="absolute top-0 left-0 flex-auto w-full h-full bg-white dark:bg-slate-950 bg-opacity-75 dark:bg-opacity-80 p-4 rounded-lg rounded-tl-lg sm:rounded-tl-none">
+          <Link href={newsItem.linkUrl} className="absolute top-0 right-0 m-2">
+            <MaximizeIcon />
+          </Link>
           <h3 className="text-2xl font-bold font-nunito mb-1">
             {newsItem.title}
           </h3>
@@ -25,7 +29,7 @@ const NewsCard = ({ newsItem }) => {
               {newsItem.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="ml-2 text-xs text-white bg-emerald-500 rounded-full px-2"
+                  className="ml-2 text-xs text-white bg-green-500 rounded-full px-2"
                 >
                   {tag}
                 </span>
@@ -37,12 +41,12 @@ const NewsCard = ({ newsItem }) => {
               {newsItem.description}
             </p>
           </div>
-          <Link
+          <a
             href={newsItem.linkUrl}
             className="text-sky-500 hover:underline hover:text-sky-600 transition-colors duration-200 ease-in-out"
           >
             Lire la suite
-          </Link>
+          </a>
         </div>
       </div>
     </li>

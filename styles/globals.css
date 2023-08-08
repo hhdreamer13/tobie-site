@@ -32,3 +32,17 @@ h2 {
     bottom: 34px;
   }
 }
+
+/* tailwind.css or your stylesheet */
+[data-scroll-container] {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.gallery__item {
+  /* ... other styles ... */
+  display: inline-block;
+}

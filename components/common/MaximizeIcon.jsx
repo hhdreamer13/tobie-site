@@ -1,14 +1,14 @@
 const MaximizeIcon = () => {
   return (
     <svg
-      className="text-main"
+      className="text-main hover:scale-105"
       width="24"
       height="24"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g
+      {/* <g
         id="SVGRepo_bgCarrier"
         strokeWidth="0"
         transform="translate(3.3599999999999994,3.3599999999999994), scale(0.72)"
@@ -22,7 +22,7 @@ const MaximizeIcon = () => {
           fill="var(--bg-main)"
           strokeWidth="0"
         />
-      </g>
+      </g> */}
       <g
         id="SVGRepo_tracerCarrier"
         strokeLinecap="round"

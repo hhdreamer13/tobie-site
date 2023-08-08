@@ -27,7 +27,6 @@ const InterceptModal = ({ children, isOpen, setIsOpen }) => {
   const wrapper = useRef(null);
   const router = useRouter();
 
-  console.log(isOpen);
   const onDismiss = useCallback(() => {
     setIsOpen(false);
   }, [setIsOpen]);
@@ -74,7 +73,7 @@ const InterceptModal = ({ children, isOpen, setIsOpen }) => {
         >
           <motion.div
             ref={wrapper}
-            className="w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6"
+            className="w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6 h-4/5"
             variants={scaleRotate}
           >
             {children}

@@ -42,6 +42,7 @@ export default function RootLayout({ children, modal }) {
       >
         <Providers>
           <Navbar />
+
           <main className="flex flex-grow justify-center items-center">
             {children}
             {modal}
