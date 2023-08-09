@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import SectionHeader from "@/components/common/SectionHeader";
-import DownloadSection from "@/components/downloads/Download";
+import DownloadSection from "@/components/downloads/DownloadSection";
 
 export default function SectionPage() {
   return (

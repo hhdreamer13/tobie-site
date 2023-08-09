@@ -20,7 +20,7 @@ const MapDisplay = ({ locations }) => {
             <MapMenu
               key={location.id}
               location={location}
-              isLocationSelected={location === selectedLocation} // Pass whether this location is selected
+              isLocationSelected={location === selectedLocation}
               selectedLocation={selectedLocation}
               onSelectLocation={handleSelectLocation}
             />
