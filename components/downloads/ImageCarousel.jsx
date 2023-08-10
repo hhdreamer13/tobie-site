@@ -21,28 +21,28 @@ const ImageCarousel = () => {
   //     exit: (direction) => ({ x: direction < 0 ? 1000 : -1000, opacity: 0 }),
   //   };
 
-  //   const slideTransition = {
-  //     hidden: (direction) => ({
-  //       x: direction > 0 ? 1000 : -1000,
-  //       opacity: 0,
-  //       rotateY: direction > 0 ? -45 : 45,
-  //     }),
-  //     visible: {
-  //       x: 0,
-  //       opacity: 1,
-  //       rotateY: 0,
-  //       transition: {
-  //         x: { type: "spring", stiffness: 300, damping: 30 },
-  //         opacity: { duration: 0.5 },
-  //         rotateY: { duration: 0.5 },
-  //       },
-  //     },
-  //     exit: (direction) => ({
-  //       x: direction < 0 ? 1000 : -1000,
-  //       opacity: 0,
-  //       rotateY: direction < 0 ? 45 : -45,
-  //     }),
-  //   };
+  const slideTransition = {
+    hidden: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      rotateY: direction > 0 ? -45 : 45,
+    }),
+    visible: {
+      x: 0,
+      opacity: 1,
+      rotateY: 0,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.5 },
+        rotateY: { duration: 0.5 },
+      },
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      rotateY: direction < 0 ? 45 : -45,
+    }),
+  };
 
   //   const slideTransition = {
   //     hidden: (direction) => ({ y: direction > 0 ? 1000 : -1000, opacity: 0 }),
@@ -107,36 +107,36 @@ const ImageCarousel = () => {
   //     }),
   //   };
 
-  const slideTransition = {
-    hidden: (direction) => ({
-      rotateY: direction > 0 ? -90 : 90,
-      translateX: 1000,
-      translateY: -1000,
-      scale: 0.8,
-      opacity: 0,
-    }),
-    visible: {
-      rotateY: 0,
-      translateX: 0,
-      translateY: 0,
-      scale: 1,
-      opacity: 1,
-      transition: {
-        rotateY: { type: "spring", stiffness: 300, damping: 30 },
-        translateX: { type: "spring", stiffness: 300, damping: 30 },
-        translateY: { type: "spring", stiffness: 300, damping: 30 },
-        scale: { duration: 0.5 },
-        opacity: { duration: 0.5 },
-      },
-    },
-    exit: (direction) => ({
-      rotateY: direction > 0 ? 90 : -90,
-      translateX: 1000,
-      translateY: 1000,
-      scale: 0.8,
-      opacity: 0,
-    }),
-  };
+  // const slideTransition = {
+  //   hidden: (direction) => ({
+  //     rotateY: direction > 0 ? -90 : 90,
+  //     translateX: 1000,
+  //     translateY: -1000,
+  //     scale: 0.8,
+  //     opacity: 0,
+  //   }),
+  //   visible: {
+  //     rotateY: 0,
+  //     translateX: 0,
+  //     translateY: 0,
+  //     scale: 1,
+  //     opacity: 1,
+  //     transition: {
+  //       rotateY: { type: "spring", stiffness: 300, damping: 30 },
+  //       translateX: { type: "spring", stiffness: 300, damping: 30 },
+  //       translateY: { type: "spring", stiffness: 300, damping: 30 },
+  //       scale: { duration: 0.5 },
+  //       opacity: { duration: 0.5 },
+  //     },
+  //   },
+  //   exit: (direction) => ({
+  //     rotateY: direction > 0 ? 90 : -90,
+  //     translateX: 1000,
+  //     translateY: 1000,
+  //     scale: 0.8,
+  //     opacity: 0,
+  //   }),
+  // };
 
   const handleNext = () => {
     if (currentIndex < pdfs.length - 1) {
