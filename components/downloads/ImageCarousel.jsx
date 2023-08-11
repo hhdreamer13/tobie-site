@@ -143,7 +143,7 @@ const ImageCarousel = () => {
           }}
         >
           <Image
-            className="object-cover relative w-[340px] h-[340px]"
+            className="object-cover relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px]"
             src="/photos/handle-circle.webp"
             alt=""
             width={280}
@@ -154,7 +154,7 @@ const ImageCarousel = () => {
 
       <a
         href={currentPdf.downloadLink}
-        className="absolute bottom-44 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main text-lg"
+        className="absolute bottom-20 sm:bottom-44 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main text-lg"
       >
         {currentPdf.title}
       </a>
