@@ -6,10 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [rotation, setRotation] = useState(30);
+  const [rotation, setRotation] = useState(35);
+  const [translateValues, setTranslateValues] = useState({
+    x: "0px",
+    y: "0px",
+  });
 
   const direction = useRef();
   const audioRef = useRef(null);
+  const handleRef = useRef(null);
 
   const slideTransition = {
     hidden: (direction) => ({
@@ -57,32 +62,8 @@ const ImageCarousel = () => {
 
     // After a short delay, begin the slower return rotation
     setTimeout(() => {
-      setRotation(30);
+      setRotation(35);
     }, 400);
-  };
-
-  const handleNext = () => {
-    if (currentIndex < pdfs.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      setCurrentIndex(0); // loop back to the first image
-    }
-    direction.current = 1; // right to left
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    } else {
-      setCurrentIndex(pdfs.length - 1); // loop to the last image
-    }
-    direction.current = -1; // left to right
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
   };
 
   const currentPdf = pdfs[currentIndex];
@@ -91,16 +72,29 @@ const ImageCarousel = () => {
     audioRef.current.volume = 0.4; // This sets the volume to 50%
   }, []);
 
+  useEffect(() => {
+    if (handleRef.current) {
+      // Sample logic: calculate the translation based on the element's dimensions.
+      // You'd replace this with your actual calculations.
+      const rect = handleRef.current.getBoundingClientRect();
+      setTranslateValues({
+        x: `calc(50% - ${rect.width / 10}px)`,
+        y: `calc(50% + ${rect.height / 0.65}px)`,
+      });
+    }
+  }, []);
+
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex justify-center items-center w-full min-h-screen">
+        {/* Inner Circle */}
         <Image
           src="/photos/download-page-foreground.webp"
           alt="Scene"
           fill={true}
           quality={100}
           sizes="100vh"
-          className="object-cover"
+          className="object-cover opacity-40"
         />
         <AnimatePresence mode="wait" custom={direction.current}>
           <motion.div
@@ -151,65 +145,52 @@ const ImageCarousel = () => {
       <audio ref={audioRef} src="/click2.wav" preload="auto"></audio>
 
       {/* Handle */}
-      <motion.svg
-        className="absolute top-0 left-0 w-full h-full"
-        style={{ transformOrigin: "50% 50%" }}
-        animate={{ rotate: rotation }}
-        transition={{
-          type: "spring",
-          stiffness: 100, // adjust these values for different spring effects
-          damping: 20,
-        }}
-      >
-        <circle
-          cx="50%"
-          cy="50%"
-          r="90"
-          stroke="transparent"
-          strokeWidth="4"
-          fill="none" // Gray circle for visibility
-        />
 
-        <foreignObject
-          x="calc(50% - 20px)" // Half of the new width to center it
-          y="calc(50% + 75px)" // Adjusted to keep the image at the bottom of the circle
-          width="40"
-          height="70"
-          onClick={toggleRotation} // Add the onClick directly here
-          className="cursor-move"
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          ref={handleRef}
+          className="relative"
+          animate={{ rotate: rotation }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          }}
         >
-          <svg width="40" height="70" xmlns="http://www.w3.org/2000/svg">
-            <image
-              href="/photos/handle.webp"
-              width="40"
-              height="70"
-              x="0"
-              y="0"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 62.26 255.08"
+            width="40"
+            height="60"
+            style={{
+              transform: `translate(${translateValues.x}, ${translateValues.y})`,
+            }}
+            onClick={toggleRotation}
+          >
+            <path
+              fill="#e7e6da"
+              d="M44.34,236.88c7.24-36.6-21.44-102.72-22.01-130.94-.99-48.73,21.97-57.62,29.4-73.03,.02-.05,.04-.09,.06-.13,2.03-3.28,3.22-7.13,3.22-11.27C55.01,9.63,45.38,0,33.51,0,24.47,0,16.75,5.58,13.57,13.47c0,.02-.02,.03-.03,.05C1.06,36.38-3.62,72.06,3.01,96.88c8.5,31.86,23.84,57.48,17.23,127.72-3.29,34.93,18.43,40.95,24.1,12.28Z"
+            />
+            <path
+              fill="#fff0dc"
+              d="M51.59,236.88c7.24-36.6-21.44-102.72-22.01-130.94-.99-48.73,21.97-57.62,29.4-73.03,.02-.05,.04-.09,.06-.13,2.03-3.28,3.22-7.13,3.22-11.27C62.26,9.63,52.63,0,40.76,0c-9.03,0-16.75,5.58-19.93,13.47,0,.02-.02,.03-.03,.05C8.31,36.38,3.63,72.06,10.26,96.88c8.5,31.86,23.84,57.48,17.23,127.72-3.29,34.93,18.43,40.95,24.1,12.28Z"
+            />
+            <path
+              stroke="#ab6a28"
+              strokeWidth="1"
+              fill="none"
+              d="M20.82,13.47s-.02,.03-.03,.05C8.31,36.38,3.63,72.06,10.26,96.88c8.5,31.86,23.84,57.48,17.23,127.72"
             />
           </svg>
-        </foreignObject>
-      </motion.svg>
+        </motion.div>
+      </div>
 
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-4 bg-slate-100/40 rounded-full"
-      >
-        Précedent
-      </button>
-
-      <button
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-4 bg-slate-100/40 rounded-full"
-      >
-        Suivant
-      </button>
-
-      <a
+      {/* <a
         href={currentPdf.downloadLink}
-        className="absolute bottom-48 left-1/2 transform -translate-x-1/2 z-10 p-4 text-main rounded-lg"
+        className="absolute bottom-60 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main rounded-lg"
       >
         {currentPdf.title}
-      </a>
+      </a> */}
     </div>
   );
 };

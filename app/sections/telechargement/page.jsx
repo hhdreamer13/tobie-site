@@ -15,9 +15,9 @@ export default function SectionPage() {
         </h2>
         <p className="mt-2 font-nunito">C'est la page de téléchargement</p>
       </div> */}
-      <div className="flex justify-center items-start w-full h-full ">
-        <ImageCarousel />
-      </div>
+      {/* <div className="flex justify-center items-start w-full h-full "> */}
+      <ImageCarousel />
+      {/* </div> */}
     </div>
   );
 }

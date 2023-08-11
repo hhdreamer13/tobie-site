@@ -33,6 +33,8 @@ h2 {
   }
 }
 
-foreignObject {
-  pointer-events: bounding-box;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }

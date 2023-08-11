@@ -128,48 +128,33 @@ const ImageCarousel = () => {
       <audio ref={audioRef} src="/click2.wav" preload="auto"></audio>
 
       {/* Handle */}
-      <motion.svg
-        className="absolute top-0 left-0 w-full h-full"
-        style={{ transformOrigin: "50% 50%" }}
-        animate={{ rotate: rotation }}
-        transition={{
-          type: "spring",
-          stiffness: 100, // adjust these values for different spring effects
-          damping: 20,
-        }}
-      >
-        <circle
-          cx="50%"
-          cy="50%"
-          r="90"
-          stroke="transparent"
-          strokeWidth="4"
-          fill="none" // Gray circle for visibility
-        />
-
-        <foreignObject
-          x="calc(50% - 20px)" // Half of the new width to center it
-          y="calc(50% + 95px)" // Adjusted to keep the image at the bottom of the circle
-          width="40"
-          height="70"
-          onClick={toggleRotation} // Add the onClick directly here
-          className="cursor-pointer"
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          className="relative"
+          animate={{ rotate: rotation }}
+          transition={{
+            type: "spring",
+            stiffness: 100, // adjust these values for different spring effects
+            damping: 20,
+          }}
+          onClick={toggleRotation}
+          style={{
+            clipPath: "polygon(44% 70%, 56% 70%, 64% 100%, 36% 100%)",
+          }}
         >
-          <svg width="40" height="70" xmlns="http://www.w3.org/2000/svg">
-            <image
-              href="/photos/handle.webp"
-              width="40"
-              height="70"
-              x="0"
-              y="0"
-            />
-          </svg>
-        </foreignObject>
-      </motion.svg>
+          <Image
+            className="object-cover relative w-[340px] h-[340px]"
+            src="/photos/handle-circle.webp"
+            alt=""
+            width={280}
+            height={280}
+          />
+        </motion.div>
+      </div>
 
       <a
         href={currentPdf.downloadLink}
-        className="absolute bottom-60 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main rounded-lg"
+        className="absolute bottom-44 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main text-lg"
       >
         {currentPdf.title}
       </a>
