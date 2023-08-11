@@ -1,42 +1,37 @@
 const pdfs = [
   {
-    title: "Vol.1",
+    title: "Genèse de la Série",
     description:
-      "Rejoignez Tobie dans sa première aventure palpitante à travers le pays magique.",
+      "Plongez dans les origines de l'adaptation animée de Tobie Lolness et découvrez comment tout a commencé.",
     imageSrc: "/photos/01.webp",
-
     downloadLink: "/chemin/vers/pdf/vol1.pdf",
   },
   {
-    title: "Vol.2",
+    title: "Arbres & Feuilles: L'Univers Visuel",
     description:
-      "Tobie résout le plus grand mystère de sa vie dans cette suite passionnante.",
+      "Explorez le design des décors boisés et le soin apporté à chaque feuille qui constitue le monde de Tobie.",
     imageSrc: "/photos/02.webp",
-
     downloadLink: "/chemin/vers/pdf/vol2.pdf",
   },
   {
-    title: "Vol.3",
+    title: "Personnages en Profondeur",
     description:
-      "Tobie s'associe avec ses amis pour sauver le village d'une menace imminente.",
+      "Découvrez les secrets de la conception de chaque personnage, leur évolution et leur rôle dans l'univers de Tobie.",
     imageSrc: "/photos/03.webp",
-
     downloadLink: "/chemin/vers/pdf/vol3.pdf",
   },
   {
-    title: "Vol.4",
+    title: "L'Artbook Officiel",
     description:
-      "Un twist où Tobie se retrouve dans un univers parallèle rempli de merveilles.",
+      "Une collection riche et détaillée des œuvres d'art créées spécialement pour la série Tobie Lolness.",
     imageSrc: "/photos/04.webp",
-
     downloadLink: "/chemin/vers/pdf/vol4.pdf",
   },
   {
-    title: "Vol.5",
+    title: "De la Page à l'Écran",
     description:
-      "Découvrez le voyage de Tobie à travers les pics enneigés et les cavernes glacées.",
+      "Le processus passionnant de transformation du livre à l'écran, avec des interviews exclusives de l'équipe de création.",
     imageSrc: "/photos/05.webp",
-
     downloadLink: "/chemin/vers/pdf/vol5.pdf",
   },
 ];

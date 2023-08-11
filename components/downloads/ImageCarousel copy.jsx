@@ -61,6 +61,30 @@ const ImageCarousel = () => {
     }, 400);
   };
 
+  const handleNext = () => {
+    if (currentIndex < pdfs.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    } else {
+      setCurrentIndex(0); // loop back to the first image
+    }
+    direction.current = 1; // right to left
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    } else {
+      setCurrentIndex(pdfs.length - 1); // loop to the last image
+    }
+    direction.current = -1; // left to right
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+
   const currentPdf = pdfs[currentIndex];
 
   useEffect(() => {
@@ -70,14 +94,13 @@ const ImageCarousel = () => {
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex justify-center items-center w-full min-h-screen">
-        {/* Inner Circle */}
         <Image
           src="/photos/download-page-foreground.webp"
           alt="Scene"
           fill={true}
           quality={100}
           sizes="100vh"
-          className="object-cover opacity-40"
+          className="object-cover"
         />
         <AnimatePresence mode="wait" custom={direction.current}>
           <motion.div
@@ -149,11 +172,11 @@ const ImageCarousel = () => {
 
         <foreignObject
           x="calc(50% - 20px)" // Half of the new width to center it
-          y="calc(50% + 95px)" // Adjusted to keep the image at the bottom of the circle
+          y="calc(50% + 75px)" // Adjusted to keep the image at the bottom of the circle
           width="40"
           height="70"
           onClick={toggleRotation} // Add the onClick directly here
-          className="cursor-pointer"
+          className="cursor-move"
         >
           <svg width="40" height="70" xmlns="http://www.w3.org/2000/svg">
             <image
@@ -167,9 +190,23 @@ const ImageCarousel = () => {
         </foreignObject>
       </motion.svg>
 
+      <button
+        onClick={handlePrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-4 bg-slate-100/40 rounded-full"
+      >
+        Précedent
+      </button>
+
+      <button
+        onClick={handleNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-4 bg-slate-100/40 rounded-full"
+      >
+        Suivant
+      </button>
+
       <a
         href={currentPdf.downloadLink}
-        className="absolute bottom-60 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main rounded-lg"
+        className="absolute bottom-48 left-1/2 transform -translate-x-1/2 z-10 p-4 text-main rounded-lg"
       >
         {currentPdf.title}
       </a>
