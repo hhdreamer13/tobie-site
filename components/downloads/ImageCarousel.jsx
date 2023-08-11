@@ -67,6 +67,15 @@ const ImageCarousel = () => {
     audioRef.current.volume = 0.4; // This sets the volume to 50%
   }, []);
 
+  function setRealViewportHeight() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  // Set the value when the window is loaded or resized
+  window.addEventListener("resize", setRealViewportHeight);
+  window.addEventListener("load", setRealViewportHeight);
+
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex justify-center items-center w-full min-h-screen">
