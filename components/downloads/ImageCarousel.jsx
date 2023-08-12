@@ -13,32 +13,35 @@ const ImageCarousel = () => {
 
   const slideTransition = {
     hidden: (direction) => ({
-      rotateY: direction > 0 ? -90 : 90,
-      translateX: direction > 0 ? -200 : 200,
-      translateY: 200,
-      scale: 0.8,
+      scaleX: direction > 0 ? 0 : 1,
+      scaleY: 0,
+      translateX: direction > 0 ? -80 : 80, // Adjust these values for finer control over the starting position
+      translateY: 80, // Adjust this value for finer control over the starting position
       opacity: 0,
     }),
     visible: {
-      rotateY: 0,
+      scaleX: 1,
+      scaleY: 1,
       translateX: 0,
       translateY: 0,
-      scale: 1,
       opacity: 1,
       transition: {
-        rotateY: { type: "spring", stiffness: 300, damping: 30 },
-        translateX: { type: "spring", stiffness: 300, damping: 30 },
-        translateY: { type: "spring", stiffness: 300, damping: 30 },
-        scale: { duration: 0.5 },
+        scaleX: { type: "spring", stiffness: 200, damping: 30 },
+        scaleY: { type: "spring", stiffness: 200, damping: 30 },
+        translateX: { type: "spring", stiffness: 200, damping: 30 },
+        translateY: { type: "spring", stiffness: 200, damping: 30 },
         opacity: { duration: 0.5 },
       },
     },
     exit: (direction) => ({
-      rotateY: direction > 0 ? 90 : -90,
-      translateX: direction > 0 ? 200 : -200,
-      translateY: 200,
-      scale: 0.8,
+      scaleX: 0,
+      scaleY: 0,
+      translateX: direction > 0 ? 80 : -80, // Adjust these values for finer control over the exit position
+      translateY: 80, // Adjust this value for finer control over the exit position
       opacity: 0,
+      transition: {
+        opacity: { duration: 0.3 },
+      },
     }),
   };
 
@@ -58,7 +61,7 @@ const ImageCarousel = () => {
     // After a short delay, begin the slower return rotation
     setTimeout(() => {
       setRotation(30);
-    }, 400);
+    }, 350);
   };
 
   const currentPdf = pdfs[currentIndex];
@@ -67,64 +70,12 @@ const ImageCarousel = () => {
     audioRef.current.volume = 0.4; // This sets the volume to 50%
   }, []);
 
-  function setRealViewportHeight() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
-
-  // Set the value when the window is loaded or resized
-  window.addEventListener("resize", setRealViewportHeight);
-  window.addEventListener("load", setRealViewportHeight);
-
   return (
-    <div className="relative w-full overflow-hidden">
-      <div className="flex justify-center items-center w-full min-h-screen">
-        {/* Inner Circle */}
+    <div className="flex flex-col w-full min-h-screen bg-slate-950 justify-center items-center overflow-hidden">
+      {/* Background */}
+      <div className="absolute w-full min-h-screen">
         <Image
-          src="/photos/download-page-foreground.webp"
-          alt="Scene"
-          fill={true}
-          quality={100}
-          sizes="100vh"
-          className="object-cover opacity-40"
-        />
-        <AnimatePresence mode="wait" custom={direction.current}>
-          <motion.div
-            key={currentIndex}
-            custom={direction.current}
-            variants={slideTransition}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="absolute"
-            style={{ clipPath: "circle(50% at 50% 50%)" }} // Circular clip for View-Master effect
-          >
-            {/* Cover Image */}
-            <Image
-              src={currentPdf.imageSrc}
-              alt={currentPdf.title}
-              width={500}
-              height={500}
-              priority={true}
-              className="object-fill"
-            />
-          </motion.div>
-        </AnimatePresence>
-        {/* Blend effect */}
-        <div className="">
-          <Image
-            src="/photos/download-page-foreground.webp"
-            alt="Scene"
-            fill={true}
-            quality={100}
-            sizes="100vh"
-            className="object-cover mix-blend-overlay"
-          />
-        </div>
-
-        {/* Background */}
-        <Image
-          src="/photos/download-page-9.webp"
+          src="/photos/download-page-12.webp"
           alt="Scene"
           fill={true}
           quality={100}
@@ -133,40 +84,95 @@ const ImageCarousel = () => {
         />
       </div>
 
+      {/* Inner Circle */}
+      <div className="absolute">
+        <Image
+          src="/photos/circle-crop.webp"
+          alt="Scene"
+          width={300}
+          height={300}
+          className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
+        />
+      </div>
+
+      {/* Cover Image with clipping */}
+      <AnimatePresence mode="wait" custom={direction.current}>
+        <motion.div
+          key={currentIndex}
+          custom={direction.current}
+          variants={slideTransition}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="absolute"
+          style={{ clipPath: "circle(27% at 50% 50%)" }}
+        >
+          <Image
+            src={currentPdf.imageSrc}
+            alt={currentPdf.title}
+            width={450}
+            height={450}
+            priority={true}
+            className="object-cover w-[300px] h-[300px] sm:w-[450px] sm:h-[450px]"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Blend effect */}
+      <div className="absolute">
+        <Image
+          src="/photos/circle-crop.webp"
+          alt="Scene"
+          width={300}
+          height={300}
+          className="object-cover mix-blend-overlay will-change-transform w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
+        />
+      </div>
+
+      {/* Window */}
+      <div className="absolute">
+        <Image
+          src="/photos/window-frame.webp"
+          alt="Scene"
+          width={300}
+          height={300}
+          priority={true}
+          className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
+        />
+      </div>
+
+      {/* Handle with rotation */}
+      <motion.div
+        className="absolute"
+        animate={{ rotate: rotation }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+        }}
+        style={{
+          clipPath: "polygon(44% 70%, 56% 70%, 64% 100%, 36% 100%)",
+        }}
+        onClick={toggleRotation}
+      >
+        <Image
+          src="/photos/handle-circle.webp"
+          alt=""
+          priority={true}
+          width={400}
+          height={400}
+          className="object-cover w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]"
+        />
+      </motion.div>
+
+      {/* Sound */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio ref={audioRef} src="/click2.wav" preload="auto"></audio>
 
-      {/* Handle */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <motion.div
-          className="relative"
-          animate={{ rotate: rotation }}
-          transition={{
-            type: "spring",
-            stiffness: 100, // adjust these values for different spring effects
-            damping: 20,
-          }}
-          onClick={toggleRotation}
-          style={{
-            clipPath: "polygon(44% 70%, 56% 70%, 64% 100%, 36% 100%)",
-          }}
-        >
-          <Image
-            className="object-cover relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px]"
-            src="/photos/handle-circle.webp"
-            alt=""
-            width={280}
-            height={280}
-          />
-        </motion.div>
+      {/* Text/Button */}
+      <div className="relative z-10">
+        <p className="text-main text-lg ">{currentPdf.title}</p>
       </div>
-
-      <a
-        href={currentPdf.downloadLink}
-        className="absolute bottom-20 sm:bottom-44 left-1/2 transform -translate-x-1/2 z-50 p-4 text-main text-lg"
-      >
-        {currentPdf.title}
-      </a>
     </div>
   );
 };
