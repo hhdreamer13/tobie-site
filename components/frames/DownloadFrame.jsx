@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import CloseIcon from "../common/CloseIcon";
 
-const NewsFrame = ({ item, setIsOpen }) => {
+const DownloadFrame = ({ item, setIsOpen }) => {
   if (!item) {
     return null;
   }
@@ -33,18 +33,12 @@ const NewsFrame = ({ item, setIsOpen }) => {
       </div>
 
       {/* Content */}
-      <h2 className="text-3xl font-bold mb-2">{item.title}</h2>
+      <h2 className="text-3xl font-bold mb-2 text-center">{item.title}</h2>
 
       <div className="mb-4">
-        <span className="text-slate-500">{item.date}</span>
-        {item.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="ml-2 text-sm text-white bg-green-500 rounded-full px-2"
-          >
-            {tag}
-          </span>
-        ))}
+        <span className="text-white bg-green-500 text-lg rounded-full px-2">
+          {item.category}
+        </span>
       </div>
 
       <div className="text-justify text-main w-full font-nunito p-3 h-40 overflow-y-scroll border rounded-lg">
@@ -58,10 +52,10 @@ const NewsFrame = ({ item, setIsOpen }) => {
         }}
         className="mt-8 px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-700 transition-colors duration-200"
       >
-        Lire intégralement
+        Télécharger
       </button>
     </div>
   );
 };
 
-export default NewsFrame;
+export default DownloadFrame;
