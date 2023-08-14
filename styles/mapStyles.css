@@ -48,3 +48,27 @@
 .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
   border-top-color: var(--bg-main) !important;
 }
+
+/* Targeting the container for the bottom-left controls */
+.mapboxgl-ctrl-bottom-left {
+  margin-left: 10px;
+}
+.mapboxgl-ctrl-bottom-right {
+  margin-right: 10px;
+}
+
+/* Adjust the positioning of the control container */
+.mapboxgl-ctrl-top-right {
+  top: auto; /* Remove top positioning */
+  bottom: 10px; /* Add to bottom */
+  right: 50%; /* Position it center */
+  transform: translateX(50%); /* Adjust for the exact center */
+  display: flex; /* Ensure it's flex */
+  flex-direction: row;
+}
+
+/* Adjust the controls to display side by side with some spacing */
+.mapboxgl-ctrl-group {
+  display: flex;
+  margin: 0 5px; /* Add spacing between the controls */
+}

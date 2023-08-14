@@ -71,27 +71,6 @@ const AboutUs = () => {
 
   const scrollRef = useRef();
 
-  const lenis = new Lenis();
-
-  // Integrate with GSAP ScrollTrigger
-  lenis.on("scroll", ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  gsap.ticker.lagSmoothing(0);
-
-  // Scroll to the top of the page whenever the component is mounted
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-
-    return () => {
-      lenis.destroy();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const { group1Refs, group2Refs, group3Refs, group4Refs, group5Refs } =
     useLeafExitAnimation();
 
@@ -101,6 +80,30 @@ const AboutUs = () => {
   useTextAnimation(textRef);
   useFormAnimation(formRef);
   useScrollIconAnimation(scrollRef);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const lenis = new Lenis();
+
+    // Integrate Lenis with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      // Cleanup all GSAP animations and triggers
+      gsap.globalTimeline.clear();
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+
+      // Cleanup Lenis
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <>

@@ -4,7 +4,7 @@ import Friends from "../../../components/friends/Friends";
 export default function SectionPage() {
   return (
     <>
-      <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">
+      <div className="w-full min-h-screen flex flex-col justify-center items-center bg-main">
         {/* <div className="z-10">
           <SectionHeader sectionName="actualite" />
         </div>
