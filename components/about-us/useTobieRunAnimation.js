@@ -1,7 +1,7 @@
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
-const useTobieRunAnimation = (tobieRef, bgRef, frameCount, images, lenis) => {
+const useTobieRunAnimation = (tobieRef, bgRef, frameCount, images) => {
   const tobie = { frame: 0 }; // Object to keep track of the current frame
 
   const calculateSourceRect = () => {
