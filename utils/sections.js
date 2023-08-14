@@ -23,15 +23,15 @@ const sections = [
     imageSrcNuit: imageSrcNuit1,
     url: "/sections/actualite",
   },
-  {
-    id: "2",
-    title: "Ateliers",
-    description:
-      "Rejoignez-nous dans des ateliers créatifs inspirés de l'univers de Tobie !",
-    imageSrcJour: imageSrcJour2,
-    imageSrcNuit: imageSrcNuit2,
-    url: "/sections/ateliers",
-  },
+  // {
+  //   id: "2",
+  //   title: "Ateliers",
+  //   description:
+  //     "Rejoignez-nous dans des ateliers créatifs inspirés de l'univers de Tobie !",
+  //   imageSrcJour: imageSrcJour2,
+  //   imageSrcNuit: imageSrcNuit2,
+  //   url: "/sections/ateliers",
+  // },
   {
     id: "3",
     title: "Carte",

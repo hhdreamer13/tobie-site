@@ -5,6 +5,7 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import NextImage from "next/image";
 import { ScrollTrigger } from "gsap/all";
+import Lenis from "@studio-freight/lenis";
 import useLeafExitAnimation from "./useLeafExitAnimation";
 import useTobieRunAnimation from "./useTobieRunAnimation";
 import useTitleAnimation from "./useTitleAnimation";
@@ -70,9 +71,24 @@ const AboutUs = () => {
 
   const scrollRef = useRef();
 
+  const lenis = new Lenis();
+
+  // Integrate with GSAP ScrollTrigger
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+
   // Scroll to the top of the page whenever the component is mounted
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   const { group1Refs, group2Refs, group3Refs, group4Refs, group5Refs } =
