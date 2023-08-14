@@ -97,7 +97,7 @@ const Friends = () => {
     // Cleanup the ScrollTrigger animations on component unmount
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
-      lenis.destroy()
+      lenis.destroy();
     };
   }, []);
 

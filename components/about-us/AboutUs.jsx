@@ -89,6 +89,7 @@ const AboutUs = () => {
     return () => {
       lenis.destroy();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { group1Refs, group2Refs, group3Refs, group4Refs, group5Refs } =
