@@ -1,7 +1,7 @@
 const DEFAULT_UNIQUE_IMAGES_COUNT = 19; // Number of unique images
-const TOTAL_DISPLAY_IMAGES_COUNT = 38; // Total images to display, including repeated ones
-const GRID_ROW_COUNT = 30; // Number of rows in the grid
-const GRID_COLUMN_COUNT = 5; // Number of columns in the grid
+const TOTAL_DISPLAY_IMAGES_COUNT = 57; // Total images to display, including repeated ones
+const GRID_ROW_COUNT = 32; // Number of rows in the grid
+const GRID_COLUMN_COUNT = 4; // Number of columns in the grid
 const TOTAL_GRID_STYLES_COUNT = 19; // Total number of grid styles, generally matches the number of images
 
 export const generateImagePaths = (
