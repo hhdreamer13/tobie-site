@@ -99,19 +99,6 @@ const SectionBar = memo(function SectionBar({
           className="object-cover"
           fill={true}
         />
-        {/* Vertical Text */}
-        {/* <div className="absolute top-0 left-0 text-slate-950 flex justify-center items-center h-full w-full">
-          <span
-            className="py-4 bg-slate-50/30 font-newspaper text-sm rounded-lg"
-            style={{
-              writingMode: "vertical-rl",
-              letterSpacing: "10px", // Adjust this value as needed
-              textOrientation: "upright",
-            }}
-          >
-            {section.title}
-          </span>
-        </div> */}
 
         {/* Inner Section */}
         <motion.div

@@ -44,6 +44,7 @@ const SectionMenu = () => {
     handleMouseEnter,
     handleClick,
     handleClose,
+    isOverlayVisible,
   } = useSection(sections);
 
   const positions = useMemo(
@@ -65,6 +66,13 @@ const SectionMenu = () => {
 
   return (
     <div className="w-full bg-slate-950 flex flex-col justify-center items-center bg-cover">
+      {isOverlayVisible && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        <div
+          className="absolute inset-0 bg-black opacity-0 z-10"
+          onClick={handleClose}
+        ></div>
+      )}
       {/* Background Placeholder */}
       <SectionBackground
         currentSection={currentSection}
@@ -72,6 +80,9 @@ const SectionMenu = () => {
         expandedSection={expandedSection}
         theme={theme}
       />
+
+      {/* Overlay */}
+      <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
 
       <div className="flex flex-col h-screen justify-center items-center">
         <div className="relative w-[350px] h-[500px] sm:w-[500px]">

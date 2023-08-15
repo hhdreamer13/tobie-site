@@ -51,10 +51,10 @@
 
 /* Targeting the container for the bottom-left controls */
 .mapboxgl-ctrl-bottom-left {
-  margin-left: 10px;
+  margin-left: 7%;
 }
 .mapboxgl-ctrl-bottom-right {
-  margin-right: 10px;
+  margin-right: 7%;
 }
 
 /* Adjust the positioning of the control container */

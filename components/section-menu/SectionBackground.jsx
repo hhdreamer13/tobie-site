@@ -35,9 +35,6 @@ const SectionBackground = ({
             priority={true}
             sizes="100vw"
           />
-
-          {/* Overlay */}
-          <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
         </motion.div>
       )}
     </AnimatePresence>

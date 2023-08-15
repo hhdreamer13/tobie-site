@@ -5,6 +5,7 @@ const useSection = (sections) => {
   const [currentSection, setCurrentSection] = useState(-1);
   const [expandedSection, setExpandedSection] = useState(-1);
   const [collapsingSection, setCollapsingSection] = useState(-1);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   const isDesktop = useDeviceType();
 
@@ -29,6 +30,7 @@ const useSection = (sections) => {
         setCurrentSection(
           sections.findIndex((section) => section.id === sectionId),
         );
+        setIsOverlayVisible(true);
       }
     },
     [expandedSection, sections, collapsingSection],
@@ -38,6 +40,7 @@ const useSection = (sections) => {
     if (expandedSection !== -1) {
       setExpandedSection(-1);
       setCollapsingSection(expandedSection);
+      setIsOverlayVisible(false);
     }
   };
 
@@ -50,6 +53,7 @@ const useSection = (sections) => {
     handleMouseEnter,
     handleClick,
     handleClose,
+    isOverlayVisible
   };
 };
 

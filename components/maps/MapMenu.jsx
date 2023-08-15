@@ -1,32 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
 
 const MapMenu = ({ location, isLocationSelected, onSelectLocation }) => {
-  useEffect(() => {
-    if (isLocationSelected) {
-      document
-        .querySelector(`#location-${location.id}`)
-        .scrollIntoView({ behavior: "smooth" });
-    }
-  }, [isLocationSelected, location.id]);
-
   return (
     <>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <li
-        id={`location-${location.id}`}
         className={`mb-4 ${isLocationSelected ? "grayscale-0" : "grayscale"}`}
-        onClick={() => onSelectLocation(location)}
+        onClick={(e) => {
+          e.preventDefault();
+          onSelectLocation(location);
+        }}
       >
-        <div className="flex flex-col w-40 sm:w-full 2xl:w-10/12">
+        <div className="flex flex-col w-full sm:w-60 2xl:w-10/12">
           <h3 className="text-main">{location.name}</h3>
           <Image
             src={location.imageSrc}
             alt={location.name}
             width={100}
             height={100}
-            className={`w-full h-20 sm:h-32 object-cover rounded-lg`}
+            className={`w-full h-32 object-cover rounded-lg`}
           />
           <p className="text-sm mt-2">{location.description}</p>
 

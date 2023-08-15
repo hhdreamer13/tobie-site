@@ -1,7 +1,7 @@
 import imageSrcJour1 from "../public/photos/light/10.webp";
 import imageSrcNuit1 from "../public/photos/dark/10.webp";
-import imageSrcJour2 from "../public/photos/light/11.webp";
-import imageSrcNuit2 from "../public/photos/dark/11.webp";
+// import imageSrcJour2 from "../public/photos/light/11.webp";
+// import imageSrcNuit2 from "../public/photos/dark/11.webp";
 import imageSrcJour3 from "../public/photos/light/12.webp";
 import imageSrcNuit3 from "../public/photos/dark/12.webp";
 import imageSrcJour4 from "../public/photos/light/04.webp";
