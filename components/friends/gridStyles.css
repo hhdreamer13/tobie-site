@@ -1,13 +1,7 @@
-/* *,
-*::after,
-*::before {
-  box-sizing: border-box;
-} */
-
 .grid-wrapper {
   margin: 0;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -16,7 +10,13 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(38, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+}
+
+@media (max-width: 640px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .grid__item {

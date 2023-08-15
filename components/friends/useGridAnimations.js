@@ -10,7 +10,11 @@ const useGridAnimations = (gridRef) => {
     window.scrollTo(0, 0);
 
     // Lenis initialization
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smooth: true,
+      wrapper: document.body,
+    });
 
     // Create gsap context
     let ctx = gsap.context(() => {

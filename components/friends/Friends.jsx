@@ -15,6 +15,11 @@ const Friends = () => {
 
   return (
     <div className="grid-wrapper w-full">
+      <div className="w-full h-screen pt-20 flex flex-col items-center justify-center">
+        <h2 className="font-mottona text-5xl sm:text-9xl m-0 drop-shadow-xl">
+          Les Amis de Tobie
+        </h2>
+      </div>
       <div
         className="grid-container relative w-full grid-col-5 grid-row-[38, minmax(0, 1fr)]"
         ref={gridRef}
@@ -32,12 +37,11 @@ const Friends = () => {
           </div>
         ))}
       </div>
-      <div className="fixed w-full h-screen pt-20 top-0 left-0 flex flex-col items-center justify-center pointer-events-none">
+      {/* <div className="fixed w-full h-screen pt-20 top-0 left-0 flex flex-col items-center justify-center pointer-events-none will-change-transform">
         <h2 className="font-mottona text-5xl sm:text-9xl m-0 drop-shadow-xl">
           Les Amis de Tobie
         </h2>
-        {/* <h3 className="text-[1.5rem] font-medium m-0">Scroll Down</h3> */}
-      </div>
+      </div> */}
 
       <div className="min-h-screen bg-slate-950 text-slate-100 text-2xl leading-5 relative not-italic flex items-center justify-center">
         <p className="">Nous sommes les amis de tobie</p>
