@@ -18,6 +18,7 @@ const Firefly = ({ color = "yellow" }) => {
 
     firefliesRef.current = firefliesRef.current.slice(0, FIREFLIES);
 
+    // eslint-disable-next-line no-unused-vars
     firefliesRef.current.forEach((firefly, i) => {
       let ix = random(0, maxWidth);
       let fx = random(0, maxWidth);
