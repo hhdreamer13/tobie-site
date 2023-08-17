@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
-import { Caveat } from "next/font/google";
-import { Nunito_Sans } from "next/font/google";
+import { Caveat, Nunito_Sans, Literata } from "next/font/google";
+
 import Providers from "./providers";
 
 const caveatFont = Caveat({
@@ -15,6 +15,12 @@ const nunitoFont = Nunito_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-nunito-sans",
+});
+
+const literataFont = Literata({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-literata",
 });
 
 const mottonaFont = localFont({
@@ -43,7 +49,7 @@ export default function RootLayout({ children, modal }) {
   return (
     <html lang="fr" className="light" style={{ colorScheme: "light" }}>
       <body
-        className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable} " flex flex-col min-h-screen"`}
+        className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable} ${literataFont.variable} " flex flex-col min-h-screen"`}
       >
         <Providers>
           <Navbar />

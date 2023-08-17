@@ -173,7 +173,7 @@ const BackgroundStack = ({
       </motion.div>
       {/* Sound */}
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio ref={audioRef} src="/click2.wav" preload="auto"></audio>
+      <audio ref={audioRef} src="/click.mp3" preload="auto"></audio>
     </>
   );
 };

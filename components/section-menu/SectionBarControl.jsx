@@ -32,12 +32,12 @@ const SectionBarControl = ({
           />
         </button>
         <div className="flex flex-col justify-center items-center w-32 h-14 opacity-90">
-          <p className="text-lg">
+          <p className="text-lg font-caveat">
             {currentSection !== -1
               ? sections[currentSection].title
               : "Sélectionnez"}
           </p>
-          <p className="text-sm text-center w-full truncate">
+          <p className="text-sm text-center w-full truncate font-caveat">
             {currentSection !== -1 ? sections[currentSection].description : ""}
           </p>
         </div>

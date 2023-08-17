@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-caveat;
+p {
+  @apply font-nunito;
 }
+
+h1 {
+  @apply font-mottona;
+}
+
 h2 {
   @apply font-newspaper;
+}
+
+h3 {
+  @apply font-literata;
 }
 
 .fullscreenImage {
@@ -32,23 +41,3 @@ h2 {
     bottom: 34px;
   }
 }
-
-/* html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-} */

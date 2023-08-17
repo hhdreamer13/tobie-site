@@ -8,7 +8,7 @@ const SectionTitle = ({
 }) => {
   return (
     <motion.p
-      className="absolute text-center text-slate-100 w-24"
+      className="absolute text-center text-slate-100 w-24 font-caveat"
       initial={{ opacity: 0 }}
       animate={{
         opacity: isSelected && section.id !== expandedSection ? 1 : 0,

@@ -46,7 +46,7 @@ const PopupText = ({ text }) => {
       animate="visible"
       exit="exit"
       variants={textVariants}
-      className="text-lg absolute top-1/2 bg-slate-950/40 text-slate-100 px-2 py-1 rounded-lg"
+      className="text-lg absolute top-1/2 bg-slate-950/40 text-slate-100 px-2 py-1 rounded-lg font-caveat"
     >
       {text}
     </motion.p>

@@ -5,7 +5,7 @@ const downloads = [
     description:
       "Plongez dans les origines de l'adaptation animée de Tobie Lolness et découvrez comment tout a commencé.",
     imageSrc: "/photos/01.webp",
-    linkUrl: "/downloads/1",
+    linkUrl: "/souvenirs/1",
     category: "livret",
     downloadLink: "/chemin/vers/pdf/vol1.pdf",
   },
@@ -15,7 +15,7 @@ const downloads = [
     description:
       "Explorez le design des décors boisés et le soin apporté à chaque feuille qui constitue le monde de Tobie.",
     imageSrc: "/photos/02.webp",
-    linkUrl: "/downloads/2",
+    linkUrl: "/souvenirs/2",
     category: "livret",
     downloadLink: "/chemin/vers/pdf/vol2.pdf",
   },
@@ -25,7 +25,7 @@ const downloads = [
     description:
       "Découvrez les secrets de la conception de chaque personnage, leur évolution et leur rôle dans l'univers de Tobie.",
     imageSrc: "/photos/03.webp",
-    linkUrl: "/downloads/3",
+    linkUrl: "/souvenirs/3",
     category: "livret",
     downloadLink: "/chemin/vers/pdf/vol3.pdf",
   },
@@ -35,7 +35,7 @@ const downloads = [
     description:
       "Une collection riche et détaillée des œuvres d'art créées spécialement pour la série Tobie Lolness.",
     imageSrc: "/photos/04.webp",
-    linkUrl: "/downloads/4",
+    linkUrl: "/souvenirs/4",
     category: "livret",
     downloadLink: "/chemin/vers/pdf/vol4.pdf",
   },
@@ -45,7 +45,7 @@ const downloads = [
     description:
       "Le processus passionnant de transformation du livre à l'écran, avec des interviews exclusives de l'équipe de création.",
     imageSrc: "/photos/05.webp",
-    linkUrl: "/downloads/5",
+    linkUrl: "/souvenirs/5",
     category: "livret",
     downloadLink: "/chemin/vers/pdf/vol5.pdf",
   },
@@ -54,7 +54,7 @@ const downloads = [
     title: "Fond d'écran 1",
     description: "Un dessin de premier épisode.",
     imageSrc: "/photos/06.webp",
-    linkUrl: "/downloads/6",
+    linkUrl: "/souvenirs/6",
     category: "fond d'écran",
     downloadLink: "/chemin/vers/pdf/vol1.pdf",
   },
@@ -63,7 +63,7 @@ const downloads = [
     title: "Fond d'écran 2",
     description: "Un dessin de deuxième épisode.",
     imageSrc: "/photos/07.webp",
-    linkUrl: "/downloads/7",
+    linkUrl: "/souvenirs/7",
     category: "fond d'écran",
     downloadLink: "/chemin/vers/pdf/vol2.pdf",
   },

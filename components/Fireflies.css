@@ -1,0 +1,14 @@
+body,
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+.firefly {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: yellow;
+  box-shadow: 0 0 5px 2px rgba(154, 205, 50, 0.4);
+  overflow: hidden;
+}

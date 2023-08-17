@@ -46,7 +46,9 @@ const SectionBar = memo(function SectionBar({
 
       {/* Section Card */}
       <motion.div
-        className={`absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2 ${zIndexClass} object-cover`}
+        className={`absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2 ${zIndexClass} object-cover ${
+          expandedSection === section.id ? "" : "cursor-pointer"
+        }`}
         key={section.id}
         initial={false}
         animate={

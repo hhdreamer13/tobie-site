@@ -17,7 +17,7 @@ const SectionHeader = ({ sectionName }) => {
   return (
     // <motion.div className="flex flex-col mx-auto min-h-screen w-full bg-slate-50 dark:bg-slate-950">
     <motion.div
-      className="fixed flex-col mx-auto top-0 left-0 h-32 w-full"
+      className="absolute flex-col mx-auto top-0 left-0 h-32 w-full"
       initial={{ y: 10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: -10, opacity: 0 }}

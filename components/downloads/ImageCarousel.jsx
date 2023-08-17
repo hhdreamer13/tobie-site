@@ -48,7 +48,7 @@ const ImageCarousel = () => {
         <div className="grid grid-rows-3 gap-5 w-full min-h-screen text-slate-100 items-center">
           {/* Category Selection */}
           <div className="flex flex-col justify-center items-center gap-4">
-            <p className="relative text-lg w-80 text-center">
+            <p className="relative text-lg w-80 text-center font-literata mb-2">
               Faites votre choix de catégorie :
             </p>
             {/* Options */}
@@ -76,7 +76,7 @@ const ImageCarousel = () => {
                       setShowHandleText(true);
                     }}
                   />
-                  <span className="ml-2">
+                  <span className="ml-2 font-caveat text-xl">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </span>
                 </label>
@@ -93,7 +93,7 @@ const ImageCarousel = () => {
               {currentItem && (
                 <Link
                   href={currentItem.linkUrl}
-                  className="text-lg flex justify-center items-center"
+                  className="text-lg flex justify-center items-center font-caveat"
                 >
                   {currentItem.title}
                   <span className="ml-3">

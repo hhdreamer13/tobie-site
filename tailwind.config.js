@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         caveat: ["var(--font-caveat)"],
         nunito: ["var(--font-nunito-sans)"],
+        literata: ["var(--font-literata)"],
         mottona: ["var(--font-mottona)"],
         newspaper: ["var(--font-newspaper)"],
       },
