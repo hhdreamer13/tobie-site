@@ -8,6 +8,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import SectionBackground from "./SectionBackground";
+import Fireflies from "../Fireflies";
 
 const SectionMenu = () => {
   const isDesktop = useDeviceType();
@@ -83,6 +84,8 @@ const SectionMenu = () => {
 
       {/* Overlay */}
       <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
+
+      <Fireflies />
 
       <div className="flex flex-col h-screen justify-center items-center">
         <div className="relative w-[350px] h-[500px] sm:w-[500px]">
