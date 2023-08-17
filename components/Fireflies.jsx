@@ -1,4 +1,4 @@
-import "./fireflies.css"; // Make sure this path points to your fireflies.css file
+import "./Fireflies.css";
 
 const Fireflies = () => {
   const quantity = 15;
