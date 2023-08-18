@@ -10,14 +10,16 @@ const DownloadFrame = ({ item, setIsOpen }) => {
   }
 
   return (
-    <div className="relative flex flex-col justify-start w-full h-10/12 bg-main items-center rounded-xl p-8">
+    <div className="relative flex flex-col justify-start w-full h-10/12 bg-main items-center rounded-xl p-5">
       {/* Close */}
       {setIsOpen && (
         <button
           className="absolute top-0 right-0 m-2"
           onClick={() => setIsOpen(false)}
         >
-          <MinimizeIcon className="w-6 h-6" />
+          <div className="w-7 h-7 rounded-lg bg-slate-100/40 dark:bg-slate-950/30 flex justify-center items-center">
+            <MinimizeIcon className="w-6 h-6 hover:scale-105" />
+          </div>
         </button>
       )}
 

@@ -110,7 +110,7 @@ const InputForm = () => {
             rows="5"
             cols="33"
             placeholder="Dis-nous ce que tu penses !"
-            className="mx-0 my-2 block w-full rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-cyan-200/75 placeholder:text-rose-300/75 focus:ring-2 focus:ring-rose-200 dark:focus:ring-cyan-700"
+            className="mx-0 my-2 block w-full appearance-none rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-cyan-200/75 placeholder:text-rose-300/75 focus:ring-2 focus:ring-rose-200 dark:focus:ring-cyan-700"
           ></textarea>
         </div>
         <div className="my-3">

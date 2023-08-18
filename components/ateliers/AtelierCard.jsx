@@ -31,7 +31,7 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
             }}
           >
             <MarkerIcon
-              className={`w-6 h-6 sm:w-7 sm:h-7 ${
+              className={`w-6 h-6 sm:w-7 sm:h-7 hover:scale-105 ${
                 isLocationSelected ? "text-rose-400 dark:text-cyan-600" : ""
               }`}
             />

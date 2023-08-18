@@ -8,7 +8,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent px-6 py-4 h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent p-4 h-16">
       <div className="flex items-center justify-between text-slate-100">
         <Link
           href="/"
@@ -19,12 +19,6 @@ const Navbar = () => {
           <p className="font-mottona text-3xl sm:text-4xl drop-shadow-sm">
             Tobie
           </p>
-          {/* Line animation variant */}
-          {/* <div className="absolute bottom-0 right-1/2 translate-x-1/2 p-3">
-            <div className="block w-9 h-[1px] mb-0.5 bg-white transition duration-300 transform group-hover:"></div>
-            <div className="block w-5 h-[1px] mb-0.5 bg-white transition duration-300 translate-x-1/2 group-hover:translate-x-0"></div>
-            <div className="block w-3 h-[1px] bg-white transition duration-300 transform translate-x-1/2 group-hover:translate-x-0"></div>
-          </div> */}
 
           <div className="absolute bottom-0 right-1/2 translate-x-1/2 p-3">
             <div className="relative">

@@ -29,8 +29,8 @@ const CloseButton = ({ isExpanded, onClick }) => {
       }
       onClick={onClick}
     >
-      <div className="">
-        <MinimizeIcon className="w-6 h-6" />
+      <div className="w-7 h-7 rounded-lg bg-slate-100/40 dark:bg-slate-950/30 flex justify-center items-center">
+        <MinimizeIcon className="w-6 h-6 hover:scale-105" />
       </div>
     </motion.button>
   );

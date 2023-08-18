@@ -7,6 +7,7 @@ const CircleIconButton = ({
   section,
   expandedSection,
   computedCircleLeft,
+  isDesktop,
 }) => {
   return (
     <motion.div
@@ -16,7 +17,13 @@ const CircleIconButton = ({
       initial={{ opacity: 0 }}
       animate={{
         opacity: isSelected && section.id !== expandedSection ? 1 : 0,
-        y: isSelected ? "-130%" : "0%",
+        y: isSelected
+          ? isDesktop
+            ? "-130%"
+            : "-70%"
+          : isDesktop
+          ? "0%"
+          : "70%",
       }}
       transition={{ duration: 1.1, ease: "backInOut" }}
       style={{

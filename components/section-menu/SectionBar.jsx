@@ -42,6 +42,7 @@ const SectionBar = memo(function SectionBar({
         section={section}
         expandedSection={expandedSection}
         computedTextLeft={computedTextLeft}
+        isDesktop={isDesktop}
       />
 
       {/* Section Card */}
@@ -62,8 +63,14 @@ const SectionBar = memo(function SectionBar({
               }
             : {
                 width: 40,
-                height: 380,
-                top: isSelected ? "43%" : "50%",
+                height: isDesktop ? 380 : 350,
+                top: isSelected
+                  ? isDesktop
+                    ? "43%"
+                    : "50%"
+                  : isDesktop
+                  ? "50%"
+                  : "55%",
                 left: `${position}%`,
                 borderColor: "rgba(255, 255, 255, 0)",
               }
@@ -192,6 +199,7 @@ const SectionBar = memo(function SectionBar({
         section={section}
         expandedSection={expandedSection}
         computedCircleLeft={computedCircleLeft}
+        isDesktop={isDesktop}
       />
     </>
   );

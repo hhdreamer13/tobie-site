@@ -5,6 +5,7 @@ const SectionTitle = ({
   section,
   expandedSection,
   computedTextLeft,
+  isDesktop,
 }) => {
   return (
     <motion.p
@@ -12,7 +13,13 @@ const SectionTitle = ({
       initial={{ opacity: 0 }}
       animate={{
         opacity: isSelected && section.id !== expandedSection ? 1 : 0,
-        y: isSelected ? "-30%" : "70%",
+        y: isSelected
+          ? isDesktop
+            ? "-30%"
+            : "150%"
+          : isDesktop
+          ? "70%"
+          : "240%",
       }}
       transition={{ duration: 1, ease: "backInOut" }}
       style={{

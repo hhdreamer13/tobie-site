@@ -22,7 +22,7 @@ const SectionMenu = () => {
   });
 
   useEffect(() => {
-    const INITIAL_CENTER_POSITION = isDesktop ? 50 : 62;
+    const INITIAL_CENTER_POSITION = isDesktop ? 50 : 60;
     const SECTION_OFFSET = isDesktop ? 5 : 8;
     const SECTION_SPACING = isDesktop ? 10 : 12;
     const centerPosition =

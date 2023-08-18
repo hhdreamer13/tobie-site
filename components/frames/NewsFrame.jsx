@@ -10,17 +10,19 @@ const NewsFrame = ({ item, setIsOpen }) => {
   }
 
   return (
-    <div className="relative flex flex-col justify-start w-full h-fit bg-main items-center rounded-xl p-8">
+    <div className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start w-full max-h-fit bg-main items-center rounded-xl p-5">
       {/* Close */}
       <button
         className="absolute top-0 right-0 m-2"
         onClick={() => setIsOpen(false)}
       >
-        <MinimizeIcon className="w-6 h-6" />
+        <div className="w-7 h-7 rounded-lg bg-slate-100/40 dark:bg-slate-950/30 flex justify-center items-center">
+          <MinimizeIcon className="w-6 h-6 hover:scale-105" />
+        </div>
       </button>
 
       {/* Principal Image */}
-      <div className="max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
+      <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
         <Image
           alt={item.title}
           src={item.imageSrc}
@@ -33,7 +35,9 @@ const NewsFrame = ({ item, setIsOpen }) => {
       </div>
 
       {/* Content */}
-      <h3 className="text-2xl font-semibold mb-2 text-center">{item.title}</h3>
+      <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-center line-clamp-3">
+        {item.title}
+      </h3>
 
       <div className="mb-4">
         <span className="text-slate-500 font-caveat">{item.date}</span>
@@ -47,7 +51,7 @@ const NewsFrame = ({ item, setIsOpen }) => {
         ))}
       </div>
 
-      <div className="text-justify text-main text-sm w-full font-nunito p-3 max-h-40 overflow-y-scroll border rounded-lg">
+      <div className="text-justify text-main text-sm w-full font-nunito p-3 max-h-36 sm:max-h-40 overflow-y-scroll border rounded-lg">
         <p>{item.description}</p>
       </div>
 
