@@ -7,7 +7,7 @@ import BackgroundStack from "./BackgroundStack";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import PopupText from "./PopupText";
-import Image from "next/image";
+import MaximizeIcon from "../common/MaximizeIcon";
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -100,13 +100,7 @@ const ImageCarousel = () => {
                 >
                   {currentItem.title}
                   <span className="ml-3">
-                    <Image
-                      src="/assets/open.svg"
-                      alt="button"
-                      width={15}
-                      height={15}
-                      className="inline"
-                    />
+                    <MaximizeIcon className="w-5 h-5" />
                   </span>
                 </Link>
               )}

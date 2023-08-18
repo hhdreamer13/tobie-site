@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import CloseIcon from "../common/CloseIcon";
+import MinimizeIcon from "../common/MinimizeIcon";
 
 const CloseButton = ({ isExpanded, onClick }) => {
   return (
@@ -30,7 +30,7 @@ const CloseButton = ({ isExpanded, onClick }) => {
       onClick={onClick}
     >
       <div className="">
-        <CloseIcon />
+        <MinimizeIcon className="w-6 h-6" />
       </div>
     </motion.button>
   );

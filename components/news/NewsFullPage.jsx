@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import Link from "next/link";
+import BackIcon from "../common/BackIcon";
 
 const NewsFullPage = ({ item }) => {
   if (!item) {
@@ -11,13 +12,14 @@ const NewsFullPage = ({ item }) => {
 
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
-      {/* Close */}
+      {/* Back */}
       <Link
         href={"/sections/actualites"}
-        className="absolute top-0 left-0 -mt-10 ml-5"
+        className="absolute top-0 left-0 -mt-16 ml-10 "
       >
-        {/* Replace with your own close icon */}
-        <span className="ml-10">←</span>
+        <span>
+          <BackIcon className="w-10 h-10 -rotate-90" />
+        </span>
       </Link>
 
       {/* Title */}

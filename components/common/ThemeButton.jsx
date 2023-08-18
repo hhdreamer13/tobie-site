@@ -36,7 +36,7 @@ const ThemeButton = () => {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="flex items-center justify-center relative overflow-hidden m-0 sm:m-1 bg-black/20 backdrop-blur-md p-6 rounded-full transition-transform duration-500"
+      className="flex items-center justify-center relative overflow-hidden m-0 sm:m-1 bg-black/20 backdrop-blur-md p-5 rounded-full transition-transform duration-500"
       onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
     >
       <motion.div
@@ -53,7 +53,7 @@ const ThemeButton = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-5 h-5"
         >
           <path
             strokeLinecap="round"
@@ -77,7 +77,7 @@ const ThemeButton = () => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-5 h-5"
         >
           <path
             strokeLinecap="round"

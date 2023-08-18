@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
-import CloseIcon from "../common/CloseIcon";
+import MinimizeIcon from "../common/MinimizeIcon";
 
 const DownloadFrame = ({ item, setIsOpen }) => {
   if (!item) {
@@ -10,14 +10,14 @@ const DownloadFrame = ({ item, setIsOpen }) => {
   }
 
   return (
-    <div className="relative flex flex-col justify-start w-full h-10/12 bg-main items-center rounded-xl p-4">
+    <div className="relative flex flex-col justify-start w-full h-10/12 bg-main items-center rounded-xl p-8">
       {/* Close */}
       {setIsOpen && (
         <button
           className="absolute top-0 right-0 m-2"
           onClick={() => setIsOpen(false)}
         >
-          <CloseIcon />
+          <MinimizeIcon className="w-6 h-6" />
         </button>
       )}
 

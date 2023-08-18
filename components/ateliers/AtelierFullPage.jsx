@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import Link from "next/link";
 import InscriptionForm from "./InscriptionForm";
+import BackIcon from "../common/BackIcon";
 
 const AtelierFullPage = ({ item }) => {
   if (!item) {
@@ -13,12 +14,14 @@ const AtelierFullPage = ({ item }) => {
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
       {/* Close */}
+      {/* Close */}
       <Link
         href={"/sections/ateliers"}
-        className="absolute top-0 left-0 -mt-10 ml-5"
+        className="absolute top-0 left-0 -mt-16 ml-10 "
       >
-        {/* Replace with your own close icon */}
-        <span className="ml-10">←</span>
+        <span>
+          <BackIcon className="w-10 h-10 -rotate-90" />
+        </span>
       </Link>
 
       {/* Title */}

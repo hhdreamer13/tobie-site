@@ -1,6 +1,6 @@
 import Image from "next/image";
-import MaximizeIcon from "../common/MaximizeIcon";
 import Link from "next/link";
+import MarkerIcon from "../common/MarkerIcon";
 
 const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
   return (
@@ -30,11 +30,13 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
               onSelectLocation(location);
             }}
           >
-            <MaximizeIcon />
+            <MarkerIcon
+              className={`w-6 h-6 sm:w-7 sm:h-7 ${
+                isLocationSelected ? "text-rose-400 dark:text-cyan-600" : ""
+              }`}
+            />
           </button>
-          <h3 className="text-xl font-semibold w-11/12">
-            {location.name}
-          </h3>
+          <h3 className="text-xl font-semibold w-11/12">{location.name}</h3>
           <div className="mb-2 flex flex-col gap-1 sm:block">
             <span className="text-slate-500 font-caveat">{location.date}</span>
             <div className="block sm:inline-block">
