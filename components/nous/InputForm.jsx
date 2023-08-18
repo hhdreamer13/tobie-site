@@ -9,7 +9,7 @@ import {
 } from "@/utils/validation";
 
 import Input from "../common/Input";
-import Checkbox from "../common/CheckBox";
+import Checkbox from "../common/Checkbox";
 
 // eslint-disable-next-line no-unused-vars
 const InputForm = () => {
