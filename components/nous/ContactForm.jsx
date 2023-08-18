@@ -50,11 +50,11 @@ const InputForm = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl shadow-xl bg-white/10 dark:bg-black/10 backdrop-blur-sm w-80 sm:w-[400px] p-4">
-      <h3 className="font-semibold mb-3 mt-2 text-2xl text-center">
+    <div className="relative overflow-hidden rounded-xl shadow-xl  bg-white/10 dark:bg-black/10 backdrop-blur-sm w-80 sm:w-[400px] p-4">
+      <h3 className="font-semibold mb-3 mt-2 text-2xl text-center ">
         Contactez-nous
       </h3>
-      <p className="text-center">Nous aimerions avoir de tes nouvelles !</p>
+      <p className="text-center">Nous aimerions avoir de vos nouvelles !</p>
       <form
         className="overflow-hidden pt-10 pb-8 px-8 flex flex-col items-center"
         onSubmit={handleSubmit}
@@ -110,7 +110,7 @@ const InputForm = () => {
             rows="5"
             cols="33"
             placeholder="Dis-nous ce que tu penses !"
-            className="mx-0 my-2 block w-full rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-rose-200/75 placeholder:text-cyan-700/75 focus:ring-2 dark:focus:ring-rose-200 focus:ring-cyan-700"
+            className="mx-0 my-2 block w-full rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-cyan-200/75 placeholder:text-rose-300/75 focus:ring-2 focus:ring-rose-200 dark:focus:ring-cyan-700"
           ></textarea>
         </div>
         <div className="my-3">
@@ -140,7 +140,7 @@ const InputForm = () => {
             aria-label="soumettre"
           >
             <div className="flex items-center">
-              <div className="inline-block h-8 w-32 -rotate-2 cursor-pointer touch-manipulation select-none rounded-sm border-0 border-solid bg-rose-300 text-center text-lg text-slate-900 no-underline after:absolute after:bottom-1 after:left-1 after:h-[calc(100%_-_1px)] after:w-[calc(100%_-_1px)] after:rounded-sm after:border after:border-solid after:border-slate-900 after:content-[''] hover:after:bottom-0.5 hover:after:left-0.5">
+              <div className="inline-block h-8 w-32 text-main -rotate-2 cursor-pointer touch-manipulation select-none rounded-sm border-0 border-solid bg-rose-300 dark:bg-cyan-800 text-center text-lg no-underline after:absolute after:bottom-1 after:left-1 after:h-[calc(100%_-_1px)] after:w-[calc(100%_-_1px)] after:rounded-sm after:border after:border-solid after:border-slate-950 dark:after:border-slate-100 after:content-[''] hover:after:bottom-0.5 hover:after:left-0.5">
                 Envoyer
               </div>
             </div>

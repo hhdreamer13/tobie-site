@@ -12,16 +12,7 @@ export default function NewsPage({ params }) {
       <div className="z-10">
         <SectionHeader sectionName="actualites" />
       </div>
-      <div className="mt-40 mb-10 w-4/5">
-        {/* <h2 className="font-nunito font-semibold text-xl">
-          Bienvenue sur notre carte interactive !
-        </h2>
-        <p className="mt-2 font-nunito">
-          Explorez la carte pour découvrir les différents ateliers à travers la
-          France. Chaque emplacement offre une expérience unique. Cliquez sur un
-          marqueur pour en savoir plus sur chaque atelier.
-        </p> */}
-      </div>
+      <div className="mt-40 mb-10 w-4/5"></div>
       <div className="flex justify-center items-start w-full h-full ">
         <NewsFullPage item={item} />
       </div>

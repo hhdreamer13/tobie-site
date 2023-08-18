@@ -32,7 +32,7 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
           >
             <MaximizeIcon />
           </button>
-          <h3 className="text-xl font-semibold font-literata w-11/12">
+          <h3 className="text-xl font-semibold w-11/12">
             {location.name}
           </h3>
           <div className="mb-2 flex flex-col gap-1 sm:block">
@@ -55,9 +55,11 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
           </div>
           <Link
             href={location.linkUrl}
-            className="text-sky-500 hover:underline font-caveat hover:text-sky-600 transition-colors duration-200 ease-in-out"
+            className="text-sky-500 font-caveat hover:text-sky-600 transition-colors duration-200 ease-in-out"
           >
-            En savoir plus
+            <span className="relative no-underline before:content-[''] before:absolute before:w-full before:h-[1px] before:rounded before:bg-sky-500 before:origin-right before:transition-transform before:duration-[0.3s] before:ease-[ease-in-out] before:scale-x-0 before:left-0 before:bottom-0 hover:before:origin-left hover:before:scale-x-100">
+              En savoir plus
+            </span>
           </Link>
         </div>
       </div>

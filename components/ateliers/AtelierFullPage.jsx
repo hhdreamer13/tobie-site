@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import Link from "next/link";
+import InscriptionForm from "./InscriptionForm";
 
 const AtelierFullPage = ({ item }) => {
   if (!item) {
@@ -54,35 +55,12 @@ const AtelierFullPage = ({ item }) => {
         </div>
       </div>
 
-      <div className="text-justify text-main w-full md:w-3/4 xl:w-2/3 font-nunito p-3 rounded-lg prose">
+      <div className="prose dark:prose-invert">
         <p>{item.description}</p>
       </div>
-      <div className="w-1/2 mt-10">
-        <form className="flex flex-col gap-4">
-          <input
-            type="text"
-            placeholder="Nom"
-            className="w-full p-2 border-2 border-slate-300 rounded-md"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full p-2 border-2 border-slate-300 rounded-md"
-            required
-          />
-          <textarea
-            placeholder="Commentaire"
-            className="w-full p-2 border-2 border-slate-300 rounded-md h-32"
-            required
-          ></textarea>
-          <button
-            type="submit"
-            className="w-full py-2 px-4 text-main rounded-md border hover:underline"
-          >
-            Inscrire
-          </button>
-        </form>
+
+      <div className="mt-20">
+        <InscriptionForm />
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ const Input = ({
     <>
       <div className="relative inline-block w-full font-caveat">
         <input
-          className="mx-0 my-2 block w-full rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-rose-200/75 placeholder:text-cyan-700/75 focus:ring-2 dark:focus:ring-rose-200 focus:ring-cyan-700"
+          className="mx-0 my-2 block w-full rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-cyan-200/75 placeholder:text-rose-300/75 focus:ring-2 focus:ring-rose-200 dark:focus:ring-cyan-700"
           type={type}
           placeholder={placeholder}
           onChange={handleChange}
@@ -45,7 +45,7 @@ const Input = ({
         />
         <div>
           {errorMsg && (
-            <div className="absolute bottom-0 right-0 z-10 mb-10 max-w-40 rounded border border-rose-200 bg-white px-2 py-1 text-xs sm:text-base text-rose-500 shadow">
+            <div className="absolute bottom-0 right-0 z-10 mb-10 max-w-40 rounded border  bg-slate-50 px-2 py-1 text-xs sm:text-base text-rose-500 shadow-md">
               {errorMsg}
             </div>
           )}

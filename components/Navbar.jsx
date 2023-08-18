@@ -25,6 +25,15 @@ const Navbar = () => {
             <div className="block w-5 h-[1px] mb-0.5 bg-white transition duration-300 translate-x-1/2 group-hover:translate-x-0"></div>
             <div className="block w-3 h-[1px] bg-white transition duration-300 transform translate-x-1/2 group-hover:translate-x-0"></div>
           </div>
+
+          {/* <div className="absolute bottom-0 right-1/2 translate-x-1/2">
+            <span className="inline-block mr-1 h-4 w-[1px] bg-white"></span>
+            <span className="inline-block mr-1 h-4 w-[1px] bg-white"></span>
+            <span className="inline-block mr-1 h-4 w-[1px] bg-white"></span>
+            <span className="inline-block mr-1 h-4 w-[1px] bg-white -translate-y-0.5"></span>
+            <span className="inline-block mr-1 h-4 w-[1px] bg-white"></span>
+            <span className="inline-block mr-1 h-4 w-[1px] bg-white"></span>
+          </div> */}
         </Link>
 
         <div className="hidden md:flex items-center gap-10">

@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { generateImagePaths, generateGridStyles } from "./imageCalculations";
 import useGridAnimations from "./useGridAnimations";
 import Image from "next/image";
-import InputForm from "./InputForm";
+import ContactForm from "./ContactForm";
 
 const Friends = () => {
   const gridRef = useRef(null);
@@ -40,7 +40,7 @@ const Friends = () => {
           fill={true}
           sizes="100vw"
         />
-        <InputForm />
+        <ContactForm />
       </div>
 
       {/* Partenaires Section */}
@@ -62,22 +62,7 @@ const Friends = () => {
           </div>
         ))}
       </div>
-
-      {/* Mission Section */}
-      {/* <div className="min-h-screen bg-main text-slate-100 text-2xl leading-5 relative not-italic flex items-center justify-center">
-        <div>
-          <h3 className="text-4xl font-semibold mb-6">Notre Mission</h3>
-          <p className="mb-4">
-            Nous sommes ici pour célébrer et partager les merveilleuses
-            aventures de Tobie avec le monde. Nous croyons au pouvoir des
-            histoires pour inspirer, éduquer et rassembler les gens.
-          </p>
-        </div>
-      </div> */}
-
-      {/* <div className="min-h-screen bg-slate-950 text-slate-100 text-2xl leading-5 relative not-italic flex items-center justify-center">
-        <p className="">Nous sommes les amis de tobie</p>
-      </div> */}
+      {/* Notre mission */}
       <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex justify-center items-center">
         <article className="prose dark:prose-invert">
           <h3 className="">

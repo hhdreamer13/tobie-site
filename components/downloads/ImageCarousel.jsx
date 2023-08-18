@@ -89,11 +89,14 @@ const ImageCarousel = () => {
 
           {/* Button and indicator */}
           <div className="flex flex-col gap-4 justify-center items-center">
-            <button className="relative text-center bg-slate-950/20 rounded-xl px-4 py-2 backdrop-blur-sm transition-transform duration-300 hover:scale-105">
+            <button
+              className="relative text-center bg-slate-950/20 rounded-lg backdrop-blur-sm duration-1000 shadow-[inset_0_0_20px_rgba(255,255,255,0)] outline-[rgba(255,255,255,0.5)] outline-offset-0 transition-all ease-[cubic-bezier(0.19,1,0.22,1)] border-solid border-transparent hover:shadow-[inset_0_0_10px_rgba(255,255,255,0.3),0_0_20px_rgba(255,255,255,0.2)] hover:border-solid;
+"
+            >
               {currentItem && (
                 <Link
                   href={currentItem.linkUrl}
-                  className="text-lg flex justify-center items-center font-caveat"
+                  className="text-lg flex justify-center items-center font-caveat px-4 py-2"
                 >
                   {currentItem.title}
                   <span className="ml-3">
@@ -108,6 +111,37 @@ const ImageCarousel = () => {
                 </Link>
               )}
             </button>
+
+            {/* Button variant 2 */}
+            {/* <button className="relative group text-center backdrop-blur-sm transition-transform duration-300 ">
+              {currentItem && (
+                <Link
+                  href={currentItem.linkUrl}
+                  className="text-lg flex justify-center items-center font-caveat"
+                >
+                  <span className="relative z-10 block px-5 py-3 bg-main text-main overflow-hidden font-medium leading-tight transition-colors duration-300 ease-out border-2 border-slate-950 dark:border-slate-100 rounded-lg">
+                    <span className="relative">
+                      {" "}
+                      {currentItem.title}{" "}
+                      <span className="ml-3">
+                        <Image
+                          src="/assets/open.svg"
+                          alt="button"
+                          width={15}
+                          height={15}
+                          className="inline"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-slate-950/40 dark:bg-slate-100/40 rounded-lg group-hover:mb-0 group-hover:mr-0"
+                    data-rounded="rounded-lg"
+                  ></span>
+                </Link>
+              )}
+            </button> */}
+
             <div className="flex justify-center items-center gap-2 w-10/12 flex-wrap">
               {Array.from({ length: downloadItems.length }).map((_, index) => {
                 let scale = 1 - Math.abs(currentIndex - index) * 0.1; // Adjust this formula as needed

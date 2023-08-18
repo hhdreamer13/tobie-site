@@ -15,7 +15,7 @@ const NewsCard = ({ newsItem }) => {
         />
       </div>
       <div className="group relative dark:bg-opacity-75 rounded-lg rounded-tl-lg sm:rounded-tl-none shadow-lg flex-auto sm:w-2/3 mt-16 sm:mt-8">
-        <div className="absolute -inset-1 bg-gradient-to-br from-slate-50 dark:from-slate-950 to-teal-100 dark:to-teal-800 rounded-lg blur opacity-25 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
+        <div className="absolute -inset-1 bg-gradient-to-br from-slate-50 dark:from-slate-950 to-teal-100 dark:to-teal-900 rounded-lg blur opacity-25 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
         <div className="relative flex flex-col gap-3 w-full h-full p-4 bg-white/75 dark:bg-slate-950/80 rounded-lg rounded-tl-lg sm:rounded-tl-none">
           <Link href={newsItem.linkUrl} className="absolute top-0 right-0 m-2">
             <MaximizeIcon />
@@ -41,12 +41,14 @@ const NewsCard = ({ newsItem }) => {
               {newsItem.description}
             </p>
           </div>
-          <a
-            href={newsItem.linkUrl}
-            className="text-sky-500 hover:underline font-caveat hover:text-sky-600 transition-colors duration-200 ease-in-out"
+          <Link
+            href={`/sections/actualites/${newsItem.id}`}
+            className=" font-caveat hover:text-sky-600 text-sky-500 transition-colors duration-200 ease-in-out"
           >
-            Lire la suite
-          </a>
+            <span className="relative no-underline before:content-[''] before:absolute before:w-full before:h-[1px] before:rounded before:bg-sky-500 before:origin-right before:transition-transform before:duration-[0.3s] before:ease-[ease-in-out] before:scale-x-0 before:left-0 before:bottom-0 hover:before:origin-left hover:before:scale-x-100">
+              Lire la suite
+            </span>
+          </Link>
         </div>
       </div>
     </li>
