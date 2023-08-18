@@ -1,5 +1,5 @@
 // import SectionHeader from "@/components/common/SectionHeader";
-import Friends from "../../../components/friends/Friends";
+import Friends from "../../../components/nous/Friends";
 
 export default function SectionPage() {
   return (

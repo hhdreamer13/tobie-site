@@ -8,6 +8,15 @@
   animation: ease 200s alternate infinite;
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  .firefly {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: -0.75vw 0 0 9.8vw;
+  }
+}
+
 .firefly::before,
 .firefly::after {
   content: "";

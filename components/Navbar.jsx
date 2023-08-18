@@ -10,11 +10,22 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent px-6 py-4 h-16">
       <div className="flex items-center justify-between text-slate-50">
-        <div className="font-mottona m-0 sm:m-1 text-4xl drop-shadow-sm">
-          <Link href="/" className="">
+        <Link
+          href="/"
+          className="relative group overflow-hidden m-0 sm:m-1 bg-black/20 backdrop-blur-md p-4 pt-[1.2rem] rounded-full transition-transform duration-500"
+        >
+          <span className="absolute bottom-0 right-0 block w-44 h-44 mb-36 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-white/40 opacity-30 rounded-full group-hover:rotate-90 ease"></span>
+
+          <p className="font-mottona text-3xl sm:text-4xl drop-shadow-sm">
             Tobie
-          </Link>
-        </div>
+          </p>
+
+          <div className="absolute bottom-0 right-1/2 translate-x-1/2 p-3">
+            <div className="block w-9 h-[1px] mb-0.5 bg-white transition duration-300 transform group-hover:"></div>
+            <div className="block w-5 h-[1px] mb-0.5 bg-white transition duration-300 translate-x-1/2 group-hover:translate-x-0"></div>
+            <div className="block w-3 h-[1px] bg-white transition duration-300 transform translate-x-1/2 group-hover:translate-x-0"></div>
+          </div>
+        </Link>
 
         <div className="hidden md:flex items-center gap-10">
           {navItems.map((item, index) => (
@@ -24,10 +35,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center">
-          {/* <Link href="/" className="">
-            Menu
-          </Link> */}
+        <div className="">
           <ThemeButton />
         </div>
       </div>

@@ -6,7 +6,7 @@ import CustomMarker from "./CustomMarker";
 import { useTheme } from "next-themes";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import "@/styles/mapStyles.css";
+import "@/styles/map.css";
 
 const mapStyles = {
   day: "mapbox://styles/hhdreamer/clktutpw600v301phdu4n75uo",

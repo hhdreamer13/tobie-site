@@ -1,5 +1,5 @@
 // import SectionHeader from "@/components/common/SectionHeader";
-import Fireflies from "../../../components/Fireflies";
+import Fireflies from "@/components/fireflies/Fireflies";
 
 export default function SectionPage() {
   return (

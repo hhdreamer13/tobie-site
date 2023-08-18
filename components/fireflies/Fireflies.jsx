@@ -1,4 +1,4 @@
-import "./Fireflies.css";
+import "@/styles/fireflies.css";
 
 const Fireflies = () => {
   const quantity = 15;
