@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import SplitType from "split-type";
 
-const useTextAnimation = (textRef) => {
+const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
   useLayoutEffect(() => {
     if (textRef.current && textRef.current.textContent) {
       const st = new SplitType(textRef.current, { types: "words" });
@@ -13,8 +13,8 @@ const useTextAnimation = (textRef) => {
       let tl = gsap.timeline({
         scrollTrigger: {
           trigger: textRef.current,
-          start: "600% top",
-          end: "850% center",
+          start: scrollStart,
+          end: scrollEnd,
           // markers: true,
           scrub: 1,
         },
@@ -26,29 +26,28 @@ const useTextAnimation = (textRef) => {
         stagger: 0.1,
       }).to(words, {
         opacity: 0,
-        xPercent: (pos, _, arr) =>
-          pos < arr.length / 2
-            ? Math.abs(pos - arr.length / 2) * gsap.utils.random(-20, -10)
-            : Math.abs(pos - arr.length / 2) * gsap.utils.random(10, 20),
-        yPercent: (pos, _, arr) =>
-          Math.abs(pos - arr.length / 2) * gsap.utils.random(-40, -20) - 150,
-        rotationY: (pos, _, arr) =>
-          pos > arr.length / 2
-            ? Math.abs(pos - arr.length / 2) * -15
-            : Math.abs(pos - arr.length / 2) * 15,
-        z: (pos, _, arr) =>
-          Math.abs(pos - arr.length / 2)
-            ? gsap.utils.random(-40, -20)
-            : gsap.utils.random(20, 40),
+        // xPercent: (pos, _, arr) =>
+        //   pos < arr.length / 2
+        //     ? Math.abs(pos - arr.length / 2) * gsap.utils.random(-20, -10)
+        //     : Math.abs(pos - arr.length / 2) * gsap.utils.random(10, 20),
+        // yPercent: "-40%",
+        // rotationY: (pos, _, arr) =>
+        //   pos > arr.length / 2
+        //     ? Math.abs(pos - arr.length / 2) * -15
+        //     : Math.abs(pos - arr.length / 2) * 15,
+        // z: (pos, _, arr) =>
+        //   Math.abs(pos - arr.length / 2)
+        //     ? gsap.utils.random(-40, -20)
+        //     : gsap.utils.random(20, 40),
         stagger: {
           each: 0.05,
-          from: "edges",
+          from: "end",
         },
         delay: 1,
         // stagger: 0.1,
       });
     }
-  }, [textRef]);
+  }, [textRef, scrollStart, scrollEnd]);
 };
 
 export default useTextAnimation;

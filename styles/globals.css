@@ -84,3 +84,46 @@
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
 }
+
+.circle-text {
+  position: relative;
+  width: 250px;
+  height: 125px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.circle-text::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 125px solid transparent;
+  border-bottom-color: #ffffff;
+  border-top: 0;
+  border-right: 0;
+  transform-origin: 0 0;
+  transform: rotate(-45deg);
+}
+
+.circle-text > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  font-size: 1.5em;
+}
+
+/* Adjustments for each individual character */
+.circle-text::before {
+  content: "Les Amis de";
+  writing-mode: vertical-rl;
+  transform: rotate(90deg);
+  letter-spacing: 15px;
+}

@@ -13,8 +13,6 @@ import useBackgroundChangeAnimation from "./useBackgroundChangeAnimation";
 import useTextAnimation from "./useTextAnimation";
 import useFormAnimation from "./useFormAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
-import useScrollBgChange from "./useScrollBgChange";
-import useScrollBgOverlay from "./useScrollBgOverlay";
 
 // import the necessary images for caching
 import group5BushesBottom from "public/leaf/group5-bushes-bottom.webp";
@@ -32,17 +30,7 @@ import group1LeafLeftBottom from "public/leaf/group1-leaf-left-bottom.webp";
 import group1LeafLeftTop from "public/leaf/group1-leaf-left-top.webp";
 import group1LeafRightBottom from "public/leaf/group1-leaf-right-bottom.webp";
 import group1LeafRightTop from "public/leaf/group1-leaf-right-top.webp";
-// import bgSecondary from "public/leaf/bg-secondary.webp";
-import VersesText from "./VersesText";
-
-// import the background images for caching
-import bgImage1 from "public/photos/scroll/01.webp";
-import bgImage2 from "public/photos/scroll/02.webp";
-import bgImage3 from "public/photos/scroll/03.webp";
-import bgImage4 from "public/photos/scroll/04.webp";
-import bgImage5 from "public/photos/scroll/05.webp";
-import bgImage6 from "public/photos/scroll/06.webp";
-import bgImage7 from "public/photos/scroll/07.webp";
+import bgSecondary from "public/leaf/bg-secondary.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,50 +57,7 @@ for (let i = 0; i < frameCount; i++) {
  * Component
  */
 const TobieConte = () => {
-  const scrollPages = 40;
-
-  const verses = [
-    [
-      "Dans un monde lointain, sur un arbre gigantesque,",
-      "Vit Tobie, jeune héros, pas plus grand qu’une noisette.",
-    ],
-    [
-      "Au sein d’un bois vivant, où la sève est sa mère,",
-      "Chaque branche un doux foyer, chaque feuille une lumière.",
-    ],
-    [
-      "Son père, un esprit libre, d’un secret est porteur,",
-      "Mais des ombres veulent l’ombre, et rêvent de grandeur.",
-    ],
-    [
-      "Le pouvoir en place, prêt à tout pour s’en emparer,",
-      "Tobie s’oppose, courageux, il ne peut se résigner.",
-    ],
-    [
-      "Une course contre le temps, sous l'écorce s'engage,",
-      "Des ennemis à chaque tournant, dans ce combat sans âge.",
-    ],
-    [
-      "Pour sauver son père aimé, pour protéger son foyer,",
-      "Il défie le danger, en héros déterminé.",
-    ],
-    [
-      "Avec Tobie, sentez-vous le vent, cette caresse des cieux,",
-      "Seriez-vous, comme lui, prêt à lutter, prêt à être audacieux?",
-      "Dans son voyage à travers branches, sentez-vous aussi l’appel?",
-      "Tobie Lolness, conte d’espoir, vibrant écho de nature éternelle.",
-    ],
-  ];
-
-  const backgrounds = [
-    bgImage1,
-    bgImage2,
-    bgImage3,
-    bgImage4,
-    bgImage5,
-    bgImage6,
-    bgImage7,
-  ];
+  const scrollPages = 11;
 
   // Refs
 
@@ -123,9 +68,6 @@ const TobieConte = () => {
   const titleRef = useRef();
   const textRef = useRef();
   const formRef = useRef();
-
-  const bgRefs = useRef([]);
-  const overlayRefs = useRef([]);
 
   const scrollRef = useRef();
 
@@ -138,9 +80,6 @@ const TobieConte = () => {
   useTextAnimation(textRef);
   useFormAnimation(formRef);
   useScrollIconAnimation(scrollRef);
-
-  useScrollBgChange(bgRefs);
-  useScrollBgOverlay(overlayRefs);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -360,7 +299,7 @@ const TobieConte = () => {
             data-group="1"
             data-position="right-top"
           />
-          {/* <NextImage
+          <NextImage
             fill="true"
             priority={true}
             sizes="100vh"
@@ -369,28 +308,7 @@ const TobieConte = () => {
             className="fullscreenImage absolute"
             src={bgSecondary}
             alt="background Tobie 2"
-          /> */}
-          {backgrounds.map((bg, index) => (
-            <NextImage
-              key={index}
-              fill="true"
-              priority={true}
-              sizes="100vh"
-              ref={(ref) => (bgRefs.current[index] = ref)}
-              style={{ opacity: 0 }}
-              className="fullscreenImage absolute"
-              src={bg}
-              alt={`background Tobie ${index + 2}`}
-            />
-          ))}
-
-          {backgrounds.map((_, index) => (
-            <div
-              key={index}
-              ref={(ref) => (overlayRefs.current[index] = ref)}
-              className="overlay fullscreenImage absolute inset-0 dark:bg-slate-950 bg-slate-100 opacity-0"
-            ></div>
-          ))}
+          />
           {/* Scroll icon */}
           <div
             ref={scrollRef}
@@ -412,21 +330,23 @@ const TobieConte = () => {
             }}
           >
             <div className="flex h-full flex-col items-center justify-center">
-              <h1 className="text-center font-mottona ">
+              <h1 className="text-center font-mottona">
                 <span className="">Les Amis de</span> <br />
                 <span className="text-[12rem]">Tobie</span>
               </h1>
             </div>
           </header>
           {/* Text */}
-          {verses.map((verse, index) => (
-            <VersesText
-              key={index}
-              verse={verse}
-              index={index}
-              totalVerses={verses.length}
-            />
-          ))}
+          <section className="fullscreenImage absolute">
+            <div
+              ref={textRef}
+              className="mx-auto flex h-full w-3/5 flex-col items-center justify-center gap-10 px-2 text-center"
+            >
+              <h3 className="text-2xl leading-normal text-slate-900 md:text-3xl">
+                "Dans un monde lointain, sur un arbre gigantesque,"
+              </h3>
+            </div>
+          </section>
           {/* Form */}
           <section
             ref={formRef}

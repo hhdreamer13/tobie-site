@@ -64,7 +64,7 @@ const Friends = () => {
       </div>
       {/* Notre mission */}
       <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex justify-center items-center">
-        <article className="prose dark:prose-invert">
+        <article className="prose dark:prose-invert p-5">
           <h3 className="">
             L’arbre comme alternative au merchandising de la série d’animation
           </h3>
