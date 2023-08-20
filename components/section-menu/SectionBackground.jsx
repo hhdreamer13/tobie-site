@@ -1,17 +1,18 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { memo } from "react";
 
-const SectionBackground = ({
+const SectionBackground = memo(function SectionBackground({
   currentSection,
   sections,
   expandedSection,
   theme,
-}) => {
+}) {
   const imageUrl =
     currentSection !== -1 && theme
       ? theme === "dark"
-        ? sections[currentSection].imageSrcNuit.src
-        : sections[currentSection].imageSrcJour.src
+        ? sections[currentSection].imageSrcNuit
+        : sections[currentSection].imageSrcJour
       : null;
   return (
     <AnimatePresence>
@@ -32,13 +33,14 @@ const SectionBackground = ({
             alt="Section Background"
             className="object-cover"
             fill={true}
-            priority={true}
+            priority
+            placeholder="blur"
             sizes="100vw"
           />
         </motion.div>
       )}
     </AnimatePresence>
   );
-};
+});
 
 export default SectionBackground;

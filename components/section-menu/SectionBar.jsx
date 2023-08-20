@@ -107,6 +107,7 @@ const SectionBar = memo(function SectionBar({
           alt={section.title}
           className="object-cover"
           fill={true}
+          priority
           sizes="100vh"
         />
 
