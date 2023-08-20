@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import CustomMarker from "./CustomMarker";
 import { useTheme } from "next-themes";
@@ -11,8 +11,6 @@ import "@/styles/map.css";
 const mapStyles = {
   day: "mapbox://styles/hhdreamer/clktutpw600v301phdu4n75uo",
   night: "mapbox://styles/hhdreamer/clku183t7000001p8dfio6hq7",
-  nightOld: "mapbox://styles/hhdreamer/clkst1qrj00de01o89qihel0x",
-  dayOld: "mapbox://styles/hhdreamer/clksqezx100ir01pe0obtccfg",
   default: "mapbox://styles/mapbox/streets-v12",
 };
 
@@ -68,18 +66,25 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
     }
   }, [map, selectedLocation]);
 
+  const handleSelectLocation = useCallback(
+    (location) => {
+      onSelectLocation(location);
+    },
+    [onSelectLocation],
+  );
+
   return (
     <div ref={mapContainer} className="w-full h-full">
       {isMapLoaded &&
         shouldRenderMarkers &&
         locations.map((location) => (
           <CustomMarker
-            key={location.name}
+            key={location.id}
             map={map}
             location={location}
             isMapLoaded={isMapLoaded}
-            isLocationSelected={location === selectedLocation} // Pass whether this location is selected
-            onSelectLocation={() => onSelectLocation(location)} // Pass the function to select this location
+            isLocationSelected={location === selectedLocation}
+            onSelectLocation={() => handleSelectLocation(location)}
           >
             {`
     <h3>${location.name}</h3>

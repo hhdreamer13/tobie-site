@@ -9,27 +9,28 @@ const CircleIconButton = ({
   computedCircleLeft,
   isDesktop,
 }) => {
+  const initialAnimation = { opacity: 0 };
+
+  const DESKTOP_Y_POSITION = isSelected ? "-130%" : "0%";
+  const MOBILE_Y_POSITION = isSelected ? "-70%" : "70%";
+
+  const animateProps = {
+    opacity: isSelected && section.id !== expandedSection ? 1 : 0,
+    y: isDesktop ? DESKTOP_Y_POSITION : MOBILE_Y_POSITION,
+  };
+
+  const transitionProps = { duration: 1.1, ease: "backInOut" };
+
   return (
     <motion.div
       className={`absolute w-5 bottom-9 ${
-        isSelected ? " pointer-events-auto" : " pointer-events-none"
+        isSelected ? "pointer-events-auto" : "pointer-events-none"
       }`}
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: isSelected && section.id !== expandedSection ? 1 : 0,
-        y: isSelected
-          ? isDesktop
-            ? "-130%"
-            : "-70%"
-          : isDesktop
-          ? "0%"
-          : "70%",
-      }}
-      transition={{ duration: 1.1, ease: "backInOut" }}
+      initial={initialAnimation}
+      animate={animateProps}
+      transition={transitionProps}
       style={{
-        // width: "20px",
         left: computedCircleLeft,
-        // opacity: "0",
       }}
     >
       <Link href={section.url}>

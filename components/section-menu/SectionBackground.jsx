@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 const SectionBackground = memo(function SectionBackground({
   currentSection,
@@ -8,12 +8,15 @@ const SectionBackground = memo(function SectionBackground({
   expandedSection,
   theme,
 }) {
-  const imageUrl =
-    currentSection !== -1 && theme
-      ? theme === "dark"
+  const imageUrl = useMemo(() => {
+    if (currentSection !== -1 && theme) {
+      return theme === "dark"
         ? sections[currentSection].imageSrcNuit
-        : sections[currentSection].imageSrcJour
-      : null;
+        : sections[currentSection].imageSrcJour;
+    }
+    return null;
+  }, [currentSection, theme, sections]);
+
   return (
     <AnimatePresence>
       {currentSection !== -1 && (
@@ -25,8 +28,8 @@ const SectionBackground = memo(function SectionBackground({
             filter: expandedSection !== -1 ? "blur(10px)" : "blur(0px)",
           }}
           exit={{ opacity: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8 }}
-          className={`absolute w-full min-h-screen`}
+          transition={{ duration: 0.4 }}
+          className="absolute w-full min-h-screen"
         >
           <Image
             src={imageUrl}
@@ -34,7 +37,6 @@ const SectionBackground = memo(function SectionBackground({
             className="object-cover"
             fill={true}
             priority
-            placeholder="blur"
             sizes="100vw"
           />
         </motion.div>
