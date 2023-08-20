@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable react/no-unescaped-entities */
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import NextImage from "next/image";
 import { ScrollTrigger } from "gsap/all";
@@ -72,11 +72,11 @@ const TobieConte = () => {
 
   const verses = [
     [
-      "Dans un monde lointain, sur un arbre gigantesque,",
-      "Vit Tobie, jeune héros, pas plus grand qu’une noisette.",
+      "Dans un monde tout proche, sur un arbre majestueux,",
+      "Vit Tobie, jeune héros, minuscule mais courageux.",
     ],
     [
-      "Au sein d’un bois vivant, où la sève est sa mère,",
+      "Au sein d’un bois vivant, où la sève est son cœur,",
       "Chaque branche un doux foyer, chaque feuille une lumière.",
     ],
     [
@@ -84,20 +84,20 @@ const TobieConte = () => {
       "Mais des ombres veulent l’ombre, et rêvent de grandeur.",
     ],
     [
-      "Le pouvoir en place, prêt à tout pour s’en emparer,",
-      "Tobie s’oppose, courageux, il ne peut se résigner.",
+      "Les seigneurs de ces lieux, lorgnant la sève d'or,",
+      "Tobie, déterminé, refuse d'y céder, il s'oppose encore.",
     ],
     [
-      "Une course contre le temps, sous l'écorce s'engage,",
+      "Dans l'urgence, il agit, alors que l’arbre est en cage,",
       "Des ennemis à chaque tournant, dans ce combat sans âge.",
     ],
     [
-      "Pour sauver son père aimé, pour protéger son foyer,",
+      "Pour défendre chaque être, chaque souffle de la forêt,",
       "Il défie le danger, en héros déterminé.",
     ],
     [
       "Avec Tobie, sentez-vous le vent, cette caresse des cieux,",
-      "Seriez-vous, comme lui, prêt à lutter, prêt à être audacieux?",
+      "Seriez-vous, comme Tobie et ses amis, prêt à être audacieux?",
     ],
   ];
 
@@ -139,32 +139,33 @@ const TobieConte = () => {
   useScrollBgChange(bgRefs);
   useScrollBgOverlay(overlayRefs);
 
-  const [showButton, setShowButton] = useState(false);
+  // Back to top button
+  // const [showButton, setShowButton] = useState(false);
 
-  useEffect(() => {
-    // Handle scroll event
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight; // The height of the browser window
-      const fullDocumentHeight = document.documentElement.scrollHeight; // The height of the whole document
-      const scrolled = window.scrollY; // Amount of pixels scrolled
+  // useEffect(() => {
+  //   // Handle scroll event
+  //   const handleScroll = () => {
+  //     const windowHeight = window.innerHeight; // The height of the browser window
+  //     const fullDocumentHeight = document.documentElement.scrollHeight; // The height of the whole document
+  //     const scrolled = window.scrollY; // Amount of pixels scrolled
 
-      // If the user is within, say, 200 pixels from the bottom, show the button
-      if (windowHeight + scrolled + 200 >= fullDocumentHeight) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
-    };
+  //     // If the user is within, say, 200 pixels from the bottom, show the button
+  //     if (windowHeight + scrolled + 200 >= fullDocumentHeight) {
+  //       setShowButton(true);
+  //     } else {
+  //       setShowButton(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Clean up the listener
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   // Clean up the listener
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -423,14 +424,14 @@ const TobieConte = () => {
           ))}
 
           {/* Back to top button */}
-          {showButton && (
+          {/* {showButton && (
             <button
               onClick={scrollToTop}
-              className="absolute bottom-1/2 right-1/2 z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
+              className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
             >
               ↑
             </button>
-          )}
+          )} */}
         </main>
       </div>
     </>

@@ -50,7 +50,7 @@ const InscriptionForm = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl shadow-xl bg-white/10 dark:bg-black/10 backdrop-blur-sm w-80 sm:w-[400px] p-4">
+    <div className="relative overflow-hidden rounded-xl shadow-xl bg-white/10 dark:bg-black/10 dark:border dark:border-slate-500 w-80 sm:w-[400px] p-4">
       <h3 className="font-semibold mb-3 mt-2 text-2xl text-center">
         Inscrivez-vous
       </h3>
