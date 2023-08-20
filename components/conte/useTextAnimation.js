@@ -4,6 +4,9 @@ import SplitType from "split-type";
 
 const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
   useLayoutEffect(() => {
+    let tl;
+    let st;
+
     if (textRef.current && textRef.current.textContent) {
       const st = new SplitType(textRef.current, { types: "words" });
       const words = st.words;
@@ -26,27 +29,28 @@ const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
         stagger: 0.1,
       }).to(words, {
         opacity: 0,
-        // xPercent: (pos, _, arr) =>
-        //   pos < arr.length / 2
-        //     ? Math.abs(pos - arr.length / 2) * gsap.utils.random(-20, -10)
-        //     : Math.abs(pos - arr.length / 2) * gsap.utils.random(10, 20),
-        // yPercent: "-40%",
-        // rotationY: (pos, _, arr) =>
-        //   pos > arr.length / 2
-        //     ? Math.abs(pos - arr.length / 2) * -15
-        //     : Math.abs(pos - arr.length / 2) * 15,
-        // z: (pos, _, arr) =>
-        //   Math.abs(pos - arr.length / 2)
-        //     ? gsap.utils.random(-40, -20)
-        //     : gsap.utils.random(20, 40),
         stagger: {
           each: 0.05,
           from: "end",
         },
         delay: 1,
+
         // stagger: 0.1,
       });
     }
+
+    // Cleanup function:
+    return () => {
+      if (tl) {
+        tl.kill(); // Kill the timeline
+        if (tl.scrollTrigger) {
+          tl.scrollTrigger.kill(); // Kill the scrollTrigger associated with the timeline
+        }
+      }
+      if (st) {
+        st.revert(); // Revert the SplitType changes
+      }
+    };
   }, [textRef, scrollStart, scrollEnd]);
 };
 

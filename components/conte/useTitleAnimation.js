@@ -19,8 +19,8 @@ const useTitleAnimation = (titleRef) => {
       gsap.to(titleRef.current, {
         scrollTrigger: {
           trigger: titleRef.current,
-          start: "400% top",
-          end: "700% bottom",
+          start: "300% top",
+          end: "575% bottom",
           scrub: 1,
         },
         // top: "-30vh",

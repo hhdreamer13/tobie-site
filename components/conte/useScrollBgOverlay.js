@@ -10,7 +10,7 @@ const useScrollBgOverlay = (overlayRefs) => {
             trigger: overlay,
             markers: true,
             start: `${550 + index * 500}% top`,
-            end: `${1000 + index * 500}% center`,
+            end: `${1000 + index * 500}% bottom`,
             scrub: 1,
           },
         });

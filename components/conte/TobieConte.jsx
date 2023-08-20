@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable react/no-unescaped-entities */
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import NextImage from "next/image";
 import { ScrollTrigger } from "gsap/all";
@@ -32,7 +32,6 @@ import group1LeafLeftBottom from "public/leaf/group1-leaf-left-bottom.webp";
 import group1LeafLeftTop from "public/leaf/group1-leaf-left-top.webp";
 import group1LeafRightBottom from "public/leaf/group1-leaf-right-bottom.webp";
 import group1LeafRightTop from "public/leaf/group1-leaf-right-top.webp";
-// import bgSecondary from "public/leaf/bg-secondary.webp";
 import VersesText from "./VersesText";
 
 // import the background images for caching
@@ -69,7 +68,7 @@ for (let i = 0; i < frameCount; i++) {
  * Component
  */
 const TobieConte = () => {
-  const scrollPages = 40;
+  const scrollPages = 35;
 
   const verses = [
     [
@@ -99,8 +98,6 @@ const TobieConte = () => {
     [
       "Avec Tobie, sentez-vous le vent, cette caresse des cieux,",
       "Seriez-vous, comme lui, prêt à lutter, prêt à être audacieux?",
-      "Dans son voyage à travers branches, sentez-vous aussi l’appel?",
-      "Tobie Lolness, conte d’espoir, vibrant écho de nature éternelle.",
     ],
   ];
 
@@ -141,6 +138,33 @@ const TobieConte = () => {
 
   useScrollBgChange(bgRefs);
   useScrollBgOverlay(overlayRefs);
+
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    // Handle scroll event
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight; // The height of the browser window
+      const fullDocumentHeight = document.documentElement.scrollHeight; // The height of the whole document
+      const scrolled = window.scrollY; // Amount of pixels scrolled
+
+      // If the user is within, say, 200 pixels from the bottom, show the button
+      if (windowHeight + scrolled + 200 >= fullDocumentHeight) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the listener
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -360,37 +384,6 @@ const TobieConte = () => {
             data-group="1"
             data-position="right-top"
           />
-          {/* <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={bgSecRef}
-            style={{ opacity: 0 }}
-            className="fullscreenImage absolute"
-            src={bgSecondary}
-            alt="background Tobie 2"
-          /> */}
-          {backgrounds.map((bg, index) => (
-            <NextImage
-              key={index}
-              fill="true"
-              priority={true}
-              sizes="100vh"
-              ref={(ref) => (bgRefs.current[index] = ref)}
-              style={{ opacity: 0 }}
-              className="fullscreenImage absolute"
-              src={bg}
-              alt={`background Tobie ${index + 2}`}
-            />
-          ))}
-
-          {backgrounds.map((_, index) => (
-            <div
-              key={index}
-              ref={(ref) => (overlayRefs.current[index] = ref)}
-              className="overlay fullscreenImage absolute inset-0 dark:bg-slate-950 bg-slate-100 opacity-0"
-            ></div>
-          ))}
           {/* Scroll icon */}
           <div
             ref={scrollRef}
@@ -425,18 +418,19 @@ const TobieConte = () => {
               verse={verse}
               index={index}
               totalVerses={verses.length}
+              bgImage={backgrounds[index]}
             />
           ))}
-          {/* Form */}
-          <section
-            ref={formRef}
-            className="fullscreenImage absolute"
-            style={{ opacity: 0 }}
-          >
-            <div className="mx-2 mt-24 flex h-full flex-col items-center justify-center gap-10 px-2 text-center">
-              {/* <InputForm showModal={showModal} setShowModal={setShowModal} /> */}
-            </div>
-          </section>
+
+          {/* Back to top button */}
+          {showButton && (
+            <button
+              onClick={scrollToTop}
+              className="absolute bottom-1/2 right-1/2 z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
+            >
+              ↑
+            </button>
+          )}
         </main>
       </div>
     </>
