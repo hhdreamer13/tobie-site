@@ -290,11 +290,12 @@ const TobieConte = () => {
           {/* Scroll icon */}
           <div
             ref={scrollRef}
-            className="fullscreenImage absolute flex h-full w-full rotate-180 items-center justify-center sm:rotate-0"
+            className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center "
           >
-            <div className="relative h-[60px] w-[30px] rounded-[15px] border-[3px] border-solid border-amber-200">
-              <div className="absolute bottom-[34px] left-1 top-1 w-4 animate-[scroller_2000ms_ease-out_infinite] rounded-lg bg-lime-300"></div>
+            <div className="relative h-[60px] w-[30px] rounded-[15px] border-[3px] border-solid border-amber-400 rotate-180  sm:rotate-0">
+              <div className="absolute bottom-[34px] left-1 top-1 w-4 animate-[scroller_2000ms_ease-out_infinite] rounded-lg bg-lime-500"></div>
             </div>
+            <p className="text-amber-500 text-xl font-caveat">Descendez !</p>
           </div>
           {/* Text Tobie */}
           <header
