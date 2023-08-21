@@ -14,7 +14,7 @@ const MapDisplay = ({ locations }) => {
   return (
     <div className="relative flex flex-col justify-center items-start w-full h-full mb-20">
       <div className="relative w-full h-full mb-20 ">
-        <div className="relative w-10/12 sm:w-3/4 h-[500px] md:h-[550px] xl:h-[600px] mx-auto rounded-xl overflow-hidden shadow-lg shadow-cyan-500/20">
+        <div className="relative w-10/12 sm:w-3/4 h-[500px] md:h-[550px] xl:h-[600px] mx-auto rounded-xl overflow-hidden shadow-xl shadow-cyan-500/10">
           <MapComponent
             locations={locations}
             selectedLocation={selectedLocation}

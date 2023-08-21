@@ -13,7 +13,7 @@ const Providers = ({ children }) => {
   if (!isMounted) {
     return (
       <div className="bg-slate-950 w-full h-screen text-slate-50 text-4xl flex justify-center items-center">
-        <h2>Loading...</h2>{" "}
+        <h2>Un moment...</h2>{" "}
       </div>
     );
   }

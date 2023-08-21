@@ -61,7 +61,7 @@ const SectionMenu = () => {
   if (!positionValues.centerPosition)
     return (
       <div className="bg-main text-main w-full h-screen text-4xl flex justify-center items-center">
-        <h2>Loading...</h2>{" "}
+        <h2>Un moment...</h2>{" "}
       </div>
     );
 

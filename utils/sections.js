@@ -50,23 +50,24 @@ const sections = [
     url: "/sections/conte",
   },
   {
-    id: "5",
-    title: "Nous",
-    description:
-      "Rencontrez les artisans qui donnent vie aux aventures des amis de Tobie et découvrez notre mission.",
-    imageSrcJour: imageSrcJour5,
-    imageSrcNuit: imageSrcNuit5,
-    url: "/sections/nous",
-  },
-  {
     id: "6",
     title: "Jeu",
     description:
-      "Amusez-vous avec Tobie et ses amis dans des jeux interactifs et divertissants.",
+      "Amusez-vous avec Tobie et ses amis dans un jeu interactif et divertissant.",
     imageSrcJour: imageSrcJour6,
     imageSrcNuit: imageSrcNuit6,
     url: "/sections/jeu",
   },
+  {
+    id: "5",
+    title: "Contact",
+    description:
+      "Contactez-nous, rencontrez les artisans qui donnent vie aux aventures des amis de Tobie et découvrez notre mission.",
+    imageSrcJour: imageSrcJour5,
+    imageSrcNuit: imageSrcNuit5,
+    url: "/sections/contact",
+  },
+
   // {
   //   id: "7",
   //   title: "Carte",

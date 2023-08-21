@@ -65,8 +65,8 @@ const TobieConte = () => {
       "Vit Tobie, jeune héros, minuscule mais courageux.",
     ],
     [
-      "Au sein d’un bois vivant, où la sève est le cœur,",
-      "Chaque branche un foyer, chaque feuille un espoir.",
+      "Dans le bois qui s'éveille, où la sève est le cœur,",
+      "Chaque branche un merveille, chaque feuille une couleur.",
     ],
     [
       "Son père, un esprit libre, d’un secret est protecteur,",
@@ -77,8 +77,8 @@ const TobieConte = () => {
       "Tobie, déterminé, refuse d'y céder, il s'oppose encore.",
     ],
     [
-      "Sans hésiter, il avance, alors que l’arbre est l'otage,",
-      "Chaque chemin cache une vieille rage, dans ce combat sans âge.",
+      "Sans fléchir, il avance, l’arbre prisonnier, en otage,",
+      "Là où il va, une menace , dans ce combat sans âge.",
     ],
     [
       "Pour défendre chaque être, chaque souffle de la forêt,",
