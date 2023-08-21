@@ -28,7 +28,7 @@ const SectionBackground = memo(function SectionBackground({
             filter: expandedSection !== -1 ? "blur(10px)" : "blur(0px)",
           }}
           exit={{ opacity: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.7 }}
           className="absolute w-full min-h-screen"
         >
           <Image
@@ -37,6 +37,7 @@ const SectionBackground = memo(function SectionBackground({
             className="object-cover"
             fill={true}
             priority
+            loading="eager"
             sizes="100vw"
           />
         </motion.div>

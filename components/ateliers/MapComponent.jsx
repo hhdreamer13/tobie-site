@@ -45,7 +45,7 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
       initialMap.addControl(new mapboxgl.NavigationControl(), "top-right");
 
       // Add fullscreen control
-      initialMap.addControl(new mapboxgl.FullscreenControl(), "top-right");
+      initialMap.addControl(new mapboxgl.FullscreenControl(), "top-left");
 
       setShouldRenderMarkers(true);
     });

@@ -9,11 +9,11 @@ export default function SectionPage() {
       <div className="z-10">
         <SectionHeader sectionName="ateliers" />
       </div>
-      <div className="mt-40 mb-10 w-4/5">
+      <div className="mt-40 mb-10 w-3/4">
         <h2 className="font-literata font-semibold text-xl">
           Partez à la Rencontre des Ateliers de Tobie !
         </h2>
-        <p className="mt-6 font- text-justify">
+        <p className="mt-6 text-justify">
           Avec notre carte interactive, les ateliers enchantés de Tobie sont à
           portée de clic. Explorez, choisissez et inscrivez-vous ! Chaque
           atelier est une expérience unique, une chance pour les enfants de
