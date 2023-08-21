@@ -50,11 +50,11 @@ const InputForm = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl shadow-xl  bg-white/10 dark:bg-black/10 backdrop-blur-sm w-80 sm:w-[400px] p-4">
+    <div className="relative overflow-hidden rounded-xl shadow-xl  bg-white/10 dark:bg-black/10 backdrop-blur-sm w-5/6 sm:w-3/5 lg:w-1/2 2xl:w-2/5 p-4">
       <h3 className="font-semibold mb-3 mt-2 text-2xl text-center ">
         Contactez-nous
       </h3>
-      <p className="text-center">Nous aimerions avoir de vos nouvelles !</p>
+      <p className="text-center">Nous aimerions avoir de tes nouvelles !</p>
       <form
         className="overflow-hidden pt-10 pb-8 px-8 flex flex-col items-center"
         onSubmit={handleSubmit}

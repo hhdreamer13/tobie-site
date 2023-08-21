@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import backgroundImage from "../../public/photos/download-page-background.webp";
@@ -7,12 +7,12 @@ import windowImage from "../../public/photos/window-frame.webp";
 import handleImage from "../../public/photos/handle-circle.webp";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 
-const BackgroundStack = ({
+const BackgroundStack = memo(function BackgroundStack({
   downloadItems,
   currentIndex,
   setCurrentIndex,
   currentItem,
-}) => {
+}) {
   const [rotation, setRotation] = useState(30);
 
   const audioRef = useRef(null);
@@ -55,7 +55,7 @@ const BackgroundStack = ({
     },
   };
 
-  const toggleRotation = () => {
+  const toggleRotation = useCallback(() => {
     setRotation(-35);
 
     if (currentIndex < downloadItems.length - 1) {
@@ -72,7 +72,8 @@ const BackgroundStack = ({
     setTimeout(() => {
       setRotation(30);
     }, 350);
-  };
+  }, [currentIndex, downloadItems, setCurrentIndex]);
+
   return (
     <>
       {/* Background */}
@@ -82,7 +83,8 @@ const BackgroundStack = ({
           alt="Scene"
           fill={true}
           quality={100}
-          sizes="100vh"
+          priority
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -176,6 +178,6 @@ const BackgroundStack = ({
       <audio ref={audioRef} src="/click.mp3" preload="auto"></audio>
     </>
   );
-};
+});
 
 export default BackgroundStack;

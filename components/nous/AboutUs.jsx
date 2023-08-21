@@ -9,7 +9,7 @@ import useGridAnimations from "./useGridAnimations";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 
-const Friends = () => {
+const AboutUs = () => {
   const gridRef = useRef(null);
 
   const imagePaths = generateImagePaths();
@@ -19,20 +19,8 @@ const Friends = () => {
 
   return (
     <div className="grid-wrapper w-full">
-      <div className="w-full h-screen pt-20 flex flex-col gap-5 items-center justify-center">
-        <h2 className="font-mottona text-3xl sm:text-7xl m-0 drop-shadow-xl">
-          Nous Sommes
-        </h2>
-        <h2 className="font-mottona text-5xl sm:text-9xl m-0 drop-shadow-xl">
-          Les Amis de Tobie
-        </h2>
-        <h2 className="font-mottona text-3xl sm:text-7xl m-0 drop-shadow-xl">
-          Comme Toi
-        </h2>
-      </div>
-
       {/* Contact Us Section */}
-      <div className="min-h-screen text-slate-100 relative flex items-center justify-center">
+      <div className="min-h-screen text-slate-100 relative flex flex-col gap-4 items-center justify-center">
         <Image
           src="/photos/02.webp"
           alt="Contact-us Background"
@@ -40,7 +28,81 @@ const Friends = () => {
           fill={true}
           sizes="100vw"
         />
-        <ContactForm />
+        <div className="mt-20 w-full flex justify-center items-center">
+          <ContactForm />
+        </div>
+
+        <div className="relative flex justify-center items-center gap-5 bg-slate-100 rounded-lg">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/instagram.svg"
+              alt="instagram"
+              width={45}
+              height={45}
+            />
+          </a>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/facebook.svg"
+              alt="facebook"
+              width={45}
+              height={45}
+            />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/twitter.svg"
+              alt="twitter"
+              width={45}
+              height={45}
+            />
+          </a>
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/youtube.svg"
+              alt="youtube"
+              width={45}
+              height={45}
+            />
+          </a>
+        </div>
+        <div className="scroll-down">
+          <Image
+            className="relative"
+            src="/assets/down.svg"
+            alt="scroll down"
+            width={40}
+            height={40}
+          />
+        </div>
+      </div>
+
+      <div className="w-full h-screen pt-20 flex flex-col gap-5 items-center justify-center">
+        <h2 className="font-mottona text-4xl sm:text-7xl m-0 drop-shadow-xl">
+          Nous Sommes
+        </h2>
+        <h2 className="font-mottona text-6xl sm:text-9xl m-0 drop-shadow-xl">
+          Les Amis de Tobie
+        </h2>
+        <h2 className="font-mottona text-4xl sm:text-7xl m-0 drop-shadow-xl">
+          Comme Toi
+        </h2>
       </div>
 
       {/* Partenaires Section */}
@@ -64,8 +126,8 @@ const Friends = () => {
       </div>
       {/* Notre mission */}
       <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex justify-center items-center">
-        <article className="prose dark:prose-invert p-5">
-          <h3 className="">
+        <article className="prose dark:prose-invert w-5/6 sm:w-full m-4 p-5 sm:m-1">
+          <h3 className="mb-5 text-xl sm:text-3xl">
             L’arbre comme alternative au merchandising de la série d’animation
           </h3>
           <p className="text-justify">
@@ -86,4 +148,4 @@ const Friends = () => {
   );
 };
 
-export default Friends;
+export default AboutUs;

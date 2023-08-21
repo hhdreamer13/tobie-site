@@ -1,13 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import downloads from "@/utils/downloads";
 import BackgroundStack from "./BackgroundStack";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import PopupText from "./PopupText";
 import MaximizeIcon from "../common/MaximizeIcon";
+
+const getUniqueCategories = (downloads) => {
+  const categories = downloads.map((item) => item.category);
+  return [...new Set(categories)];
+};
+
+const uniqueCategories = getUniqueCategories(downloads);
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,12 +23,14 @@ const ImageCarousel = () => {
 
   const currentItem = downloadItems[currentIndex];
 
-  const getUniqueCategories = (downloads) => {
-    const categories = downloads.map((item) => item.category);
-    return [...new Set(categories)];
-  };
-
-  const uniqueCategories = getUniqueCategories(downloads);
+  const handleCategoryChange = useCallback((category) => {
+    const itemsFromCategory = downloads.filter(
+      (item) => item.category === category,
+    );
+    setDownloadItems(itemsFromCategory);
+    setCurrentIndex(0);
+    setShowHandleText(true);
+  }, []);
 
   useEffect(() => {
     if (downloadItems) {
@@ -67,14 +76,7 @@ const ImageCarousel = () => {
                       downloadItems &&
                       downloadItems.some((item) => item.category === category)
                     }
-                    onChange={() => {
-                      const itemsFromCategory = downloads.filter(
-                        (item) => item.category === category,
-                      );
-                      setDownloadItems(itemsFromCategory);
-                      setCurrentIndex(0);
-                      setShowHandleText(true);
-                    }}
+                    onChange={() => handleCategoryChange(category)}
                   />
                   <span className="ml-2 font-caveat text-xl">
                     {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -105,36 +107,6 @@ const ImageCarousel = () => {
                 </Link>
               )}
             </button>
-
-            {/* Button variant 2 */}
-            {/* <button className="relative group text-center backdrop-blur-sm transition-transform duration-300 ">
-              {currentItem && (
-                <Link
-                  href={currentItem.linkUrl}
-                  className="text-lg flex justify-center items-center font-caveat"
-                >
-                  <span className="relative z-10 block px-5 py-3 bg-main text-main overflow-hidden font-medium leading-tight transition-colors duration-300 ease-out border-2 border-slate-950 dark:border-slate-100 rounded-lg">
-                    <span className="relative">
-                      {" "}
-                      {currentItem.title}{" "}
-                      <span className="ml-3">
-                        <Image
-                          src="/assets/open.svg"
-                          alt="button"
-                          width={15}
-                          height={15}
-                          className="inline"
-                        />
-                      </span>
-                    </span>
-                  </span>
-                  <span
-                    className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-slate-950/40 dark:bg-slate-100/40 rounded-lg group-hover:mb-0 group-hover:mr-0"
-                    data-rounded="rounded-lg"
-                  ></span>
-                </Link>
-              )}
-            </button> */}
 
             <div className="flex justify-center items-center gap-2 w-10/12 flex-wrap">
               {Array.from({ length: downloadItems.length }).map((_, index) => {

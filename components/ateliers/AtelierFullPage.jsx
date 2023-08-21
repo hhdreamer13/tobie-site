@@ -14,13 +14,12 @@ const AtelierFullPage = ({ item }) => {
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
       {/* Close */}
-      {/* Close */}
       <Link
         href={"/sections/ateliers"}
         className="absolute top-0 left-0 -mt-16 ml-10 "
       >
         <span>
-          <BackIcon className="w-10 h-10 -rotate-90" />
+          <BackIcon className="w-10 h-10 -rotate-90 hover:scale-105" />
         </span>
       </Link>
 
@@ -62,7 +61,7 @@ const AtelierFullPage = ({ item }) => {
         <p>{item.description}</p>
       </div>
 
-      <div className="mt-20">
+      <div className="mt-20 w-full flex justify-center items-center">
         <InscriptionForm />
       </div>
     </div>

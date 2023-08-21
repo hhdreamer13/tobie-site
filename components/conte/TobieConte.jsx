@@ -9,12 +9,7 @@ import Lenis from "@studio-freight/lenis";
 import useLeafExitAnimation from "./useLeafExitAnimation";
 import useTobieRunAnimation from "./useTobieRunAnimation";
 import useTitleAnimation from "./useTitleAnimation";
-import useBackgroundChangeAnimation from "./useBackgroundChangeAnimation";
-import useTextAnimation from "./useTextAnimation";
-import useFormAnimation from "./useFormAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
-import useScrollBgChange from "./useScrollBgChange";
-import useScrollBgOverlay from "./useScrollBgOverlay";
 
 // import the necessary images for caching
 import group5BushesBottom from "public/leaf/group5-bushes-bottom.webp";
@@ -76,11 +71,11 @@ const TobieConte = () => {
       "Vit Tobie, jeune héros, minuscule mais courageux.",
     ],
     [
-      "Au sein d’un bois vivant, où la sève est son cœur,",
-      "Chaque branche un doux foyer, chaque feuille une lumière.",
+      "Au sein d’un bois vivant, où la sève est le cœur,",
+      "Chaque branche un foyer, chaque feuille un espoir.",
     ],
     [
-      "Son père, un esprit libre, d’un secret est porteur,",
+      "Son père, un esprit libre, d’un secret est protecteur,",
       "Mais des ombres veulent l’ombre, et rêvent de grandeur.",
     ],
     [
@@ -88,16 +83,16 @@ const TobieConte = () => {
       "Tobie, déterminé, refuse d'y céder, il s'oppose encore.",
     ],
     [
-      "Dans l'urgence, il agit, alors que l’arbre est en cage,",
-      "Des ennemis à chaque tournant, dans ce combat sans âge.",
+      "Sans hésiter, il avance, alors que l’arbre est l'otage,",
+      "Chaque chemin cache une vieille rage, dans ce combat sans âge.",
     ],
     [
       "Pour défendre chaque être, chaque souffle de la forêt,",
-      "Il défie le danger, en héros déterminé.",
+      "Il défie le danger, qu'il doit affronter.",
     ],
     [
-      "Avec Tobie, sentez-vous le vent, cette caresse des cieux,",
-      "Seriez-vous, comme Tobie et ses amis, prêt à être audacieux?",
+      "Avec Tobie, sentez-vous le vent, cette caresse des cieux ?",
+      "Comme lui et ses amis, seriez-vous si audacieux ?",
     ],
   ];
 
@@ -115,14 +110,8 @@ const TobieConte = () => {
 
   const tobieRef = useRef();
   const bgRef = useRef();
-  const bgSecRef = useRef();
 
   const titleRef = useRef();
-  const textRef = useRef();
-  const formRef = useRef();
-
-  const bgRefs = useRef([]);
-  const overlayRefs = useRef([]);
 
   const scrollRef = useRef();
 
@@ -131,13 +120,7 @@ const TobieConte = () => {
 
   useTobieRunAnimation(tobieRef, bgRef, frameCount, images);
   useTitleAnimation(titleRef);
-  useBackgroundChangeAnimation(bgSecRef);
-  useTextAnimation(textRef);
-  useFormAnimation(formRef);
   useScrollIconAnimation(scrollRef);
-
-  useScrollBgChange(bgRefs);
-  useScrollBgOverlay(overlayRefs);
 
   // Back to top button
   // const [showButton, setShowButton] = useState(false);

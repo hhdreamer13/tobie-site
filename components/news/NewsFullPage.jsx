@@ -18,7 +18,7 @@ const NewsFullPage = ({ item }) => {
         className="absolute top-0 left-0 -mt-16 ml-10 "
       >
         <span>
-          <BackIcon className="w-10 h-10 -rotate-90" />
+          <BackIcon className="w-10 h-10 -rotate-90 hover:scale-105" />
         </span>
       </Link>
 

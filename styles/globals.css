@@ -41,7 +41,25 @@
   }
 }
 
-.link2 {
+@keyframes scroll-down {
+  0% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+
+.scroll-down {
+  animation: scroll-down 2s infinite; /* 2s duration and infinite loop, adjust as needed */
+}
+
+/* .link2 {
   @apply relative no-underline before:content-[''] before:absolute before:w-full before:h-[1px] before:rounded before:bg-[#18272F] before:origin-right before:transition-transform before:duration-[0.3s] before:ease-[ease-in-out] before:scale-x-0 before:left-0 before:bottom-0 hover:before:origin-left hover:before:scale-x-100;
 }
 
@@ -120,10 +138,9 @@
   font-size: 1.5em;
 }
 
-/* Adjustments for each individual character */
 .circle-text::before {
   content: "Les Amis de";
   writing-mode: vertical-rl;
   transform: rotate(90deg);
   letter-spacing: 15px;
-}
+} */

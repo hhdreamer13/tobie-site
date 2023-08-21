@@ -7,40 +7,63 @@ const useVerseSequence = (bgRef, overlayRef, index, scrollStart, scrollEnd) => {
       scrollTrigger: {
         trigger: bgRef.current,
         start: scrollStart,
-        end: scrollEnd, // Extend the endpoint to accommodate the sequence.
+        end: scrollEnd,
         scrub: 1,
       },
     });
 
+    // Scale & Pan effect
     tl.to(bgRef.current, {
-      opacity: 1,
-      duration: 2,
+      scale: gsap.utils.random(1.2, 1.4), // Random zoom between 1.01x to 1.03x
+      x: gsap.utils.random(-15, 15), // Adjust for desired panning range
+      y: gsap.utils.random(-15, 15), // Adjust for desired panning range
+      duration: 8, // Adjusted duration for smoother effect
       ease: "sine.inOut",
-    })
-      .to(overlayRef.current, {
-        opacity: 0.5,
-        delay: 1, // Delay for the overlay to darken after bg is visible
+    });
+
+    // Opacity effect
+    tl.to(
+      bgRef.current,
+      {
+        opacity: 1,
         duration: 2,
         ease: "sine.inOut",
-      })
-      // Assuming the text animation starts here and ends later, so there's a gap in the timeline.
-      .to(overlayRef.current, {
-        opacity: 0,
-        delay: 3, // Delay for the overlay to fade after text animation
-        duration: 2,
-        ease: "sine.inOut",
-      })
-      .to(bgRef.current, {
-        opacity: 0,
-        duration: 2,
-        ease: "sine.inOut",
-      });
+      },
+      0,
+    )
+      .to(
+        overlayRef.current,
+        {
+          opacity: 0.5,
+          duration: 2,
+          ease: "sine.inOut",
+        },
+        2,
+      )
+      .to(
+        overlayRef.current,
+        {
+          opacity: 0,
+          duration: 2,
+          ease: "sine.inOut",
+        },
+        6,
+      )
+      .to(
+        bgRef.current,
+        {
+          opacity: 0,
+          duration: 2,
+          ease: "sine.inOut",
+        },
+        8,
+      );
 
     // Cleanup function:
     return () => {
-      tl.kill(); // Kill the timeline
+      tl.kill();
       if (tl.scrollTrigger) {
-        tl.scrollTrigger.kill(); // Kill the scrollTrigger associated with the timeline
+        tl.scrollTrigger.kill();
       }
     };
   }, [bgRef, overlayRef, index, scrollStart, scrollEnd]);

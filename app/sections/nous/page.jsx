@@ -1,5 +1,5 @@
 // import SectionHeader from "@/components/common/SectionHeader";
-import Friends from "../../../components/nous/Friends";
+import AboutUs from "../../../components/nous/AboutUs";
 
 export default function SectionPage() {
   return (
@@ -15,7 +15,7 @@ export default function SectionPage() {
           <p className="mt-2 font-nunito">C'est la page d'actualité</p>
         </div> */}
         <div className="flex justify-center items-start w-full h-full ">
-          <Friends />
+          <AboutUs />
         </div>
       </div>
     </>
