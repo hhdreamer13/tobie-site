@@ -32,6 +32,8 @@ import bgImage5 from "public/photos/scroll/05.webp";
 import bgImage6 from "public/photos/scroll/06.webp";
 import bgImage7 from "public/photos/scroll/07.webp";
 
+import tobieLight from "../../public/photos/tobieText-themeLight.webp";
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Mobile browser screen size unchange with scrolling
@@ -306,10 +308,20 @@ const TobieConte = () => {
             }}
           >
             <div className="flex h-full flex-col items-center justify-center">
-              <h1 className="text-center font-mottona ">
-                <span className="">Les Amis de</span> <br />
-                <span className="text-[12rem]">Tobie</span>
-              </h1>
+              <div className="flex flex-col justify-center items-center">
+                <h2 className="font-mottona text-8xl sm:text-9xl text-slate-950">
+                  Les Amis de <span hidden>Tobie</span>
+                </h2>
+                <NextImage
+                  src={tobieLight}
+                  alt="Tobie text"
+                  className="object-contain w-44 sm:w-52"
+                  width={200}
+                  height={200}
+                  quality={100}
+                  property
+                />
+              </div>
             </div>
           </header>
           {/* Text */}
