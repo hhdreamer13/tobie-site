@@ -56,11 +56,10 @@
 .mapboxgl-popup-content p {
   margin-bottom: 1rem;
   font-size: small;
-  text-align: justify;
+  /* text-align: justify; */
 }
 
 .mapboxgl-popup-content a {
   color: #0284c7;
   font-size: medium;
 }
-

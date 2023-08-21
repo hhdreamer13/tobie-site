@@ -26,6 +26,7 @@ const AboutUs = () => {
           alt="Contact-us Background"
           className="object-cover"
           fill={true}
+          priority
           sizes="100vw"
         />
         <div className="mt-20 w-full flex justify-center items-center">

@@ -31,7 +31,7 @@ const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
         opacity: 0,
         stagger: {
           each: 0.05,
-          from: "end",
+          from: "start",
         },
         delay: 1,
 
