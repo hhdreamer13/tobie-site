@@ -13,7 +13,14 @@ const useLeafExitAnimation = () => {
     // Create a GSAP context
     let ctx = gsap.context(() => {
       // animation helper function
-      const animate = (groupRefs, end, xPercentPos = 50, xPercentNeg = -50) => {
+      const animate = (
+        groupRefs,
+        end,
+        xPercentPos = 50,
+        xPercentNeg = -50,
+        yPercentPos = 50,
+        yPercentNeg = -50,
+      ) => {
         groupRefs.current.forEach((leaf) => {
           if (leaf && leaf.dataset && leaf.dataset.position) {
             const position = leaf.dataset.position;
@@ -28,9 +35,9 @@ const useLeafExitAnimation = () => {
             }
 
             if (position.includes("top")) {
-              yPercent = -50;
+              yPercent = yPercentNeg;
             } else if (position.includes("bottom")) {
-              yPercent = 50;
+              yPercent = yPercentPos;
             }
 
             gsap.to(leaf, {
@@ -56,9 +63,9 @@ const useLeafExitAnimation = () => {
       };
 
       animate(group1Refs, "100% top", 65);
-      animate(group2Refs, "150% top", 60);
-      animate(group3Refs, "200% top", 55); // Use 200 for branch of group 3
-      animate(group4Refs, "250% top", 50);
+      animate(group2Refs, "200% top", 50, -50, 50, -100);
+      animate(group3Refs, "250% top", 150);
+      animate(group4Refs, "200% top", 80);
       animate(group5Refs, "300% top", 45);
     });
 

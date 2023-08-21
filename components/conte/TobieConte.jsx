@@ -10,24 +10,18 @@ import useLeafExitAnimation from "./useLeafExitAnimation";
 import useTobieRunAnimation from "./useTobieRunAnimation";
 import useTitleAnimation from "./useTitleAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
+import VersesText from "./VersesText";
 
-// import the necessary images for caching
-import group5BushesBottom from "public/leaf/group5-bushes-bottom.webp";
-import group5RockRight from "public/leaf/group5-rock-right.webp";
-import group4BushesLeft from "public/leaf/group4-bushes-left.webp";
-import group4BushesRight from "public/leaf/group4-bushes-right.webp";
-import group3BranchLeft from "public/leaf/group3-branch-left.webp";
-import group3BranchRight from "public/leaf/group3-branch-right.webp";
-import group2LeafBottom from "public/leaf/group2-leaf-bottom.webp";
-import group2LeafLeftBottom from "public/leaf/group2-leaf-left-bottom.webp";
-import group2LeafLeftTop from "public/leaf/group2-leaf-left-top.webp";
-import group2LeafRightTop from "public/leaf/group2-leaf-right-top.webp";
-import group2LeafRight from "public/leaf/group2-leaf-right.webp";
+// Leaf images
+import group2Top from "public/leaf/2-top.webp";
+import group3Right from "public/leaf/3-right.webp";
+import group4Left from "public/leaf/4-left.webp";
+import group5Bottom from "public/leaf/5-bottom.webp";
+
 import group1LeafLeftBottom from "public/leaf/group1-leaf-left-bottom.webp";
 import group1LeafLeftTop from "public/leaf/group1-leaf-left-top.webp";
 import group1LeafRightBottom from "public/leaf/group1-leaf-right-bottom.webp";
 import group1LeafRightTop from "public/leaf/group1-leaf-right-top.webp";
-import VersesText from "./VersesText";
 
 // import the background images for caching
 import bgImage1 from "public/photos/scroll/01.webp";
@@ -205,21 +199,10 @@ const TobieConte = () => {
             sizes="100vh"
             ref={(el) => group5Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src={group5BushesBottom}
+            src={group5Bottom}
             alt="Decor Tobie"
             data-group="5"
             data-position="bottom"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group5Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group5RockRight}
-            alt="Decor Tobie"
-            data-group="5"
-            data-position="right-bottom"
           />
           {/* Group 4 */}
           <NextImage
@@ -228,21 +211,10 @@ const TobieConte = () => {
             sizes="100vh"
             ref={(el) => group4Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src={group4BushesLeft}
+            src={group4Left}
             alt="Decor Tobie"
             data-group="4"
             data-position="left-bottom"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group4Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group4BushesRight}
-            alt="Decor Tobie"
-            data-group="4"
-            data-position="right-bottom"
           />
           {/* Group 3 */}
           <NextImage
@@ -251,21 +223,10 @@ const TobieConte = () => {
             sizes="100vh"
             ref={(el) => group3Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src={group3BranchLeft}
+            src={group3Right}
             alt="Decor Tobie"
             data-group="3"
-            data-position="left"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group3Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group3BranchRight}
-            alt="Decor Tobie"
-            data-group="3"
-            data-position="right-top"
+            data-position="right"
           />
           {/* Group 2 */}
           <NextImage
@@ -274,54 +235,10 @@ const TobieConte = () => {
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
-            src={group2LeafBottom}
+            src={group2Top}
             alt="Decor Tobie"
             data-group="2"
-            data-position="bottom"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group2Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group2LeafLeftBottom}
-            alt="Decor Tobie"
-            data-group="2"
-            data-position="left-bottom"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group2Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group2LeafLeftTop}
-            alt="Decor Tobie"
-            data-group="2"
-            data-position="left-top"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group2Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group2LeafRightTop}
-            alt="Decor Tobie"
-            data-group="2"
-            data-position="right-top"
-          />
-          <NextImage
-            fill="true"
-            priority={true}
-            sizes="100vh"
-            ref={(el) => group2Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group2LeafRight}
-            alt="Decor Tobie"
-            data-group="2"
-            data-position="right"
+            data-position="top"
           />
           {/* Group 1 */}
           <NextImage
