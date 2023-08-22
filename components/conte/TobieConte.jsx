@@ -198,7 +198,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group5Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -211,7 +210,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group4Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -224,7 +222,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group3Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -237,7 +234,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -250,7 +246,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -262,7 +257,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -274,7 +268,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
@@ -286,7 +279,6 @@ const TobieConte = () => {
           <NextImage
             fill="true"
             priority
-            loading="eager"
             sizes="100vh"
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
