@@ -4,17 +4,9 @@ import tobieLight from "../../public/photos/tobieText-themeLight.webp";
 import tobieDark from "../../public/photos/tobieText-themeDark.webp";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const TitlePage = () => {
   const { theme } = useTheme();
-  const [imageSrc, setImageSrc] = useState(null);
-
-  useEffect(() => {
-    setImageSrc(theme === "dark" ? tobieDark : tobieLight);
-  }, [theme]);
-
-  if (!imageSrc) return null; // Return null or a placeholder/loading state while we wait for the theme-based image source
 
   const exitVariants = {
     exit: {
@@ -91,6 +83,7 @@ const TitlePage = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
+            aria-label="Les Amis de Tobie"
             className="font-mottona text-7xl sm:text-9xl text-main"
           >
             Les Amis de <span hidden>Tobie</span>
@@ -102,7 +95,7 @@ const TitlePage = () => {
             exit="exit"
           >
             <Image
-              src={imageSrc}
+              src={theme === "dark" ? tobieDark : tobieLight}
               alt="Tobie text"
               className="object-contain w-44 sm:w-52"
               width={200}
