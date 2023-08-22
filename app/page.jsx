@@ -1,9 +1,9 @@
-import SectionMenu from "@/components/section-menu/SectionMenu";
+import HomePage from "@/components/home/HomePage";
 
 export default function Home() {
   return (
     <div className="w-full min-h-screen justify-center items-center">
-      <SectionMenu />
+      <HomePage />
     </div>
   );
 }

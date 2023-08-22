@@ -9,6 +9,32 @@ import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import SectionBackground from "./SectionBackground";
 import Fireflies from "../fireflies/Fireflies";
+import Loader from "../common/Loader";
+import { motion } from "framer-motion";
+
+const sectionBarAnimation = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: [0.43, 0.13, 0.23, 0.96], // cubic-bezier easing
+    },
+  },
+};
+
+const sectionBarControlAnimation = {
+  hidden: { opacity: 0, y: 100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: [0.6, -0.05, 0.01, 0.99], // cubic-bezier easing
+    },
+  },
+};
 
 const SectionMenu = () => {
   const isDesktop = useDeviceType();
@@ -58,12 +84,7 @@ const SectionMenu = () => {
     [positionValues],
   );
 
-  if (!positionValues.centerPosition)
-    return (
-      <div className="bg-main text-main w-full h-screen text-4xl flex justify-center items-center">
-        <h2>Un moment...</h2>{" "}
-      </div>
-    );
+  if (!positionValues.centerPosition) return <Loader />;
 
   return (
     <div className="w-full bg-slate-950 flex flex-col justify-center items-center bg-cover">
@@ -88,7 +109,12 @@ const SectionMenu = () => {
       {theme === "dark" && <Fireflies />}
 
       <div className="flex flex-col h-screen justify-center items-center">
-        <div className="relative w-[350px] h-[500px] sm:w-[500px]">
+        <motion.div
+          className="relative w-[350px] h-[500px] sm:w-[500px]"
+          initial="hidden"
+          animate="visible"
+          variants={sectionBarAnimation}
+        >
           {sections.map((section, index) => {
             const position = positions[index];
 
@@ -108,13 +134,19 @@ const SectionMenu = () => {
               />
             );
           })}
-        </div>
-        <SectionBarControl
-          sections={sections}
-          expandedSection={expandedSection}
-          changeSection={changeSection}
-          currentSection={currentSection}
-        />
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={sectionBarControlAnimation}
+        >
+          <SectionBarControl
+            sections={sections}
+            expandedSection={expandedSection}
+            changeSection={changeSection}
+            currentSection={currentSection}
+          />
+        </motion.div>
       </div>
     </div>
   );
