@@ -36,7 +36,7 @@ const sections = [
     id: "3",
     title: "Souvenirs",
     description:
-      "TEmportez un morceau du monde de Tobie avec nos fonds d'écran et autres trésors.",
+      "Emportez un morceau du monde de Tobie avec nos fonds d'écran et autres trésors.",
     imageSrcJour: imageSrcJour3,
     imageSrcNuit: imageSrcNuit3,
     url: "/sections/souvenirs",
