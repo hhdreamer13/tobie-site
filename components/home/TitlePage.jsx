@@ -1,74 +1,80 @@
 "use client";
 import Image from "next/image";
-import tobieLight from "../../public/photos/tobieText-themeLight.webp";
-import tobieDark from "../../public/photos/tobieText-themeDark.webp";
+import LBranch from "../../public/l-branch6.webp";
+import EBranch from "../../public/e-branch3.webp";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+
+import { useLayoutEffect } from "react";
+import { gsap } from "gsap";
+
+const exitVariants = {
+  exit: {
+    backgroundColor: "#020617", // bg-slate-950
+    transition: {
+      duration: 1,
+      delay: 0.2,
+      ease: "easeInOut",
+      when: "afterChildren",
+    },
+  },
+};
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      opacity: { duration: 1, ease: "easeOut" },
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      opacity: { duration: 1.5, ease: "easeOut" },
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      opacity: { duration: 1, ease: "easeOut" },
+    },
+  },
+};
 
 const TitlePage = () => {
   const { theme } = useTheme();
 
-  const exitVariants = {
-    exit: {
-      backgroundColor: "#020617", // bg-slate-950
-      transition: {
-        duration: 1,
-        delay: 0.2,
-        ease: "easeInOut",
-        when: "afterChildren",
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      "#mask",
+      {
+        clipPath: "circle(0% at 0% 0%)",
       },
-    },
-  };
+      {
+        clipPath: "circle(100% at 50% 0%)",
+        duration: 6,
+        ease: "power2.inOut",
+        // ease: "slow(0.1, 0.4, false)",
+        // delay: 0.5,
+      },
+    );
+  }, []);
 
-  const textVariants = {
-    hidden: {
-      y: 10,
-      opacity: 0,
-      transition: {
-        y: { duration: 1, ease: "easeInOut" },
-        opacity: { duration: 1, ease: "easeOut" },
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      "#mask2",
+      {
+        clipPath: "circle(0% at 0% 50%)",
       },
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { duration: 1, ease: "easeInOut" },
-        opacity: { duration: 1, ease: "easeOut" },
+      {
+        clipPath: "circle(100% at 50% 50%)",
+        duration: 6,
+        ease: "power2.inOut",
+        // ease: "slow(0.1, 0.4, false)",
+        // delay: 1,
       },
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        opacity: { duration: 1, ease: "easeOut" },
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: {
-      y: 10,
-      opacity: 0,
-      transition: {
-        y: { duration: 1, ease: "easeInOut" },
-        opacity: { duration: 1, ease: "easeOut" },
-      },
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { duration: 1, ease: "easeInOut" },
-        opacity: { duration: 1, ease: "easeOut" },
-      },
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        opacity: { duration: 1, ease: "easeOut" },
-      },
-    },
-  };
+    );
+  }, []);
 
   return (
     <motion.div
@@ -84,25 +90,40 @@ const TitlePage = () => {
             animate="visible"
             exit="exit"
             aria-label="Les Amis de Tobie"
-            className="font-mottona text-7xl sm:text-9xl text-main"
+            className=" font-mottona text-7xl sm:text-9xl text-[#491c00] dark:text-slate-50 text-center"
           >
-            Les Amis de <span hidden>Tobie</span>
+            <span className="relative">
+              <span className="absolute w-20 top-[4.7rem] left-[2.3rem]">
+                <Image
+                  id="mask"
+                  src={LBranch}
+                  alt="Tobie branch"
+                  className="object-contain"
+                  style={{ clipPath: "circle(0% at 50% 50%)" }}
+                  width={200}
+                  height={200}
+                  quality={100}
+                />
+              </span>
+              L
+            </span>
+            es Amis de{" "}
+            <span className="block relative">
+              Tobie
+              <span className="absolute w-20 top-[2.2rem] right-[2.35rem]">
+                <Image
+                  id="mask2"
+                  src={EBranch}
+                  alt="Tobie branch"
+                  className="object-contain"
+                  style={{ clipPath: "circle(0% at 50% 50%)" }} // Initial position at the bottom
+                  width={200}
+                  height={200}
+                  quality={100}
+                />
+              </span>
+            </span>
           </motion.h1>
-          <motion.div
-            variants={imageVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <Image
-              src={theme === "dark" ? tobieDark : tobieLight}
-              alt="Tobie text"
-              className="object-contain w-44 sm:w-52"
-              width={200}
-              height={200}
-              quality={100}
-            />
-          </motion.div>
         </div>
       </div>
     </motion.div>

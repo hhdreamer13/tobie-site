@@ -11,7 +11,7 @@ const HomePage = () => {
   useEffect(() => {
     if (currentSection === "title") {
       const timer = setTimeout(() => {
-        setCurrentSection("menu");
+        // setCurrentSection("menu");
       }, 2000);
 
       return () => clearTimeout(timer);
