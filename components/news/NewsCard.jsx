@@ -43,7 +43,7 @@ const NewsCard = ({ newsItem }) => {
           </div>
           <Link
             href={`/sections/actualites/${newsItem.id}`}
-            className=" font-caveat hover:text-sky-600 text-sky-500 transition-colors duration-200 ease-in-out"
+            className=" font-caveat hover:text-sky-600 text-sky-500 transition-colors duration-200 ease-in-out text-lg"
           >
             <span className="relative no-underline before:content-[''] before:absolute before:w-full before:h-[1px] before:rounded before:bg-sky-500 before:origin-right before:transition-transform before:duration-[0.3s] before:ease-[ease-in-out] before:scale-x-0 before:left-0 before:bottom-0 hover:before:origin-left hover:before:scale-x-100">
               Lire la suite

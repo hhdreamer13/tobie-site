@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import SectionMenu from "@/components/section-menu/SectionMenu";
-import TitlePage from "@/components/home/TitlePage";
+import TitlePage from "@/components/home/TitlePage svg";
 
 const HomePage = () => {
   const [currentSection, setCurrentSection] = useState("title");
@@ -12,7 +12,7 @@ const HomePage = () => {
     if (currentSection === "title") {
       const timer = setTimeout(() => {
         setCurrentSection("menu");
-      }, 2000);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }

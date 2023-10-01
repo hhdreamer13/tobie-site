@@ -104,7 +104,7 @@ const SectionMenu = () => {
       />
 
       {/* Overlay */}
-      <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-50" />
+      <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
 
       {theme === "dark" && <Fireflies />}
 

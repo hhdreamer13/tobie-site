@@ -13,13 +13,13 @@ const AtelierFullPage = ({ item }) => {
 
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
-      {/* Close */}
+      {/* Back */}
       <Link
         href={"/sections/ateliers"}
-        className="absolute top-0 left-0 -mt-16 ml-10 "
+        className="absolute lg:sticky lg:top-32 top-0 self-start left-0 sm:left-6 md:left-12 lg:left-16 xl:left-24 2xl:left-48 -mt-16 ml-2 "
       >
         <span>
-          <BackIcon className="w-10 h-10 -rotate-90 hover:scale-105" />
+          <BackIcon className="w-14 h-14 p-2 border border-gray-300 dark:border-gray-500 rounded-full -rotate-90 transition-all duration-300 hover:scale-105 hover:border-slate-950 dark:hover:border-slate-50 drop-shadow-md" />
         </span>
       </Link>
 
