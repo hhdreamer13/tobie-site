@@ -186,7 +186,7 @@ const MemoryGame = () => {
         <div className="flex justify-center items-center">
           <button
             onClick={handleRestart}
-            className="bg-blue-500 text-white px-3 py-2 rounded mt-4"
+            className="mt-6 px-4 py-2 bg-sky-500 font-caveat text-white rounded hover:bg-sky-700 shadow-[inset_0_0_20px_rgba(255,255,255,0)] outline-[rgba(255,255,255,0.5)] outline-offset-0 transition-all duration-[1250ms] ease-[cubic-bezier(0.19,1,0.22,1)] border-transparent hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.5),0_0_20px_rgba(0,0,0,0.2)] hover:border-solid;"
           >
             Recommencer
           </button>
