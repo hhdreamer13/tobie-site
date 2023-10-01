@@ -32,7 +32,8 @@ import bgImage5 from "public/photos/scroll/05.webp";
 import bgImage6 from "public/photos/scroll/06.webp";
 import bgImage7 from "public/photos/scroll/07.webp";
 
-import tobieLight from "../../public/photos/tobieText-themeLight.webp";
+import LBranch from "../home/LBranch";
+import EBranch from "../home/EBranch";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -310,17 +311,16 @@ const TobieConte = () => {
           >
             <div className="flex h-full flex-col items-center justify-center">
               <div className="flex flex-col justify-center items-center">
-                <h2 className="font-mottona text-8xl sm:text-9xl text-slate-950">
-                  Les Amis de <span hidden>Tobie</span>
+                <h2 className="relative font-mottona text-7xl sm:text-9xl text-main text-center brush-text w-[15rem] sm:w-[25rem]">
+                  L
+                  <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.48rem] ">
+                    <LBranch stopColor="#7a4009" />
+                  </span>
+                  es Amis de Tobie
+                  <span className="absolute w-14 bottom-[1.9rem] right-[1.68rem] sm:w-24 sm:bottom-[3.4rem] sm:right-[2.38rem]">
+                    <EBranch stopColor="#7a4009" />
+                  </span>
                 </h2>
-                <NextImage
-                  src={tobieLight}
-                  alt="Tobie text"
-                  className="object-contain w-44 sm:w-52"
-                  width={200}
-                  height={200}
-                  quality={100}
-                />
               </div>
             </div>
           </header>

@@ -40,8 +40,7 @@ const textVariants = {
 
 const TitlePage = () => {
   const { theme } = useTheme();
-  const lBranchColor = theme === "light" ? "#7a4009" : "#f8fafc";
-  const eBranchColor = theme === "light" ? "#7a4009" : "#f8fafc";
+  const branchColor = theme === "light" ? "#7a4009" : "#f8fafc";
 
   return (
     <motion.div
@@ -61,11 +60,11 @@ const TitlePage = () => {
           >
             L
             <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.48rem] ">
-              <LBranch stopColor={lBranchColor} />
+              <LBranch stopColor={branchColor} />
             </span>
             es Amis de Tobie
             <span className="absolute w-14 bottom-[1.9rem] right-[1.68rem] sm:w-24 sm:bottom-[3.4rem] sm:right-[2.38rem]">
-              <EBranch stopColor={eBranchColor} />
+              <EBranch stopColor={branchColor} />
             </span>
           </motion.h1>
         </div>
