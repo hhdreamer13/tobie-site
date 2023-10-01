@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 
-const LBranch = ({ className }) => {
+const LBranch = ({ className, stopColor }) => {
   useEffect(() => {
     gsap.to(".gradient-stop", {
       stopOpacity: 1,
@@ -11,7 +11,7 @@ const LBranch = ({ className }) => {
         each: 0.05,
         from: "start",
       },
-      delay: 0.5,
+      delay: 0.1,
     });
   }, []);
 
@@ -28,27 +28,27 @@ const LBranch = ({ className }) => {
               <stop
                 className="gradient-stop"
                 offset={`${i * 10}%`}
-                style={{ stopColor: "#000", stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: 0 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: "#000", stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: 0 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: "#000", stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: 0 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: "#000", stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: 0 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: "#000", stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: 0 }}
               />
             </>
           ))}

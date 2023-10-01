@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import LBranch from "../../public/l-branch6.webp";
+import LBranch from "../../public/l-branch10.webp";
 import EBranch from "../../public/e-branch3.webp";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
@@ -82,15 +82,15 @@ const TitlePage = () => {
       variants={exitVariants}
       exit="exit"
     >
-      <div className="flex flex-col w-full min-h-screen justify-center items-center gap-16">
-        <div className="flex flex-col justify-center items-center">
+      <div className="w-full min-h-screen flex justify-center items-center">
+        <div className="flex flex-col justify-center items-center border">
           <motion.h1
             variants={textVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             aria-label="Les Amis de Tobie"
-            className=" font-mottona text-7xl sm:text-9xl text-[#491c00] dark:text-slate-50 text-center"
+            className="font-mottona text-7xl sm:text-9xl dark:text-slate-50 text-center brush-text w-[15rem] sm:w-[25rem]"
           >
             <span className="relative">
               <span className="absolute w-20 top-[4.7rem] left-[2.3rem]">
@@ -110,7 +110,7 @@ const TitlePage = () => {
             es Amis de{" "}
             <span className="block relative">
               Tobie
-              <span className="absolute w-20 top-[2.2rem] right-[2.35rem]">
+              <span className="absolute w-20 top-[2.2rem] right-[2.97rem]">
                 <Image
                   id="mask2"
                   src={EBranch}

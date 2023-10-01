@@ -1,11 +1,9 @@
 "use client";
-import Image from "next/image";
-import tobieLight from "../../public/photos/tobieText-themeLight.webp";
-import tobieDark from "../../public/photos/tobieText-themeDark.webp";
-import { useTheme } from "next-themes";
+
 import { motion } from "framer-motion";
 import LBranch from "./LBranch";
 import EBranch from "./EBranch";
+import { useTheme } from "next-themes";
 
 const exitVariants = {
   exit: {
@@ -29,40 +27,21 @@ const textVariants = {
   visible: {
     opacity: 1,
     transition: {
-      opacity: { duration: 1, ease: "easeOut" },
+      opacity: { duration: 1.5, ease: "easeOut" },
     },
   },
   exit: {
     opacity: 0,
     transition: {
-      opacity: { duration: 1, ease: "easeOut" },
-    },
-  },
-};
-
-const imageVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      opacity: { duration: 1, ease: "easeOut" },
-    },
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      opacity: { duration: 1, ease: "easeOut" },
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      opacity: { duration: 1, ease: "easeOut" },
+      opacity: { duration: 1.5, ease: "easeOut" },
     },
   },
 };
 
 const TitlePage = () => {
   const { theme } = useTheme();
+  const lBranchColor = theme === "light" ? "#7a4009" : "#f8fafc";
+  const eBranchColor = theme === "light" ? "#7a4009" : "#f8fafc";
 
   return (
     <motion.div
@@ -78,35 +57,17 @@ const TitlePage = () => {
             animate="visible"
             exit="exit"
             aria-label="Les Amis de Tobie"
-            className="relative font-mottona text-7xl sm:text-9xl text-main text-center"
+            className="font-mottona text-7xl sm:text-9xl text-main text-center brush-text dark:text-white w-[15rem] sm:w-[25rem]"
           >
             L
-            <span className="absolute w-20 top-[5.2rem] left-[1.3rem] ">
-              <LBranch />
+            <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.48rem] ">
+              <LBranch stopColor={lBranchColor} />
             </span>
-            es Amis de{" "}
-            <span className="relative block">
-              Tobie
-              <span className="absolute w-20 top-7 right-[2.65rem]">
-                <EBranch />
-              </span>
+            es Amis de Tobie
+            <span className="absolute w-14 bottom-[1.9rem] right-[1.68rem] sm:w-24 sm:bottom-[3.4rem] sm:right-[2.38rem]">
+              <EBranch stopColor={eBranchColor} />
             </span>
           </motion.h1>
-          {/* <motion.div
-            variants={imageVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <Image
-              src={theme === "dark" ? tobieDark : tobieLight}
-              alt="Tobie text"
-              className="object-contain w-44 sm:w-52"
-              width={200}
-              height={200}
-              quality={100}
-            />
-          </motion.div> */}
         </div>
       </div>
     </motion.div>
