@@ -1,32 +1,60 @@
+"use client";
+
 import { useEffect, useState, useRef } from "react";
 
-import Card from "./card";
-import "./app.scss";
+import one from "@/public/jeu/01.webp";
+import two from "@/public/jeu/02.webp";
+import three from "@/public/jeu/03.webp";
+import four from "@/public/jeu/04.webp";
+import five from "@/public/jeu/05.webp";
+import six from "@/public/jeu/06.webp";
+import seven from "@/public/jeu/07.webp";
+import eight from "@/public/jeu/08.webp";
+import nine from "@/public/jeu/09.webp";
+import ten from "@/public/jeu/10.webp";
+
+import Card from "./CardGame";
 
 const uniqueCardsArray = [
   {
-    type: "Pikachu",
-    image: require(`./images/Pickachu.png`),
+    type: "one",
+    image: one.src,
   },
   {
-    type: "ButterFree",
-    image: require(`./images/ButterFree.png`),
+    type: "two",
+    image: two.src,
   },
   {
-    type: "Charmander",
-    image: require(`./images/Charmander.png`),
+    type: "three",
+    image: three.src,
   },
   {
-    type: "Squirtle",
-    image: require(`./images/Squirtle.png`),
+    type: "four",
+    image: four.src,
   },
   {
-    type: "Pidgetto",
-    image: require(`./images/Pidgetto.png`),
+    type: "five",
+    image: five.src,
   },
   {
-    type: "Bulbasaur",
-    image: require(`./images/Bulbasaur.png`),
+    type: "six",
+    image: six.src,
+  },
+  {
+    type: "seven",
+    image: seven.src,
+  },
+  {
+    type: "eight",
+    image: eight.src,
+  },
+  {
+    type: "nine",
+    image: nine.src,
+  },
+  {
+    type: "ten",
+    image: ten.src,
   },
 ];
 
@@ -41,7 +69,8 @@ function shuffleCards(array) {
   }
   return array;
 }
-export default function App() {
+
+const MemoryGame = () => {
   const [cards, setCards] = useState(() =>
     shuffleCards(uniqueCardsArray.concat(uniqueCardsArray)),
   );
@@ -127,14 +156,8 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <header>
-        <h3>Play the Flip card game</h3>
-        <div>
-          Select two cards with same content consequtively to make them vanish
-        </div>
-      </header>
-      <div className="container">
+    <div className="w-full h-full">
+      <div className="border rounded-lg grid grid-cols-4 grid-row-5 sm:grid-cols-5 sm:grid-rows-4 justify-items-center gap-4 w-11/12 sm:max-w-2xl h-[500px] mx-auto p-6">
         {cards.map((card, index) => {
           return (
             <Card
@@ -149,45 +172,45 @@ export default function App() {
           );
         })}
       </div>
-      <footer>
-        <div className="score">
-          <div className="moves">
-            <span className="bold">Moves:</span> {moves}
+      <footer className="relative mt-4 px-1 py-2">
+        <div className="flex justify-center items-center">
+          <div className="p-2">
+            <span className="font-bold">Coups :</span> {moves}
           </div>
           {localStorage.getItem("bestScore") && (
-            <div className="high-score">
-              <span className="bold">Best Score:</span> {bestScore}
+            <div className="">
+              <span className="font-bold">Meilleur Score :</span> {bestScore}
             </div>
           )}
         </div>
-        <div className="restart">
-          <Button onClick={handleRestart} color="primary" variant="contained">
-            Restart
-          </Button>
+        <div className="flex justify-center items-center">
+          <button
+            onClick={handleRestart}
+            className="bg-blue-500 text-white px-3 py-2 rounded mt-4"
+          >
+            Recommencer
+          </button>
         </div>
       </footer>
-      <Dialog
-        open={showModal}
-        disableBackdropClick
-        disableEscapeKeyDown
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Hurray!!! You completed the challenge
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+      {/* {showModal && (
+        <div className="modal">
+          <h3>Hurray!!! You completed the challenge</h3>
+          <p>
             You completed the game in {moves} moves. Your best score is{" "}
             {bestScore} moves.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleRestart} color="primary">
-            Restart
-          </Button>
-        </DialogActions>
-      </Dialog>
+          </p>
+          <div>
+            <button
+              onClick={handleRestart}
+              className="bg-blue-500 text-white p-2 rounded"
+            >
+              Restart
+            </button>
+          </div>
+        </div>
+      )} */}
     </div>
   );
-}
+};
+
+export default MemoryGame;
