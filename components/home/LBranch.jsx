@@ -11,7 +11,7 @@ const LBranch = ({ className, stopColor }) => {
         each: 0.05,
         from: "start",
       },
-      delay: 0.1,
+      // delay: 0.1,
     });
   }, []);
 
