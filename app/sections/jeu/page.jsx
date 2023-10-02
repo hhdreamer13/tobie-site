@@ -7,7 +7,7 @@ export default function SectionPage() {
       <div className="z-10">
         <SectionHeader sectionName="jeu" />
       </div>
-      <div className="mt-40 mb-10 w-4/5 text-center">
+      <div className="mt-40 mb-5 w-4/5 text-center">
         <h2 className="font-literata font-semibold text-xl">
           Jouez au jeu de Memory !
         </h2>

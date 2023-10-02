@@ -336,14 +336,14 @@ const TobieConte = () => {
           ))}
 
           {/* Back to top button */}
-          {/* {showButton && (
+          {showButton && (
             <button
               onClick={scrollToTop}
               className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
             >
               ↑
             </button>
-          )} */}
+          )}
         </main>
       </div>
     </>

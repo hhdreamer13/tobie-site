@@ -38,7 +38,7 @@ const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
       >
         <Image
           className="object-contain"
-          src={card.image}
+          src={card.imageSrc}
           alt="card"
           width={100}
           height={100}
