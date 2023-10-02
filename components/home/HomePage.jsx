@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import SectionMenu from "@/components/section-menu/SectionMenu";
-import TitlePage from "@/components/home/TitlePage svg";
+import TitlePage from "@/components/home/TitlePage";
 
 const HomePage = () => {
   const [currentSection, setCurrentSection] = useState("title");

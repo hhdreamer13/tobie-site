@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable react/no-unescaped-entities */
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import NextImage from "next/image";
 import { ScrollTrigger } from "gsap/all";
@@ -120,32 +120,32 @@ const TobieConte = () => {
   useScrollIconAnimation(scrollRef);
 
   // Back to top button
-  // const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
-  // useEffect(() => {
-  //   // Handle scroll event
-  //   const handleScroll = () => {
-  //     const windowHeight = window.innerHeight; // The height of the browser window
-  //     const fullDocumentHeight = document.documentElement.scrollHeight; // The height of the whole document
-  //     const scrolled = window.scrollY; // Amount of pixels scrolled
+  useEffect(() => {
+    // Handle scroll event
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight; // The height of the browser window
+      const fullDocumentHeight = document.documentElement.scrollHeight; // The height of the whole document
+      const scrolled = window.scrollY; // Amount of pixels scrolled
 
-  //     // If the user is within, say, 200 pixels from the bottom, show the button
-  //     if (windowHeight + scrolled + 200 >= fullDocumentHeight) {
-  //       setShowButton(true);
-  //     } else {
-  //       setShowButton(false);
-  //     }
-  //   };
+      // If the user is within, say, 200 pixels from the bottom, show the button
+      if (windowHeight + scrolled + 200 >= fullDocumentHeight) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
 
-  //   window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  //   // Clean up the listener
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+    // Clean up the listener
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  // const scrollToTop = () => {
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  // };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);

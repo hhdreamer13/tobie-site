@@ -1,56 +1,58 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useLayoutEffect } from "react";
 import gsap from "gsap";
 
-const LBranch = ({ className, stopColor }) => {
-  useEffect(() => {
-    gsap.to(".gradient-stop", {
-      stopOpacity: 1,
-      duration: 4,
-      ease: "expo.inOut",
-      stagger: {
-        each: 0.05,
-        from: "start",
-      },
-      // delay: 0.1,
+const LBranch = ({ stopColor, animate }) => {
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      animate &&
+        gsap.to(".gradient-stop", {
+          stopOpacity: 1,
+          duration: 3.5,
+          ease: "expo.inOut",
+          stagger: {
+            each: 0.05,
+            from: "start",
+          },
+        });
     });
+    return () => ctx.revert(); // cleanup
   }, []);
 
   return (
     <svg
-      className={className}
       viewBox="0 0 300.000000 164.000000"
       preserveAspectRatio="xMidYMid meet"
     >
       <defs>
         <linearGradient id="grad1" x1="0%" y1="100%" x2="100%" y2="0%">
           {[...Array(10).keys()].map((i) => (
-            <>
+            <Fragment key={i}>
               <stop
                 className="gradient-stop"
                 offset={`${i * 10}%`}
-                style={{ stopColor: stopColor, stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: animate ? 0 : 1 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: stopColor, stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: animate ? 0 : 1 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: stopColor, stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: animate ? 0 : 1 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: stopColor, stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: animate ? 0 : 1 }}
               />
               <stop
                 className="gradient-stop"
                 offset={`${i * 10 + 10}%`}
-                style={{ stopColor: stopColor, stopOpacity: 0 }}
+                style={{ stopColor: stopColor, stopOpacity: animate ? 0 : 1 }}
               />
-            </>
+            </Fragment>
           ))}
         </linearGradient>
       </defs>
