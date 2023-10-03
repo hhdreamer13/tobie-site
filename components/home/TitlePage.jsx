@@ -59,7 +59,7 @@ const TitlePage = () => {
             className="relative font-mottona text-7xl sm:text-9xl text-main text-center brush-text dark:text-white w-[15rem] sm:w-[25rem]"
           >
             L
-            <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.46rem] ">
+            <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.44rem] ">
               <LBranch stopColor={branchColor} animate />
             </span>
             es Amis de Tobie
