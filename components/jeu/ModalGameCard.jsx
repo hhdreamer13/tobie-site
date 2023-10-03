@@ -37,8 +37,10 @@ const modalVariants = {
 const ModalGameCard = ({ item, setShowModal }) => {
   const overlayRef = useRef(null);
 
-  const handleOverlayClick = () => {
-    setShowModal(false);
+  const handleOverlayClick = (event) => {
+    if (event.target === overlayRef.current) {
+      setShowModal(false);
+    }
   };
 
   return (
@@ -52,7 +54,7 @@ const ModalGameCard = ({ item, setShowModal }) => {
       onClick={handleOverlayClick}
     >
       <motion.div
-        className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start bg-main items-center rounded-xl p-5"
+        className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start bg-main items-center rounded-xl p-5 z-20"
         initial="hidden"
         animate="visible"
         exit="exit"
