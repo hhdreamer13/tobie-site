@@ -313,7 +313,7 @@ const TobieConte = () => {
               <div className="flex flex-col justify-center items-center">
                 <h2 className="relative font-mottona text-7xl sm:text-9xl text-main text-center brush-text w-[15rem] sm:w-[25rem]">
                   L
-                  <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.48rem] ">
+                  <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.4rem] ">
                     <LBranch stopColor="#7a4009" />
                   </span>
                   es Amis de Tobie
