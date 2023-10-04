@@ -65,7 +65,7 @@ const MemoryGame = () => {
         </select>
       </div>
       <div className="relative border rounded-lg grid grid-cols-4 grid-row-5 sm:grid-cols-5 sm:grid-rows-4 justify-items-center gap-4 w-11/12 sm:max-w-2xl h-[500px] mx-auto p-6">
-        {isGameFinished && (
+        {isGameFinished && !showModal && (
           <>
             <div className="absolute inset-0">
               <Confetti />
