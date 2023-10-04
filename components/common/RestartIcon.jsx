@@ -12,24 +12,41 @@ const RestartIcon = ({ className }) => {
     gsap.set(path1Ref.current, {
       strokeDasharray: path1Length,
       strokeDashoffset: path1Length,
+      opacity: 0,
     });
     gsap.set(path2Ref.current, {
       strokeDasharray: path2Length,
       strokeDashoffset: path2Length,
+      opacity: 0,
     });
 
-    gsap.to([path1Ref.current], {
-      strokeDashoffset: 0,
-      duration: 2,
-      ease: "bounce.out",
-      delay: 3,
-    });
-    gsap.to([path2Ref.current], {
-      strokeDashoffset: 0,
-      duration: 2,
-      ease: "bounce.out",
-      delay: 3,
-    });
+    gsap.fromTo(
+      path1Ref.current,
+      {
+        opacity: 0,
+      },
+      {
+        strokeDashoffset: 0,
+        opacity: 1,
+        duration: 2,
+        ease: "bounce.out",
+        delay: 3,
+      },
+    );
+
+    gsap.fromTo(
+      path2Ref.current,
+      {
+        opacity: 0,
+      },
+      {
+        strokeDashoffset: 0,
+        opacity: 1,
+        duration: 2,
+        ease: "bounce.out",
+        delay: 3,
+      },
+    );
   }, []);
 
   return (
