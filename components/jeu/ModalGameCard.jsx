@@ -54,7 +54,7 @@ const ModalGameCard = ({ item, setShowModal }) => {
       onClick={handleOverlayClick}
     >
       <motion.div
-        className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start bg-main items-center rounded-xl p-5 z-20"
+        className="relative w-80 sm:w-96 flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start bg-main items-center rounded-xl p-5 z-20"
         initial="hidden"
         animate="visible"
         exit="exit"
@@ -74,7 +74,7 @@ const ModalGameCard = ({ item, setShowModal }) => {
         <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
           <Image
             alt={item.type}
-            src={item.imageSrc}
+            src={item.imageDetailSrc || item.imageSrc}
             height={500}
             width={500}
             className="object-cover w-full h-fit"

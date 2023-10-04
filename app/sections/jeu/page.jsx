@@ -9,7 +9,7 @@ export default function SectionPage() {
       </div>
       <div className="mt-40 mb-5 w-4/5 text-center">
         <h2 className="font-literata font-semibold text-xl">
-          Jouez au jeu de Memory !
+          Jouez au jeu de mémoire !
         </h2>
         <p className="mt-6">
           Trouvez les paires et faites danser votre mémoire !

@@ -63,7 +63,7 @@ const TitlePage = () => {
               <LBranch stopColor={branchColor} animate />
             </span>
             es Amis de Tobie
-            <span className="absolute w-14 bottom-[1.9rem] right-[1.68rem] sm:w-24 sm:bottom-[3.4rem] sm:right-[2.38rem]">
+            <span className="absolute w-14 bottom-[1.9rem] right-[1.68rem] sm:w-24 sm:bottom-[3.4rem] sm:right-[2.39rem]">
               <EBranch stopColor={branchColor} animate />
             </span>
           </motion.h1>

@@ -106,6 +106,7 @@ export const useGameLogic = (uniqueCardsArray) => {
   return {
     cards,
     openCards,
+    clearedCards,
     shouldDisableAllCards,
     moves,
     bestScore,
