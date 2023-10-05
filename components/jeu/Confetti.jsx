@@ -1,22 +1,23 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-
-const SVG_WIDTH = 800;
-const SVG_HEIGHT = 600;
+import { useTheme } from "next-themes";
 
 const Confetti = () => {
   const mainSVG = useRef(null);
   const confetti = useRef(null);
   const container = useRef(null);
 
-  //   const colorArray = ["#42c2f1", "#fbda4f", "#ab63df", "#5fc581"];
-  const colorArray = ["#FFB6C1", "#FFDAB9", "#B0E0E6", "#F5DEB3"];
-  //   const colorArray = ["#FF4500", "#32CD32", "#4169E1", "#FFD700"];
+  const otherColors = ["#42c2f1", "#fbda4f", "#ab63df", "#5fc581"];
+  const pastelColors = ["#FFB6C1", "#FFDAB9", "#B0E0E6", "#F5DEB3"];
+  // const colorArray = ["#FF4500", "#32CD32", "#4169E1", "#FFD700"];
   // const colorArray = ["#FFFFFF", "#CCCCCC", "#999999", "#666666"];
-  //   const colorArray = ["#34495E", "#16A085", "#C0392B", "#2980B9"];
-  //   const colorArray = ["#2ECC71", "#E74C3C", "#3498DB", "#F39C12"];
-  //   const colorArray = ["#D32F2F", "#1976D2", "#388E3C", "#8E44AD"];
+  // const colorArray = ["#34495E", "#16A085", "#C0392B", "#2980B9"];
+  // const colorArray = ["#2ECC71", "#E74C3C", "#3498DB", "#F39C12"];
+  // const otherColors = ["#D32F2F", "#1976D2", "#388E3C", "#8E44AD"];
+
+  const { theme } = useTheme();
+  const colorArray = theme === "dark" ? pastelColors : otherColors;
 
   useEffect(() => {
     const confettiTl = gsap.timeline({ paused: true });
