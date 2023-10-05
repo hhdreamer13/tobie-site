@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 import ThemeButton from "./common/ThemeButton";
 import Link from "next/link";
 
@@ -6,6 +7,13 @@ const Navbar = () => {
   const navItems = [
     // { href: "/", name: "" },
   ];
+
+  const pathname = usePathname();
+
+  // Don't display the navbar on admin routes
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent p-4 h-16">
