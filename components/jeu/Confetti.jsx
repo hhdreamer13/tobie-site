@@ -10,11 +10,6 @@ const Confetti = () => {
 
   const otherColors = ["#42c2f1", "#fbda4f", "#ab63df", "#5fc581"];
   const pastelColors = ["#FFB6C1", "#FFDAB9", "#B0E0E6", "#F5DEB3"];
-  // const colorArray = ["#FF4500", "#32CD32", "#4169E1", "#FFD700"];
-  // const colorArray = ["#FFFFFF", "#CCCCCC", "#999999", "#666666"];
-  // const colorArray = ["#34495E", "#16A085", "#C0392B", "#2980B9"];
-  // const colorArray = ["#2ECC71", "#E74C3C", "#3498DB", "#F39C12"];
-  // const otherColors = ["#D32F2F", "#1976D2", "#388E3C", "#8E44AD"];
 
   const { theme } = useTheme();
   const colorArray = theme === "dark" ? pastelColors : otherColors;
