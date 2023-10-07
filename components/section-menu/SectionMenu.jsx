@@ -1,6 +1,6 @@
 "use client";
 
-import sections from "@/utils/sections";
+// import sections from "@/utils/sections";
 import SectionBar from "./SectionBar";
 import SectionBarControl from "./SectionBarControl";
 import useSection from "@/hooks/useSection";
@@ -36,7 +36,7 @@ const sectionBarControlAnimation = {
   },
 };
 
-const SectionMenu = () => {
+const SectionMenu = ({ sections }) => {
   const isDesktop = useDeviceType();
   const { theme } = useTheme();
 
