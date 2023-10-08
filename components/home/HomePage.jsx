@@ -1,31 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
-import SectionMenu from "@/components/section-menu/SectionMenu";
+import { useEffect } from "react";
 import TitlePage from "@/components/home/TitlePage";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
-  const [currentSection, setCurrentSection] = useState("title");
+  const router = useRouter();
 
   useEffect(() => {
-    if (currentSection === "title") {
-      const timer = setTimeout(() => {
-        setCurrentSection("menu");
-      }, 5000);
+    const timer = setTimeout(() => {
+      router.push("/sections");
+    }, 6000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [currentSection]);
-
-  console.log(currentSection);
+    return () => clearTimeout(timer);
+  }, [router]);
 
   return (
     <div className="w-full bg-main flex flex-col justify-center items-center overflow-hidden">
-      <AnimatePresence mode="wait">
-        {currentSection === "title" && <TitlePage key="title" />}
-        {currentSection === "menu" && <SectionMenu key="menu" />}
-      </AnimatePresence>
+      <TitlePage key="title" />
     </div>
   );
 };

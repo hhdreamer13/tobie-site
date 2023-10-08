@@ -5,10 +5,18 @@ import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import Link from "next/link";
 import BackIcon from "../common/BackIcon";
 
-const NewsFullPage = ({ item }) => {
-  if (!item) {
-    return null;
-  }
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
+import { PortableText } from "@portabletext/react";
+
+const NewsFullPage = ({ post }) => {
+  const builder = imageUrlBuilder(client);
+
+  const formattedDate = new Date(post?.date).toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
@@ -24,28 +32,30 @@ const NewsFullPage = ({ item }) => {
 
       {/* Title */}
       <h3 className="text-2xl md:text-4xl font-semibold mb-5 sm:mb-10 text-center">
-        {item.title}
+        {post?.title}
       </h3>
 
       {/* Principal Image */}
-      <div className="max-h-full w-full md:max-w-3xl mb-8 rounded-lg shadow-xl overflow-hidden">
-        <Image
-          alt={item.title}
-          src={item.imageSrc}
-          height={400}
-          width={600}
-          className="object-cover w-full"
-          placeholder="blur"
-          blurDataURL={getShimmerPlaceholder(600, 400)}
-        />
-      </div>
+      {post?.imageSrc ? (
+        <div className="max-h-full w-full md:max-w-3xl mb-8 rounded-lg shadow-xl overflow-hidden">
+          <Image
+            alt={post?.title}
+            src={builder.image(post.imageSrc).url()}
+            height={400}
+            width={600}
+            className="object-cover w-full"
+            placeholder="blur"
+            blurDataURL={getShimmerPlaceholder(600, 400)}
+          />
+        </div>
+      ) : null}
 
       {/* Content */}
 
       <div className="mb-4 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-5">
-        <span className="text-slate-500 font-caveat">{item.date}</span>
+        <span className="text-slate-500 font-caveat">{formattedDate}</span>
         <div>
-          {item.tags.map((tag, index) => (
+          {post?.tags.map((tag, index) => (
             <span
               key={index}
               className="ml-2 text-sm text-white font-caveat bg-green-500 rounded-full px-2"
@@ -57,7 +67,7 @@ const NewsFullPage = ({ item }) => {
       </div>
 
       <div className="text-justify text-main w-full md:w-3/4 xl:w-2/3 font-nunito p-3 rounded-lg prose">
-        <p>{item.description}</p>
+        <p>{post?.body ? <PortableText value={post.body} /> : null}</p>
       </div>
     </div>
   );

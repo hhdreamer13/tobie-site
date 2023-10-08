@@ -1,14 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import MinimizeIcon from "../common/MinimizeIcon";
 
-const NewsFrame = ({ item, setIsOpen }) => {
-  if (!item) {
-    return null;
-  }
-
+const NewsFrame = async ({ item, setIsOpen }) => {
   return (
     <div className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start w-full max-h-fit bg-main items-center rounded-xl p-5">
       {/* Close */}

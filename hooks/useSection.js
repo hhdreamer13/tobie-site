@@ -28,7 +28,7 @@ const useSection = (sections) => {
       if (sectionId !== expandedSection && collapsingSection === -1) {
         setExpandedSection(sectionId);
         setCurrentSection(
-          sections.findIndex((section) => section.id === sectionId),
+          sections.findIndex((section) => section._id === sectionId),
         );
         setIsOverlayVisible(true);
       }
@@ -53,7 +53,7 @@ const useSection = (sections) => {
     handleMouseEnter,
     handleClick,
     handleClose,
-    isOverlayVisible
+    isOverlayVisible,
   };
 };
 

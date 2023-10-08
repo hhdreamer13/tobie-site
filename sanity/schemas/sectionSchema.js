@@ -15,10 +15,10 @@ const section = {
       type: "string",
     },
     {
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "title" },
+      name: "url",
+      title: "URL",
+      type: "string",
+      readOnly: true,
     },
     {
       name: "description",

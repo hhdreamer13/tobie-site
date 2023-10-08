@@ -1,7 +1,16 @@
+import { getPageTexts } from "@/sanity/sanityQueries";
+import { sanityFetch } from "@/sanity/sanityFetch";
 import SectionHeader from "@/components/common/SectionHeader";
 import MemoryGame from "@/components/jeu/MemoryGame";
 
-export default function SectionPage() {
+export default async function SectionPage() {
+  const pageText = await sanityFetch({
+    query: getPageTexts,
+    params: {
+      sectionUrl: "/sections/jeu",
+    },
+  });
+
   return (
     <div className="w-full min-h-screen pb-20 flex flex-col justify-center items-center bg-main">
       <div className="z-10">
@@ -9,11 +18,9 @@ export default function SectionPage() {
       </div>
       <div className="mt-40 mb-5 w-4/5 text-center">
         <h2 className="font-literata font-semibold text-xl">
-          Jouez au jeu de mémoire !
+          {pageText?.heading}
         </h2>
-        <p className="mt-6">
-          Trouvez les paires et faites danser votre mémoire !
-        </p>
+        <p className="mt-6">{pageText?.subheading}</p>
       </div>
       <div className="flex justify-center items-start w-full h-full ">
         <MemoryGame />

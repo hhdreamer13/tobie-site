@@ -16,7 +16,7 @@ const getUniqueCategories = (downloads) => {
 
 const uniqueCategories = getUniqueCategories(downloads);
 
-const DownloadCarousel = () => {
+const DownloadCarousel = ({text}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [downloadItems, setDownloadItems] = useState("");
   const [showHandleText, setShowHandleText] = useState(false);
@@ -58,7 +58,7 @@ const DownloadCarousel = () => {
           {/* Category Selection */}
           <div className="flex flex-col justify-center items-center gap-4">
             <p className="relative text-lg w-80 text-center font-literata mb-2">
-              Faites votre choix de catégorie :
+              {text}
             </p>
             {/* Options */}
             <div className="flex gap-6">

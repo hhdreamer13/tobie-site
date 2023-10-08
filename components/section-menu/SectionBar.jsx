@@ -37,7 +37,7 @@ const SectionBar = memo(function SectionBar({
   );
 
   const zIndexClass =
-    section.id === expandedSection || section.id === collapsingSection
+    section._id === expandedSection || section._id === collapsingSection
       ? "z-10"
       : "z-0";
 
@@ -65,7 +65,7 @@ const SectionBar = memo(function SectionBar({
     height: { duration: 1, ease: "backInOut" },
     top: {
       duration:
-        expandedSection === section.id || collapsingSection === section.id
+        expandedSection === section._id || collapsingSection === section._id
           ? 1
           : 0.8,
       ease: "backInOut",
@@ -80,9 +80,9 @@ const SectionBar = memo(function SectionBar({
   }, [expandedSection, setCollapsingSection]);
 
   const handleCardClick = useCallback(() => {
-    handleClick(section.id);
+    handleClick(section._id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [section.id]);
+  }, [section._id]);
 
   /**
    * Inner card animations
@@ -136,7 +136,7 @@ const SectionBar = memo(function SectionBar({
   };
 
   const circleButtonAnimationProps =
-    expandedSection === section.id
+    expandedSection === section._id
       ? circleButtonExpandedAnimation
       : circleButtonCollapsedAnimation;
 
@@ -154,12 +154,12 @@ const SectionBar = memo(function SectionBar({
       {/* Section Card */}
       <motion.div
         className={`absolute rounded-xl overflow-hidden -translate-x-1/2 -translate-y-1/2 border-2 ${zIndexClass} object-cover ${
-          expandedSection === section.id ? "" : "cursor-pointer"
+          expandedSection === section._id ? "" : "cursor-pointer"
         }`}
-        key={section.id}
+        key={section._id}
         initial={cardInitialProps}
         animate={
-          expandedSection === section.id ? cardExpandedProps : cardInitialProps
+          expandedSection === section._id ? cardExpandedProps : cardInitialProps
         }
         transition={cardTransitionProps}
         onAnimationComplete={handleAnimationComplete}
@@ -176,19 +176,19 @@ const SectionBar = memo(function SectionBar({
           sizes="100vh"
         />
         {/* Inner Section to render if expanded */}
-        {expandedSection === section.id && (
+        {expandedSection === section._id && (
           <motion.div
             className="w-full h-full flex flex-col justify-end items-center gap-6"
             initial={innerInitialProps}
             animate={
-              expandedSection === section.id
+              expandedSection === section._id
                 ? innerExpandedProps
                 : innerCollapsedProps
             }
           >
             {/* Close Button */}
             <CloseButton
-              isExpanded={expandedSection === section.id}
+              isExpanded={expandedSection === section._id}
               onClick={handleClose}
             />
 
@@ -196,7 +196,7 @@ const SectionBar = memo(function SectionBar({
             <Link
               href={section.url}
               className={
-                expandedSection === section.id
+                expandedSection === section._id
                   ? "pointer-events-auto"
                   : "pointer-events-none"
               }

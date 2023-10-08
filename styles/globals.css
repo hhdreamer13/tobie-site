@@ -56,13 +56,13 @@
 }
 
 .scroll-down {
-  animation: scroll-down 2s infinite; /* 2s duration and infinite loop, adjust as needed */
+  animation: scroll-down 2s infinite;
 }
 
 .brush-text {
-  background: linear-gradient(120deg, #5a2800, #7a4009, #b06700);
+  background: linear-gradient(100deg, #92652a, #7a4009, #b06700, #b06700);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: contrast(1.4) brightness(0.8);
+  /* filter: contrast(1.4) brightness(0.8); */
 }

@@ -1,6 +1,8 @@
-import project from "./project-schema";
-import section from "./section";
+import section from "./sectionSchema";
+import page from "./pageSchema";
+import news from "./newsSchema";
+import blockContent from "./blockContentSchema";
 
-const schemas = [project, section];
+const schemas = [section, page, news, blockContent];
 
 export default schemas;

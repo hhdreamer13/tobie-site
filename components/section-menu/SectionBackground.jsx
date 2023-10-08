@@ -21,7 +21,7 @@ const SectionBackground = memo(function SectionBackground({
     <AnimatePresence>
       {currentSection !== -1 && (
         <motion.div
-          key={sections[currentSection].id}
+          key={sections[currentSection]._id}
           initial={{ opacity: 0, filter: "blur(0px)" }}
           animate={{
             opacity: 1,

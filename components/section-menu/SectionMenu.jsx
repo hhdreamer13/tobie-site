@@ -19,7 +19,7 @@ const sectionBarAnimation = {
     y: 0,
     transition: {
       duration: 1,
-      ease: [0.43, 0.13, 0.23, 0.96], // cubic-bezier easing
+      ease: [0.43, 0.13, 0.23, 0.96],
     },
   },
 };
@@ -31,7 +31,7 @@ const sectionBarControlAnimation = {
     y: 0,
     transition: {
       duration: 1,
-      ease: [0.6, -0.05, 0.01, 0.99], // cubic-bezier easing
+      ease: [0.6, -0.05, 0.01, 0.99],
     },
   },
 };
@@ -87,7 +87,7 @@ const SectionMenu = ({ sections }) => {
   if (!positionValues.centerPosition) return <Loader />;
 
   return (
-    <div className="w-full bg-slate-950 flex flex-col justify-center items-center bg-cover">
+    <div className="w-full bg-main flex flex-col justify-center items-center bg-cover">
       {isOverlayVisible && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div
@@ -104,7 +104,9 @@ const SectionMenu = ({ sections }) => {
       />
 
       {/* Overlay */}
-      <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
+      {currentSection !== -1 && (
+        <div className="absolute w-full min-h-screen bg-black bg-opacity-60" />
+      )}
 
       {theme === "dark" && <Fireflies />}
 
@@ -145,6 +147,7 @@ const SectionMenu = ({ sections }) => {
             expandedSection={expandedSection}
             changeSection={changeSection}
             currentSection={currentSection}
+            theme={theme}
           />
         </motion.div>
       </div>
