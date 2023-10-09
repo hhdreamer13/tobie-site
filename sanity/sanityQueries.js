@@ -25,11 +25,11 @@ export const getSections = groq`*[_type == "section"] | order(position asc) {
         slug
       }`;
 
-export const getPageTexts = groq`*[_type == "pageTexts" && section->url == $sectionUrl][0] {
+export const getPageTexts = groq`*[_type == "pageTexts" && section->slug.current == $sectionUrl][0] {
   section -> {
     _id,
     title,
-    url
+    slug
   },
     heading,
     subheading
