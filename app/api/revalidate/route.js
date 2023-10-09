@@ -1,6 +1,7 @@
 import { revalidateTag } from "next/cache";
 
 import { parseBody } from "next-sanity/webhook";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
