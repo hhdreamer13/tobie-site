@@ -1,19 +1,4 @@
-import { createClient, groq } from "next-sanity";
-import clientConfig from "./clientConfig";
-
-// export async function getSections() {
-//   return createClient(clientConfig).fetch(
-//     groq`*[_type == "section"] | order(position asc) {
-//       _id,
-//         position,
-//         title,
-//         description,
-//         "imageSrcJour": imageSrcJour.asset->url,
-//         "imageSrcNuit": imageSrcNuit.asset->url,
-//         url
-//       }`,
-//   );
-// }
+import { groq } from "next-sanity";
 
 export const getSections = groq`*[_type == "section"] | order(position asc) {
       _id,

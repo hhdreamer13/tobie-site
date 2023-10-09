@@ -13,7 +13,7 @@ export default async function ActualitesPage() {
     tags: ["newsPost"],
   });
 
-  const news = await sanityFetch({ query: getAllPosts, tags: ["newsPost"] });
+  const news = await sanityFetch({ query: getAllPosts });
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">
