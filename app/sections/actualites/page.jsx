@@ -10,6 +10,7 @@ export default async function ActualitesPage() {
     params: {
       sectionUrl: "/sections/actualites",
     },
+    tags: ["actualites"],
   });
 
   const news = await sanityFetch({ query: getAllPosts });

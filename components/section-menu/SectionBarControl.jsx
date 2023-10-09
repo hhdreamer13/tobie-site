@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import ArrowIcon from "../common/arrowIcon";
+import ArrowIcon from "../common/ArrowIcon";
 
 const SectionBarControl = ({
   sections,

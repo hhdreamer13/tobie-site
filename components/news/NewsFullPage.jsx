@@ -39,8 +39,8 @@ const NewsFullPage = ({ post }) => {
       {post?.imageSrc ? (
         <div className="max-h-full w-full md:max-w-3xl mb-8 rounded-lg shadow-xl overflow-hidden">
           <Image
-            alt={post?.title}
             src={builder.image(post.imageSrc).url()}
+            alt={post?.imageSrc?.alt || post?.title}
             height={400}
             width={600}
             className="object-cover w-full"
@@ -54,20 +54,22 @@ const NewsFullPage = ({ post }) => {
 
       <div className="mb-4 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-5">
         <span className="text-slate-500 font-caveat">{formattedDate}</span>
-        <div>
-          {post?.tags.map((tag, index) => (
-            <span
-              key={index}
-              className="ml-2 text-sm text-white font-caveat bg-green-500 rounded-full px-2"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        {post?.tags && (
+          <div>
+            {post.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="ml-2 text-sm text-white font-caveat bg-green-500 rounded-full px-2"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="text-justify text-main w-full md:w-3/4 xl:w-2/3 font-nunito p-3 rounded-lg prose">
-        <p>{post?.body ? <PortableText value={post.body} /> : null}</p>
+        {post?.body ? <PortableText value={post.body} /> : null}
       </div>
     </div>
   );

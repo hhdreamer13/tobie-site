@@ -22,7 +22,7 @@ const NewsCard = ({ post }) => {
           <Image
             className="absolute rounded-lg rounded-br-none rounded-bl-none sm:rounded-bl-lg shadow-lg w-full h-52 object-cover hover:saturate-150 transition-opacity duration-200 ease-in-out"
             src={builder.image(post.imageSrc).width(300).height(400).url()}
-            alt={post?.imageSrc?.alt}
+            alt={post?.imageSrc?.alt || post?.title}
             width={300}
             height={400}
           />
@@ -42,16 +42,18 @@ const NewsCard = ({ post }) => {
           </h3>
           <div className="mb-2 flex flex-col gap-1 sm:block">
             <span className="text-slate-500 font-caveat">{formattedDate}</span>
-            <div className="block sm:inline-block">
-              {post?.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="ml-2 text-xs text-white font-caveat bg-green-500 rounded-full px-2"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {post?.tags && (
+              <div className="block sm:inline-block">
+                {post.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="ml-2 text-xs text-white font-caveat bg-green-500 rounded-full px-2"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
           <div className="mb-2">
             <p className="text-main text-sm text-justify line-clamp-3">

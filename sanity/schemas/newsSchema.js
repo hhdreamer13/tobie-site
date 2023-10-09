@@ -18,13 +18,8 @@ const news = {
       },
     },
     {
-      name: "body",
-      title: "Body",
-      type: "blockContent",
-    },
-    {
       name: "imageSrc",
-      title: "Image Source",
+      title: "Header Image",
       type: "image",
       options: {
         hotspot: true,
@@ -36,6 +31,11 @@ const news = {
           type: "string",
         },
       ],
+    },
+    {
+      name: "body",
+      title: "Body",
+      type: "blockContent",
     },
     {
       name: "date",

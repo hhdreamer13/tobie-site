@@ -12,6 +12,7 @@ export default async function AteliersPage() {
     params: {
       sectionUrl: "/sections/ateliers",
     },
+    tags: ["ateliers"],
   });
 
   return (

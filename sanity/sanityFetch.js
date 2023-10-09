@@ -22,7 +22,7 @@ export async function sanityFetch({ query, params, tags }) {
     }),
     next: {
       ...(isDraftMode && { revalidate: 30 }),
-      tags,
+      tags: tags || [],
     },
   });
 }
