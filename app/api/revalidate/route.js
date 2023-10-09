@@ -1,7 +1,6 @@
 import { revalidateTag } from "next/cache";
 
 import { parseBody } from "next-sanity/webhook";
-import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
@@ -26,7 +25,7 @@ export async function POST(req) {
     // `{next: {tags: ['page']}}` will be revalidated
     revalidateTag(body._type);
 
-    return NextResponse.json({ body });
+    // return NextResponse.json({ body });
   } catch (err) {
     console.error(err);
     return new Response(err.message, { status: 500 });
