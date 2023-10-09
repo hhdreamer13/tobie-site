@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
-export const revalidate = true;
+export const revalidate = true; // I don't think revalidatePath works anymore. so by adding this it is working.
 
 export async function POST(req) {
   try {
@@ -31,7 +31,7 @@ export async function POST(req) {
     // If the `_type` is `page`, then all `client.fetch` calls with
     // `{next: {tags: ['page']}}` will be revalidated
     revalidateTag(body._type);
-    revalidatePath("/sections/actualites");
+    // revalidatePath("/sections/actualites");
 
     return NextResponse.json({ body });
   } catch (err) {
