@@ -1,4 +1,6 @@
 import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
+
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
@@ -27,6 +29,7 @@ export async function POST(req) {
     // If the `_type` is `page`, then all `client.fetch` calls with
     // `{next: {tags: ['page']}}` will be revalidated
     revalidateTag(body._type);
+    revalidatePath("/sections/actualites");
 
     return NextResponse.json({ body });
   } catch (err) {
