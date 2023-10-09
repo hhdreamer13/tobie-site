@@ -4,18 +4,10 @@ import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req) {
   try {
-    // Log the raw request to see what's coming in
-    console.log("Incoming Request Headers:", req.headers);
-    console.log("Incoming Request Body:", req.body);
-
     const { isValidSignature, body } = await parseBody(
       req,
       process.env.SANITY_REVALIDATE_SECRET,
     );
-
-    // Log the parsed body and signature validity
-    console.log("Parsed body:", body);
-    console.log("Is valid signature:", isValidSignature);
 
     if (!isValidSignature) {
       const message = "Invalid signature";
