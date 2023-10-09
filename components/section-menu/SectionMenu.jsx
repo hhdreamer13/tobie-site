@@ -91,7 +91,7 @@ const SectionMenu = ({ sections }) => {
       {isOverlayVisible && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div
-          className="absolute inset-0 bg-black opacity-0 z-10"
+          className="absolute inset-0 bg-slate-950 opacity-0 z-10"
           onClick={handleClose}
         ></div>
       )}
@@ -105,7 +105,7 @@ const SectionMenu = ({ sections }) => {
 
       {/* Overlay */}
       {currentSection !== -1 && (
-        <div className="absolute w-full min-h-screen bg-black bg-opacity-60" />
+        <div className="absolute w-full min-h-screen bg-slate-950 bg-opacity-60" />
       )}
 
       {theme === "dark" && <Fireflies />}
