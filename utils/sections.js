@@ -67,16 +67,6 @@ const sections = [
     imageSrcNuit: imageSrcNuit5,
     url: "/sections/contact",
   },
-
-  // {
-  //   id: "7",
-  //   title: "Carte",
-  //   description:
-  //     "Explorez la magnifique carte du monde de Tobie, remplie de lieux mystérieux à découvrir.",
-  //   imageSrcJour: imageSrcJour7,
-  //   imageSrcNuit: imageSrcNuit7,
-  //   url: "/sections/carte",
-  // },
 ];
 
 export default sections;
