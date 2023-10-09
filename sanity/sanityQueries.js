@@ -22,7 +22,7 @@ export const getSections = groq`*[_type == "section"] | order(position asc) {
         description,
         "imageSrcJour": imageSrcJour.asset->url,
         "imageSrcNuit": imageSrcNuit.asset->url,
-        url
+        slug
       }`;
 
 export const getPageTexts = groq`*[_type == "pageTexts" && section->url == $sectionUrl][0] {
