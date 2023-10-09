@@ -34,7 +34,12 @@ export async function POST(request) {
   }
 
   for (const path of paths) {
-    revalidatePath(path);
+    try {
+      revalidatePath(path);
+    } catch (error) {
+      console.error("Failed to revalidate:", error);
+      return Response.json({ message: "Revalidation failed" }, { status: 500 });
+    }
   }
 
   return Response.json({ revalidated: true, paths, now: Date.now() });
