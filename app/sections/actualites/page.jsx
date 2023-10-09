@@ -10,10 +10,10 @@ export default async function ActualitesPage() {
     params: {
       sectionUrl: "/sections/actualites", // we're using a query for all pages with a dynamic param
     },
-    tags: ["newsPost"],
+    tags: ["pageTexts"],
   });
 
-  const news = await sanityFetch({ query: getAllPosts, tags: ["newsPost"] });
+  const news = await sanityFetch({ query: getAllPosts });
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">

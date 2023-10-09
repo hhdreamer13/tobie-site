@@ -30,8 +30,12 @@ export async function POST(req) {
 
     // If the `_type` is `page`, then all `client.fetch` calls with
     // `{next: {tags: ['page']}}` will be revalidated
-    revalidateTag(body._type);
-    // revalidatePath("/sections/actualites");
+    if (body._type === "newsPost") {
+      revalidateTag(body._type);
+      revalidatePath("/sections/actualites");
+    } else if (body._type === "pageTexts") {
+      revalidateTag(body._type);
+    } else return null;
 
     return NextResponse.json({ body });
   } catch (err) {
