@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
+export const revalidate = true;
+
 export async function POST(req) {
   try {
     const { isValidSignature, body } = await parseBody(
