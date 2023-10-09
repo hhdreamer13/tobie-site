@@ -16,8 +16,8 @@ const revalidationMap = {
   },
   section: () => {
     revalidateTag("section");
+    revalidatePath("/sections");
   },
-  // Add other mappings here as needed
 };
 
 export async function POST(req) {
