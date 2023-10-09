@@ -4,7 +4,7 @@ import { getSections } from "@/sanity/sanityQueries";
 
 export default async function Home() {
   // const sections = await getSections();
-  const sections = await sanityFetch({ query: getSections });
+  const sections = await sanityFetch({ query: getSections, tags: ["section"] });
 
   return (
     <div className="w-full min-h-screen justify-center items-center">

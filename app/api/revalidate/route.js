@@ -14,6 +14,9 @@ const revalidationMap = {
   pageTexts: () => {
     revalidateTag("pageTexts");
   },
+  section: () => {
+    revalidateTag("section");
+  },
   // Add other mappings here as needed
 };
 
