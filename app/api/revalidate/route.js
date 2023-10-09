@@ -1,10 +1,21 @@
-import { revalidateTag } from "next/cache";
-import { revalidatePath } from "next/cache";
+import { revalidateTag, revalidatePath } from "next/cache";
 
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
 export const revalidate = true; // I don't think revalidatePath works anymore. so by adding this it is working.
+
+// Mapping content types to revalidation actions
+const revalidationMap = {
+  newsPost: () => {
+    revalidateTag("newsPost");
+    revalidatePath("/sections/actualites");
+  },
+  pageTexts: () => {
+    revalidateTag("pageTexts");
+  },
+  // Add other mappings here as needed
+};
 
 export async function POST(req) {
   try {
@@ -25,17 +36,12 @@ export async function POST(req) {
       return new Response(JSON.stringify({ message, body }), { status: 400 });
     }
 
-    // Log the type for revalidation
-    console.log("Revalidating tag:", body._type);
+    // Perform the revalidation based on the content type
+    const revalidateAction = revalidationMap[body._type];
 
-    // If the `_type` is `page`, then all `client.fetch` calls with
-    // `{next: {tags: ['page']}}` will be revalidated
-    if (body._type === "newsPost") {
-      revalidateTag(body._type);
-      revalidatePath("/sections/actualites");
-    } else if (body._type === "pageTexts") {
-      revalidateTag(body._type);
-    } else return null;
+    if (revalidateAction) {
+      revalidateAction();
+    }
 
     return NextResponse.json({ body });
   } catch (err) {
