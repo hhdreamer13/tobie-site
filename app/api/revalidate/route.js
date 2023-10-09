@@ -1,46 +1,33 @@
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
-export async function POST(request) {
-  const payload = await request.json();
-  console.log(payload);
-  let paths = [];
+import { parseBody } from "next-sanity/webhook";
 
-  switch (payload._type) {
-    case "newsPost":
-      if (payload.slug?.current) {
-        paths.push(`/news/${payload.slug.current}`);
-        paths.push("/actualites"); // Revalidate the news listing page as well
-      }
-      break;
-    case "pageTexts":
-      if (payload.sectionSlug) {
-        paths.push(payload.sectionSlug);
-      }
-      break;
-    case "section":
-      if (payload.slug?.current) {
-        paths.push(payload.slug.current);
-      }
-      break;
-    default:
-      return Response.json({ message: "Unsupported type" }, { status: 400 });
-  }
-
-  if (paths.length === 0) {
-    return Response.json(
-      { message: "Unable to determine paths for revalidation" },
-      { status: 400 },
+export async function POST(req) {
+  try {
+    const { isValidSignature, body } = await parseBody(
+      req,
+      process.env.SANITY_REVALIDATE_SECRET,
     );
-  }
 
-  for (const path of paths) {
-    try {
-      revalidatePath(path);
-    } catch (error) {
-      console.error("Failed to revalidate:", error);
-      return Response.json({ message: "Revalidation failed" }, { status: 500 });
+    if (!isValidSignature) {
+      const message = "Invalid signature";
+      return new Response(JSON.stringify({ message, isValidSignature, body }), {
+        status: 401,
+      });
     }
-  }
 
-  return Response.json({ revalidated: true, paths, now: Date.now() });
+    if (!body?._type) {
+      const message = "Bad Request";
+      return new Response({ message, body }, { status: 400 });
+    }
+
+    // If the `_type` is `page`, then all `client.fetch` calls with
+    // `{next: {tags: ['page']}}` will be revalidated
+    revalidateTag(body._type);
+
+    return NextResponse.json({ body });
+  } catch (err) {
+    console.error(err);
+    return new Response(err.message, { status: 500 });
+  }
 }
