@@ -42,7 +42,5 @@ export async function POST(request) {
     }
   }
 
-  revalidatePath("/sections/actualites");
-
   return Response.json({ revalidated: true, paths, now: Date.now() });
 }
