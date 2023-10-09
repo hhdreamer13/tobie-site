@@ -7,7 +7,7 @@ export default async function NewsPage({ params }) {
   const post = await sanityFetch({
     query: postBySlug,
     params,
-    tags: [newsPost],
+    tags: ["newsPost"],
   });
 
   return (
