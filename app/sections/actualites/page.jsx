@@ -8,9 +8,8 @@ export default async function ActualitesPage() {
   const pageText = await sanityFetch({
     query: getPageTexts,
     params: {
-      sectionUrl: "/sections/actualites",
+      sectionUrl: "/sections/actualites", // we're using a query for all pages with a dynamic param
     },
-    tags: ["actualites"],
   });
 
   const news = await sanityFetch({ query: getAllPosts });

@@ -194,7 +194,7 @@ const SectionBar = memo(function SectionBar({
 
             {/* Circle Button */}
             <Link
-              href="/"
+              href={section.slug.current}
               className={
                 expandedSection === section._id
                   ? "pointer-events-auto"
