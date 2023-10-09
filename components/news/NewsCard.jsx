@@ -9,11 +9,13 @@ import { PortableText } from "@portabletext/react";
 const NewsCard = ({ post }) => {
   const builder = imageUrlBuilder(client);
 
-  const formattedDate = new Date(post?.date).toLocaleDateString("fr-FR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = post.date
+    ? new Date(post?.date).toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
 
   return (
     <li className="relative flex flex-col sm:flex-row h-auto mb-8 pb-8 transform transition-transform duration-300 ease-in-out">

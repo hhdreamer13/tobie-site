@@ -12,11 +12,13 @@ import { PortableText } from "@portabletext/react";
 const NewsFullPage = ({ post }) => {
   const builder = imageUrlBuilder(client);
 
-  const formattedDate = new Date(post?.date).toLocaleDateString("fr-FR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = post.date
+    ? new Date(post?.date).toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
 
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">

@@ -10,6 +10,7 @@ export default async function ActualitesPage() {
     params: {
       sectionUrl: "/sections/actualites", // we're using a query for all pages with a dynamic param
     },
+    tags: ["newsPost"],
   });
 
   const news = await sanityFetch({ query: getAllPosts, tags: ["newsPost"] });
