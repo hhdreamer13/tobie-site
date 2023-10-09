@@ -1,32 +1,37 @@
 const page = {
   name: "pageTexts",
   type: "document",
-  title: "Page Texts",
+  title: "Textes de section",
   fields: [
     {
       name: "section",
       type: "reference",
       to: [{ type: "section" }],
       title: "Section",
-      description: "Which section does this text belong to?",
+      description: "À quelle section ce texte appartient-il ?",
     },
     {
       name: "heading",
       type: "string",
-      title: "Heading",
+      title: "Titre",
     },
     {
       name: "subheading",
       type: "text",
-      title: "Subheading",
+      title: "Sous-titre",
     },
     {
       name: "extraText",
       type: "array",
-      title: "Extra Texts",
+      title: "Textes Supplémentaires",
       of: [{ type: "block" }],
     },
   ],
+  preview: {
+    select: {
+      title: "section.title",
+    },
+  },
 };
 
 export default page;

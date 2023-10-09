@@ -1,16 +1,16 @@
 const news = {
   name: "newsPost",
-  title: "News Post",
+  title: "Articles",
   type: "document",
   fields: [
     {
       name: "title",
-      title: "Title",
+      title: "Titre",
       type: "string",
     },
     {
       name: "slug",
-      title: "Link URL",
+      title: "Lien",
       type: "slug",
       options: {
         source: "title",
@@ -19,7 +19,7 @@ const news = {
     },
     {
       name: "imageSrc",
-      title: "Header Image",
+      title: "Image d'En-tête",
       type: "image",
       options: {
         hotspot: true,
@@ -34,7 +34,7 @@ const news = {
     },
     {
       name: "body",
-      title: "Body",
+      title: "Corps",
       type: "blockContent",
     },
     {
@@ -44,7 +44,7 @@ const news = {
     },
     {
       name: "tags",
-      title: "Tags",
+      title: "Étiquettes",
       type: "array",
       of: [{ type: "string" }],
     },

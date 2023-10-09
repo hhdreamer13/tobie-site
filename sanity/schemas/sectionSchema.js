@@ -11,13 +11,13 @@ const section = {
     },
     {
       name: "title",
-      title: "Title",
+      title: "Titre",
       type: "string",
     },
     {
-      name: "url",
-      title: "URL",
-      type: "string",
+      name: "slug",
+      title: "Lien",
+      type: "slug",
       readOnly: true,
     },
     {
@@ -27,7 +27,7 @@ const section = {
     },
     {
       name: "imageSrcJour",
-      title: "Image Source Day",
+      title: "Image - Jour",
       type: "image",
       options: { hotspot: true },
       fields: [
@@ -40,7 +40,7 @@ const section = {
     },
     {
       name: "imageSrcNuit",
-      title: "Image Source Night",
+      title: "Image - Soir",
       type: "image",
       options: { hotspot: true },
       fields: [

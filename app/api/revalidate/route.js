@@ -1,19 +1,41 @@
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
-// e.g a webhook to `your-website.com/api/revalidate?tag=collection&secret=<token>`
 export async function POST(request) {
-  const secret = request.nextUrl.searchParams.get("secret");
-  const tag = request.nextUrl.searchParams.get("tag");
+  const payload = await request.json();
+  console.log(payload);
+  let paths = [];
 
-  if (secret !== process.env.MY_SECRET_TOKEN) {
-    return Response.json({ message: "Invalid secret" }, { status: 401 });
+  switch (payload._type) {
+    case "newsPost":
+      if (payload.slug?.current) {
+        paths.push(`/news/${payload.slug.current}`);
+        paths.push("/actualites"); // Revalidate the news listing page as well
+      }
+      break;
+    case "pageTexts":
+      if (payload.sectionSlug) {
+        paths.push(payload.sectionSlug);
+      }
+      break;
+    case "section":
+      if (payload.slug?.current) {
+        paths.push(payload.slug.current);
+      }
+      break;
+    default:
+      return Response.json({ message: "Unsupported type" }, { status: 400 });
   }
 
-  if (!tag) {
-    return Response.json({ message: "Missing tag param" }, { status: 400 });
+  if (paths.length === 0) {
+    return Response.json(
+      { message: "Unable to determine paths for revalidation" },
+      { status: 400 },
+    );
   }
 
-  revalidateTag(tag);
+  for (const path of paths) {
+    revalidatePath(path);
+  }
 
-  return Response.json({ revalidated: true, now: Date.now() });
+  return Response.json({ revalidated: true, paths, now: Date.now() });
 }
