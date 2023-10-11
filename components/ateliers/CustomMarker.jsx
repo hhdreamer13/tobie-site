@@ -33,7 +33,7 @@ const CustomMarker = ({
     el.style.opacity = "1";
 
     const marker = new mapboxgl.Marker(el)
-      .setLngLat([location.longitude, location.latitude])
+      .setLngLat([location?.longitude, location?.latitude])
       .setPopup(popup)
       .addTo(map);
 

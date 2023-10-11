@@ -61,3 +61,32 @@ export const postBySlug = groq`*[_type == "newsPost" && slug.current == $slug][0
 export const postPathsQuery = groq`*[_type == "newsPost" && defined(slug.current)][]{
   "params": { "slug": slug.current }
 }`;
+
+export const getAllAteliers = groq`
+*[_type == "atelierPost"]{
+  _id,
+  title,
+  slug,
+  latitude,
+  longitude,
+  imageSrc,
+  body,
+  date,
+  tags,
+  "imageAlt": imageSrc.alt
+}
+`;
+
+export const atelierBySlug = groq`*[_type == "atelierPost" && slug.current == $slug][0]{
+  _id,
+  title,
+  slug,
+  latitude,
+  longitude,
+  imageSrc,
+  body,
+  date,
+  tags,
+  "imageAlt": imageSrc.alt
+}
+`;

@@ -11,6 +11,10 @@ const revalidationMap = {
     revalidateTag("newsPost");
     revalidatePath("/sections/actualites");
   },
+  atelierPost: () => {
+    revalidateTag("atelierPost");
+    revalidatePath("/sections/ateliers");
+  },
   pageTexts: () => {
     revalidateTag("pageTexts");
   },

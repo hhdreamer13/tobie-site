@@ -73,13 +73,19 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
     [onSelectLocation],
   );
 
+  const extractText = (blocks) => {
+    return blocks
+      .map((block) => block.children.map((child) => child.text).join(""))
+      .join("\n");
+  };
+
   return (
     <div ref={mapContainer} className="w-full h-full">
       {isMapLoaded &&
         shouldRenderMarkers &&
         locations.map((location) => (
           <CustomMarker
-            key={location.id}
+            key={location._id}
             map={map}
             location={location}
             isMapLoaded={isMapLoaded}
@@ -87,9 +93,9 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
             onSelectLocation={() => handleSelectLocation(location)}
           >
             {`
-    <h3>${location.name}</h3>
-    <p>${location.description}</p>
-    <a href="${location.linkUrl}">En savoir plus</a>
+    <h3>${location?.title}</h3>
+    <p>${location?.body ? extractText(location.body) : null}</p>
+    <a href="${location?.slug?.current}">En savoir plus</a>
   `}
           </CustomMarker>
         ))}

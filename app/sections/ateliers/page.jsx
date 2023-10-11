@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { getPageTexts } from "@/sanity/sanityQueries";
+import { getAllAteliers, getPageTexts } from "@/sanity/sanityQueries";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import SectionHeader from "@/components/common/SectionHeader";
 import MapDisplay from "@/components/ateliers/MapDisplay";
-import ateliers from "@/utils/ateliers";
 
 export default async function AteliersPage() {
   const pageText = await sanityFetch({
@@ -12,8 +11,10 @@ export default async function AteliersPage() {
     params: {
       sectionUrl: "/sections/ateliers",
     },
-    tags: ["ateliers"],
+    tags: ["pageTexts"],
   });
+
+  const ateliers = await sanityFetch({ query: getAllAteliers });
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">

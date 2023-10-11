@@ -26,7 +26,7 @@ const MapDisplay = ({ locations }) => {
         <ul className="flex flex-col gap-5">
           {locations.map((location) => (
             <AtelierCard
-              key={location.id}
+              key={location._id}
               location={location}
               isLocationSelected={location === selectedLocation}
               onSelectLocation={handleSelectLocation}
