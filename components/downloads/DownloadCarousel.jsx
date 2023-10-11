@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -16,7 +15,7 @@ const getUniqueCategories = (downloads) => {
 
 const uniqueCategories = getUniqueCategories(downloads);
 
-const DownloadCarousel = ({text}) => {
+const DownloadCarousel = ({ text }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [downloadItems, setDownloadItems] = useState("");
   const [showHandleText, setShowHandleText] = useState(false);

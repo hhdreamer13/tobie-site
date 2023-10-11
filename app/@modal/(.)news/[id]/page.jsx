@@ -1,24 +1,18 @@
-"use client";
+import NewsInterceptModal from "@/components/modals/NewsInterceptModal";
+import { sanityFetch } from "@/sanity/sanityFetch";
+import { newsPostByIdQuery } from "@/sanity/sanityQueries";
 
-import { useState, useEffect } from "react";
-import NewsFrame from "@/components/frames/NewsFrame";
-import InterceptModal from "@/components/modals/InterceptModal";
-import news from "@/utils/news";
 
-export default function SectionModalPage({ params }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default async function SectionModalPage({ params }) {
   const { id } = params;
 
-  useEffect(() => {
-    setIsOpen(true);
-  }, [id]);
+  const post = await sanityFetch({
+    query: newsPostByIdQuery,
+    params: {
+      _id: id,
+    },
+    tags: ["newsPost"],
+  });
 
-  const item = news.find((n) => n.id === parseInt(id));
-
-  return (
-    <InterceptModal item={item} isOpen={isOpen} setIsOpen={setIsOpen}>
-      <NewsFrame item={item} isOpen={isOpen} setIsOpen={setIsOpen} />
-    </InterceptModal>
-  );
+  return <NewsInterceptModal post={post} />;
 }

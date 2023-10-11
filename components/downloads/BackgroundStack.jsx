@@ -6,6 +6,7 @@ import circleImage from "../../public/photos/circle-crop.webp";
 import windowImage from "../../public/photos/window-frame.webp";
 import handleImage from "../../public/photos/handle-circle.webp";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
+import Loader from "../common/Loader";
 
 const BackgroundStack = memo(function BackgroundStack({
   downloadItems,
@@ -14,11 +15,14 @@ const BackgroundStack = memo(function BackgroundStack({
   currentItem,
 }) {
   const [rotation, setRotation] = useState(30);
+  const [isLoading, setIsLoading] = useState(true);
 
   const audioRef = useRef(null);
 
   useEffect(() => {
-    audioRef.current.volume = 0.4; // This sets the volume to 50%
+    if (audioRef.current) {
+      audioRef.current.volume = 0.4; // This sets the volume to 50%
+    }
   }, []);
 
   const slideTransition = {
@@ -74,6 +78,12 @@ const BackgroundStack = memo(function BackgroundStack({
     }, 350);
   }, [currentIndex, downloadItems, setCurrentIndex]);
 
+  const handleLoading = () => {
+    setIsLoading(false);
+  };
+
+  console.log(isLoading);
+
   return (
     <>
       {/* Background */}
@@ -86,9 +96,10 @@ const BackgroundStack = memo(function BackgroundStack({
           priority
           sizes="100vw"
           className="object-cover"
+          onLoadingComplete={handleLoading}
         />
       </div>
-
+      {isLoading ? <Loader /> : null}
       {/* Inner Circle */}
       <div className="absolute">
         <Image

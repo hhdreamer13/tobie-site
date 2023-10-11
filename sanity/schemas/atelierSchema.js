@@ -1,7 +1,7 @@
 const atelier = {
   name: "atelierPost",
   type: "document",
-  title: "Atelier",
+  title: "Ateliers",
   fields: [
     {
       name: "title",

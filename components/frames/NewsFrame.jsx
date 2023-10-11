@@ -1,8 +1,21 @@
 import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import MinimizeIcon from "../common/MinimizeIcon";
+import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from "@portabletext/react";
+import { client } from "@/sanity/clientConfig";
 
-const NewsFrame = async ({ item, setIsOpen }) => {
+const NewsFrame = async ({ post, setIsOpen }) => {
+  const builder = imageUrlBuilder(client);
+
+  const formattedDate = post.date
+    ? new Date(post?.date).toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
+
   return (
     <div className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start w-full max-h-fit bg-main items-center rounded-xl p-5">
       {/* Close */}
@@ -16,37 +29,43 @@ const NewsFrame = async ({ item, setIsOpen }) => {
       </button>
 
       {/* Principal Image */}
-      <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
-        <Image
-          alt={item.title}
-          src={item.imageSrc}
-          height={400}
-          width={600}
-          className="object-cover w-full"
-          placeholder="blur"
-          blurDataURL={getShimmerPlaceholder(600, 400)}
-        />
-      </div>
+      {post?.imageSrc ? (
+        <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
+          <Image
+            src={builder.image(post.imageSrc).url()}
+            alt={post?.imageSrc?.alt || post?.title}
+            height={400}
+            width={600}
+            className="object-cover w-full"
+            placeholder="blur"
+            blurDataURL={getShimmerPlaceholder(600, 400)}
+          />
+        </div>
+      ) : null}
 
       {/* Content */}
       <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-center line-clamp-3">
-        {item.title}
+        {post?.title}
       </h3>
 
-      <div className="mb-4">
-        <span className="text-slate-500 font-caveat">{item.date}</span>
-        {item.tags.map((tag, index) => (
-          <span
-            key={index}
-            className="ml-2 text-sm text-white font-caveat bg-green-500 rounded-full px-2"
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="mb-2 flex flex-col justify-center items-center gap-1 sm:block">
+        <span className="text-slate-500 font-caveat">{formattedDate}</span>
+        {post?.tags && (
+          <div className="block sm:inline-block">
+            {post.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="ml-2 text-xs text-white font-caveat bg-green-500 rounded-full px-2"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="text-justify text-main text-sm w-full font-nunito p-3 max-h-36 sm:max-h-40 overflow-y-scroll border rounded-lg">
-        <p>{item.description}</p>
+        {post?.body ? <PortableText value={post.body} /> : null}
       </div>
 
       <button

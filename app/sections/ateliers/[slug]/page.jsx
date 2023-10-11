@@ -1,11 +1,11 @@
 import SectionHeader from "@/components/common/SectionHeader";
 import AtelierFullPage from "@/components/ateliers/AtelierFullPage";
-import { atelierBySlug } from "@/sanity/sanityQueries";
+import { atelierPostBySlugQuery } from "@/sanity/sanityQueries";
 import { sanityFetch } from "@/sanity/sanityFetch";
 
 export default async function SectionPage({ params }) {
   const post = await sanityFetch({
-    query: atelierBySlug,
+    query: atelierPostBySlugQuery,
     params,
     tags: ["atelierPost"],
   });

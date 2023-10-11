@@ -1,6 +1,10 @@
-import { groq } from "next-sanity";
+import { createClient, groq } from "next-sanity";
+import { client } from "./clientConfig";
 
-export const getSections = groq`*[_type == "section"] | order(position asc) {
+/* 
+  Main Section
+*/
+export const sectionsQuery = groq`*[_type == "section"] | order(position asc) {
       _id,
         position,
         title,
@@ -10,7 +14,10 @@ export const getSections = groq`*[_type == "section"] | order(position asc) {
         slug
       }`;
 
-export const getPageTexts = groq`*[_type == "pageTexts" && section->slug.current == $sectionUrl][0] {
+/* 
+  Pages Texts
+*/
+export const pageTextsQuery = groq`*[_type == "pageTexts" && section->slug.current == $sectionUrl][0] {
   section -> {
     _id,
     title,
@@ -20,7 +27,10 @@ export const getPageTexts = groq`*[_type == "pageTexts" && section->slug.current
     subheading
         }`;
 
-export const getAllPosts = groq`
+/* 
+  News Section
+*/
+export const allNewsPostsQuery = groq`
 *[_type == "newsPost"]{
   _id,
   title,
@@ -33,7 +43,7 @@ export const getAllPosts = groq`
 }
 `;
 
-export const postById = groq`*[_type == "newsPost" && _id == $_id][0]{
+export const newsPostBySlugQuery = groq`*[_type == "newsPost" && slug.current == $slug][0]{
   _id,
   title,
   slug,
@@ -45,7 +55,7 @@ export const postById = groq`*[_type == "newsPost" && _id == $_id][0]{
 }
 `;
 
-export const postBySlug = groq`*[_type == "newsPost" && slug.current == $slug][0]{
+export const newsPostByIdQuery = groq`*[_type == "newsPost" && _id == $_id][0]{
   _id,
   title,
   slug,
@@ -57,12 +67,28 @@ export const postBySlug = groq`*[_type == "newsPost" && slug.current == $slug][0
 }
 `;
 
-// Get all post slugs
-export const postPathsQuery = groq`*[_type == "newsPost" && defined(slug.current)][]{
-  "params": { "slug": slug.current }
-}`;
+// direct fetch for news modal
+export async function getNewsPostById(id) {
+  return createClient(client).fetch(
+    groq`*[_type == "newsPost" && _id == $id][0]{
+      _id,
+      title,
+      slug,
+      body,
+      imageSrc,
+      date,
+      tags,
+      "imageAlt": imageSrc.alt
+    }
+    `,
+  );
+}
 
-export const getAllAteliers = groq`
+/* 
+  Atelier Section
+*/
+
+export const allAteliersPostsQuery = groq`
 *[_type == "atelierPost"]{
   _id,
   title,
@@ -77,7 +103,7 @@ export const getAllAteliers = groq`
 }
 `;
 
-export const atelierBySlug = groq`*[_type == "atelierPost" && slug.current == $slug][0]{
+export const atelierPostBySlugQuery = groq`*[_type == "atelierPost" && slug.current == $slug][0]{
   _id,
   title,
   slug,

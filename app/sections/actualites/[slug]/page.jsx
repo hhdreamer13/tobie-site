@@ -1,11 +1,11 @@
 import { sanityFetch } from "@/sanity/sanityFetch";
-import { postBySlug } from "@/sanity/sanityQueries";
+import { newsPostBySlugQuery } from "@/sanity/sanityQueries";
 import NewsFullPage from "@/components/news/NewsFullPage";
 import SectionHeader from "@/components/common/SectionHeader";
 
 export default async function NewsPage({ params }) {
   const post = await sanityFetch({
-    query: postBySlug,
+    query: newsPostBySlugQuery,
     params,
     tags: ["newsPost"],
   });

@@ -1,16 +1,17 @@
 import NewsFullPage from "@/components/news/NewsFullPage";
 import SectionHeader from "@/components/common/SectionHeader";
 import { sanityFetch } from "@/sanity/sanityFetch";
-import { postById } from "@/sanity/sanityQueries";
+import { newsPostByIdQuery } from "@/sanity/sanityQueries";
 
 export default async function NewsPage({ params }) {
   const { id } = params;
 
-  const item = await sanityFetch({
-    query: postById,
+  const post = await sanityFetch({
+    query: newsPostByIdQuery,
     params: {
       _id: id,
     },
+    tags: ["newsPost"],
   });
 
   return (
@@ -20,7 +21,7 @@ export default async function NewsPage({ params }) {
       </div>
       <div className="mt-40 mb-10 w-4/5"></div>
       <div className="flex justify-center items-start w-full h-full ">
-        <NewsFullPage item={item} />
+        <NewsFullPage post={post} />
       </div>
     </div>
   );

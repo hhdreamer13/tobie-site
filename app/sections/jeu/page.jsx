@@ -1,11 +1,11 @@
-import { getPageTexts } from "@/sanity/sanityQueries";
+import { pageTextsQuery } from "@/sanity/sanityQueries";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import SectionHeader from "@/components/common/SectionHeader";
 import MemoryGame from "@/components/jeu/MemoryGame";
 
 export default async function SectionPage() {
   const pageText = await sanityFetch({
-    query: getPageTexts,
+    query: pageTextsQuery,
     params: {
       sectionUrl: "/sections/jeu",
     },

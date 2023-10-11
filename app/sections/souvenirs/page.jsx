@@ -1,11 +1,11 @@
-/* eslint-disable react/no-unescaped-entities */
-import { getPageTexts } from "@/sanity/sanityQueries";
+
+import { pageTextsQuery } from "@/sanity/sanityQueries";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import DownloadCarousel from "@/components/downloads/DownloadCarousel";
 
 export default async function SouvenirsPage() {
   const pageText = await sanityFetch({
-    query: getPageTexts,
+    query: pageTextsQuery,
     params: {
       sectionUrl: "/sections/souvenirs",
     },

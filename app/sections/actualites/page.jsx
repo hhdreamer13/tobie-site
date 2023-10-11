@@ -1,19 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 import SectionHeader from "@/components/common/SectionHeader";
 import NewsDisplay from "@/components/news/NewsDisplay";
-import { getAllPosts, getPageTexts } from "@/sanity/sanityQueries";
+
 import { sanityFetch } from "@/sanity/sanityFetch";
+import { allNewsPostsQuery, pageTextsQuery } from "@/sanity/sanityQueries";
 
 export default async function ActualitesPage() {
   const pageText = await sanityFetch({
-    query: getPageTexts,
+    query: pageTextsQuery,
     params: {
       sectionUrl: "/sections/actualites", // we're using a query for all pages with a dynamic param
     },
     tags: ["pageTexts"],
   });
 
-  const news = await sanityFetch({ query: getAllPosts });
+  const news = await sanityFetch({ query: allNewsPostsQuery });
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">
