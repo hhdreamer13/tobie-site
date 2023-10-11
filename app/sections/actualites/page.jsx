@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import SectionHeader from "@/components/common/SectionHeader";
 import NewsDisplay from "@/components/news/NewsDisplay";
 

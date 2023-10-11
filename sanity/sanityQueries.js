@@ -55,7 +55,7 @@ export const newsPostBySlugQuery = groq`*[_type == "newsPost" && slug.current ==
 }
 `;
 
-export const newsPostByIdQuery = groq`*[_type == "newsPost" && _id == $_id][0]{
+export const newsPostByIdQuery = groq`*[_type == "newsPost" && _id == $id][0]{
   _id,
   title,
   slug,
@@ -66,23 +66,6 @@ export const newsPostByIdQuery = groq`*[_type == "newsPost" && _id == $_id][0]{
   "imageAlt": imageSrc.alt
 }
 `;
-
-// direct fetch for news modal
-export async function getNewsPostById(id) {
-  return createClient(client).fetch(
-    groq`*[_type == "newsPost" && _id == $id][0]{
-      _id,
-      title,
-      slug,
-      body,
-      imageSrc,
-      date,
-      tags,
-      "imageAlt": imageSrc.alt
-    }
-    `,
-  );
-}
 
 /* 
   Atelier Section
@@ -113,6 +96,35 @@ export const atelierPostBySlugQuery = groq`*[_type == "atelierPost" && slug.curr
   body,
   date,
   tags,
+  "imageAlt": imageSrc.alt
+}
+`;
+
+/* 
+  Download Section
+*/
+
+export const allDownloadPostsQuery = groq`
+*[_type == "downloadPost"]{
+  _id,
+  title,
+  imageSrc,
+  description,
+  category,
+  downloadLink,
+  "imageAlt": imageSrc.alt
+}
+`;
+
+export const downloadPostByIdQuery = groq`
+*[_type == "downloadPost" && _id == $id][0]{
+  _id,
+  title,
+  imageSrc,
+  description,
+  category,
+  downloadLink,
+  "fileUrl": downloadLink.asset->url,
   "imageAlt": imageSrc.alt
 }
 `;

@@ -4,13 +4,9 @@ import { sanityFetch } from "@/sanity/sanityFetch";
 import { newsPostByIdQuery } from "@/sanity/sanityQueries";
 
 export default async function NewsPage({ params }) {
-  const { id } = params;
-
   const post = await sanityFetch({
     query: newsPostByIdQuery,
-    params: {
-      _id: id,
-    },
+    params,
     tags: ["newsPost"],
   });
 

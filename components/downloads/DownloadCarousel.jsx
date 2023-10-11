@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import downloads from "@/utils/downloads";
 import BackgroundStack from "./BackgroundStack";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -13,13 +12,12 @@ const getUniqueCategories = (downloads) => {
   return [...new Set(categories)];
 };
 
-const uniqueCategories = getUniqueCategories(downloads);
-
-const DownloadCarousel = ({ text }) => {
+const DownloadCarousel = ({ downloads, text }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [downloadItems, setDownloadItems] = useState("");
   const [showHandleText, setShowHandleText] = useState(false);
 
+  const uniqueCategories = getUniqueCategories(downloads);
   const currentItem = downloadItems[currentIndex];
 
   const handleCategoryChange = useCallback((category) => {
@@ -96,10 +94,10 @@ const DownloadCarousel = ({ text }) => {
             >
               {currentItem && (
                 <Link
-                  href={currentItem.linkUrl}
+                  href={`/souvenirs/${currentItem?._id}`}
                   className="text-lg flex justify-center items-center font-caveat px-4 py-2"
                 >
-                  {currentItem.title}
+                  {currentItem?.title}
                   <span className="ml-3">
                     <MaximizeIcon className="w-5 h-5" />
                   </span>

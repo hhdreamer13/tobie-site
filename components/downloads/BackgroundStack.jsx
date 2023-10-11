@@ -8,6 +8,9 @@ import handleImage from "../../public/photos/handle-circle.webp";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import Loader from "../common/Loader";
 
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
+
 const BackgroundStack = memo(function BackgroundStack({
   downloadItems,
   currentIndex,
@@ -16,6 +19,8 @@ const BackgroundStack = memo(function BackgroundStack({
 }) {
   const [rotation, setRotation] = useState(30);
   const [isLoading, setIsLoading] = useState(true);
+
+  const builder = imageUrlBuilder(client);
 
   const audioRef = useRef(null);
 
@@ -82,8 +87,6 @@ const BackgroundStack = memo(function BackgroundStack({
     setIsLoading(false);
   };
 
-  console.log(isLoading);
-
   return (
     <>
       {/* Background */}
@@ -99,94 +102,103 @@ const BackgroundStack = memo(function BackgroundStack({
           onLoadingComplete={handleLoading}
         />
       </div>
-      {isLoading ? <Loader /> : null}
-      {/* Inner Circle */}
-      <div className="absolute">
-        <Image
-          src={circleImage}
-          alt="Scene"
-          width={300}
-          height={300}
-          className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
-        />
-      </div>
-
-      {/* Cover Image with clipping */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          variants={slideTransition}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="absolute"
-          style={{ clipPath: "circle(27% at 50% 50%)" }}
-        >
-          {currentItem && (
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {/* Inner Circle */}
+          <div className="absolute">
             <Image
-              src={currentItem.imageSrc}
-              alt={currentItem.title}
-              width={450}
-              height={450}
-              priority={true}
-              placeholder="blur"
-              blurDataURL={getShimmerPlaceholder(300, 300)}
-              className="object-cover w-[300px] h-[300px] sm:w-[450px] sm:h-[450px]"
+              src={circleImage}
+              alt="Scene"
+              width={300}
+              height={300}
+              className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
             />
-          )}
-        </motion.div>
-      </AnimatePresence>
+          </div>
 
-      {/* Blend effect */}
-      <div className="absolute">
-        <Image
-          src={circleImage}
-          alt="Scene"
-          width={300}
-          height={300}
-          className="object-cover mix-blend-overlay will-change-transform w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
-        />
-      </div>
+          {/* Cover Image with clipping */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              variants={slideTransition}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="absolute"
+              style={{ clipPath: "circle(27% at 50% 50%)" }}
+            >
+              {currentItem && (
+                <Image
+                  src={builder
+                    .image(currentItem?.imageSrc)
+                    .width(450)
+                    .height(450)
+                    .url()}
+                  alt={currentItem?.imageSrc?.alt || currentItem?.title}
+                  width={450}
+                  height={450}
+                  priority={true}
+                  placeholder="blur"
+                  blurDataURL={getShimmerPlaceholder(300, 300)}
+                  className="object-cover w-[300px] h-[300px] sm:w-[450px] sm:h-[450px]"
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
 
-      {/* Window */}
-      <div className="absolute">
-        <Image
-          src={windowImage}
-          alt="Scene"
-          width={300}
-          height={300}
-          quality={100}
-          priority={true}
-          className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
-        />
-      </div>
+          {/* Blend effect */}
+          <div className="absolute">
+            <Image
+              src={circleImage}
+              alt="Scene"
+              width={300}
+              height={300}
+              className="object-cover mix-blend-overlay will-change-transform w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
+            />
+          </div>
 
-      {/* Handle with rotation */}
-      <motion.div
-        className="absolute"
-        animate={{ rotate: rotation }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 20,
-        }}
-        style={{
-          clipPath: "polygon(44% 70%, 56% 70%, 64% 100%, 36% 100%)",
-        }}
-        onClick={toggleRotation}
-      >
-        <Image
-          src={handleImage}
-          alt=""
-          priority={true}
-          width={400}
-          height={400}
-          className="object-cover w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]"
-        />
-      </motion.div>
-      {/* Sound */}
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio ref={audioRef} src="/click.mp3" preload="auto"></audio>
+          {/* Window */}
+          <div className="absolute">
+            <Image
+              src={windowImage}
+              alt="Scene"
+              width={300}
+              height={300}
+              quality={100}
+              priority={true}
+              className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
+            />
+          </div>
+
+          {/* Handle with rotation */}
+          <motion.div
+            className="absolute"
+            animate={{ rotate: rotation }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+            }}
+            style={{
+              clipPath: "polygon(44% 70%, 56% 70%, 64% 100%, 36% 100%)",
+            }}
+            onClick={toggleRotation}
+          >
+            <Image
+              src={handleImage}
+              alt=""
+              priority={true}
+              width={400}
+              height={400}
+              className="object-cover w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]"
+            />
+          </motion.div>
+          {/* Sound */}
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+          <audio ref={audioRef} src="/click.mp3" preload="auto"></audio>
+        </>
+      )}
     </>
   );
 });

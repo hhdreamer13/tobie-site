@@ -15,6 +15,10 @@ const revalidationMap = {
     revalidateTag("atelierPost");
     revalidatePath("/sections/ateliers");
   },
+  downloadPost: () => {
+    revalidateTag("downloadPost");
+    revalidatePath("/sections/souvenirs");
+  },
   pageTexts: () => {
     revalidateTag("pageTexts");
   },
