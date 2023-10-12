@@ -25,7 +25,7 @@ export default async function SectionPage() {
         <p className="mt-6">{pageText?.subheading}</p>
       </div>
       <div className="flex justify-center items-start w-full h-full ">
-        <MemoryGame gameAssets={gameAssets} />
+        <MemoryGame gameAssets={gameAssets} text={pageText?.extraText} />
       </div>
     </div>
   );

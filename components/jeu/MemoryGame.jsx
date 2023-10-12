@@ -10,7 +10,7 @@ import Confetti from "./Confetti";
 import RestartIcon from "../common/RestartIcon";
 import InfoIcon from "../common/InfoIcon";
 
-const MemoryGame = ({ gameAssets }) => {
+const MemoryGame = ({ gameAssets, text }) => {
   const gameSetNames = gameAssets.map((gameSet) => gameSet.gameSetName);
 
   const [uniqueCardsArray, setUniqueCardsArray] = useState(gameAssets[0].cards);
@@ -47,7 +47,7 @@ const MemoryGame = ({ gameAssets }) => {
     <div className="relative w-full h-full" key={uniqueCardsArray[0]._id}>
       <div className="flex justify-center items-center mb-2">
         <label htmlFor="gameType" className="mr-2">
-          Choisissez une catégorie :
+          {text}
         </label>
         <select
           className="px-2 py-1 rounded-md"
