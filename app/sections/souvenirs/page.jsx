@@ -8,6 +8,7 @@ export default async function SouvenirsPage() {
     params: {
       sectionUrl: "/sections/souvenirs",
     },
+    tags: ["pageTexts"],
   });
 
   const downloads = await sanityFetch({ query: allDownloadPostsQuery });

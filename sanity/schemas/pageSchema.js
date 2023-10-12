@@ -22,9 +22,8 @@ const page = {
     },
     {
       name: "extraText",
-      type: "array",
+      type: "text",
       title: "Textes Supplémentaires",
-      of: [{ type: "block" }],
     },
   ],
   preview: {

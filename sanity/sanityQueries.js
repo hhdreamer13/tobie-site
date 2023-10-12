@@ -24,7 +24,8 @@ export const pageTextsQuery = groq`*[_type == "pageTexts" && section->slug.curre
     slug
   },
     heading,
-    subheading
+    subheading,
+    extraText
         }`;
 
 /* 

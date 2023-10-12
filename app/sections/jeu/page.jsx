@@ -9,9 +9,13 @@ export default async function SectionPage() {
     params: {
       sectionUrl: "/sections/jeu",
     },
+    tags: ["pageTexts"],
   });
 
-  const gameAssets = await sanityFetch({ query: allGamesQuery });
+  const gameAssets = await sanityFetch({
+    query: allGamesQuery,
+    tags: ["memoryGameSet"],
+  });
 
   return (
     <div className="w-full min-h-screen pb-20 flex flex-col justify-center items-center bg-main">

@@ -19,6 +19,10 @@ const revalidationMap = {
     revalidateTag("downloadPost");
     revalidatePath("/sections/souvenirs");
   },
+  memoryGameSet: () => {
+    revalidateTag("memoryGameSet");
+    revalidatePath("/sections/jeu");
+  },
   pageTexts: () => {
     revalidateTag("pageTexts");
   },
