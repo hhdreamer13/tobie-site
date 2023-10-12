@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { memo, useMemo } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
 
 const SectionBackground = memo(function SectionBackground({
   currentSection,
@@ -8,6 +10,9 @@ const SectionBackground = memo(function SectionBackground({
   expandedSection,
   theme,
 }) {
+  const [highQualityImageLoaded, setHighQualityImageLoaded] = useState(false);
+  const builder = imageUrlBuilder(client);
+
   const imageUrl = useMemo(() => {
     if (currentSection !== -1 && theme) {
       return theme === "dark"
@@ -16,6 +21,13 @@ const SectionBackground = memo(function SectionBackground({
     }
     return null;
   }, [currentSection, theme, sections]);
+
+  useEffect(() => {
+    // Reset the state when the current section changes
+    setHighQualityImageLoaded(false);
+  }, [currentSection]);
+
+  console.log(highQualityImageLoaded);
 
   return (
     <AnimatePresence>
@@ -31,14 +43,22 @@ const SectionBackground = memo(function SectionBackground({
           transition={{ duration: 0.7 }}
           className="absolute w-full min-h-screen"
         >
+          {!highQualityImageLoaded && (
+            <Image
+              src={builder.image(imageUrl).width(480).height(270).url()}
+              alt="Section Background Low Quality"
+              className="object-cover"
+              fill={true}
+              sizes="100vw"
+            />
+          )}
           <Image
-            src={imageUrl}
+            src={builder.image(imageUrl).url()}
             alt="Section Background"
             className="object-cover"
             fill={true}
-            priority
-            loading="eager"
             sizes="100vw"
+            onLoadingComplete={() => setHighQualityImageLoaded(true)}
           />
         </motion.div>
       )}

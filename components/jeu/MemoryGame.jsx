@@ -71,7 +71,7 @@ const MemoryGame = ({ gameAssets, text }) => {
           <>
             <div className="absolute flex justify-center items-center inset-0">
               <button onClick={handleRestart} className="z-10">
-                <div className="rounded-lg bg-slate-100/40 dark:bg-slate-950/30 flex justify-center items-center">
+                <div className="flex justify-center items-center">
                   <RestartIcon className="w-16 h-16 transition-all duration-200 hover:scale-105 text-cyan-600 dark:text-cyan-600" />
                 </div>
               </button>
