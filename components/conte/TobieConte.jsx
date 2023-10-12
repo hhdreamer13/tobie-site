@@ -33,7 +33,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Mobile browser screen size unchange with scrolling
 // ScrollTrigger.normalizeScroll(true);
-// ScrollTrigger.config({ ignoreMobileResize: true });
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 // gsap.config({
 //   autoSleep: 30,
