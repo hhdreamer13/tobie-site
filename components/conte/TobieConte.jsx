@@ -32,13 +32,13 @@ import EBranch from "../home/EBranch";
 gsap.registerPlugin(ScrollTrigger);
 
 // Mobile browser screen size unchange with scrolling
-// ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.normalizeScroll(true);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
-// gsap.config({
-//   autoSleep: 30,
-//   force3D: true,
-// });
+gsap.config({
+  autoSleep: 30,
+  force3D: true,
+});
 
 const frameCount = 49; // Number of frames in your animation
 const images = []; // Array to store your image frames
