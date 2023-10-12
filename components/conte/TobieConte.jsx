@@ -302,20 +302,20 @@ const TobieConte = ({ verseImages }) => {
 
           {/* Back to top button */}
           {showButton && (
-            <button
-              // className=" z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
-
-              className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 flex justify-center items-center w-12 h-12 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce"
-              onClick={scrollToTop}
-            >
-              <NextImage
-                className="relative w-6 h-6 rotate-180 transition-transform"
-                src="/assets/down.svg"
-                width={100}
-                height={100}
-                alt="circle"
-              />
-            </button>
+            <div className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center">
+              <button
+                className="relative p-3 w-14 h-14 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce"
+                onClick={scrollToTop}
+              >
+                <NextImage
+                  className="rotate-180 transition-transform"
+                  src="/assets/down.svg"
+                  width={100}
+                  height={100}
+                  alt="circle"
+                />
+              </button>
+            </div>
           )}
         </main>
       </div>
