@@ -6,10 +6,13 @@ import { gsap } from "gsap";
 import NextImage from "next/image";
 import { ScrollTrigger } from "gsap/all";
 import Lenis from "@studio-freight/lenis";
+import useDeviceType from "@/hooks/useDeviceType";
+
 import useLeafExitAnimation from "./useLeafExitAnimation";
 import useTobieRunAnimation from "./useTobieRunAnimation";
 import useTitleAnimation from "./useTitleAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
+
 import VersesText from "./VersesText";
 
 // Leaf images
@@ -80,6 +83,8 @@ const TobieConte = ({ verseImages }) => {
   // Back to top button
   const [showButton, setShowButton] = useState(false);
 
+  const isDesktop = useDeviceType();
+
   useEffect(() => {
     // Handle scroll event
     const handleScroll = () => {
@@ -102,7 +107,7 @@ const TobieConte = ({ verseImages }) => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   useEffect(() => {
@@ -151,9 +156,8 @@ const TobieConte = ({ verseImages }) => {
 
           {/* Group 5 */}
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group5Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group5Bottom}
@@ -163,9 +167,8 @@ const TobieConte = ({ verseImages }) => {
           />
           {/* Group 4 */}
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group4Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group4Left}
@@ -175,9 +178,8 @@ const TobieConte = ({ verseImages }) => {
           />
           {/* Group 3 */}
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group3Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group3Right}
@@ -187,9 +189,8 @@ const TobieConte = ({ verseImages }) => {
           />
           {/* Group 2 */}
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group2Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group2Top}
@@ -197,11 +198,11 @@ const TobieConte = ({ verseImages }) => {
             data-group="2"
             data-position="top"
           />
+
           {/* Group 1 */}
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group1LeafLeftBottom}
@@ -210,9 +211,8 @@ const TobieConte = ({ verseImages }) => {
             data-position="left-bottom"
           />
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group1LeafLeftTop}
@@ -221,9 +221,8 @@ const TobieConte = ({ verseImages }) => {
             data-position="left-top"
           />
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group1LeafRightBottom}
@@ -232,9 +231,8 @@ const TobieConte = ({ verseImages }) => {
             data-position="right-bottom"
           />
           <NextImage
-            fill="true"
-            priority
-            sizes="100vh"
+            width={960}
+            height={540}
             ref={(el) => group1Refs.current.push(el)}
             className="fullscreenImage absolute"
             src={group1LeafRightTop}
