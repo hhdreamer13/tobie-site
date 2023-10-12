@@ -4,16 +4,16 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useGameLogic } from "./useGameLogic";
 
-import { personnagesArray, feuillesArray } from "@/utils/gameAssets";
-
 import Card from "./CardGame";
 import ModalGameCard from "./ModalGameCard";
 import Confetti from "./Confetti";
 import RestartIcon from "../common/RestartIcon";
 import InfoIcon from "../common/InfoIcon";
 
-const MemoryGame = () => {
-  const [uniqueCardsArray, setUniqueCardsArray] = useState(personnagesArray);
+const MemoryGame = ({ gameAssets }) => {
+  const gameSetNames = gameAssets.map((gameSet) => gameSet.gameSetName);
+
+  const [uniqueCardsArray, setUniqueCardsArray] = useState(gameAssets[0].cards);
   const [isModalActive, setIsModalActive] = useState(true);
 
   const handleShowContent = () => {
@@ -44,7 +44,7 @@ const MemoryGame = () => {
   }, [uniqueCardsArray]);
 
   return (
-    <div className="relative w-full h-full" key={uniqueCardsArray[0].type}>
+    <div className="relative w-full h-full" key={uniqueCardsArray[0]._id}>
       <div className="flex justify-center items-center mb-2">
         <label htmlFor="gameType" className="mr-2">
           Choisissez une catégorie :
@@ -53,15 +53,17 @@ const MemoryGame = () => {
           className="px-2 py-1 rounded-md"
           id="gameType"
           onChange={(e) => {
-            setUniqueCardsArray(
-              e.target.value === "personnages"
-                ? personnagesArray
-                : feuillesArray,
+            const selectedGameSet = gameAssets.find(
+              (gameSet) => gameSet.gameSetName === e.target.value,
             );
+            setUniqueCardsArray(selectedGameSet.cards);
           }}
         >
-          <option value="personnages">Personnages</option>
-          <option value="feuilles">Feuilles</option>
+          {gameSetNames.map((name, index) => (
+            <option key={index} value={name}>
+              {name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="relative border rounded-lg grid grid-cols-4 grid-row-5 sm:grid-cols-5 sm:grid-rows-4 justify-items-center gap-4 w-11/12 sm:max-w-2xl h-[500px] mx-auto p-6">
@@ -140,7 +142,7 @@ const MemoryGame = () => {
       <AnimatePresence>
         {isModalActive && showModal && (
           <ModalGameCard
-            item={uniqueCardsArray.find((item) => item.id === modalCardId)}
+            item={uniqueCardsArray.find((item) => item.type === modalCardId)}
             setShowModal={setShowModal}
           />
         )}

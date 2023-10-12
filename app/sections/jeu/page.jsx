@@ -1,4 +1,4 @@
-import { pageTextsQuery } from "@/sanity/sanityQueries";
+import { allGamesQuery, pageTextsQuery } from "@/sanity/sanityQueries";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import SectionHeader from "@/components/common/SectionHeader";
 import MemoryGame from "@/components/jeu/MemoryGame";
@@ -10,6 +10,8 @@ export default async function SectionPage() {
       sectionUrl: "/sections/jeu",
     },
   });
+
+  const gameAssets = await sanityFetch({ query: allGamesQuery });
 
   return (
     <div className="w-full min-h-screen pb-20 flex flex-col justify-center items-center bg-main">
@@ -23,7 +25,7 @@ export default async function SectionPage() {
         <p className="mt-6">{pageText?.subheading}</p>
       </div>
       <div className="flex justify-center items-start w-full h-full ">
-        <MemoryGame />
+        <MemoryGame gameAssets={gameAssets} />
       </div>
     </div>
   );

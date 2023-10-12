@@ -54,7 +54,7 @@ export const useGameLogic = (uniqueCardsArray) => {
 
       // Show modal with educational content
       setShowModal(true);
-      setModalCardId(cards[first].id);
+      setModalCardId(cards[first].type);
       return;
     }
     timeout.current = setTimeout(() => {

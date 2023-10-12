@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import MinimizeIcon from "../common/MinimizeIcon";
 import { useRef } from "react";
 import Image from "next/image";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
 
 const overlayVariants = {
   hidden: { scaleY: 0, originY: 0.5 },
@@ -37,6 +39,8 @@ const modalVariants = {
 const ModalGameCard = ({ item, setShowModal }) => {
   const overlayRef = useRef(null);
 
+  const builder = imageUrlBuilder(client);
+
   const handleOverlayClick = (event) => {
     if (event.target === overlayRef.current) {
       setShowModal(false);
@@ -71,13 +75,22 @@ const ModalGameCard = ({ item, setShowModal }) => {
         </button>
 
         {/* Principal Image */}
-        <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
+        <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden bg-white">
           <Image
-            alt={item.type}
-            src={item.imageDetailSrc || item.imageSrc}
+            alt={item?.type}
+            // src={item?.imageDetailSrc || item?.imageSrc}
+            src={
+              item?.imageDetailSrc
+                ? builder
+                    .image(item.imageDetailSrc)
+                    .width(500)
+                    .height(500)
+                    .url()
+                : builder.image(item?.imageSrc).width(500).height(500).url()
+            }
             height={500}
             width={500}
-            className="object-cover w-full h-fit"
+            className="object-cover mx-auto w-fit h-fit"
           />
         </div>
 
@@ -87,7 +100,7 @@ const ModalGameCard = ({ item, setShowModal }) => {
         </h3>
 
         <div className="text-justify text-main text-sm w-full font-nunito p-3 max-h-36 sm:max-h-40 overflow-y-scroll border rounded-lg">
-          <p>{item.description}</p>
+          <p className="whitespace-pre-wrap">{item?.description}</p>
         </div>
       </motion.div>
     </motion.div>

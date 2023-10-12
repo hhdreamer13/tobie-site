@@ -128,3 +128,19 @@ export const downloadPostByIdQuery = groq`
   "imageAlt": imageSrc.alt
 }
 `;
+
+/* 
+  Game Section
+*/
+export const allGamesQuery = groq`
+*[_type == "memoryGameSet"]{
+  _id,
+  gameSetName,
+  "cards": cards[]{
+    type,
+    imageSrc,
+    imageDetailSrc,
+    description
+  }
+}
+`;

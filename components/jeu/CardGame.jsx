@@ -1,7 +1,11 @@
 import Image from "next/image";
 import tobie from "@/public/tobie-icon.webp";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
 
 const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
+  const builder = imageUrlBuilder(client);
+
   const handleClick = () => {
     !isFlipped && !isDisabled && onClick(index);
   };
@@ -38,7 +42,7 @@ const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }) => {
       >
         <Image
           className="object-contain"
-          src={card.imageSrc}
+          src={builder.image(card?.imageSrc).width(200).height(200).url()}
           alt="card"
           width={100}
           height={100}
