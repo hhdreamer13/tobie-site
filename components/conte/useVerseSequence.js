@@ -25,7 +25,7 @@ const useVerseSequence = (bgRef, overlayRef, index, scrollStart, scrollEnd) => {
     tl.to(
       bgRef.current,
       {
-        opacity: 1,
+        autoAlpha: 1,
         duration: 2,
         ease: "sine.inOut",
       },
@@ -34,7 +34,7 @@ const useVerseSequence = (bgRef, overlayRef, index, scrollStart, scrollEnd) => {
       .to(
         overlayRef.current,
         {
-          opacity: 0.5,
+          autoAlpha: 0.5,
           duration: 2,
           ease: "sine.inOut",
         },
@@ -43,7 +43,7 @@ const useVerseSequence = (bgRef, overlayRef, index, scrollStart, scrollEnd) => {
       .to(
         overlayRef.current,
         {
-          opacity: 0,
+          autoAlpha: 0,
           duration: 2,
           ease: "sine.inOut",
         },
@@ -52,7 +52,7 @@ const useVerseSequence = (bgRef, overlayRef, index, scrollStart, scrollEnd) => {
       .to(
         bgRef.current,
         {
-          opacity: 0,
+          autoAlpha: 0,
           duration: 2,
           ease: "sine.inOut",
         },

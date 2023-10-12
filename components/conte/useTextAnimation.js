@@ -24,11 +24,11 @@ const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
       });
 
       tl.from(words, {
-        opacity: 0,
+        autoAlpha: 0,
         y: 20,
         stagger: 0.1,
       }).to(words, {
-        opacity: 0,
+        autoAlpha: 0,
         stagger: {
           each: 0.05,
           from: "start",
