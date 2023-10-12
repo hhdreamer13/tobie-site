@@ -23,15 +23,6 @@ import group1LeafLeftTop from "public/leaf/group1-leaf-left-top.webp";
 import group1LeafRightBottom from "public/leaf/group1-leaf-right-bottom.webp";
 import group1LeafRightTop from "public/leaf/group1-leaf-right-top.webp";
 
-// import the background images for caching
-import bgImage1 from "public/photos/scroll/01.webp";
-import bgImage2 from "public/photos/scroll/02.webp";
-import bgImage3 from "public/photos/scroll/03.webp";
-import bgImage4 from "public/photos/scroll/04.webp";
-import bgImage5 from "public/photos/scroll/05.webp";
-import bgImage6 from "public/photos/scroll/06.webp";
-import bgImage7 from "public/photos/scroll/07.webp";
-
 import LBranch from "../home/LBranch";
 import EBranch from "../home/EBranch";
 
@@ -39,12 +30,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Mobile browser screen size unchange with scrolling
 // ScrollTrigger.normalizeScroll(true);
-ScrollTrigger.config({ ignoreMobileResize: true });
+// ScrollTrigger.config({ ignoreMobileResize: true });
 
-gsap.config({
-  autoSleep: 30,
-  force3D: true,
-});
+// gsap.config({
+//   autoSleep: 30,
+//   force3D: true,
+// });
 
 const frameCount = 49; // Number of frames in your animation
 const images = []; // Array to store your image frames
@@ -59,49 +50,16 @@ for (let i = 0; i < frameCount; i++) {
 /**
  * Component
  */
-const TobieConte = () => {
+const TobieConte = ({ verseImages }) => {
   const scrollPages = 35;
 
-  const verses = [
-    [
-      "Dans un monde tout proche, sur un arbre majestueux,",
-      "Vit Tobie, jeune héros, minuscule mais courageux.",
-    ],
-    [
-      "Dans le bois qui s'éveille, où la sève est le cœur,",
-      "Chaque branche un merveille, chaque feuille une couleur.",
-    ],
-    [
-      "Son père, un esprit libre, d’un secret est protecteur,",
-      "Mais des ombres veulent l’ombre, et rêvent de grandeur.",
-    ],
-    [
-      "Les seigneurs de ces lieux, lorgnant la sève d'or,",
-      "Tobie, déterminé, refuse d'y céder, il s'oppose encore.",
-    ],
-    [
-      "Sans fléchir, il avance, l’arbre prisonnier, en otage,",
-      "Là où il va, une menace , dans ce combat sans âge.",
-    ],
-    [
-      "Pour défendre chaque être, chaque souffle de la forêt,",
-      "Il défie le danger, qu'il doit affronter.",
-    ],
-    [
-      "Avec Tobie, sentez-vous le vent, cette caresse des cieux ?",
-      "Comme lui et ses amis, seriez-vous si audacieux ?",
-    ],
-  ];
+  const verses = verseImages.verseAndImage.map(
+    (verseImage) => verseImage.verse,
+  );
 
-  const backgrounds = [
-    bgImage1,
-    bgImage2,
-    bgImage3,
-    bgImage4,
-    bgImage5,
-    bgImage6,
-    bgImage7,
-  ];
+  const backgrounds = verseImages.verseAndImage.map(
+    (verseImage) => verseImage.imageSrc,
+  );
 
   // Refs
 
@@ -144,17 +102,13 @@ const TobieConte = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smooth: true,
-      wrapper: document.body,
-    });
+    const lenis = new Lenis({});
 
     // Integrate Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -293,8 +247,16 @@ const TobieConte = () => {
             ref={scrollRef}
             className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center "
           >
-            <div className="relative h-[60px] w-[30px] rounded-[15px] border-[3px] border-solid border-amber-400 rotate-180  sm:rotate-0">
-              <div className="absolute bottom-[34px] left-1 top-1 w-4 animate-[scroller_2000ms_ease-out_infinite] rounded-lg bg-lime-500"></div>
+            <div className="relative flex justify-center items-center h-16 w-8 rounded-full border-2 border-solid border-amber-400">
+              <div className="w-5 rounded-full bg-lime-500 scroll-down">
+                <NextImage
+                  className="relative"
+                  src="/assets/down.svg"
+                  alt="scroll down"
+                  width={40}
+                  height={40}
+                />
+              </div>
             </div>
             <p className="text-amber-500 text-xl font-caveat">Descendez !</p>
           </div>
@@ -338,10 +300,18 @@ const TobieConte = () => {
           {/* Back to top button */}
           {showButton && (
             <button
+              // className=" z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
+
+              className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 flex justify-center items-center w-12 h-12 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce"
               onClick={scrollToTop}
-              className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 z-50 bg-slate-950/40 text-slate-100 rounded-full p-4 animate-bounce hover:scale-105"
             >
-              ↑
+              <NextImage
+                className="relative w-6 h-6 rotate-180 transition-transform"
+                src="/assets/down.svg"
+                width={100}
+                height={100}
+                alt="circle"
+              />
             </button>
           )}
         </main>

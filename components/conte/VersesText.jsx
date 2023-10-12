@@ -1,15 +1,19 @@
 import { useRef } from "react";
+import Image from "next/image";
 import useTextAnimation from "./useTextAnimation";
 import useVerseSequence from "./useVerseSequence";
-import Image from "next/image";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
 
 const VersesText = ({ verse, bgImage, index, totalVerses }) => {
   const bgRef = useRef();
   const overlayRef = useRef();
   const textRef = useRef();
 
+  const builder = imageUrlBuilder(client);
+
   // Calculate unique start and end points for scroll-trigger
-  const textScrollStart = 600 + (3000 * index) / totalVerses + "% top";
+  const textScrollStart = 500 + (3000 * index) / totalVerses + "% top";
   const textScrollEnd = 800 + (3000 * index) / totalVerses + "% center";
 
   const bgScrollStart = 350 + (3000 * index) / totalVerses + "% top";
@@ -23,7 +27,9 @@ const VersesText = ({ verse, bgImage, index, totalVerses }) => {
     <section className="fullscreenImage absolute">
       <Image
         ref={bgRef}
-        src={bgImage}
+        src={builder.image(bgImage).url()}
+        fill={true}
+        size={"100vw"}
         alt={`background Tobie ${index + 1}`}
         className="object-cover w-full h-full opacity-0"
       />

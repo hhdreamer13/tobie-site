@@ -145,3 +145,18 @@ export const allGamesQuery = groq`
   }
 }
 `;
+
+/* 
+  Story Section
+*/
+export const allStoriesQuery = groq`
+*[_type == "storyVerse"][0]{
+  _id,
+  title,
+  "verseAndImage": verseAndImage[]{
+    number,
+    "verse": verse[],
+    "imageSrc": imageSrc.asset->url
+  }
+}
+`;

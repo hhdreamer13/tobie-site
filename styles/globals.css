@@ -21,7 +21,7 @@
   @apply h-screen w-screen object-cover object-center will-change-transform;
 }
 
-@keyframes scroller {
+/* @keyframes scroller {
   0% {
     bottom: 34px;
   }
@@ -39,7 +39,7 @@
     top: 4px;
     bottom: 34px;
   }
-}
+} */
 
 @keyframes scroll-down {
   0% {

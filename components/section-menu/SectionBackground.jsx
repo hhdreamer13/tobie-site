@@ -27,8 +27,6 @@ const SectionBackground = memo(function SectionBackground({
     setHighQualityImageLoaded(false);
   }, [currentSection]);
 
-  console.log(highQualityImageLoaded);
-
   return (
     <AnimatePresence>
       {currentSection !== -1 && (
