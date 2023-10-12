@@ -200,46 +200,51 @@ const TobieConte = ({ verseImages }) => {
           />
 
           {/* Group 1 */}
-          <NextImage
-            width={960}
-            height={540}
-            ref={(el) => group1Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group1LeafLeftBottom}
-            alt="Decor Tobie"
-            data-group="1"
-            data-position="left-bottom"
-          />
-          <NextImage
-            width={960}
-            height={540}
-            ref={(el) => group1Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group1LeafLeftTop}
-            alt="Decor Tobie"
-            data-group="1"
-            data-position="left-top"
-          />
-          <NextImage
-            width={960}
-            height={540}
-            ref={(el) => group1Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group1LeafRightBottom}
-            alt="Decor Tobie"
-            data-group="1"
-            data-position="right-bottom"
-          />
-          <NextImage
-            width={960}
-            height={540}
-            ref={(el) => group1Refs.current.push(el)}
-            className="fullscreenImage absolute"
-            src={group1LeafRightTop}
-            alt="Decor Tobie"
-            data-group="1"
-            data-position="right-top"
-          />
+          {(isDesktop === null || isDesktop) && (
+            <>
+              <NextImage
+                width={960}
+                height={540}
+                ref={(el) => group1Refs.current.push(el)}
+                className="fullscreenImage absolute"
+                src={group1LeafLeftBottom}
+                alt="Decor Tobie"
+                data-group="1"
+                data-position="left-bottom"
+              />
+              <NextImage
+                width={960}
+                height={540}
+                ref={(el) => group1Refs.current.push(el)}
+                className="fullscreenImage absolute"
+                src={group1LeafLeftTop}
+                alt="Decor Tobie"
+                data-group="1"
+                data-position="left-top"
+              />
+              <NextImage
+                width={960}
+                height={540}
+                ref={(el) => group1Refs.current.push(el)}
+                className="fullscreenImage absolute"
+                src={group1LeafRightBottom}
+                alt="Decor Tobie"
+                data-group="1"
+                data-position="right-bottom"
+              />
+              <NextImage
+                width={960}
+                height={540}
+                ref={(el) => group1Refs.current.push(el)}
+                className="fullscreenImage absolute"
+                src={group1LeafRightTop}
+                alt="Decor Tobie"
+                data-group="1"
+                data-position="right-top"
+              />
+            </>
+          )}
+
           {/* Scroll icon */}
           <div
             ref={scrollRef}
