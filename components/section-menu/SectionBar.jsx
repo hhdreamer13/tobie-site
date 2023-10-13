@@ -7,6 +7,8 @@ import CloseButton from "./CloseButton";
 import CircleIconButton from "./CircleIconButton";
 import SectionTitle from "./SectionTitle";
 import { memo, useCallback, useMemo } from "react";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
 
 const SectionBar = memo(function SectionBar({
   index,
@@ -25,6 +27,8 @@ const SectionBar = memo(function SectionBar({
    */
   const isDesktop = useDeviceType();
   const { theme } = useTheme();
+
+  const builder = imageUrlBuilder(client);
 
   // Compute the left position value
   const computedTextLeft = useMemo(
@@ -168,7 +172,11 @@ const SectionBar = memo(function SectionBar({
       >
         {/* Section Image */}
         <Image
-          src={theme === "dark" ? section.imageSrcNuit : section.imageSrcJour}
+          src={
+            theme === "dark"
+              ? builder.image(section.imageSrcNuit).width(800).height(600).url()
+              : builder.image(section.imageSrcJour).width(800).height(600).url()
+          }
           alt={section.title}
           className="object-cover"
           fill={true}
