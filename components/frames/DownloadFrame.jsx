@@ -10,7 +10,7 @@ const DownloadFrame = ({ post, setIsOpen }) => {
   const builder = imageUrlBuilder(client);
 
   return (
-    <div className="relative flex flex-col justify-start w-fit h-10/12 bg-main items-center rounded-xl p-5">
+    <div className="relative flex flex-col justify-start max-w-[600px] mx-auto h-10/12 bg-main items-center rounded-xl p-5">
       {/* Close */}
       {setIsOpen && (
         <button

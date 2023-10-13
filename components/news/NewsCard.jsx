@@ -23,9 +23,9 @@ const NewsCard = ({ post }) => {
         <div className="relative flex-none sm:w-1/3 z-0 sm:z-10">
           <Image
             className="absolute rounded-lg rounded-br-none rounded-bl-none sm:rounded-bl-lg shadow-lg w-full h-52 object-cover hover:saturate-150 transition-opacity duration-200 ease-in-out"
-            src={builder.image(post.imageSrc).width(300).height(400).url()}
+            src={builder.image(post.imageSrc).width(600).height(400).url()}
             alt={post?.imageSrc?.alt || post?.title}
-            width={300}
+            width={600}
             height={400}
           />
         </div>

@@ -24,9 +24,9 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
         <div className="relative flex-none sm:w-1/3 z-0 sm:z-10">
           <Image
             className="absolute rounded-lg rounded-br-none rounded-bl-none sm:rounded-bl-lg shadow-lg w-full h-52 object-cover"
-            src={builder.image(location.imageSrc).width(300).height(400).url()}
+            src={builder.image(location.imageSrc).width(600).height(400).url()}
             alt={location?.imageSrc?.alt || location?.title}
-            width={300}
+            width={600}
             height={400}
           />
         </div>
