@@ -1,17 +1,10 @@
-const DEFAULT_UNIQUE_IMAGES_COUNT = 19; // Number of unique images
-const TOTAL_DISPLAY_IMAGES_COUNT = 57; // Total images to display, including repeated ones
-const GRID_ROW_COUNT = 32; // Number of rows in the grid
-const GRID_COLUMN_COUNT = 4; // Number of columns in the grid
-const TOTAL_GRID_STYLES_COUNT = 19; // Total number of grid styles, generally matches the number of images
-
 export const generateImagePaths = (
-  uniqueImagesCount = DEFAULT_UNIQUE_IMAGES_COUNT,
-  totalDisplayImagesCount = TOTAL_DISPLAY_IMAGES_COUNT,
+  uniqueImagesCount,
+  totalDisplayImagesCount,
+  partnersLogos
 ) => {
-  const singleSetOfImagePaths = Array.from(
-    { length: uniqueImagesCount },
-    (_, i) => `/logos/logo${i + 1}.webp`,
-  );
+  // Generate URLs based on fetched data
+  const singleSetOfImagePaths = partnersLogos.map(logo => logo.imageSrc);
 
   return Array.from(
     { length: totalDisplayImagesCount },
@@ -19,14 +12,10 @@ export const generateImagePaths = (
   );
 };
 
-export const generateGridStyles = (
-  rowCount = GRID_ROW_COUNT,
-  colCount = GRID_COLUMN_COUNT,
-  size = TOTAL_GRID_STYLES_COUNT,
-) => {
+export const generateGridStyles = (rowCount, colCount, uniqueImagesCount) => {
   const gridStyles = [];
 
-  for (let i = 0; i < size; i++) {
+  for (let i = 0; i < uniqueImagesCount; i++) {
     gridStyles.push({
       "--r": Math.floor(Math.random() * rowCount) + 1,
       "--c": Math.floor(Math.random() * colCount) + 1,

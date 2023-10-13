@@ -5,7 +5,7 @@ import atelier from "./atelierSchema";
 import download from "./downloadSchema";
 import game from "./gameSchema";
 import story from "./storySchema";
-import leaf from "./leafSchema";
+import partner from "./partnerSchema";
 
 import blockContent from "./blockContentSchema";
 import memoryCard from "./memoryCardSchema";
@@ -19,7 +19,7 @@ const schemas = [
   download,
   game,
   story,
-  leaf,
+  partner,
   blockContent,
   memoryCard,
   verseImage,

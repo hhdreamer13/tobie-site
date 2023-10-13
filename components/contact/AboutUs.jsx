@@ -9,11 +9,20 @@ import useGridAnimations from "./useGridAnimations";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 
-const AboutUs = () => {
+const AboutUs = ({ text, partnersLogos }) => {
   const gridRef = useRef(null);
 
-  const imagePaths = generateImagePaths();
-  const gridStyles = generateGridStyles();
+  // Dynamic count based on fetched data
+  const uniqueImagesCount = partnersLogos.length;
+  const totalDisplayImagesCount = uniqueImagesCount * 3; // Number of repetition
+
+  // Generate paths and styles dynamically
+  const imagePaths = generateImagePaths(
+    uniqueImagesCount,
+    totalDisplayImagesCount,
+    partnersLogos,
+  );
+  const gridStyles = generateGridStyles(32, 4, uniqueImagesCount); // Rows and columns
 
   useGridAnimations(gridRef);
 
@@ -128,21 +137,8 @@ const AboutUs = () => {
       {/* Notre mission */}
       <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex justify-center items-center">
         <article className="prose dark:prose-invert w-5/6 sm:w-full m-4 p-5 sm:m-1">
-          <h3 className="mb-5 text-xl sm:text-3xl">
-            L’arbre comme alternative au merchandising de la série d’animation
-          </h3>
-          <p className="text-justify">
-            Nous le savons, les barrières psychologiques à l'action contre le
-            changement climatique sont puissantes. Nous sommes de plus en plus
-            lucides, documentés, et pourtant toujours aussi impuissants.
-            L'information ne suffit pas, il faut être touchés dans nos émotions
-            pour se sentir concerné. Nous sommes convaincus que les récits
-            inspirants et vraisemblables peuvent transformer l'eco-anxiété en
-            éco-empathie et permettre aux gens de passer à l'action Nous pouvons
-            contribuer, à notre échelle, à limiter la surconsommation et à
-            sensibiliser les générations futures aux merveilles qui garantiront
-            leur survie. C'est le cœur du projet Les amis de Tobie.
-          </p>
+          <h3 className="mb-5 text-xl sm:text-3xl">{text.heading}</h3>
+          <p className="text-justify">{text.subheading}</p>
         </article>
       </div>
     </div>

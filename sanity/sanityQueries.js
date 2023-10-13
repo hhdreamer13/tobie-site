@@ -160,3 +160,14 @@ export const allStoriesQuery = groq`
   }
 }
 `;
+
+/* 
+  Partner Section
+*/
+export const allPartnersQuery = groq`
+*[_type == "partner"]{
+  _id,
+  name,
+  "imageSrc": image.asset->url
+}
+`;

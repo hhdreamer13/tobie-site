@@ -4,7 +4,16 @@ import { useTheme } from "next-themes";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
+import { usePathname } from "next/navigation";
+
 const ThemeButton = () => {
+  const pathname = usePathname();
+
+  // Don't display the navbar on admin routes
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {

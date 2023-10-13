@@ -14,6 +14,7 @@ import useTitleAnimation from "./useTitleAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
 
 import VersesText from "./VersesText";
+import RestartIcon from "../common/RestartIcon";
 
 // Leaf images
 import group2Top from "public/leaf/2-top.webp";
@@ -93,7 +94,7 @@ const TobieConte = ({ verseImages }) => {
       const scrolled = window.scrollY; // Amount of pixels scrolled
 
       // If the user is within, say, 200 pixels from the bottom, show the button
-      if (windowHeight + scrolled + 200 >= fullDocumentHeight) {
+      if (windowHeight + scrolled + 800 >= fullDocumentHeight) {
         setShowButton(true);
       } else {
         setShowButton(false);
@@ -307,18 +308,10 @@ const TobieConte = ({ verseImages }) => {
           {/* Back to top button */}
           {showButton && (
             <div className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center">
-              <button
-                className="relative p-3 w-14 h-14 z-20 rounded-full bg-slate-950 bg-opacity-50"
-                // onClick={scrollToTop}
-              >
-                {/* <NextImage
-                  className="rotate-180 transition-transform"
-                  src="/assets/down.svg"
-                  width={100}
-                  height={100}
-                  alt="circle"
-                /> */}
-                Fin
+              <button className="z-10" onClick={() => window.location.reload()}>
+                <div className="flex justify-center items-center">
+                  <RestartIcon className="w-16 h-16 transition duration-300 hover:text-amber-600 text-amber-500" />
+                </div>
               </button>
             </div>
           )}

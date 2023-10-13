@@ -6,6 +6,14 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
 import { PortableText } from "@portabletext/react";
 
+const emptyComponent = () => null;
+
+const cardComponents = {
+  types: {
+    image: emptyComponent,
+  },
+};
+
 const NewsCard = ({ post }) => {
   const builder = imageUrlBuilder(client);
 
@@ -59,7 +67,9 @@ const NewsCard = ({ post }) => {
           </div>
           <div className="mb-2">
             <p className="text-main text-sm text-justify line-clamp-3">
-              {post?.body ? <PortableText value={post.body} /> : null}
+              {post?.body ? (
+                <PortableText value={post.body} components={cardComponents} />
+              ) : null}
             </p>
           </div>
           <Link

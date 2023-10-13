@@ -5,6 +5,14 @@ import { client } from "@/sanity/clientConfig";
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 
+const emptyComponent = () => null;
+
+const cardComponents = {
+  types: {
+    image: emptyComponent,
+  },
+};
+
 const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
   const builder = imageUrlBuilder(client);
 
@@ -67,7 +75,12 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
           </div>
           <div className="mb-2">
             <p className="text-main text-sm text-justify line-clamp-3">
-              {location?.body ? <PortableText value={location.body} /> : null}
+              {location?.body ? (
+                <PortableText
+                  value={location.body}
+                  components={cardComponents}
+                />
+              ) : null}
             </p>
           </div>
           <Link

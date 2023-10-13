@@ -1,6 +1,17 @@
+"use client";
+
 import Link from "next/link";
 
+import { usePathname } from "next/navigation";
+
 const HomeButton = () => {
+  const pathname = usePathname();
+
+  // Don't display the navbar on admin routes
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <div className="relative flex flex-col justify-center items-center font-caveat">
       <Link

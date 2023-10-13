@@ -7,7 +7,6 @@ import BackIcon from "../common/BackIcon";
 
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
-import { PortableText } from "@portabletext/react";
 import PortableTextRenderer from "../common/PortableTextRenderer";
 
 const NewsFullPage = ({ post }) => {
@@ -71,7 +70,7 @@ const NewsFullPage = ({ post }) => {
         )}
       </div>
 
-      <div className="text-justify text-main w-full md:w-3/4 xl:w-2/3 font-nunito p-3 rounded-lg prose">
+      <div className="text-justify text-main w-full md:w-3/4 xl:w-2/3 font-nunito p-3 rounded-lg prose dark:prose-invert">
         {post?.body ? <PortableTextRenderer content={post.body} /> : null}
       </div>
     </div>
