@@ -92,7 +92,7 @@ const SectionMenu = ({ sections }) => {
 
   return (
     <div
-      className={`w-full ${overlayBgColor} flex flex-col justify-center items-center bg-cover`}
+      className={`w-full ${overlayBgColor} flex flex-col justify-center items-center bg-cover transition duration-500`}
     >
       {isOverlayVisible && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions

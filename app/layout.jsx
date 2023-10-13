@@ -1,9 +1,10 @@
 import "@/styles/globals.css";
-import Navbar from "@/components/Navbar";
 import localFont from "next/font/local";
 import { Caveat, Nunito_Sans, Literata } from "next/font/google";
 
 import Providers from "./providers";
+import HomeButton from "@/components/common/HomeButton";
+import ThemeButton from "@/components/common/ThemeButton";
 
 const caveatFont = Caveat({
   subsets: ["latin"],
@@ -52,7 +53,12 @@ export default function RootLayout({ children, modal }) {
         className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable} ${literataFont.variable} " flex flex-col min-h-screen"`}
       >
         <Providers>
-          <Navbar />
+          <div className="fixed z-50 text-slate-50 left-4 top-4">
+            <HomeButton />
+          </div>
+          <div className="fixed z-50 text-slate-50 right-4 top-4">
+            <ThemeButton />
+          </div>
 
           <main className="flex flex-grow justify-center items-center">
             {children}
