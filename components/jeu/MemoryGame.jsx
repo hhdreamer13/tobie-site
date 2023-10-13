@@ -22,7 +22,6 @@ const MemoryGame = ({ gameAssets, text }) => {
 
   const {
     cards,
-    openCards,
     clearedCards,
     shouldDisableAllCards,
     moves,
@@ -130,14 +129,6 @@ const MemoryGame = ({ gameAssets, text }) => {
             </div>
           )}
         </div>
-        {/* <div className="flex justify-center items-center">
-          <button
-            onClick={handleRestart}
-            className="mt-6 px-4 py-2 dark:bg-cyan-700 bg-cyan-600 font-caveat text-lg text-white rounded hover:bg-cyan-700 shadow-[inset_0_0_20px_rgba(255,255,255,0)] outline-[rgba(255,255,255,0.5)] outline-offset-0 transition-all duration-[1250ms] ease-[cubic-bezier(0.19,1,0.22,1)] border-transparent hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.5),0_0_20px_rgba(0,0,0,0.2)] hover:border-solid;"
-          >
-            Recommencer
-          </button>
-        </div> */}
       </footer>
       <AnimatePresence>
         {isModalActive && showModal && (

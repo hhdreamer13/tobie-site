@@ -33,7 +33,7 @@ import EBranch from "../home/EBranch";
 gsap.registerPlugin(ScrollTrigger);
 
 // Mobile browser screen size unchange with scrolling
-ScrollTrigger.normalizeScroll(true);
+// ScrollTrigger.normalizeScroll(true);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 gsap.config({
@@ -266,7 +266,9 @@ const TobieConte = ({ verseImages }) => {
                 />
               </div>
             </div>
-            <p className="text-amber-500 text-xl font-caveat">Descendez !</p>
+            <p className="text-amber-500 text-xl font-caveat">
+              Défilez doucement, c'est mieux !
+            </p>
           </div>
           {/* Text Tobie */}
           <header

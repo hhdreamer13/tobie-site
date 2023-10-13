@@ -75,7 +75,7 @@ const ModalGameCard = ({ item, setShowModal }) => {
         </button>
 
         {/* Principal Image */}
-        <div className="max-h-44 sm:max-h-60 w-full max-w-fit mb-8 rounded-lg shadow-xl overflow-hidden bg-white">
+        <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden bg-white">
           <Image
             alt={item?.type}
             src={
