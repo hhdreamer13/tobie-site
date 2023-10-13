@@ -179,6 +179,8 @@ const SectionBar = memo(function SectionBar({
           }
           alt={section.title}
           className="object-cover"
+          fill={true}
+          priority
           width={600}
           height={500}
         />

@@ -55,6 +55,7 @@ const SectionBackground = memo(function SectionBackground({
             alt="Section Background"
             className="object-cover"
             fill={true}
+            priority
             sizes="100vw"
             onLoadingComplete={() => setHighQualityImageLoaded(true)}
           />
