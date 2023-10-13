@@ -84,10 +84,16 @@ const SectionMenu = ({ sections }) => {
     [positionValues],
   );
 
+  // Make the overlay light just in special case
+  const isSpecialCase = currentSection === -1 && theme === "light";
+  const overlayBgColor = isSpecialCase ? "bg-slate-50" : "bg-slate-950";
+
   if (!positionValues.centerPosition) return <Loader />;
 
   return (
-    <div className="w-full bg-main flex flex-col justify-center items-center bg-cover">
+    <div
+      className={`w-full ${overlayBgColor} flex flex-col justify-center items-center bg-cover`}
+    >
       {isOverlayVisible && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div

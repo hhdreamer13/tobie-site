@@ -31,7 +31,7 @@ const DownloadFrame = ({ post, setIsOpen }) => {
             alt={post?.imageSrc?.alt || post?.title}
             height={400}
             width={600}
-            className="object-cover w-full"
+            className="object-cover"
             placeholder="blur"
             blurDataURL={getShimmerPlaceholder(600, 400)}
           />

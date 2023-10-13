@@ -113,7 +113,11 @@ const TobieConte = ({ verseImages }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    const lenis = new Lenis({});
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smooth: true,
+      wrapper: document.body,
+    });
 
     // Integrate Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
