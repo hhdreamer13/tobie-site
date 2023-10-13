@@ -106,9 +106,9 @@ const TobieConte = ({ verseImages }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: "instant" });
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -308,16 +308,17 @@ const TobieConte = ({ verseImages }) => {
           {showButton && (
             <div className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center">
               <button
-                className="relative p-3 w-14 h-14 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce"
-                onClick={scrollToTop}
+                className="relative p-3 w-14 h-14 z-20 rounded-full bg-slate-950 bg-opacity-50"
+                // onClick={scrollToTop}
               >
-                <NextImage
+                {/* <NextImage
                   className="rotate-180 transition-transform"
                   src="/assets/down.svg"
                   width={100}
                   height={100}
                   alt="circle"
-                />
+                /> */}
+                Fin
               </button>
             </div>
           )}
