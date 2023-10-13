@@ -17,7 +17,7 @@ const NewsFrame = async ({ post, setIsOpen }) => {
     : null;
 
   return (
-    <div className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start w-full max-h-fit bg-main items-center rounded-xl p-5">
+    <div className="relative flex flex-col border-[1px] dark:border-slate-800 border-slate-300 justify-start max-w-[600px] mx-auto max-h-fit bg-main items-center rounded-xl p-5">
       {/* Close */}
       <button
         className="absolute top-0 right-0 m-2"
@@ -64,7 +64,7 @@ const NewsFrame = async ({ post, setIsOpen }) => {
         )}
       </div>
 
-      <div className="text-justify text-main text-sm w-full font-nunito p-3 max-h-36 sm:max-h-40 overflow-y-scroll border rounded-lg">
+      <div className="text-justify text-main text-sm font-nunito p-3 max-h-36 sm:max-h-40 overflow-y-scroll border rounded-lg">
         {post?.body ? <PortableText value={post.body} /> : null}
       </div>
 
