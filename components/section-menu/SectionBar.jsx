@@ -181,8 +181,6 @@ const SectionBar = memo(function SectionBar({
           className="object-cover"
           fill={true}
           priority
-          width={800}
-          height={600}
         />
         {/* Inner Section to render if expanded */}
         {expandedSection === section._id && (

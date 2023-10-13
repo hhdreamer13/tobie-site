@@ -66,3 +66,9 @@
   color: transparent;
   /* filter: contrast(1.4) brightness(0.8); */
 }
+
+.text-stroke {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 1);
+  -webkit-text-shadow: 0 0 1px rgba(0, 0, 0, 1);
+  -moz-text-shadow: 0 0 1px rgba(0, 0, 0, 1);
+}

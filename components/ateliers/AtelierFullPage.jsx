@@ -7,7 +7,7 @@ import InscriptionForm from "./InscriptionForm";
 import BackIcon from "../common/BackIcon";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
-import { PortableText } from "@portabletext/react";
+import PortableTextRenderer from "../common/PortableTextRenderer";
 
 const AtelierFullPage = ({ post }) => {
   const builder = imageUrlBuilder(client);
@@ -71,7 +71,7 @@ const AtelierFullPage = ({ post }) => {
       </div>
 
       <div className="prose dark:prose-invert">
-        {post?.body ? <PortableText value={post.body} /> : null}
+        {post?.body ? <PortableTextRenderer content={post.body} /> : null}
       </div>
 
       <div className="mt-20 w-full flex justify-center items-center">
