@@ -25,7 +25,7 @@ const DownloadFrame = ({ post, setIsOpen }) => {
 
       {/* Principal Image */}
       {post?.imageSrc ? (
-        <div className="max-h-44 sm:max-h-60 w-full mb-8 rounded-lg shadow-xl overflow-hidden">
+        <div className="max-h-44 sm:max-h-60 w-full max-w-fit mb-8 rounded-lg shadow-xl overflow-hidden">
           <Image
             src={builder.image(post.imageSrc).width(600).height(400).url()}
             alt={post?.imageSrc?.alt || post?.title}
