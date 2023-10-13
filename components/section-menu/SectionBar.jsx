@@ -174,14 +174,13 @@ const SectionBar = memo(function SectionBar({
         <Image
           src={
             theme === "dark"
-              ? builder.image(section.imageSrcNuit).width(800).height(600).url()
-              : builder.image(section.imageSrcJour).width(800).height(600).url()
+              ? builder.image(section.imageSrcNuit).width(600).height(500).url()
+              : builder.image(section.imageSrcJour).width(600).height(500).url()
           }
           alt={section.title}
           className="object-cover"
-          fill={true}
-          priority
-          sizes="100vh"
+          width={600}
+          height={500}
         />
         {/* Inner Section to render if expanded */}
         {expandedSection === section._id && (
