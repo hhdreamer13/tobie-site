@@ -9,8 +9,13 @@ import useGridAnimations from "./useGridAnimations";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 
-const AboutUs = ({ text, partnersLogos }) => {
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
+
+const AboutUs = ({ content, partnersLogos }) => {
   const gridRef = useRef(null);
+
+  const builder = imageUrlBuilder(client);
 
   // Dynamic count based on fetched data
   const uniqueImagesCount = partnersLogos.length;
@@ -31,7 +36,7 @@ const AboutUs = ({ text, partnersLogos }) => {
       {/* Contact Us Section */}
       <div className="min-h-screen text-slate-100 relative flex flex-col gap-4 items-center justify-center">
         <Image
-          src="/photos/02.webp"
+          src={builder.image(content.imageSrc).url()}
           alt="Contact-us Background"
           className="object-cover"
           fill={true}
@@ -42,7 +47,7 @@ const AboutUs = ({ text, partnersLogos }) => {
           <ContactForm />
         </div>
 
-        <div className="relative flex justify-center items-center gap-5 bg-slate-100 rounded-lg">
+        <div className="relative flex justify-center items-center gap-5 bg-gray-100 dark:bg-gray-300 rounded-lg">
           <a
             href="https://www.instagram.com"
             target="_blank"
@@ -137,8 +142,8 @@ const AboutUs = ({ text, partnersLogos }) => {
       {/* Notre mission */}
       <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex justify-center items-center">
         <article className="prose dark:prose-invert w-5/6 sm:w-full m-4 p-5 sm:m-1">
-          <h3 className="mb-5 text-xl sm:text-3xl">{text.heading}</h3>
-          <p className="text-justify">{text.subheading}</p>
+          <h3 className="mb-5 text-xl sm:text-3xl">{content?.heading}</h3>
+          <p className="text-justify">{content?.subheading}</p>
         </article>
       </div>
     </div>

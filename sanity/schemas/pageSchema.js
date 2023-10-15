@@ -30,6 +30,14 @@ const page = {
       type: "text",
       title: "Textes Supplémentaires",
     },
+    {
+      name: "imageSrc",
+      title: "Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
   ],
   preview: {
     select: {

@@ -20,7 +20,7 @@ export default async function SectionPage() {
     <>
       <div className="w-full min-h-screen flex flex-col justify-center items-center bg-main">
         <div className="flex justify-center items-start w-full h-full ">
-          <AboutUs text={pageText} partnersLogos={partners} />
+          <AboutUs content={pageText} partnersLogos={partners} />
         </div>
       </div>
     </>

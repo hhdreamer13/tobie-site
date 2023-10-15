@@ -55,7 +55,7 @@ const NewsFrame = async ({ post, setIsOpen }) => {
             {post.tags.map((tag, index) => (
               <span
                 key={index}
-                className="ml-2 text-xs text-white font-caveat bg-green-500 rounded-full px-2"
+                className="ml-2 text-sm text-main font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-full px-1.5 py-0.5"
               >
                 {tag}
               </span>

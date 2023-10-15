@@ -266,8 +266,8 @@ const TobieConte = ({ verseImages }) => {
                 />
               </div>
             </div>
-            <p className="text-amber-500 text-xl font-caveat">
-              Défilez doucement, c'est mieux !
+            <p className="text-amber-500 text-xl text-center font-caveat">
+              Défilez doucement !
             </p>
           </div>
           {/* Text Tobie */}

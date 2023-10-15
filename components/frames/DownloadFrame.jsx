@@ -42,7 +42,7 @@ const DownloadFrame = ({ post, setIsOpen }) => {
       <h3 className="text-2xl font-semibold mb-2 text-center">{post?.title}</h3>
 
       <div className="mb-4">
-        <span className="text-white font-caveat bg-green-500 text-lg rounded-full px-2">
+        <span className="text-main text-lg font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-md px-1.5 py-0.5">
           {post?.category}
         </span>
       </div>
