@@ -1,5 +1,4 @@
-import { createClient, groq } from "next-sanity";
-import { client } from "./clientConfig";
+import { groq } from "next-sanity";
 
 /* 
   Main Section

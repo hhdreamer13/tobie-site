@@ -23,6 +23,10 @@ const revalidationMap = {
     revalidateTag("memoryGameSet");
     revalidatePath("/sections/jeu");
   },
+  storyVerse: () => {
+    revalidateTag("storyVerse");
+    revalidatePath("/sections/conte");
+  },
   partner: () => {
     revalidateTag("partner");
     revalidatePath("/sections/contact");

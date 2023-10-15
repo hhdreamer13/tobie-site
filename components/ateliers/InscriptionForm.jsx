@@ -12,18 +12,19 @@ import Input from "../common/Input";
 import Checkbox from "../common/Checkbox";
 
 // eslint-disable-next-line no-unused-vars
-const InscriptionForm = () => {
+const InscriptionForm = ({ post }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
+  const [messageBody, setMessageBody] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [acceptTermsError, setAcceptTermsError] = useState(false);
 
   const [errorsCount, setErrorsCount] = useState(0);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!acceptTerms) {
@@ -46,7 +47,35 @@ const InscriptionForm = () => {
     if (errorsCount > 0) {
       return;
     }
+
     setIsSubmitted(true);
+
+    const payload = {
+      firstName,
+      lastName,
+      postalCode,
+      emailAddress,
+      messageBody,
+      atelier: {
+        title: post.title,
+        workshopDate: post.workshopDate,
+        place: post.place,
+      },
+    };
+
+    try {
+      const res = await fetch("/api/inscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.status === 200) {
+        setIsSubmitted(true);
+      }
+    } catch (error) {
+      console.error("Failed to send email:", error);
+    }
   };
 
   return (
@@ -102,6 +131,17 @@ const InscriptionForm = () => {
           setErrorsCount={setErrorsCount}
           disabled={isSubmitted}
         />
+        {/* Text area */}
+        <div className="relative inline-block w-full font-caveat ">
+          <textarea
+            id="story"
+            name="story"
+            rows="5"
+            placeholder="Avez-vous des demandes spécifiques ?"
+            className="mx-0 my-2 block w-full appearance-none rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-cyan-200/75 placeholder:text-rose-300/75 focus:ring-2 focus:ring-rose-200 dark:focus:ring-cyan-700"
+            onChange={(e) => setMessageBody(e.target.value)}
+          ></textarea>
+        </div>
 
         <div className="my-3">
           <Checkbox

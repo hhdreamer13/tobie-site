@@ -18,6 +18,7 @@ const InputForm = () => {
   const [lastName, setLastName] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
+  const [messageBody, setMessageBody] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [acceptTermsError, setAcceptTermsError] = useState(false);
 
@@ -47,6 +48,28 @@ const InputForm = () => {
       return;
     }
     setIsSubmitted(true);
+
+    const payload = {
+      firstName,
+      lastName,
+      postalCode,
+      emailAddress,
+      messageBody,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.status === 200) {
+        setIsSubmitted(true);
+      }
+    } catch (error) {
+      console.error("Failed to send email:", error);
+    }
   };
 
   return (
@@ -108,9 +131,9 @@ const InputForm = () => {
             id="story"
             name="story"
             rows="5"
-            cols="33"
             placeholder="Dis-nous ce que tu penses !"
             className="mx-0 my-2 block w-full appearance-none rounded-2xl p-2 text-main font-nunito outline-none duration-100 placeholder:font-caveat dark:placeholder:text-cyan-200/75 placeholder:text-rose-300/75 focus:ring-2 focus:ring-rose-200 dark:focus:ring-cyan-700"
+            onChange={(e) => setMessageBody(e.target.value)}
           ></textarea>
         </div>
         <div className="my-3">
