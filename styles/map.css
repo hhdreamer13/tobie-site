@@ -4,7 +4,7 @@
 }
 
 .mapboxgl-popup-close-button {
-  @apply px-2 py-1;
+  @apply px-2 py-1 text-lg;
 }
 
 @keyframes fadeInPopup {
@@ -50,20 +50,17 @@
 }
 
 .mapboxgl-popup-content h3 {
-  margin-bottom: 1rem;
+  @apply mb-2 mr-4;
 }
 
 .mapboxgl-popup-content p {
-  margin-bottom: 1rem;
-  font-size: small;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @apply text-sm mb-1;
 }
 
 .mapboxgl-popup-content a {
-  color: #0284c7;
-  font-size: medium;
+  @apply mt-4 text-sky-500 font-caveat hover:text-sky-600 transition-colors duration-200 ease-in-out text-lg relative no-underline before:content-[''] before:absolute before:w-full before:h-[1px] before:rounded before:bg-sky-500 before:origin-right before:transition-transform before:duration-[0.3s] before:ease-[ease-in-out] before:scale-x-0 before:left-0 before:bottom-0 hover:before:origin-left hover:before:scale-x-100;
+}
+
+.marker-tag {
+  @apply text-black font-caveat rounded-sm mb-1 px-1.5 py-0.5 w-fit -rotate-6;
 }

@@ -14,6 +14,65 @@ const mapStyles = {
   default: "mapbox://styles/mapbox/streets-v12",
 };
 
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+const getStatusColor = (status) => {
+  switch (status) {
+    case "À venir":
+      return "background-color: #86efac"; // bg-green-300
+    case "Complet":
+      return "background-color: #fde047"; // bg-yellow-300
+    case "Annulé":
+      return "background-color: #fda4af"; // bg-red-300
+    case "Reporté":
+      return "background-color: #fdba74"; // bg-orange-300
+    case "Terminé":
+      return "background-color: #d1d5db"; // bg-orange-300
+    default:
+      return "background-color: #67e8f9"; // bg-cyan-300
+  }
+};
+
+// Status text if the date is passed and and Date text if is not defined
+const getStatusText = (workshopDate, status) => {
+  const today = new Date();
+  const workshopDateObj = new Date(workshopDate);
+
+  if (!workshopDate) {
+    return { date: "Date à annoncer", status: "À confirmer" };
+  }
+
+  if (workshopDateObj < today) {
+    return { date: formatDate(workshopDate), status: "Terminé" };
+  }
+
+  return { date: formatDate(workshopDate), status };
+};
+
+const buildCustomMarkerContent = (location) => {
+  const { date, status } = getStatusText(
+    location.workshopDate,
+    location.status,
+  );
+  const statusColor = getStatusColor(status);
+
+  return `
+    <div>
+      <h3>${location?.title}</h3>
+      <p class='marker-tag' style="${statusColor}">${status}</p>
+      <p><strong>Lieu :</strong> ${location.place || "Lieu à confirmer"}</p>
+      <p><strong>Date :</strong> ${date}</p>
+      <a href='/sections/ateliers/${location?.slug?.current}'>Inscription</a>
+    </div>
+  `;
+};
+
 const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
   const mapContainer = useRef(null);
   const [map, setMap] = useState(null);
@@ -73,12 +132,6 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
     [onSelectLocation],
   );
 
-  const extractText = (blocks) => {
-    return blocks
-      .map((block) => block.children.map((child) => child.text).join(""))
-      .join("\n");
-  };
-
   return (
     <div ref={mapContainer} className="w-full h-full">
       {isMapLoaded &&
@@ -92,11 +145,7 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
             isLocationSelected={location === selectedLocation}
             onSelectLocation={() => handleSelectLocation(location)}
           >
-            {`
-    <h3>${location?.title}</h3>
-    <p>${location?.body ? extractText(location.body) : null}</p>
-    <a href="${location?.slug?.current}">En savoir plus</a>
-  `}
+            {buildCustomMarkerContent(location)}
           </CustomMarker>
         ))}
     </div>

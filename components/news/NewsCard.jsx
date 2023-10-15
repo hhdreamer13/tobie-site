@@ -30,7 +30,7 @@ const NewsCard = ({ post }) => {
       {post?.imageSrc ? (
         <div className="relative flex-none sm:w-1/3 z-0 sm:z-10">
           <Image
-            className="absolute rounded-lg rounded-br-none rounded-bl-none sm:rounded-bl-lg shadow-lg w-full h-52 object-cover hover:saturate-150 transition-opacity duration-200 ease-in-out"
+            className="absolute rounded-lg rounded-br-none rounded-bl-none sm:rounded-bl-lg shadow-lg w-full h-52 object-cover"
             src={builder.image(post.imageSrc).width(600).height(400).url()}
             alt={post?.imageSrc?.alt || post?.title}
             width={600}
@@ -66,11 +66,11 @@ const NewsCard = ({ post }) => {
             )}
           </div>
           <div className="mb-2">
-            <p className="text-main text-sm text-justify line-clamp-3">
+            <div className="text-main text-sm text-justify line-clamp-3">
               {post?.body ? (
                 <PortableText value={post.body} components={cardComponents} />
               ) : null}
-            </p>
+            </div>
           </div>
           <Link
             href={`/sections/actualites/${post?.slug?.current}`}

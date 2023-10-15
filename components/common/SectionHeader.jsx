@@ -3,19 +3,23 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import sections from "@/utils/sections";
-import slugify from "@/utils/slugify";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/clientConfig";
 
-const SectionHeader = ({ sectionName }) => {
+const SectionHeader = ({ section }) => {
   const { theme } = useTheme();
-  const section = sections.find((s) => slugify(s.title) === sectionName);
+  const builder = imageUrlBuilder(client);
 
   if (!section) {
-    return null;
+    return;
   }
 
+  const imageUrl =
+    theme === "dark"
+      ? builder.image(section?.imageSrcNuit).url()
+      : builder.image(section?.imageSrcJour).url();
+
   return (
-    // <motion.div className="flex flex-col mx-auto min-h-screen w-full bg-slate-50 dark:bg-slate-950">
     <motion.div
       className="absolute flex-col mx-auto top-0 left-0 h-32 w-full"
       initial={{ y: 10, opacity: 0 }}
@@ -23,17 +27,20 @@ const SectionHeader = ({ sectionName }) => {
       exit={{ y: -10, opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <Image
-        src={theme === "dark" ? section.imageSrcNuit : section.imageSrcJour}
-        alt={section.title}
-        fill="true"
-        priority={true}
-        sizes="100vh"
-        className="object-cover"
-      />
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          alt={section?.title}
+          className="object-cover"
+          fill={true}
+          sizes="100vw"
+          priority
+        />
+      )}
+
       <div className="p-5 w-full text-center flex items-center justify-center drop-shadow-none text-main h-32 bg-gradient-to-t from-slate-50 dark:from-slate-950">
         <h2 className="text-xl sm:text-2xl uppercase drop-shadow-md">
-          {section.title}
+          {section?.title}
         </h2>
       </div>
     </motion.div>

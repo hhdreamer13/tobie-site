@@ -7,6 +7,7 @@ const story = {
       name: "title",
       type: "string",
       title: "Titre",
+      readOnly: true,
     },
     {
       name: "verseAndImage",

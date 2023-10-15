@@ -7,16 +7,19 @@ const download = {
       name: "title",
       title: "Titre",
       type: "string",
+      description: "Le titre du fichier à télécharger.",
     },
     {
       name: "description",
       title: "Description",
       type: "text",
+      description: "Une brève description du contenu du fichier.",
     },
     {
       name: "imageSrc",
       title: "Image",
       type: "image",
+      description: "Une image représentative du fichier.",
       options: {
         hotspot: true,
       },
@@ -25,6 +28,8 @@ const download = {
       name: "category",
       title: "Catégorie",
       type: "string",
+      description:
+        "Sélectionnez une catégorie qui correspond au type de fichier.",
       options: {
         list: [
           { title: "Fond d'écran", value: "fond d'écran" },
@@ -37,6 +42,7 @@ const download = {
       name: "downloadLink",
       title: "Fichier",
       type: "file",
+      description: "Ajoutez ici le fichier à télécharger.",
     },
   ],
   preview: {

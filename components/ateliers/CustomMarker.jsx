@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import { useTheme } from "next-themes";
+import elishaMarker from "@/public/elisha-marker.webp";
+import tobieMarker from "@/public/tobie-marker.webp";
 
 const CustomMarker = ({
   children,
@@ -16,8 +18,7 @@ const CustomMarker = ({
   useEffect(() => {
     if (!isMapLoaded) return; // <-- Check isMapLoaded before adding the marker
 
-    const markerIcon =
-      theme === "dark" ? "/elisha-marker.webp" : "/tobie-marker.webp";
+    const markerIcon = theme === "dark" ? elishaMarker.src : tobieMarker.src;
 
     const popup = new mapboxgl.Popup({
       offset: 25,

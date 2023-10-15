@@ -11,7 +11,10 @@ export default async function SouvenirsPage() {
     tags: ["pageTexts"],
   });
 
-  const downloads = await sanityFetch({ query: allDownloadPostsQuery });
+  const downloads = await sanityFetch({
+    query: allDownloadPostsQuery,
+    tags: ["downloadPost"],
+  });
 
   return (
     <div className="w-full min-h-screen flex flex-col justify-center items-center bg-main">

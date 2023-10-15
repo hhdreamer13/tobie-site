@@ -6,7 +6,8 @@ const game = {
     {
       name: "gameSetName",
       type: "string",
-      title: "Nom du Jeu",
+      title: "Nom de la catégorie",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "cards",

@@ -9,16 +9,51 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
 import PortableTextRenderer from "../common/PortableTextRenderer";
 
+// format date to more friendly format
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+// Status color based on the value
+const getStatusColor = (status) => {
+  switch (status) {
+    case "À venir":
+      return "bg-green-300";
+    case "Complet":
+      return "bg-yellow-300";
+    case "Annulé":
+      return "bg-red-300";
+    case "Reporté":
+      return "bg-orange-300";
+    default:
+      return "bg-cyan-300";
+  }
+};
+
+// Status text if the date is passed and and Date text if is not defined
+const getStatusText = (workshopDate, status) => {
+  const today = new Date();
+  const workshopDateObj = new Date(workshopDate);
+
+  if (!workshopDate) {
+    return { date: "Date à annoncer", status: "À confirmer" };
+  }
+
+  if (workshopDateObj < today) {
+    return { date: formatDate(workshopDate), status: "Terminé" };
+  }
+
+  return { date: formatDate(workshopDate), status };
+};
+
 const AtelierFullPage = ({ post }) => {
   const builder = imageUrlBuilder(client);
 
-  const formattedDate = post.date
-    ? new Date(post?.date).toLocaleDateString("fr-FR", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : null;
+  const { date, status } = getStatusText(post.workshopDate, post.status);
 
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
@@ -34,7 +69,7 @@ const AtelierFullPage = ({ post }) => {
 
       {/* Title */}
       <h3 className="text-2xl md:text-4xl font-semibold mb-5 sm:mb-10 text-center">
-        {post.name}
+        {post.title}
       </h3>
 
       {/* Principal Image */}
@@ -55,19 +90,37 @@ const AtelierFullPage = ({ post }) => {
       {/* Content */}
 
       <div className="mb-4 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-5">
-        <span className="text-slate-500 font-caveat">{formattedDate}</span>
+        <span className="text-slate-500 font-caveat">
+          {formatDate(post.date)}
+        </span>
         {post?.tags && (
           <div>
             {post.tags.map((tag, index) => (
               <span
                 key={index}
-                className="ml-2 text-sm text-white font-caveat bg-green-500 rounded-full px-2"
+                className="ml-2 text-sm text-main font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-full px-1.5 py-0.5"
               >
                 {tag}
               </span>
             ))}
           </div>
         )}
+      </div>
+      <div className="mb-1 text-main text-sm">
+        <p className="mb-1">
+          <span className="font-bold">Lieu :</span>{" "}
+          {post.place || "Lieu à confirmer"}
+        </p>
+        <p>
+          <span className="font-bold">Date :</span> {date}
+          <span
+            className={`ml-4 text-black font-caveat rounded-sm -rotate-6 px-1.5 py-0.5 w-fit mb-4 inline-block ${getStatusColor(
+              status,
+            )}`}
+          >
+            {status}
+          </span>
+        </p>
       </div>
 
       <div className="prose dark:prose-invert">

@@ -2,7 +2,11 @@ import SectionHeader from "@/components/common/SectionHeader";
 import NewsDisplay from "@/components/news/NewsDisplay";
 
 import { sanityFetch } from "@/sanity/sanityFetch";
-import { allNewsPostsQuery, pageTextsQuery } from "@/sanity/sanityQueries";
+import {
+  allNewsPostsQuery,
+  pageTextsQuery,
+  sectionBySlugQuery,
+} from "@/sanity/sanityQueries";
 
 export default async function ActualitesPage() {
   const pageText = await sanityFetch({
@@ -13,12 +17,23 @@ export default async function ActualitesPage() {
     tags: ["pageTexts"],
   });
 
-  const news = await sanityFetch({ query: allNewsPostsQuery });
+  const section = await sanityFetch({
+    query: sectionBySlugQuery,
+    params: {
+      sectionUrl: "/sections/actualites",
+    },
+    tags: ["section"],
+  });
+
+  const news = await sanityFetch({
+    query: allNewsPostsQuery,
+    tags: ["newsPost"],
+  });
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">
       <div className="z-10">
-        <SectionHeader sectionName="actualites" />
+        <SectionHeader section={section} />
       </div>
       <div className="mt-40 mb-10 w-4/5">
         <h2 className="font-literata font-semibold text-xl">

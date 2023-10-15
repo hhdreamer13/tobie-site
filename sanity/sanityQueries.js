@@ -14,6 +14,16 @@ export const sectionsQuery = groq`*[_type == "section"] | order(position asc) {
         slug
       }`;
 
+export const sectionBySlugQuery = groq`*[_type == "section" && slug.current == $sectionUrl][0] {
+      _id,
+        position,
+        title,
+        description,
+        "imageSrcJour": imageSrcJour.asset->url,
+        "imageSrcNuit": imageSrcNuit.asset->url,
+        slug
+      }`;
+
 /* 
   Pages Texts
 */
@@ -32,7 +42,7 @@ export const pageTextsQuery = groq`*[_type == "pageTexts" && section->slug.curre
   News Section
 */
 export const allNewsPostsQuery = groq`
-*[_type == "newsPost"]{
+*[_type == "newsPost"] | order(date desc) {
   _id,
   title,
   slug,
@@ -73,12 +83,15 @@ export const newsPostByIdQuery = groq`*[_type == "newsPost" && _id == $id][0]{
 */
 
 export const allAteliersPostsQuery = groq`
-*[_type == "atelierPost"]{
+*[_type == "atelierPost"] | order(date desc) {
   _id,
   title,
   slug,
+  place,
   latitude,
   longitude,
+  workshopDate,
+  status,
   imageSrc,
   body,
   date,
@@ -91,8 +104,11 @@ export const atelierPostBySlugQuery = groq`*[_type == "atelierPost" && slug.curr
   _id,
   title,
   slug,
+  place,
   latitude,
   longitude,
+  workshopDate,
+  status,
   imageSrc,
   body,
   date,

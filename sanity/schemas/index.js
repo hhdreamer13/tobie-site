@@ -12,14 +12,14 @@ import memoryCard from "./memoryCardSchema";
 import verseImage from "./verseImageSchema";
 
 const schemas = [
-  section,
-  page,
   news,
   atelier,
   download,
   game,
   story,
   partner,
+  page,
+  section,
   blockContent,
   memoryCard,
   verseImage,
