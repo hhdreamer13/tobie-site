@@ -17,7 +17,7 @@ const InscriptionEmail = (data) => {
         color: "#333",
       }}
     >
-      <h2 style={{ borderBottom: "2px solid #333", paddingBottom: "10px" }}>
+      <h2 style={{ borderBottom: "1px solid #333", paddingBottom: "10px" }}>
         Information de l'atelier
       </h2>
       <div
