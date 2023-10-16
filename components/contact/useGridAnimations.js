@@ -16,6 +16,15 @@ const useGridAnimations = (gridRef) => {
       wrapper: document.body,
     });
 
+    // GSAP ScrollTrigger integration with Lenis
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
     // Create gsap context
     let ctx = gsap.context(() => {
       const gridItems = [...gridRef.current.children];
@@ -63,15 +72,6 @@ const useGridAnimations = (gridRef) => {
             "start",
           );
       });
-
-      // GSAP ScrollTrigger integration with Lenis
-      lenis.on("scroll", ScrollTrigger.update);
-
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-
-      gsap.ticker.lagSmoothing(0);
     }, gridRef); // Passing gridRef to scope the animations to children of this ref
 
     // Cleanup the ScrollTrigger animations and lenis on component unmount using the revert method from the gsap context

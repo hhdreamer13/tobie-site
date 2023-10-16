@@ -16,7 +16,7 @@ const HomeButton = () => {
     <div className="relative flex flex-col justify-center items-center font-caveat">
       <Link
         href="/sections"
-        className="relative group overflow-hidden m-0 sm:m-1 bg-black/20 backdrop-blur-md p-4 pt-[1.2rem] rounded-full transition-transform duration-500"
+        className="relative group overflow-hidden m-1 sm:m-1 bg-black/20 backdrop-blur-md p-4 pt-[1.2rem] rounded-full transition-transform duration-500"
       >
         <span className="absolute bottom-0 right-0 block w-44 h-44 mb-36 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-white/40 opacity-30 rounded-full group-hover:rotate-90 ease"></span>
         <p className="font-mottona text-3xl sm:text-4xl drop-shadow-sm">
