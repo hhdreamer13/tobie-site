@@ -176,7 +176,7 @@ const InscriptionForm = ({ post }) => {
             </div>
           </button>
         ) : (
-          <p className="font-caveat text-xl text-amber-100 drop-shadow-lg">
+          <p className="font-caveat text-xl dark:text-amber-100 text-amber-600 drop-shadow-lg">
             Merci et à très vite !
           </p>
         )}

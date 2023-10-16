@@ -169,7 +169,7 @@ const InputForm = () => {
             </div>
           </button>
         ) : (
-          <p className="font-caveat text-xl text-amber-100 drop-shadow-lg">
+          <p className="font-caveat text-xl text-main drop-shadow-lg">
             Merci et à très vite !
           </p>
         )}
