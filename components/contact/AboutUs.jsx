@@ -3,7 +3,7 @@
 
 import "@/styles/gridFriends.css";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
 import { generateImagePaths, generateGridStyles } from "./imageCalculations";
 import useGridAnimations from "./useGridAnimations";
 import Image from "next/image";
@@ -11,7 +11,6 @@ import ContactForm from "./ContactForm";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
 
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
@@ -29,85 +28,6 @@ const AboutUs = ({ content, partnersLogos }) => {
   const gridRef = useRef(null);
 
   const builder = imageUrlBuilder(client);
-
-  // useGridAnimation
-  useLayoutEffect(() => {
-    // window.scrollTo(0, 0);
-
-    // Lenis initialization
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smooth: true,
-      wrapper: document.body,
-    });
-
-    // GSAP ScrollTrigger integration with Lenis
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    let ctx;
-    if (gridRef.current) {
-      // Create gsap context
-      ctx = gsap.context(() => {
-        const gridItems = [...gridRef.current.children];
-
-        gridItems.forEach((item) => {
-          const image = item.querySelector(".grid__item-img");
-          const xPercentRandomVal = gsap.utils.random(-100, 100);
-
-          gsap
-            .timeline()
-            .addLabel("start", 0)
-            .set(
-              image,
-              {
-                transformOrigin: `${xPercentRandomVal < 0 ? 0 : 100}% 100%`,
-              },
-              "start",
-            )
-            .to(
-              image,
-              {
-                ease: "none",
-                scale: 0,
-                scrollTrigger: {
-                  trigger: item,
-                  start: "top top",
-                  end: "bottom top",
-                  scrub: true,
-                },
-              },
-              "start",
-            )
-            .to(
-              item,
-              {
-                ease: "none",
-                xPercent: xPercentRandomVal,
-                scrollTrigger: {
-                  trigger: item,
-                  start: "top bottom",
-                  end: "top top",
-                  scrub: true,
-                },
-              },
-              "start",
-            );
-        });
-      }, gridRef); // Passing gridRef to scope the animations to children of this ref
-    }
-
-    // Cleanup the ScrollTrigger animations and lenis on component unmount using the revert method from the gsap context
-    return () => {
-      ctx.revert();
-      lenis.destroy();
-    };
-  }, [gridRef]);
 
   // Dynamic count based on fetched data
   const uniqueImagesCount = partnersLogos.length;

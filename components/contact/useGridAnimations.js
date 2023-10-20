@@ -5,23 +5,36 @@ import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const isSafariWeb = () => {
+  return (
+    /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
+    !navigator.userAgent.includes("Mobile")
+  );
+};
+
+console.log(isSafariWeb);
+
 const useGridAnimations = (gridRef) => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
 
+    let lenis;
+
     // Lenis initialization
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smooth: true,
-      wrapper: document.body,
-    });
+    if (!isSafariWeb()) {
+      lenis = new Lenis({
+        lerp: 0.1,
+        smooth: true,
+        wrapper: document.body,
+      });
 
-    // GSAP ScrollTrigger integration with Lenis
-    lenis.on("scroll", ScrollTrigger.update);
+      // GSAP ScrollTrigger integration with Lenis
+      lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+    }
 
     gsap.ticker.lagSmoothing(0);
 
@@ -77,7 +90,9 @@ const useGridAnimations = (gridRef) => {
     // Cleanup the ScrollTrigger animations and lenis on component unmount using the revert method from the gsap context
     return () => {
       ctx.revert();
-      lenis.destroy();
+      if (lenis) {
+        lenis.destroy();
+      }
     };
   }, [gridRef]);
 };
