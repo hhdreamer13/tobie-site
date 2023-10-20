@@ -96,14 +96,17 @@ const MemoryGame = ({ gameAssets, text }) => {
         {!isGameFinished && (
           <>
             <div className="absolute top-1 left-1 w-5 h-5">
-              <button onClick={handleRestart}>
+              <button onClick={handleRestart} title="Redémarrer le jeu">
                 <div className=" w-5 h-5 rounded-lg bg-slate-100/40 dark:bg-slate-950/30 flex justify-center items-center">
                   <RestartIcon className="w-16 h-16 transition-all duration-200 hover:scale-105 text-cyan-600 dark:text-cyan-600" />
                 </div>
               </button>
             </div>
             <div className="absolute top-1 right-1 w-5 h-5">
-              <button onClick={handleShowContent}>
+              <button
+                onClick={handleShowContent}
+                title="Afficher/masquer la popup d'information"
+              >
                 <div
                   className={`w-5 h-5 rounded-lg bg-slate-100/40 dark:bg-slate-950/30 flex justify-center items-center ${
                     isModalActive

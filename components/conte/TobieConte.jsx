@@ -94,7 +94,7 @@ const TobieConte = ({ verseImages }) => {
       const scrolled = window.scrollY; // Amount of pixels scrolled
 
       // If the user is within, say, 200 pixels from the bottom, show the button
-      if (windowHeight + scrolled + 800 >= fullDocumentHeight) {
+      if (windowHeight + scrolled + 900 >= fullDocumentHeight) {
         setShowButton(true);
       } else {
         setShowButton(false);
@@ -310,7 +310,11 @@ const TobieConte = ({ verseImages }) => {
           {/* Back to top button */}
           {showButton && (
             <div className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center">
-              <button className="z-10" onClick={() => window.location.reload()}>
+              <button
+                className="z-10"
+                onClick={() => window.location.reload()}
+                title="Revoir le conte"
+              >
                 <div className="flex justify-center items-center">
                   <RestartIcon className="w-16 h-16 transition duration-300 hover:text-amber-600 text-amber-500" />
                 </div>
