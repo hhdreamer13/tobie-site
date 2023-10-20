@@ -75,8 +75,9 @@ const ModalGameCard = ({ item, setShowModal }) => {
         </button>
 
         {/* Principal Image */}
-        <div className="max-h-44 sm:max-h-60 w-full max-w-fit mb-8 rounded-lg shadow-xl overflow-hidden bg-white">
+        <div className="w-full max-h-60 mb-8 rounded-lg shadow-xl overflow-hidden bg-white">
           <Image
+            className="relative object-contain mx-auto w-fit"
             alt={item?.type}
             src={
               item?.imageDetailSrc
@@ -89,7 +90,7 @@ const ModalGameCard = ({ item, setShowModal }) => {
             }
             height={500}
             width={500}
-            className="object-cover mx-auto h-fit"
+            // fill={true}
           />
         </div>
 
