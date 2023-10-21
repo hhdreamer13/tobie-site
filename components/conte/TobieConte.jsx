@@ -285,12 +285,12 @@ const TobieConte = ({ verseImages }) => {
               <div className="flex flex-col justify-center items-center">
                 <h2 className="relative font-mottona text-7xl sm:text-9xl text-main text-center brush-text w-[15rem] sm:w-[25rem]">
                   L
-                  <span className="absolute w-16 top-[2.8rem] left-[1.6rem] sm:w-24 sm:top-[5rem] sm:left-[2.4rem] ">
-                    <LBranch stopColor="#7a4619" />
+                  <span className="absolute w-16 top-[3rem] left-[1.9rem] sm:w-24 sm:top-[5.3rem] sm:left-[3rem] z-0">
+                    <LBranch stopColor="#501d00" />
                   </span>
                   es Amis de Tobie
-                  <span className="absolute w-14 bottom-[1.9rem] right-[1.68rem] sm:w-24 sm:bottom-[3.4rem] sm:right-[2.38rem]">
-                    <EBranch stopColor="#b06700" />
+                  <span className="absolute w-14 bottom-[1.67rem] right-[1.47rem] sm:w-24 sm:bottom-[3rem] sm:right-[2rem] z-0">
+                    <EBranch stopColor="#501d00" />
                   </span>
                 </h2>
               </div>

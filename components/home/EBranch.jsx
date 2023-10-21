@@ -1,4 +1,4 @@
-import React, { Fragment, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
 
 const EBranch = ({ stopColor, animate }) => {
@@ -11,8 +11,8 @@ const EBranch = ({ stopColor, animate }) => {
             attr: { r: 0 },
           },
           {
-            attr: { r: 300 }, // Adjust as needed to fit the size of your SVG
-            duration: 4,
+            attr: { r: 300 },
+            duration: 3.7,
             ease: "power4.Out",
             delay: 1.2,
           },
@@ -35,7 +35,13 @@ const EBranch = ({ stopColor, animate }) => {
           maskUnits="userSpaceOnUse"
           maskContentUnits="userSpaceOnUse"
         >
-          <circle id="svgMaskE" cx="-50" cy="100" r="0" fill="white" />
+          <circle
+            id="svgMaskE"
+            cx="-50"
+            cy="100"
+            r={animate ? "0" : "300"}
+            fill="white"
+          />
         </mask>
       </defs>
       <path
