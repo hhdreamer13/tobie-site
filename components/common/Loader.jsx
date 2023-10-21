@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <div className="bg-slate-100 dark:bg-slate-950 text-main w-full h-screen text-4xl flex justify-center items-center">
+    <div className="bg-main text-main w-full h-screen text-4xl flex justify-center items-center">
       <svg className="h-20" viewBox="0 0 100 100">
         <circle fill="currentColor" stroke="none" cx="30" cy="50" r="6">
           <animate
