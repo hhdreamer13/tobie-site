@@ -32,20 +32,29 @@ const getStatusColor = (status) => {
       return "background-color: #fda4af"; // bg-red-300
     case "Reporté":
       return "background-color: #fdba74"; // bg-orange-300
-    case "Terminé":
-      return "background-color: #d1d5db"; // bg-orange-300
-    default:
+    case "Aujourd'hui":
       return "background-color: #67e8f9"; // bg-cyan-300
+    case "Terminé":
+      return "background-color: #d1d5db"; // bg-gray-300
+    default:
+      return "background-color: #a5b4fc"; // bg-indigo-300
   }
 };
 
 // Status text if the date is passed and and Date text if is not defined
 const getStatusText = (workshopDate, status) => {
-  const today = new Date();
-  const workshopDateObj = new Date(workshopDate);
-
   if (!workshopDate) {
     return { date: "Date à annoncer", status: "À confirmer" };
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const workshopDateObj = new Date(workshopDate);
+  workshopDateObj.setHours(0, 0, 0, 0);
+
+  if (workshopDateObj.getTime() === today.getTime()) {
+    return { date: formatDate(workshopDate), status: "Aujourd'hui" };
   }
 
   if (workshopDateObj < today) {
