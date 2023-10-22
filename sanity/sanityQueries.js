@@ -172,7 +172,8 @@ export const allStoriesQuery = groq`
   "verseAndImage": verseAndImage[]{
     number,
     "verse": verse[],
-    "imageSrc": imageSrc.asset->url
+    "imageSrc": imageSrc.asset->url,
+    "audioSrc": audioSrc.asset->url
   }
 }
 `;

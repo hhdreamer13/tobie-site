@@ -5,15 +5,13 @@ import useVerseSequence from "./useVerseSequence";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
 
-const VersesText = ({ verse, bgImage, index, totalVerses }) => {
+const VersesText = ({ verse, bgImage, index, totalVerses, narration }) => {
   const bgRef = useRef();
   const overlayRef = useRef();
   const textRef = useRef();
   const audioRef = useRef();
 
   const builder = imageUrlBuilder(client);
-
-  const audioFileName = `homme-${index + 1}.mp3`; // it starts from homme-1 to homme-7
 
   // Calculate unique start and end points for scroll-trigger
   const textScrollStart = 500 + (3000 * index) / totalVerses + "% top";
@@ -53,7 +51,7 @@ const VersesText = ({ verse, bgImage, index, totalVerses }) => {
           </p>
         ))}
       </div>
-      <audio ref={audioRef} src={`/sounds/${audioFileName}`} muted></audio>
+      <audio ref={audioRef} src={narration} muted></audio>
     </section>
   );
 };

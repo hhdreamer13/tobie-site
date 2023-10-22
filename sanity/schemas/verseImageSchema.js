@@ -29,6 +29,15 @@ const verseImage = {
         },
       ],
     },
+    {
+      name: "audioSrc",
+      type: "file",
+      title: "Audio de la Lecture",
+      description: "L'audio contenant la lecture du vers correspondant.",
+      options: {
+        accept: "audio/*",
+      },
+    },
   ],
   preview: {
     select: {

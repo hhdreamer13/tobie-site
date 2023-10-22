@@ -13,11 +13,11 @@ const UtilityButton = () => {
   }
 
   if (pathname.startsWith("/sections/conte")) {
-    return <AudioButton />;
+    return <AudioButton key="conte" />;
   }
 
   if (pathname.startsWith("/sections/souvenirs")) {
-    return <AudioButton />;
+    return <AudioButton key="souvenirs" />;
   }
 
   return <ThemeButton />;

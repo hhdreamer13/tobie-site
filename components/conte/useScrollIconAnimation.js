@@ -23,7 +23,7 @@ const useScrollIconAnimation = (scrollRef, bgAudioRef) => {
       bgAudioRef.current.play().catch((error) => {
         console.warn("BG Audio play failed: ", error);
       });
-      bgAudioRef.current.volume = 0.5;
+      bgAudioRef.current.volume = 0.6;
     }
 
     if (!scrollRef.current) return;

@@ -65,6 +65,10 @@ const TobieConte = ({ verseImages }) => {
     (verseImage) => verseImage.imageSrc,
   );
 
+  const narration = verseImages.verseAndImage.map(
+    (verseImage) => verseImage.audioSrc,
+  );
+
   // Back to top button and audio button
   const [showButton, setShowButton] = useState(false);
 
@@ -111,14 +115,10 @@ const TobieConte = ({ verseImages }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // const scrollToTop = () => {
-  //   window.scrollTo({ top: 0, behavior: "instant" });
-  // };
-
   useEffect(() => {
     setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 500);
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 200);
 
     const lenis = new Lenis({
       lerp: 0.1,
@@ -278,7 +278,7 @@ const TobieConte = ({ verseImages }) => {
                 />
               </div>
             </div>
-            <p className="text-amber-500 text-xl text-center font-caveat">
+            <p className="text-slate-500 text-xl text-center font-caveat">
               Défilez doucement !
             </p>
           </div>
@@ -316,6 +316,7 @@ const TobieConte = ({ verseImages }) => {
               index={index}
               totalVerses={verses.length}
               bgImage={backgrounds[index]}
+              narration={narration[index]}
             />
           ))}
 
