@@ -1,8 +1,8 @@
 "use client";
 
-import Loader from "@/components/common/Loader";
-import { ThemeProvider } from "next-themes";
 import { useEffect, useState } from "react";
+import { ThemeProvider } from "next-themes";
+import Loader from "@/components/common/Loader";
 
 const Providers = ({ children }) => {
   const [isMounted, setIsMounted] = useState(false);

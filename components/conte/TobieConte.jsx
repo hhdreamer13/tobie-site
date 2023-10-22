@@ -65,6 +65,9 @@ const TobieConte = ({ verseImages }) => {
     (verseImage) => verseImage.imageSrc,
   );
 
+  // Back to top button and audio button
+  const [showButton, setShowButton] = useState(false);
+
   // Refs
 
   const tobieRef = useRef();
@@ -81,10 +84,9 @@ const TobieConte = ({ verseImages }) => {
 
   useTobieRunAnimation(tobieRef, bgRef, frameCount, images);
   useTitleAnimation(titleRef);
-  useScrollIconAnimation(scrollRef, bgAudioRef);
 
-  // Back to top button
-  const [showButton, setShowButton] = useState(false);
+  // Start music after scroll icon disappear
+  useScrollIconAnimation(scrollRef, bgAudioRef);
 
   const isDesktop = useDeviceType();
 
@@ -116,7 +118,7 @@ const TobieConte = ({ verseImages }) => {
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
-    }, 100);
+    }, 500);
 
     const lenis = new Lenis({
       lerp: 0.1,
@@ -255,10 +257,12 @@ const TobieConte = ({ verseImages }) => {
           )}
           {/* Background Audio */}
           <audio ref={bgAudioRef} loop>
+            <source src="/sounds/tobie-music.webm" type="audio/webm" />
             <source src="/sounds/tobie-music.mp3" type="audio/mp3" />
           </audio>
 
           {/* Scroll icon */}
+
           <div
             ref={scrollRef}
             className="fullscreenImage absolute flex flex-col gap-5 h-full w-full items-center justify-center "

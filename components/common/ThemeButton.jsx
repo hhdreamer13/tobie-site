@@ -4,16 +4,23 @@ import { useTheme } from "next-themes";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { usePathname } from "next/navigation";
+const sunVariants = {
+  light: { x: 0, opacity: 1, scale: 1, rotate: 0 },
+  dark: { x: -40, opacity: 0, scale: 0.8, rotate: 90 },
+};
+
+const moonVariants = {
+  light: { x: 40, opacity: 0, scale: 0.8, rotate: -90 },
+  dark: { x: 0, opacity: 1, scale: 1, rotate: 0 },
+};
+
+const wiggle = {
+  scale: [1, 1.05, 1, 1.05, 1],
+  rotate: [0, 5, -5, 5, 0],
+  transition: { duration: 0.5 },
+};
 
 const ThemeButton = () => {
-  const pathname = usePathname();
-
-  // Don't display the navbar on admin routes
-  if (pathname.startsWith("/admin")) {
-    return null;
-  }
-
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -24,22 +31,6 @@ const ThemeButton = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const sunVariants = {
-    light: { x: 0, opacity: 1, scale: 1, rotate: 0 },
-    dark: { x: -40, opacity: 0, scale: 0.8, rotate: 90 },
-  };
-
-  const moonVariants = {
-    light: { x: 40, opacity: 0, scale: 0.8, rotate: -90 },
-    dark: { x: 0, opacity: 1, scale: 1, rotate: 0 },
-  };
-
-  const wiggle = {
-    scale: [1, 1.05, 1, 1.05, 1],
-    rotate: [0, 5, -5, 5, 0],
-    transition: { duration: 0.5 },
-  };
 
   return (
     <button

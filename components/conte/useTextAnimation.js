@@ -21,7 +21,14 @@ const useTextAnimation = (textRef, scrollStart, scrollEnd, audioRef) => {
           // markers: true,
           scrub: 1,
           onEnter: () => {
-            if (audioRef.current) audioRef.current.play();
+            if (audioRef.current) {
+              audioRef.current.play().catch((error) => {
+                console.warn(
+                  "Audio play failed, user hasn't interacted with the document yet.",
+                  error,
+                );
+              });
+            }
           },
           onLeave: () => {
             if (audioRef.current) audioRef.current.pause();
@@ -57,7 +64,7 @@ const useTextAnimation = (textRef, scrollStart, scrollEnd, audioRef) => {
         st.revert(); // Revert the SplitType changes
       }
     };
-  }, [textRef, scrollStart, scrollEnd]);
+  }, [textRef, scrollStart, scrollEnd, audioRef]);
 };
 
 export default useTextAnimation;

@@ -4,7 +4,7 @@ import { Caveat, Nunito_Sans, Literata } from "next/font/google";
 
 import Providers from "./providers";
 import HomeButton from "@/components/common/HomeButton";
-import ThemeButton from "@/components/common/ThemeButton";
+import UtilityButton from "@/components/common/UtilityButton";
 
 const caveatFont = Caveat({
   subsets: ["latin"],
@@ -57,7 +57,7 @@ export default function RootLayout({ children, modal }) {
             <HomeButton />
           </div>
           <div className="fixed z-50 text-slate-50 right-4 top-4">
-            <ThemeButton />
+            <UtilityButton />
           </div>
 
           <main className="flex flex-grow justify-center items-center">
