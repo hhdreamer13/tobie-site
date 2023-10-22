@@ -26,6 +26,8 @@ const AudioButton = () => {
     setAudioEnabled(!audioEnabled);
   };
 
+  console.log(audioEnabled);
+
   useEffect(() => {
     if (!audioEnabled) {
       // This would mute all audio elements on the page
@@ -33,7 +35,7 @@ const AudioButton = () => {
       audios.forEach((audio) => {
         audio.muted = true;
       });
-    } else {
+    } else if (audioEnabled) {
       const audios = document.querySelectorAll("audio");
       audios.forEach((audio) => {
         audio.muted = false;

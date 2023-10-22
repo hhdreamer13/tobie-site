@@ -53,7 +53,7 @@ const VersesText = ({ verse, bgImage, index, totalVerses }) => {
           </p>
         ))}
       </div>
-      <audio ref={audioRef} src={`/sounds/${audioFileName}`}></audio>
+      <audio ref={audioRef} src={`/sounds/${audioFileName}`} muted></audio>
     </section>
   );
 };

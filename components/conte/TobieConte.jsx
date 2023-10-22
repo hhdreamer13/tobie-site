@@ -256,7 +256,7 @@ const TobieConte = ({ verseImages }) => {
             </>
           )}
           {/* Background Audio */}
-          <audio ref={bgAudioRef} loop>
+          <audio ref={bgAudioRef} loop muted>
             <source src="/sounds/tobie-music.webm" type="audio/webm" />
             <source src="/sounds/tobie-music.mp3" type="audio/mp3" />
           </audio>

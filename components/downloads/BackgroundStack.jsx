@@ -26,7 +26,7 @@ const BackgroundStack = memo(function BackgroundStack({
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.4; // This sets the volume to 50%
+      audioRef.current.volume = 0.4;
     }
   }, []);
 
@@ -196,7 +196,12 @@ const BackgroundStack = memo(function BackgroundStack({
           </motion.div>
           {/* Sound */}
           {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-          <audio ref={audioRef} src="/click.mp3" preload="auto"></audio>
+          <audio
+            ref={audioRef}
+            src="/sounds/click.mp3"
+            preload="auto"
+            muted
+          ></audio>
         </>
       )}
     </>

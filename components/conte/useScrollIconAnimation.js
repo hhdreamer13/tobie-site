@@ -3,12 +3,6 @@ import { gsap } from "gsap";
 
 const useScrollIconAnimation = (scrollRef, bgAudioRef) => {
   useEffect(() => {
-    if (bgAudioRef.current) {
-      bgAudioRef.current.muted = true;
-    }
-  }, []);
-
-  useEffect(() => {
     const primeAudio = () => {
       if (bgAudioRef.current) {
         bgAudioRef.current.play().catch((error) => {

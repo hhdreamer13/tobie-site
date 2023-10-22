@@ -16,6 +16,10 @@ const UtilityButton = () => {
     return <AudioButton />;
   }
 
+  if (pathname.startsWith("/sections/souvenirs")) {
+    return <AudioButton />;
+  }
+
   return <ThemeButton />;
 };
 
