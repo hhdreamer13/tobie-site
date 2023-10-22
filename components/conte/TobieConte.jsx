@@ -66,7 +66,7 @@ const TobieConte = ({ verseImages }) => {
   );
 
   const narration = verseImages.verseAndImage.map(
-    (verseImage) => verseImage.audioSrc,
+    (verseImage) => verseImage?.audioSrc,
   );
 
   // Back to top button and audio button

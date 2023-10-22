@@ -51,7 +51,7 @@ const VersesText = ({ verse, bgImage, index, totalVerses, narration }) => {
           </p>
         ))}
       </div>
-      <audio ref={audioRef} src={narration} muted></audio>
+      {narration && <audio ref={audioRef} src={narration} muted></audio>}
     </section>
   );
 };
