@@ -90,9 +90,25 @@ const TobieConte = ({ verseImages }) => {
   useTitleAnimation(titleRef);
 
   // Start music after scroll icon disappear
-  useScrollIconAnimation(scrollRef, bgAudioRef);
+  useScrollIconAnimation(scrollRef);
 
   const isDesktop = useDeviceType();
+
+  // Start audio on click
+  useEffect(() => {
+    const primeAudio = () => {
+      if (bgAudioRef.current) {
+        bgAudioRef.current.play();
+        bgAudioRef.current.volume = 0.7;
+      }
+      // Remove event listeners once audio is primed.
+      window.removeEventListener("click", primeAudio);
+      window.removeEventListener("keypress", primeAudio);
+    };
+
+    window.addEventListener("click", primeAudio);
+    window.addEventListener("keypress", primeAudio);
+  }, []);
 
   useEffect(() => {
     // Handle scroll event

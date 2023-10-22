@@ -1,31 +1,8 @@
-import { useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
-const useScrollIconAnimation = (scrollRef, bgAudioRef) => {
-  useEffect(() => {
-    const primeAudio = () => {
-      if (bgAudioRef.current) {
-        bgAudioRef.current.play().catch((error) => {
-          console.warn("BG Audio play failed:", error);
-        });
-      }
-      // Remove event listeners once audio is primed.
-      window.removeEventListener("click", primeAudio);
-      window.removeEventListener("keypress", primeAudio);
-    };
-
-    window.addEventListener("click", primeAudio);
-    window.addEventListener("keypress", primeAudio);
-  }, []);
-
+const useScrollIconAnimation = (scrollRef) => {
   useLayoutEffect(() => {
-    if (bgAudioRef.current && bgAudioRef.current.paused) {
-      bgAudioRef.current.play().catch((error) => {
-        console.warn("BG Audio play failed: ", error);
-      });
-      bgAudioRef.current.volume = 0.6;
-    }
-
     if (!scrollRef.current) return;
     gsap.to(scrollRef.current, {
       scrollTrigger: {
@@ -44,7 +21,7 @@ const useScrollIconAnimation = (scrollRef, bgAudioRef) => {
       autoAlpha: 0,
       duration: 1,
     });
-  }, [scrollRef, bgAudioRef]);
+  }, [scrollRef]);
 };
 
 export default useScrollIconAnimation;
