@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import SplitType from "split-type";
 
-const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
+const useTextAnimation = (textRef, scrollStart, scrollEnd, audioRef) => {
   useLayoutEffect(() => {
     let tl;
     let st;
@@ -20,6 +20,12 @@ const useTextAnimation = (textRef, scrollStart, scrollEnd) => {
           end: scrollEnd,
           // markers: true,
           scrub: 1,
+          onEnter: () => {
+            if (audioRef.current) audioRef.current.play();
+          },
+          onLeave: () => {
+            if (audioRef.current) audioRef.current.pause();
+          },
         },
       });
 

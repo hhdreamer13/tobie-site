@@ -70,6 +70,8 @@ const TobieConte = ({ verseImages }) => {
   const tobieRef = useRef();
   const bgRef = useRef();
 
+  const bgAudioRef = useRef();
+
   const titleRef = useRef();
 
   const scrollRef = useRef();
@@ -79,7 +81,7 @@ const TobieConte = ({ verseImages }) => {
 
   useTobieRunAnimation(tobieRef, bgRef, frameCount, images);
   useTitleAnimation(titleRef);
-  useScrollIconAnimation(scrollRef);
+  useScrollIconAnimation(scrollRef, bgAudioRef);
 
   // Back to top button
   const [showButton, setShowButton] = useState(false);
@@ -93,7 +95,7 @@ const TobieConte = ({ verseImages }) => {
       const fullDocumentHeight = document.documentElement.scrollHeight; // The height of the whole document
       const scrolled = window.scrollY; // Amount of pixels scrolled
 
-      // If the user is within, say, 200 pixels from the bottom, show the button
+      // If the user is within, say, 900 pixels from the bottom, show the button
       if (windowHeight + scrolled + 900 >= fullDocumentHeight) {
         setShowButton(true);
       } else {
@@ -112,7 +114,9 @@ const TobieConte = ({ verseImages }) => {
   // };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
 
     const lenis = new Lenis({
       lerp: 0.1,
@@ -249,6 +253,10 @@ const TobieConte = ({ verseImages }) => {
               />
             </>
           )}
+          {/* Background Audio */}
+          <audio ref={bgAudioRef} loop>
+            <source src="/sounds/tobie-music.mp3" type="audio/mp3" />
+          </audio>
 
           {/* Scroll icon */}
           <div
