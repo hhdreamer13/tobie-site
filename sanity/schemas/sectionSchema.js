@@ -49,8 +49,8 @@ const section = {
     },
     {
       name: "imageSrcNuit",
-      title: "Image - Soir",
-      description: "Image à utiliser pour le mode soir.",
+      title: "Image - Nuit",
+      description: "Image à utiliser pour le mode nuit.",
       type: "image",
       validation: (Rule) => Rule.required(),
       options: { hotspot: true },
@@ -58,7 +58,7 @@ const section = {
         {
           name: "alt",
           title: "Alt",
-          description: "Texte alternatif pour l'image en mode soir.",
+          description: "Texte alternatif pour l'image en mode nuit.",
           type: "string",
         },
       ],
