@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
-import MinimizeIcon from "../common/MinimizeIcon";
+import MinimizeIcon from "../common/icons/MinimizeIcon";
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/clientConfig";

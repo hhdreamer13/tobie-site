@@ -7,8 +7,8 @@ import { useGameLogic } from "./useGameLogic";
 import Card from "./CardGame";
 import ModalGameCard from "./ModalGameCard";
 import Confetti from "./Confetti";
-import RestartIcon from "../common/RestartIcon";
-import InfoIcon from "../common/InfoIcon";
+import RestartIcon from "../common/icons/RestartIcon";
+import InfoIcon from "../common/icons/InfoIcon";
 
 const MemoryGame = ({ gameAssets, text }) => {
   const gameSetNames = gameAssets.map((gameSet) => gameSet.gameSetName);

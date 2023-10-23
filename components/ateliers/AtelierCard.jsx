@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import MarkerIcon from "../common/MarkerIcon";
+import MarkerIcon from "../common/icons/MarkerIcon";
 import { client } from "@/sanity/clientConfig";
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";

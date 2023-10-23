@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import Link from "next/link";
 import InscriptionForm from "./InscriptionForm";
-import BackIcon from "../common/BackIcon";
+import BackIcon from "../common/icons/BackIcon";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
 import PortableTextRenderer from "../common/PortableTextRenderer";

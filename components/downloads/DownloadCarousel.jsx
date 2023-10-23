@@ -5,7 +5,7 @@ import BackgroundStack from "./BackgroundStack";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import PopupText from "./PopupText";
-import MaximizeIcon from "../common/MaximizeIcon";
+import MaximizeIcon from "../common/icons/MaximizeIcon";
 
 const getUniqueCategories = (downloads) => {
   const categories = downloads.map((item) => item.category);

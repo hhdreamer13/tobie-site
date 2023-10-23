@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import MinimizeIcon from "../common/MinimizeIcon";
+import MinimizeIcon from "../common/icons/MinimizeIcon";
 
 const CloseButton = ({ isExpanded, onClick }) => {
   const initialAnimation = { opacity: 0 };

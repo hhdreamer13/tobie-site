@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import MaximizeIcon from "../common/MaximizeIcon";
+import MaximizeIcon from "../common/icons/MaximizeIcon";
 
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";

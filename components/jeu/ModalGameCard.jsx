@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import MinimizeIcon from "../common/MinimizeIcon";
+import MinimizeIcon from "../common/icons/MinimizeIcon";
 import { useRef } from "react";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";

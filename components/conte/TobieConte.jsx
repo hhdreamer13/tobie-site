@@ -14,7 +14,7 @@ import useTitleAnimation from "./useTitleAnimation";
 import useScrollIconAnimation from "./useScrollIconAnimation";
 
 import VersesText from "./VersesText";
-import RestartIcon from "../common/RestartIcon";
+import RestartIcon from "../common/icons/RestartIcon";
 
 // Leaf images
 import group2Top from "public/leaf/2-top.webp";
