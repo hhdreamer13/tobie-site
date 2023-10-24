@@ -39,7 +39,7 @@ const SectionTitle = ({
         }}
       >
         {/* Replace the following div with your SVG icon later */}
-        <div className="w-6 h-6 text-gray-400 dark:text-gray-500">
+        <div className="w-6 h-6 text-zinc-400 dark:text-zinc-500">
           {sectionIcon}
         </div>
       </motion.div>

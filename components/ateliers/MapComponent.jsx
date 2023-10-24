@@ -53,7 +53,7 @@ const getStatusText = (workshopDate, status) => {
   const workshopDateObj = new Date(workshopDate);
   workshopDateObj.setHours(0, 0, 0, 0);
 
-  if (workshopDateObj.getTime() === today.getTime()) {
+  if (workshopDateObj.getTime() === today.getTime() && status === "À venir") {
     return { date: formatDate(workshopDate), status: "Aujourd'hui" };
   }
 

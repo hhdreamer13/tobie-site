@@ -15,7 +15,7 @@ export async function POST(req) {
 
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "hh.dreamer@gmail.com",
+      to: "lesamisdetobie@gmail.com",
       subject: `Nouveau message : ${parsedBody.firstName} ${parsedBody.lastName}`,
       react: ContactUsEmail(parsedBody),
     });

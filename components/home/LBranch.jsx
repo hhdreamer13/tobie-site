@@ -37,8 +37,8 @@ const LBranch = ({ stopColor, animate }) => {
         >
           <circle
             id="svgMaskL"
-            cx="-50"
-            cy="-60"
+            cx="-20"
+            cy="-120"
             r={animate ? "0" : "300"}
             fill="white"
           />
