@@ -13,11 +13,20 @@ const getUniqueCategories = (downloads) => {
 };
 
 const DownloadCarousel = ({ downloads, text }) => {
+  const uniqueCategories = getUniqueCategories(downloads);
+
+  // Initialize state with the first category's items
+  const [downloadItems, setDownloadItems] = useState(() => {
+    if (uniqueCategories.length > 0) {
+      return downloads.filter((item) => item.category === uniqueCategories[0]);
+    }
+    return [];
+  });
+
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [downloadItems, setDownloadItems] = useState("");
   const [showHandleText, setShowHandleText] = useState(false);
 
-  const uniqueCategories = getUniqueCategories(downloads);
+  console.log("unique categories", uniqueCategories[0]);
   const currentItem = downloadItems[currentIndex];
 
   const handleCategoryChange = useCallback((category) => {

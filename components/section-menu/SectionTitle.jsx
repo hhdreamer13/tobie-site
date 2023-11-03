@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { getIconForSection } from "@/utils/getIconForSection";
-import Image from "next/image";
 
 const SectionTitle = ({
   isSelected,
@@ -22,14 +21,15 @@ const SectionTitle = ({
 
   const iconAnimationProps = {
     opacity: isSelected ? 0 : 1,
+    scale: isSelected ? 0 : 1,
   };
 
   return (
     <div className="relative">
       {/* Placeholder for icon, animated with a simple fade-in and fade-out */}
       <motion.div
-        className={`absolute flex justify-center w-24 h-24 pointer-events-none ${
-          isDesktop ? "top-6" : "top-16"
+        className={`absolute z-50 flex justify-center w-24 h-24 pointer-events-none ${
+          isDesktop ? "top-[450px]" : "top-[460px]"
         }`}
         initial={{ opacity: 0 }}
         animate={iconAnimationProps}
@@ -38,7 +38,7 @@ const SectionTitle = ({
           left: computedTextLeft,
         }}
       >
-        {/* Replace the following div with your SVG icon later */}
+        {/* icons */}
         <div className="w-6 h-6 text-zinc-400 dark:text-zinc-500">
           {sectionIcon}
         </div>

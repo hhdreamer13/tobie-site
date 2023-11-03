@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import backgroundImage from "../../public/photos/download-page-background.webp";
 import circleImage from "../../public/photos/circle-crop.webp";
 import windowImage from "../../public/photos/window-frame.webp";
@@ -10,6 +11,7 @@ import Loader from "../common/Loader";
 
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
+import { useRouter } from "next/navigation";
 
 const BackgroundStack = memo(function BackgroundStack({
   downloadItems,
@@ -23,6 +25,8 @@ const BackgroundStack = memo(function BackgroundStack({
   const builder = imageUrlBuilder(client);
 
   const audioRef = useRef(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (audioRef.current) {
@@ -86,6 +90,8 @@ const BackgroundStack = memo(function BackgroundStack({
   const handleLoading = () => {
     setIsLoading(false);
   };
+
+  console.log(currentItem);
 
   return (
     <>
@@ -160,15 +166,20 @@ const BackgroundStack = memo(function BackgroundStack({
 
           {/* Window */}
           <div className="absolute">
-            <Image
-              src={windowImage}
-              alt="Scene"
-              width={300}
-              height={300}
-              quality={100}
-              priority={true}
-              className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px]"
-            />
+            <Link
+              href={`/souvenirs/${currentItem?._id}`}
+              className="rounded-full overflow-hidden cursor-auto"
+            >
+              <Image
+                src={windowImage}
+                alt="Scene"
+                width={300}
+                height={300}
+                quality={100}
+                priority={true}
+                className="object-cover w-[230px] h-[230px] sm:w-[300px] sm:h-[300px] cursor-zoom-in rounded-full"
+              />
+            </Link>
           </div>
 
           {/* Handle with rotation */}
@@ -191,7 +202,7 @@ const BackgroundStack = memo(function BackgroundStack({
               priority={true}
               width={400}
               height={400}
-              className="object-cover w-[300px] h-[300px] sm:w-[400px] sm:h-[400px]"
+              className="object-cover w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] cursor-pointer"
             />
           </motion.div>
           {/* Sound */}
