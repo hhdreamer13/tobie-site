@@ -28,7 +28,7 @@ const SectionTitle = ({
     <div className="relative">
       {/* Placeholder for icon, animated with a simple fade-in and fade-out */}
       <motion.div
-        className={`absolute z-50 flex justify-center w-24 h-24 pointer-events-none ${
+        className={`absolute z-0 flex justify-center w-24 h-24 pointer-events-none ${
           isDesktop ? "top-[450px]" : "top-[460px]"
         }`}
         initial={{ opacity: 0 }}
@@ -39,7 +39,7 @@ const SectionTitle = ({
         }}
       >
         {/* icons */}
-        <div className="w-6 h-6 text-zinc-400 dark:text-zinc-500">
+        <div className="w-5 h-5 text-zinc-400 dark:text-zinc-600">
           {sectionIcon}
         </div>
       </motion.div>

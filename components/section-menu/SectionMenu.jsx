@@ -116,7 +116,7 @@ const SectionMenu = ({ sections }) => {
 
       {theme === "dark" && <Fireflies />}
 
-      <div className="flex flex-col h-screen justify-center items-center">
+      <div className="flex flex-col gap-5 h-screen justify-center items-center">
         <motion.div
           className="relative w-[350px] h-[500px] sm:w-[500px]"
           initial="hidden"

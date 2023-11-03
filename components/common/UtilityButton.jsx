@@ -20,6 +20,10 @@ const UtilityButton = () => {
     return <AudioButton key="souvenirs" />;
   }
 
+  if (pathname.startsWith("/souvenirs")) {
+    return <AudioButton key="souvenirs" />;
+  }
+
   return <ThemeButton />;
 };
 
