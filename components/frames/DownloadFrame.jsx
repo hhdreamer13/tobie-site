@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { getShimmerPlaceholder } from "@/utils/getShimmerPlaceholder";
 import MinimizeIcon from "../common/icons/MinimizeIcon";
 import imageUrlBuilder from "@sanity/image-url";
@@ -26,15 +27,26 @@ const DownloadFrame = ({ post, setIsOpen }) => {
       {/* Principal Image */}
       {post?.imageSrc ? (
         <div className="max-h-44 sm:max-h-60 w-full max-w-fit mb-8 rounded-lg shadow-xl overflow-hidden">
-          <Image
-            src={builder.image(post.imageSrc).width(600).height(400).url()}
-            alt={post?.imageSrc?.alt || post?.title}
-            height={400}
-            width={600}
-            className="object-cover"
-            placeholder="blur"
-            blurDataURL={getShimmerPlaceholder(600, 400)}
-          />
+          <a
+            href={post?.fileUrl}
+            download
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            target="_blank"
+            rel="noreferrer"
+            title="Télécharger"
+          >
+            <Image
+              src={builder.image(post.imageSrc).width(600).height(400).url()}
+              alt={post?.imageSrc?.alt || post?.title}
+              height={400}
+              width={600}
+              className="object-cover"
+              placeholder="blur"
+              blurDataURL={getShimmerPlaceholder(600, 400)}
+            />
+          </a>
         </div>
       ) : null}
 
@@ -51,7 +63,7 @@ const DownloadFrame = ({ post, setIsOpen }) => {
         <p>{post?.description}</p>
       </div>
       <a
-        href={post?.fileUrl} // This should be the link to your download file.
+        href={post?.fileUrl}
         download
         onClick={() => {
           setIsOpen(false);
