@@ -33,7 +33,7 @@ const CircleIconButton = ({
         left: computedCircleLeft,
       }}
     >
-      <Link href={section.slug.current}>
+      <Link href={section.slug.current} title="Explorez">
         <Image
           className="hover:-rotate-90 transition"
           src="/assets/circle.svg"
