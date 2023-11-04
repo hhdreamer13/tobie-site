@@ -71,11 +71,11 @@ const DownloadCarousel = ({ downloads, text }) => {
               {uniqueCategories.map((category, index) => (
                 <label
                   key={index}
-                  className="relative inline-flex items-center"
+                  className="relative inline-flex items-center cursor-pointer"
                 >
                   <input
                     type="radio"
-                    className="accent-orange-300"
+                    className="accent-orange-300 cursor-pointer"
                     name="option"
                     value={category}
                     checked={
@@ -141,9 +141,9 @@ const DownloadCarousel = ({ downloads, text }) => {
         </div>
 
         {/* PopUp text */}
-        <AnimatePresence mode="wait">
+        {/* <AnimatePresence mode="wait">
           {showHandleText && <PopupText text="Touchez la poignée !" />}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
     </div>
   );

@@ -210,17 +210,18 @@ const SectionBar = memo(function SectionBar({
               }
             >
               <motion.button
-                className="group flex justify-center items-center w-12 h-12 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce"
+                className="group flex flex-col gap-1 py-1 justify-center items-center w-12 h-16 z-20 rounded-full bg-slate-950 bg-opacity-50 animate-bounce"
                 initial={circleButtonInitialAnimation}
                 animate={circleButtonAnimationProps}
               >
                 <Image
-                  className="relative w-6 h-6 transition-transform group-hover:scale-110 group-hover:-rotate-90 group-focus:scale-105"
+                  className="relative w-6 h-6 transition-transform group-hover:-rotate-90"
                   src="/assets/circle.svg"
                   width={100}
                   height={100}
                   alt="circle"
                 />
+                <p className="font-caveat text-xs text-slate-50">Explorez</p>
               </motion.button>
             </Link>
 

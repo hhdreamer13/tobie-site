@@ -91,8 +91,6 @@ const BackgroundStack = memo(function BackgroundStack({
     setIsLoading(false);
   };
 
-  console.log(currentItem);
-
   return (
     <>
       {/* Background */}
@@ -198,11 +196,12 @@ const BackgroundStack = memo(function BackgroundStack({
           >
             <Image
               src={handleImage}
-              alt=""
+              alt="Handle"
+              title="Cliquez pour changer de fichier"
               priority={true}
               width={400}
               height={400}
-              className="object-cover w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] cursor-pointer"
+              className="object-cover w-[300px] h-[300px] sm:w-[400px] saturate-150 sm:h-[400px] cursor-pointer animate-pulse hover:animate-none"
             />
           </motion.div>
           {/* Sound */}
