@@ -1,7 +1,7 @@
 import NewsFullPage from "@/components/news/NewsFullPage";
 import SectionHeader from "@/components/common/SectionHeader";
 import { sanityFetch } from "@/sanity/sanityFetch";
-import { newsPostByIdQuery } from "@/sanity/sanityQueries";
+import { newsPostByIdQuery, sectionBySlugQuery } from "@/sanity/sanityQueries";
 
 export default async function NewsPage({ params }) {
   const post = await sanityFetch({
