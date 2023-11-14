@@ -96,6 +96,10 @@ const atelier = {
       type: "array",
       title: "Étiquettes",
       description: "Mots-clés associés à l'article.",
+      validation: (Rule) =>
+        Rule.max(5).error(
+          "Vous ne pouvez ajouter que 5 étiquettes au maximum.",
+        ),
       of: [{ type: "string" }],
       options: {
         layout: "tags",

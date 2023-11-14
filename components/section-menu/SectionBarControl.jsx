@@ -27,7 +27,7 @@ const SectionBarControl = ({
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <button
-          className={`px-6 py-1 border ${borderColorClass} ${textColorClass} rounded-full duration-300 hover:scale-105`}
+          className={`px-6 py-1 border ${borderColorClass} ${textColorClass} rounded-full duration-300 hover:scale-105 active:scale-95`}
           onClick={() => changeSection(-1)}
         >
           <div className="w-5 h-5">
@@ -47,7 +47,7 @@ const SectionBarControl = ({
           </p>
         </div>
         <button
-          className={`px-6 py-1 border ${borderColorClass} ${textColorClass} rounded-full duration-300 hover:scale-105`}
+          className={`px-6 py-1 border ${borderColorClass} ${textColorClass} rounded-full duration-300 hover:scale-105 active:scale-95`}
           onClick={() => changeSection(1)}
         >
           <div className="w-5 h-5">

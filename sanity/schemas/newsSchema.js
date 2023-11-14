@@ -64,6 +64,10 @@ const news = {
         layout: "tags",
       },
       description: "Mots-clés associés à l'article.",
+      validation: (Rule) =>
+        Rule.max(5).error(
+          "Vous ne pouvez ajouter que 5 étiquettes au maximum.",
+        ),
     },
   ],
   preview: {

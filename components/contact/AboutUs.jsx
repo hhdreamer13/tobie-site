@@ -45,6 +45,13 @@ const AboutUs = ({ content, partnersLogos }) => {
 
   return (
     <div className="grid-wrapper w-full transform-gpu">
+      {/* Notre mission */}
+      <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex flex-col justify-center items-center">
+        <article className="prose dark:prose-invert w-5/6 sm:w-full m-4 p-5 sm:m-1">
+          <h3 className="mb-5 text-xl sm:text-3xl">{content?.heading}</h3>
+          <p className="text-justify">{content?.subheading}</p>
+        </article>
+      </div>
       {/* Contact Us Section */}
       <div className="min-h-screen text-slate-100 relative flex flex-col gap-4 items-center justify-center">
         <Image
@@ -154,8 +161,8 @@ const AboutUs = ({ content, partnersLogos }) => {
       {/* Notre mission */}
       <div className="min-h-screen bg-main text-main text-2xl leading-5 relative w-full flex justify-center items-center">
         <article className="prose dark:prose-invert w-5/6 sm:w-full m-4 p-5 sm:m-1">
-          <h3 className="mb-5 text-xl sm:text-3xl">{content?.heading}</h3>
-          <p className="text-justify">{content?.subheading}</p>
+          {/* <h3 className="mb-5 text-xl sm:text-3xl">{content?.heading}</h3> */}
+          {/* <p className="text-justify">{content?.subheading}</p> */}
         </article>
       </div>
     </div>
