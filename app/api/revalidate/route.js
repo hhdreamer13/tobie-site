@@ -8,35 +8,35 @@ export const revalidate = true; // I don't think revalidatePath works anymore. s
 // Mapping content types to revalidation actions
 const revalidationMap = {
   newsPost: () => {
-    revalidateTag("newsPost");
     revalidatePath("/sections/actualites");
+    revalidateTag("newsPost");
   },
   atelierPost: () => {
-    revalidateTag("atelierPost");
     revalidatePath("/sections/ateliers");
+    revalidateTag("atelierPost");
   },
   downloadPost: () => {
-    revalidateTag("downloadPost");
     revalidatePath("/sections/souvenirs");
+    revalidateTag("downloadPost");
   },
   memoryGameSet: () => {
-    revalidateTag("memoryGameSet");
     revalidatePath("/sections/jeu");
+    revalidateTag("memoryGameSet");
   },
   storyVerse: () => {
-    revalidateTag("storyVerse");
     revalidatePath("/sections/conte");
+    revalidateTag("storyVerse");
   },
   partner: () => {
-    revalidateTag("partner");
     revalidatePath("/sections/contact");
+    revalidateTag("partner");
   },
   pageTexts: () => {
     revalidateTag("pageTexts");
   },
   section: () => {
-    revalidateTag("section");
     revalidatePath("/sections");
+    revalidateTag("section");
   },
 };
 
