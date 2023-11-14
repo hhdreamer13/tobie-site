@@ -9,8 +9,8 @@ export const revalidate = true; // I don't think revalidatePath works anymore. s
 const revalidationMap = {
   newsPost: () => {
     revalidateTag("newsPost");
-    // revalidatePath("/sections/actualites");
-    revalidateTag("newsSectionList");
+    revalidatePath("/sections");
+    revalidatePath("/sections/actualites");
   },
   atelierPost: () => {
     revalidateTag("atelierPost");
