@@ -39,11 +39,14 @@ const newspaperFont = localFont({
 export const metadata = {
   title: "Les Amis de Tobie",
   description: "Site officiel des amis de Tobie.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
 };
 
 export default function RootLayout({ children, modal }) {

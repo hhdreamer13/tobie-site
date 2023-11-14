@@ -3,7 +3,7 @@ import { revalidateTag, revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 
-export const revalidate = true; // I don't think revalidatePath works anymore. so by adding this it is working.
+// export const revalidate = true; // I don't think revalidatePath works anymore. so by adding this it is working.
 
 // Mapping content types to revalidation actions
 const revalidationMap = {
