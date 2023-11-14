@@ -31,7 +31,7 @@ const AboutUs = ({ content, partnersLogos }) => {
 
   // Dynamic count based on fetched data
   const uniqueImagesCount = partnersLogos.length;
-  const totalDisplayImagesCount = uniqueImagesCount * 3; // Number of repetition
+  const totalDisplayImagesCount = uniqueImagesCount; // Number of repetition
 
   // Generate paths and styles dynamically
   const imagePaths = generateImagePaths(
