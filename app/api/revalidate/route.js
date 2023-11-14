@@ -7,18 +7,10 @@ export const revalidate = true; // I don't think revalidatePath works anymore. s
 
 // Mapping content types to revalidation actions
 const revalidationMap = {
-  // newsPost: () => {
-  //   revalidateTag("newsPost");
-  //   revalidatePath("/sections/actualites");
-  // },
   newsPost: () => {
     revalidateTag("newsPost");
-    revalidatePath("/sections/actualites");
-
-    // Attempting a second revalidation as a fallback with delay
-    setTimeout(() => {
-      revalidatePath("/sections/actualites");
-    }, 5000); // Delay second revalidation by 5 seconds
+    // revalidatePath("/sections/actualites");
+    revalidateTag("newsSectionList");
   },
   atelierPost: () => {
     revalidateTag("atelierPost");
