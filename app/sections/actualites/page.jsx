@@ -1,5 +1,3 @@
-"use client";
-
 import SectionHeader from "@/components/common/SectionHeader";
 import NewsDisplay from "@/components/news/NewsDisplay";
 
