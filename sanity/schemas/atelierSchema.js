@@ -34,16 +34,25 @@ const atelier = {
       title: "Latitude",
       description:
         "Pour obtenir la latitude d'un lieu, vous pouvez utiliser latlong.net.",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required()
+          .min(-90)
+          .max(90)
+          .error("La latitude doit être comprise entre -90 et 90."),
     },
     {
       name: "longitude",
       type: "number",
       title: "Longitude",
       description:
-        "Pour obtenir la latitude d'un lieu, vous pouvez utiliser latlong.net.",
-      validation: (Rule) => Rule.required(),
+        "Pour obtenir la longitude d'un lieu, vous pouvez utiliser latlong.net.",
+      validation: (Rule) =>
+        Rule.required()
+          .min(-180)
+          .max(180)
+          .error("La longitude doit être comprise entre -180 et 180."),
     },
+
     {
       name: "workshopDate",
       type: "date",

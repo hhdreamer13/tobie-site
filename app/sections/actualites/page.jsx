@@ -28,6 +28,7 @@ export default async function ActualitesPage() {
   const news = await sanityFetch({
     query: allNewsPostsQuery,
     tags: ["newsPost"],
+    shouldCache: false,
   });
 
   return (

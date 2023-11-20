@@ -29,6 +29,7 @@ export default async function AteliersPage() {
   const ateliers = await sanityFetch({
     query: allAteliersPostsQuery,
     tags: ["atelierPost"],
+    shouldCache: false,
   });
 
   return (
