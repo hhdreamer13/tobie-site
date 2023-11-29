@@ -65,6 +65,8 @@ const AtelierFullPage = ({ post }) => {
 
   const { date, status } = getStatusText(post.workshopDate, post.status);
 
+  const isFormDisabled = ["Complet", "Terminé", "Annulé"].includes(status);
+
   return (
     <div className="relative flex flex-col justify-start w-full h-full min-h-screen bg-main items-center px-8 pb-12">
       {/* Back */}
@@ -137,9 +139,11 @@ const AtelierFullPage = ({ post }) => {
         {post?.body ? <PortableTextRenderer content={post.body} /> : null}
       </div>
 
-      <div className="mt-20 w-full flex justify-center items-center">
-        <InscriptionForm post={post} />
-      </div>
+      {isFormDisabled ? null : (
+        <div className="mt-20 w-full flex justify-center items-center">
+          <InscriptionForm post={post} />
+        </div>
+      )}
     </div>
   );
 };

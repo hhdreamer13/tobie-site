@@ -99,8 +99,8 @@ const MapComponent = ({ locations, selectedLocation, onSelectLocation }) => {
     const initialMap = new mapboxgl.Map({
       container: mapContainer.current,
       style: mapStyle,
-      center: [2.320041, 48.8588897],
-      zoom: 10,
+      center: [7.44813, 46.948002],
+      zoom: 3,
     });
 
     // set map right away
