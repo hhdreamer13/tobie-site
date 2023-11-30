@@ -106,11 +106,11 @@ const AtelierFullPage = ({ post }) => {
           {formatDate(post.date)}
         </span>
         {post?.tags && (
-          <div>
+          <div className="flex flex-wrap gap-2">
             {post.tags.map((tag, index) => (
               <span
                 key={index}
-                className="ml-2 text-sm text-main font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-full px-1.5 py-0.5"
+                className="text-sm text-main font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-full px-1.5 py-0.5"
               >
                 {tag}
               </span>

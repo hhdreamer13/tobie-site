@@ -53,11 +53,11 @@ const NewsCard = ({ post }) => {
           <div className="mb-2 flex flex-col gap-1 sm:block">
             <span className="text-slate-500 font-caveat">{formattedDate}</span>
             {post?.tags && (
-              <div className="block sm:inline-block">
+              <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="ml-2 text-sm text-main font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-full px-1.5 py-0.5"
+                    className="text-sm text-main font-caveat bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-400 rounded-full px-1.5 py-0.5"
                   >
                     {tag}
                   </span>
