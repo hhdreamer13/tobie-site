@@ -114,11 +114,11 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
               {formatDate(location?.date)}
             </span>
             {location?.tags && (
-              <div className="block sm:inline-block">
+              <div className="flex flex-wrap gap-2">
                 {location.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="ml-2 text-sm text-main font-caveat bg-gray-100 dark:bg-gray-900 border border-gray-400 dark:border-gray-400 rounded-full px-1.5 py-0.5"
+                    className="text-sm text-main font-caveat bg-gray-100 dark:bg-gray-900 border border-gray-400 dark:border-gray-400 rounded-full px-1.5 py-0.5"
                   >
                     {tag}
                   </span>

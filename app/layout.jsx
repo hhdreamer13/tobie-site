@@ -1,6 +1,11 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
-import { Caveat, Nunito_Sans, Literata } from "next/font/google";
+import {
+  Caveat,
+  Nunito_Sans,
+  Literata,
+  Sue_Ellen_Francisco,
+} from "next/font/google";
 
 import Providers from "./providers";
 import HomeButton from "@/components/common/HomeButton";
@@ -10,6 +15,13 @@ const caveatFont = Caveat({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-caveat",
+});
+
+const sueEllenFont = Sue_Ellen_Francisco({
+  weight: "400",
+  preload: false,
+  display: "swap",
+  variable: "--font-sue-ellen",
 });
 
 const nunitoFont = Nunito_Sans({
@@ -53,7 +65,7 @@ export default function RootLayout({ children, modal }) {
   return (
     <html lang="fr" className="light" style={{ colorScheme: "light" }}>
       <body
-        className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable} ${literataFont.variable} " flex flex-col min-h-screen"`}
+        className={`${caveatFont.variable} ${nunitoFont.variable} ${mottonaFont.variable} ${newspaperFont.variable} ${literataFont.variable} ${sueEllenFont.variable} " flex flex-col min-h-screen"`}
       >
         <Providers>
           <div className="fixed z-50 text-slate-50 left-4 top-4">

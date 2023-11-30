@@ -14,6 +14,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/clientConfig";
+import ScrollDownIcon from "../common/icons/ScrollDownIcon";
+import HhFooter from "../common/HhFooter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,6 +53,9 @@ const AboutUs = ({ content, partnersLogos }) => {
           <h3 className="mb-5 text-xl sm:text-3xl">{content?.heading}</h3>
           <p className="text-justify">{content?.subheading}</p>
         </article>
+        <div className="scroll-down text-main w-6">
+          <ScrollDownIcon />
+        </div>
       </div>
       {/* Contact Us Section */}
       <div className="min-h-screen text-slate-100 relative flex flex-col gap-4 items-center justify-center">
@@ -116,14 +121,8 @@ const AboutUs = ({ content, partnersLogos }) => {
             />
           </a>
         </div>
-        <div className="scroll-down">
-          <Image
-            className="relative"
-            src="/assets/down.svg"
-            alt="scroll down"
-            width={40}
-            height={40}
-          />
+        <div className="scroll-down w-6">
+          <ScrollDownIcon />
         </div>
       </div>
 
@@ -165,6 +164,7 @@ const AboutUs = ({ content, partnersLogos }) => {
           {/* <p className="text-justify">{content?.subheading}</p> */}
         </article>
       </div>
+      <HhFooter />
     </div>
   );
 };

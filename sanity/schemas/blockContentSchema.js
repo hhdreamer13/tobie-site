@@ -47,6 +47,9 @@ const blockContent = {
         },
       ],
     },
+    {
+      type: "video",
+    },
   ],
 };
 

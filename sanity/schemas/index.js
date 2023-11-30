@@ -10,6 +10,7 @@ import partner from "./partnerSchema";
 import blockContent from "./blockContentSchema";
 import memoryCard from "./memoryCardSchema";
 import verseImage from "./verseImageSchema";
+import videoSchema from "./videoSchema";
 
 const schemas = [
   news,
@@ -23,6 +24,7 @@ const schemas = [
   blockContent,
   memoryCard,
   verseImage,
+  videoSchema,
 ];
 
 export default schemas;

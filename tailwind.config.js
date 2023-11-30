@@ -21,6 +21,7 @@ module.exports = {
         literata: ["var(--font-literata)"],
         mottona: ["var(--font-mottona)"],
         newspaper: ["var(--font-newspaper)"],
+        sueEllen: ["var(--font-sue-ellen)"],
       },
     },
   },
