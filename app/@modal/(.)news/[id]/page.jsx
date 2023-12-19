@@ -6,7 +6,6 @@ export default async function NewsModalPage({ params }) {
   const post = await sanityFetch({
     query: newsPostByIdQuery,
     params,
-    tags: ["newsPost"],
   });
 
   return <NewsInterceptModal post={post} />;

@@ -1,14 +1,25 @@
+"use client";
 import DownloadFrame from "@/components/frames/DownloadFrame";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import { downloadPostByIdQuery } from "@/sanity/sanityQueries";
+import Loader from "@/components/common/Loader";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function NewsPage({ params }) {
-  const post = await sanityFetch({
-    query: downloadPostByIdQuery,
-    params,
-    tags: ["downloadPost"],
+export default function NewsPage({ params }) {
+  // Query for the download post
+  const { data: post, isLoading } = useQuery({
+    queryKey: ["downloadPost", params.id],
+    queryFn: () =>
+      sanityFetch({
+        query: downloadPostByIdQuery,
+        params,
+      }),
   });
 
+  // Handle loading state
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="container mx-auto my-10">

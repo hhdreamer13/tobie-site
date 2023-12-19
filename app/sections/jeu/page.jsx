@@ -1,3 +1,4 @@
+"use client";
 import {
   allGamesQuery,
   pageTextsQuery,
@@ -6,28 +7,40 @@ import {
 import { sanityFetch } from "@/sanity/sanityFetch";
 import SectionHeader from "@/components/common/SectionHeader";
 import MemoryGame from "@/components/jeu/MemoryGame";
+import Loader from "@/components/common/Loader";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function SectionPage() {
-  const pageText = await sanityFetch({
-    query: pageTextsQuery,
-    params: {
-      sectionUrl: "/sections/jeu",
-    },
-    tags: ["pageTexts"],
+export default function SectionPage() {
+  // Query for page texts
+  const { data: pageText, isLoading: isLoadingPageText } = useQuery({
+    queryKey: ["pageTexts", "/sections/jeu"],
+    queryFn: () =>
+      sanityFetch({
+        query: pageTextsQuery,
+        params: { sectionUrl: "/sections/jeu" },
+      }),
   });
 
-  const section = await sanityFetch({
-    query: sectionBySlugQuery,
-    params: {
-      sectionUrl: "/sections/jeu",
-    },
-    tags: ["section"],
+  // Query for section details
+  const { data: section, isLoading: isLoadingSection } = useQuery({
+    queryKey: ["section", "/sections/jeu"],
+    queryFn: () =>
+      sanityFetch({
+        query: sectionBySlugQuery,
+        params: { sectionUrl: "/sections/jeu" },
+      }),
   });
 
-  const gameAssets = await sanityFetch({
-    query: allGamesQuery,
-    tags: ["memoryGameSet"],
+  // Query for game assets
+  const { data: gameAssets, isLoading: isLoadingGameAssets } = useQuery({
+    queryKey: ["memoryGameSet"],
+    queryFn: () => sanityFetch({ query: allGamesQuery }),
   });
+
+  // Handle loading state for any of the queries
+  if (isLoadingPageText || isLoadingSection || isLoadingGameAssets) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full min-h-screen pb-20 flex flex-col justify-center items-center bg-main">

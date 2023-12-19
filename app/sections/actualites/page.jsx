@@ -1,34 +1,46 @@
+"use client";
 import SectionHeader from "@/components/common/SectionHeader";
 import NewsDisplay from "@/components/news/NewsDisplay";
-
+import Loader from "@/components/common/Loader";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import {
   allNewsPostsQuery,
   pageTextsQuery,
   sectionBySlugQuery,
 } from "@/sanity/sanityQueries";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function ActualitesPage() {
-  const pageText = await sanityFetch({
-    query: pageTextsQuery,
-    params: {
-      sectionUrl: "/sections/actualites", // we're using a query for all pages with a dynamic param
-    },
-    tags: ["pageTexts"],
+export default function ActualitesPage() {
+  // Query for page texts
+  const { data: pageText, isLoading: isLoadingPageText } = useQuery({
+    queryKey: ["pageTexts", "/sections/actualites"],
+    queryFn: () =>
+      sanityFetch({
+        query: pageTextsQuery,
+        params: { sectionUrl: "/sections/actualites" },
+      }),
   });
 
-  const section = await sanityFetch({
-    query: sectionBySlugQuery,
-    params: {
-      sectionUrl: "/sections/actualites",
-    },
-    tags: ["section"],
+  // Query for section details
+  const { data: section, isLoading: isLoadingSection } = useQuery({
+    queryKey: ["section", "/sections/actualites"],
+    queryFn: () =>
+      sanityFetch({
+        query: sectionBySlugQuery,
+        params: { sectionUrl: "/sections/actualites" },
+      }),
   });
 
-  const news = await sanityFetch({
-    query: allNewsPostsQuery,
-    tags: ["newsPost"],
+  // Query for news posts
+  const { data: news, isLoading: isLoadingNews } = useQuery({
+    queryKey: ["newsPost"],
+    queryFn: () => sanityFetch({ query: allNewsPostsQuery }),
   });
+
+  // Handle loading state for any of the queries
+  if (isLoadingPageText || isLoadingSection || isLoadingNews) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">

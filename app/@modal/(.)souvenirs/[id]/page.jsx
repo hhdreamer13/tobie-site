@@ -6,7 +6,6 @@ export default async function DownloadModalPage({ params }) {
   const post = await sanityFetch({
     query: downloadPostByIdQuery,
     params,
-    tags: ["downloadPost"],
   });
 
   return <DownloadInterceptModal post={post} />;

@@ -12,8 +12,6 @@ const isSafariWeb = () => {
   );
 };
 
-console.log(isSafariWeb);
-
 const useGridAnimations = (gridRef) => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);

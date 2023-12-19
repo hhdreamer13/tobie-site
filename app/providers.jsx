@@ -1,24 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
-import Loader from "@/components/common/Loader";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 
 const Providers = ({ children }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <Loader />;
-  }
-
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
-      {children}
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider attribute="class" defaultTheme="system">
+        {children}
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

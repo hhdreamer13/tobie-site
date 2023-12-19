@@ -1,3 +1,4 @@
+"use client";
 import {
   allAteliersPostsQuery,
   pageTextsQuery,
@@ -6,28 +7,40 @@ import {
 import { sanityFetch } from "@/sanity/sanityFetch";
 import SectionHeader from "@/components/common/SectionHeader";
 import MapDisplay from "@/components/ateliers/MapDisplay";
+import Loader from "@/components/common/Loader";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function AteliersPage() {
-  const pageText = await sanityFetch({
-    query: pageTextsQuery,
-    params: {
-      sectionUrl: "/sections/ateliers",
-    },
-    tags: ["pageTexts"],
+export default function AteliersPage() {
+  // Query for page texts
+  const { data: pageText, isLoading: isLoadingPageText } = useQuery({
+    queryKey: ["pageTexts", "/sections/ateliers"],
+    queryFn: () =>
+      sanityFetch({
+        query: pageTextsQuery,
+        params: { sectionUrl: "/sections/ateliers" },
+      }),
   });
 
-  const section = await sanityFetch({
-    query: sectionBySlugQuery,
-    params: {
-      sectionUrl: "/sections/ateliers",
-    },
-    tags: ["section"],
+  // Query for section details
+  const { data: section, isLoading: isLoadingSection } = useQuery({
+    queryKey: ["section", "/sections/ateliers"],
+    queryFn: () =>
+      sanityFetch({
+        query: sectionBySlugQuery,
+        params: { sectionUrl: "/sections/ateliers" },
+      }),
   });
 
-  const ateliers = await sanityFetch({
-    query: allAteliersPostsQuery,
-    tags: ["atelierPost"],
+  // Query for ateliers posts
+  const { data: ateliers, isLoading: isLoadingAteliers } = useQuery({
+    queryKey: ["atelierPost"],
+    queryFn: () => sanityFetch({ query: allAteliersPostsQuery }),
   });
+
+  // Handle loading state for any of the queries
+  if (isLoadingPageText || isLoadingSection || isLoadingAteliers) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">

@@ -1,20 +1,31 @@
+"use client";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import AboutUs from "../../../components/contact/AboutUs";
 import { allPartnersQuery, pageTextsQuery } from "@/sanity/sanityQueries";
+import Loader from "@/components/common/Loader";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function SectionPage() {
-  const pageText = await sanityFetch({
-    query: pageTextsQuery,
-    params: {
-      sectionUrl: "/sections/contact", // we're using a query for all pages with a dynamic param
-    },
-    tags: ["pageTexts"],
+export default function SectionPage() {
+  // Query for page texts
+  const { data: pageText, isLoading: isLoadingPageText } = useQuery({
+    queryKey: ["pageTexts", "/sections/contact"],
+    queryFn: () =>
+      sanityFetch({
+        query: pageTextsQuery,
+        params: { sectionUrl: "/sections/contact" },
+      }),
   });
 
-  const partners = await sanityFetch({
-    query: allPartnersQuery,
-    tags: ["partner"],
+  // Query for partners
+  const { data: partners, isLoading: isLoadingPartners } = useQuery({
+    queryKey: ["partner"],
+    queryFn: () => sanityFetch({ query: allPartnersQuery }),
   });
+
+  // Handle loading state for any of the queries
+  if (isLoadingPageText || isLoadingPartners) {
+    return <Loader />;
+  }
 
   return (
     <>

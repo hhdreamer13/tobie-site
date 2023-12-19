@@ -1,3 +1,4 @@
+"use client";
 import { sanityFetch } from "@/sanity/sanityFetch";
 import {
   newsPostBySlugQuery,
@@ -5,21 +6,34 @@ import {
 } from "@/sanity/sanityQueries";
 import NewsFullPage from "@/components/news/NewsFullPage";
 import SectionHeader from "@/components/common/SectionHeader";
+import Loader from "@/components/common/Loader";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function NewsPage({ params }) {
-  const post = await sanityFetch({
-    query: newsPostBySlugQuery,
-    params,
-    tags: ["newsPost"],
+export default function NewsPage({ params }) {
+  // Query for the news post
+  const { data: post, isLoading: isLoadingPost } = useQuery({
+    queryKey: ["newsPost", params.slug],
+    queryFn: () =>
+      sanityFetch({
+        query: newsPostBySlugQuery,
+        params,
+      }),
   });
 
-  const section = await sanityFetch({
-    query: sectionBySlugQuery,
-    params: {
-      sectionUrl: "/sections/actualites", // we're using a query for all pages with a dynamic param
-    },
-    tags: ["section"],
+  // Query for section details
+  const { data: section, isLoading: isLoadingSection } = useQuery({
+    queryKey: ["section", "/sections/actualites"],
+    queryFn: () =>
+      sanityFetch({
+        query: sectionBySlugQuery,
+        params: { sectionUrl: "/sections/actualites" },
+      }),
   });
+
+  // Handle loading state for any of the queries
+  if (isLoadingPost || isLoadingSection) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full min-h-screen pb-20 pt-10 flex flex-col justify-center items-center bg-main">

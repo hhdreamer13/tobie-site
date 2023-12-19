@@ -1,13 +1,6 @@
-import "server-only";
-
 import { client } from "./clientConfig";
 
-export async function sanityFetch({ query, params, tags }) {
-  return client.fetch(query, params, {
-    cache: "force-cache",
-    // cache: "no-store",
-    next: {
-      tags,
-    },
-  });
+export async function sanityFetch({ query, params }) {
+  const result = await client.fetch(query, params);
+  return result;
 }
