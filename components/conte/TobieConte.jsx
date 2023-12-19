@@ -44,11 +44,14 @@ gsap.config({
 const frameCount = 49; // Number of frames in your animation
 const images = []; // Array to store your image frames
 
-// Load each image frame into the array
-for (let i = 0; i < frameCount; i++) {
-  const img = new Image();
-  img.src = `/tobie/tobie${i + 1}.webp`;
-  images.push(img);
+// Check if window is defined (i.e., code is running on the client side)
+if (typeof window !== "undefined") {
+  // Load each image frame into the array
+  for (let i = 0; i < frameCount; i++) {
+    const img = new Image();
+    img.src = `/tobie/tobie${i + 1}.webp`;
+    images.push(img);
+  }
 }
 
 /**
