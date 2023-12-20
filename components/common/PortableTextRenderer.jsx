@@ -4,7 +4,8 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import { client } from "@/sanity/clientConfig";
 import Image from "next/image";
 import ReactPlayer from "react-player";
-import CarouselGallery from "./CarouselGallery";
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
 
 const ImageComponent = ({ value, isInline }) => {
   const builder = imageUrlBuilder(client);
@@ -47,11 +48,35 @@ const VideoComponent = ({ value }) => {
   );
 };
 
+const CarouselComponent = ({ value }) => {
+  const builder = imageUrlBuilder(client);
+
+  return (
+
+    <AwesomeSlider>
+      {value.images.map((image) => (
+        <div key={image._key}>
+          <Image
+            src={builder.image(image).url()}
+            alt={image.alt || "Fan Art"}
+            sizes="500px"
+            fill
+            style={{
+              objectFit: "contain",
+            }}
+          />
+        </div>
+      ))}
+    </AwesomeSlider>
+
+  );
+};
+
 const components = {
   types: {
     image: ImageComponent,
     video: VideoComponent,
-    carousel: CarouselGallery,
+    carousel: CarouselComponent,
     // Any other custom types you have in your content
   },
 };
