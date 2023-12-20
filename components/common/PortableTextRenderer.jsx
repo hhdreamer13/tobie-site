@@ -4,6 +4,7 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import { client } from "@/sanity/clientConfig";
 import Image from "next/image";
 import ReactPlayer from "react-player";
+import CarouselGallery from "./CarouselGallery";
 
 const ImageComponent = ({ value, isInline }) => {
   const builder = imageUrlBuilder(client);
@@ -50,6 +51,7 @@ const components = {
   types: {
     image: ImageComponent,
     video: VideoComponent,
+    carousel: CarouselGallery,
     // Any other custom types you have in your content
   },
 };

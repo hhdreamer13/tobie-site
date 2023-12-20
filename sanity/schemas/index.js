@@ -11,6 +11,7 @@ import blockContent from "./blockContentSchema";
 import memoryCard from "./memoryCardSchema";
 import verseImage from "./verseImageSchema";
 import videoSchema from "./videoSchema";
+import carousel from "./carouselSchema";
 
 const schemas = [
   news,
@@ -25,6 +26,7 @@ const schemas = [
   memoryCard,
   verseImage,
   videoSchema,
+  carousel,
 ];
 
 export default schemas;

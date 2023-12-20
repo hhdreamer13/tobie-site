@@ -50,6 +50,9 @@ const blockContent = {
     {
       type: "video",
     },
+    {
+      type: "carousel",
+    },
   ],
 };
 
