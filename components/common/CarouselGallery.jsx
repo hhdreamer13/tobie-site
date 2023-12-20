@@ -1,29 +1,37 @@
-import imageUrlBuilder from "@sanity/image-url";
-import { client } from "@/sanity/clientConfig";
-import Image from "next/image";
+import React, { useEffect } from "react";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
+import "photoswipe/style.css";
 
-import AwesomeSlider from "react-awesome-slider";
-import "react-awesome-slider/dist/styles.css";
+const CarouselGallery = (props) => {
+  useEffect(() => {
+    let lightbox = new PhotoSwipeLightbox({
+      gallery: "#" + props.galleryID,
+      children: "a",
+      pswpModule: () => import("photoswipe"),
+    });
+    lightbox.init();
 
-const CarouselGallery = ({ value }) => {
-  const builder = imageUrlBuilder(client);
+    return () => {
+      lightbox.destroy();
+      lightbox = null;
+    };
+  }, []);
 
   return (
-    <AwesomeSlider>
-      {value.images.map((image) => (
-        <div key={image._key}>
-          <Image
-            src={builder.image(image).url()}
-            alt={image.alt || "Fan Art"}
-            sizes="500px"
-            fill
-            style={{
-              objectFit: "contain",
-            }}
-          />
-        </div>
+    <div className="" id={props.galleryID}>
+      {props.images.map((image, index) => (
+        <a
+          href={image.largeURL}
+          data-pswp-width={image.width}
+          data-pswp-height={image.height}
+          key={props.galleryID + "-" + index}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={image.thumbnailURL} alt="" />
+        </a>
       ))}
-    </AwesomeSlider>
+    </div>
   );
 };
 

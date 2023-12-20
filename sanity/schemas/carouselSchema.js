@@ -1,14 +1,29 @@
-import CarouselPreview from "@/components/common/CarouselPreview"
 const carousel = {
   name: "carousel",
   type: "object",
-  title: "Image Carousel",
+  title: "Carrousel d'images",
   fields: [
     {
       name: "images",
       type: "array",
       title: "Images",
-      of: [{ type: "image" }],
+      of: [
+        {
+          name: "image",
+          type: "image",
+          title: "Image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Texte",
+            },
+          ],
+        },
+      ],
       options: {
         layout: "grid",
       },
@@ -18,10 +33,15 @@ const carousel = {
     select: {
       images: "images",
     },
+    prepare(selection) {
+      const { images } = selection;
+      console.log(images);
+      return {
+        title: `Carrousel avec ${Object.keys(images).length} images`,
+        media: images[0],
+      };
+    },
   },
-  components: {
-    preview: CarouselPreview,
-  }
 };
 
 export default carousel;
