@@ -48,7 +48,6 @@ const VideoComponent = ({ value }) => {
 };
 
 const CarouselComponent = ({ value }) => {
-  console.log(value);
   return (
     <div className="">
       <CarouselGallery

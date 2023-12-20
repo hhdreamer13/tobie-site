@@ -8,6 +8,7 @@ const CarouselGallery = (props) => {
       gallery: "#" + props.galleryID,
       children: "a",
       pswpModule: () => import("photoswipe"),
+      padding: { top: 20, bottom: 40, left: 100, right: 100 },
     });
     lightbox.init();
 
