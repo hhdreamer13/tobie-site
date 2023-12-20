@@ -17,8 +17,19 @@ const CarouselGallery = (props) => {
     };
   }, []);
 
+  const masonryStyle = {
+    columnCount: 4,
+    columnGap: "1rem",
+  };
+
+  const imageWrapperStyle = {
+    marginBottom: "1rem",
+    breakInside: "avoid",
+    display: "block",
+  };
+
   return (
-    <div className="" id={props.galleryID}>
+    <div className="pswp-gallery" id={props.galleryID} style={masonryStyle}>
       {props.images.map((image, index) => (
         <a
           href={image.largeURL}
@@ -27,8 +38,13 @@ const CarouselGallery = (props) => {
           key={props.galleryID + "-" + index}
           target="_blank"
           rel="noreferrer"
+          style={imageWrapperStyle}
         >
-          <img src={image.thumbnailURL} alt="" />
+          <img
+            src={image.thumbnailURL}
+            alt=""
+            className="rounded-md hover:shadow-lg dark:hover:shadow-emerald-200/20 duration-200 hover:scale-105 w-full m-0 p-0"
+          />
         </a>
       ))}
     </div>

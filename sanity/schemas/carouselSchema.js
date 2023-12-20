@@ -1,7 +1,7 @@
 const carousel = {
   name: "carousel",
   type: "object",
-  title: "Carrousel d'images",
+  title: "Galerie d'images",
   fields: [
     {
       name: "images",
@@ -37,7 +37,7 @@ const carousel = {
       const { images } = selection;
       console.log(images);
       return {
-        title: `Carrousel avec ${Object.keys(images).length} images`,
+        title: `Galerie avec ${Object.keys(images).length} images`,
         media: images[0],
       };
     },

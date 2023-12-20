@@ -48,8 +48,9 @@ const VideoComponent = ({ value }) => {
 };
 
 const CarouselComponent = ({ value }) => {
+  console.log(value);
   return (
-    <div>
+    <div className="">
       <CarouselGallery
         galleryID="my-test-gallery"
         images={value.images.map((image) => {
@@ -57,12 +58,7 @@ const CarouselComponent = ({ value }) => {
 
           return {
             largeURL: builder.image(image).url(),
-            thumbnailURL: builder
-              .image(image)
-              .width(100)
-              .fit("max")
-              .auto("format")
-              .url(),
+            thumbnailURL: builder.image(image).width(100).url(),
             width: width,
             height: height,
           };
