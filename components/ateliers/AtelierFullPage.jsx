@@ -80,7 +80,7 @@ const AtelierFullPage = ({ post }) => {
       </Link>
 
       {/* Title */}
-      <h3 className="text-2xl md:text-4xl font-semibold mb-5 sm:mb-10 text-center">
+      <h3 className="text-2xl md:text-4xl w-5/6 lg:w-2/3 font-semibold mb-5 sm:mb-10 text-center">
         {post.title}
       </h3>
 

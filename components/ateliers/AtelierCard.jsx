@@ -108,7 +108,12 @@ const AtelierCard = ({ location, isLocationSelected, onSelectLocation }) => {
               }`}
             />
           </button>
-          <h3 className="text-xl font-semibold w-11/12">{location?.title}</h3>
+          <Link
+            href={`/sections/ateliers/${location?.slug?.current}`}
+            className="hover:opacity-70 duration-300"
+          >
+            <h3 className="text-xl font-semibold w-11/12">{location?.title}</h3>
+          </Link>
           <div className="mb-2 flex flex-col gap-1 sm:block">
             <span className="text-slate-500 font-caveat">
               {formatDate(location?.date)}

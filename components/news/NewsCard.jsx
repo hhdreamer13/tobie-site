@@ -47,9 +47,14 @@ const NewsCard = ({ post }) => {
           >
             <MaximizeIcon className="w-6 h-6 hover:scale-105" />
           </Link>
-          <h3 className="text-xl font-semibold font-literata w-11/12">
-            {post.title}
-          </h3>
+          <Link
+            href={`/sections/actualites/${post?.slug?.current}`}
+            className="hover:opacity-70 duration-300"
+          >
+            <h3 className="text-xl font-semibold font-literata w-11/12">
+              {post.title}
+            </h3>
+          </Link>
           <div className="mb-2 flex flex-col gap-1 sm:block">
             <span className="text-slate-500 font-caveat">{formattedDate}</span>
             {post?.tags && (
