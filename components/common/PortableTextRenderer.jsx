@@ -51,13 +51,15 @@ const CarouselComponent = ({ value }) => {
   return (
     <div className="">
       <CarouselGallery
-        galleryID="my-test-gallery"
+        galleryID="gallery--cropped-thumbs"
+        imagesTexts
         images={value.images.map((image) => {
           const { width, height } = getImageDimensions(image);
 
           return {
+            text: image.alt,
             largeURL: builder.image(image).url(),
-            thumbnailURL: builder.image(image).width(100).url(),
+            thumbnailURL: builder.image(image).url(),
             width: width,
             height: height,
           };

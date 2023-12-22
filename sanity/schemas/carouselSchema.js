@@ -35,11 +35,20 @@ const carousel = {
     },
     prepare(selection) {
       const { images } = selection;
-      console.log(images);
-      return {
-        title: `Galerie avec ${Object.keys(images).length} images`,
-        media: images[0],
-      };
+
+      // Check if the images array has at least one image
+      if (images && images.length > 0) {
+        return {
+          title: `Galerie avec ${images.length} images`,
+          media: images[0],
+        };
+      } else {
+        // Handle the case where there are no images
+        return {
+          title: "Galerie sans images",
+          media: null,
+        };
+      }
     },
   },
 };

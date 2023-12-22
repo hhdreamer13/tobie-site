@@ -5,7 +5,6 @@ const CarouselPreview = ({ image }) => {
   if (!image) {
     return <p>Ajouter des images pour le Carousel</p>;
   }
-  console.log(image)
 
   const imageUrl = imageUrlBuilder(client)
     .image(image)

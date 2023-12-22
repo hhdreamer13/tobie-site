@@ -52,3 +52,31 @@
   -webkit-text-shadow: 0 0 1px rgba(0, 0, 0, 1);
   -moz-text-shadow: 0 0 1px rgba(0, 0, 0, 1);
 }
+
+/* PhotoSwipe Custom Caption Styling */
+.pswp__custom-caption {
+  background: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Semi-transparent black for better readability */
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+}
+
+.pswp__custom-caption a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
