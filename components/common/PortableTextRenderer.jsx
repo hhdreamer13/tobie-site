@@ -59,7 +59,7 @@ const CarouselComponent = ({ value }) => {
           return {
             text: image.alt,
             largeURL: builder.image(image).url(),
-            thumbnailURL: builder.image(image).url(),
+            thumbnailURL: builder.image(image).width(400).url(),
             width: width,
             height: height,
           };
