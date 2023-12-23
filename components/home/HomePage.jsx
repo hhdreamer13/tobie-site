@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/sections");
-    }, 60000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, [router]);
