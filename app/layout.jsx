@@ -50,7 +50,11 @@ const newspaperFont = localFont({
 
 export const metadata = {
   title: "Les Amis de Tobie",
-  description: "Site officiel des amis de Tobie.",
+  description:
+    "Bienvenue dans l'univers de Tobie et ses amis, où les histoires inspirent jeu et imagination.",
+  openGraph: {
+    images: "/icon.webp",
+  },
 };
 
 export const viewport = {
