@@ -122,7 +122,7 @@ export const atelierPostBySlugQuery = groq`*[_type == "atelierPost" && slug.curr
 */
 
 export const allDownloadPostsQuery = groq`
-*[_type == "downloadPost"]{
+*[_type == "downloadPost"] | order(_updatedAt desc){
   _id,
   title,
   imageSrc,
